@@ -24,4 +24,10 @@ Rails.application.routes.draw do
   namespace :customer do
     resource :dashboard, only: :show
   end
+
+  # Customer only routes
+  namespace :admin do
+    resource :dashboard, only: :show
+    resources :restaurants
+  end
 end

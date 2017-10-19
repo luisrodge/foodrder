@@ -17,6 +17,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'mini_magick'
+gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

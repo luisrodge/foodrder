@@ -25,9 +25,16 @@ body {
   flex-direction: column;
 }
 
+a {
+  color: inherit;
+}
 a:hover {
   text-decoration: none;
   color: inherit;
+}
+
+.remove-margin {
+  margin: 0;
 }
 
 .text-price {
@@ -114,6 +121,11 @@ header {
       margin: 0;
     }
   }
+}
+
+.col-box {
+  border: 1px solid #f7f7f7;
+  padding: 18px;
 }
 
 @media (min-width: 1200px) {
