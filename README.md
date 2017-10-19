@@ -25,3 +25,7 @@ pulled the project proceed with the following:
 * Run bundle with rails bundle
 * Run migration with rails db:migrate
 * Finally, run rails s to run the rails server
+
+# Deployment
+
+Add additional notes about how to deploy this on a live system
