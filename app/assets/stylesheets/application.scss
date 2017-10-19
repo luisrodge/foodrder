@@ -26,6 +26,14 @@ a:hover {
   color: inherit;
 }
 
+.text-price {
+  color: #71BA51;
+}
+
+.center-block {
+  float: none;
+}
+
 header {
   margin-bottom: 70px;
 }
@@ -41,6 +49,9 @@ header {
     color: #FFF;
     font-weight: bold;
     font-size: 30px;
+    &:hover {
+      color: #FFF;
+    }
   }
 }
 
@@ -72,4 +83,37 @@ header {
 .navbar-default .navbar-nav > .open > a:focus {
   color: #FFF;
   background: none;
+}
+
+.home-search-form {
+  margin-bottom: 80px;
+}
+
+.figure {
+  .figcaption {
+    border: 1px solid #f7f7f7;
+    padding: 20px 14px;
+  }
+  .figcaption-footer {
+    margin-top: 24px;
+    h4 {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container{
+    max-width: 1080px;
+  }
+}
+
+footer {
+  border-top: 1px solid #f7f7f7;
+  margin-top: 100px;
+  padding: 20px 0;
+  color: #808080;
+  p {
+    margin: 0;
+  }
 }
