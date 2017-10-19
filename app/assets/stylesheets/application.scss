@@ -15,3 +15,61 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  margin-bottom: 70px;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-default {
+  background: #71BA51;
+  border: none;
+  .navbar-brand {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+  font-size: 17px;
+  &:hover {
+    color: #FFF;
+  }
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+  line-height: 70px;
+  height: 70px;
+  padding-top: 0;
+}
+
+.dropdown-menu > li > a {
+  font-size: 16px;
+  padding: 10px 20px;
+  &:hover {
+    background: none;
+  }
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #FFF;
+  background: none;
+}
