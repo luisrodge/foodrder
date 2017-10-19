@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="remove-margin">Restaurant Menus</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to "Add New Menu", new_seller_menu_path, class: "btn btn-success" %>
+  </div>
+</div>
+<hr>
+
+<br><br><br>
+
+<div class="row">
+  <% @menus.each do |menu| %>
+      <div class="col-md-4">
+        <%= link_to seller_menu_path(menu) do %>
+            <div class="col-box">
+              <h2><%= menu.name %></h2>
+              <p>6 foods</p>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+</div>

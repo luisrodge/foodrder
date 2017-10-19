@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :seller do
+    get 'foods/new'
+  end
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -18,6 +22,10 @@ Rails.application.routes.draw do
   # Seller only routes
   namespace :seller do
     resource :dashboard, only: :show
+    resources :menus do
+      resources :foods, only: [:new, :create]
+    end
+    resources :foods
   end
 
   # Customer only routes

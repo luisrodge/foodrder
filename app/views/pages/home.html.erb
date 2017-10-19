@@ -22,63 +22,27 @@
   <div class="col-md-12">
     <h2>Trending</h2><br>
   </div>
-  <div class="col-md-4">
-    <div class="figure">
-      <img src="http://www.seriouseats.com/images/2015/07/20150728-homemade-whopper-food-lab-35.jpg" alt="" class="img-responsive">
-      <div class="figcaption">
-        <h3>Cheese Burger</h3>
-        <h4>By Hode's Place</h4>
-        <div class="figcaption-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <a href="" class="btn btn-success btn-sm">Order</a>
-            </div>
-            <div class="col-md-6">
-              <h4 class="text-right text-price">$12.00</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="figure">
-      <img src="http://www.seriouseats.com/images/2015/07/20150728-homemade-whopper-food-lab-35.jpg" alt="" class="img-responsive">
-      <div class="figcaption">
-        <h3>Cheese Burger</h3>
-        <h4>By Hode's Place</h4>
-        <div class="figcaption-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <a href="" class="btn btn-success btn-sm">Order</a>
-            </div>
-            <div class="col-md-6">
-              <h4 class="text-right text-price">$12.00</h4>
+  <% Food.all.each do |food| %>
+      <div class="col-md-4">
+        <div class="figure">
+          <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
+          <div class="figcaption">
+            <h3><%= food.name %></h3>
+            <h4>By <%= food.restaurant.name %></h4>
+            <div class="figcaption-footer">
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="" class="btn btn-success btn-sm">Order</a>
+                </div>
+                <div class="col-md-6">
+                  <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="figure">
-      <img src="http://www.seriouseats.com/images/2015/07/20150728-homemade-whopper-food-lab-35.jpg" alt="" class="img-responsive">
-      <div class="figcaption">
-        <h3>Cheese Burger</h3>
-        <h4>By Hode's Place</h4>
-        <div class="figcaption-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <a href="" class="btn btn-success btn-sm">Order</a>
-            </div>
-            <div class="col-md-6">
-              <h4 class="text-right text-price">$12.00</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
 <br><br>
 

@@ -45,7 +45,11 @@ a:hover {
   float: none;
 }
 
-input {
+.img-responsive {
+  width: 100%;
+}
+
+input, textarea {
   box-shadow: none!important;
   border: 1px solid #EDEDED!important;
 }

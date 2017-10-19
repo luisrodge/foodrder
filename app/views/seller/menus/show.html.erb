@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="remove-margin"><%= @menu.name %> Menu</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to "Add New Food", new_seller_menu_food_path(@menu), class: "btn btn-success" %>
+  </div>
+</div>
+<hr>
+
+<br><br><br>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Cook Time</th>
+        <th>Manage</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @foods.each do |food| %>
+          <tr>
+            <td>
+              <%= image_tag(food.primary_image.thumb) if food.primary_image? %>
+              <%= food.name %>
+            </td>
+            <td><%= price_format(food.price) %></td>
+            <td><%= food.estimated_cook_time %></td>
+            <td>
+              <%= link_to "Edit", edit_seller_food_path(food), class: "btn btn-success btn-sm" %>
+              <%= link_to "Delete", edit_seller_food_path(food), class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

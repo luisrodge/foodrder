@@ -1,0 +1,2 @@
+module Seller::FoodsHelper
+end

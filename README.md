@@ -13,6 +13,7 @@ in a matter of minutes.
 * Node js v8.3.0
 * PostgreSQL v9.5.8
 * Rails v5.1.4
+* ImageMagick
 
 # Installation
 

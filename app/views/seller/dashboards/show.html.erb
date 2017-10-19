@@ -1,2 +1,22 @@
-<h1>Seller::Dashboards#show</h1>
-<p>Find me in app/views/seller/dashboards/show.html.erb</p>
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to seller_menus_path do %>
+        <div class="col-box">
+          <h2>Menus</h2>
+          <p>Overview of all your menus</p>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="col-box">
+      <h2>Foods</h2>
+      <p>Overview of all orders</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-box">
+      <h2>Orders</h2>
+      <p>Overview of all restaurants</p>
+    </div>
+  </div>
+</div>

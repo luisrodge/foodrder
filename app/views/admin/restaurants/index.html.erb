@@ -6,3 +6,34 @@
     <%= link_to "Add New Restaurant", new_admin_restaurant_path, class: "btn btn-success" %>
   </div>
 </div>
+
+<hr>
+<br><br><br>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Origin Employee Email</th>
+        <th>Location</th>
+        <th>Phone</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td>
+                <%= image_tag(restaurant.primary_image.thumb) if restaurant.primary_image? %>
+                <%= restaurant.name %>
+              </td>
+              <td>test@yahoo.com</td>
+              <td><%= restaurant.location %></td>
+              <td><%= restaurant.phone_number %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
