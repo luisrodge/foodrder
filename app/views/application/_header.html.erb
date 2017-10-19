@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">foodrder</a>
+        <%= link_to "foodrder", root_path, class: "navbar-brand" %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,11 +20,11 @@
           <li><a href="#">Request Food</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign In</a></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Customer Register</a></li>
+              <li><%= link_to "Customer Register", new_customer_registration_path %></li>
               <li class="divider"></li>
               <li><a href="#">Add Your Restaurant</a></li>
             </ul>

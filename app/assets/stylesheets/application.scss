@@ -17,8 +17,9 @@
 @import "bootstrap";
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  color: #443;
 }
 
 a:hover {
@@ -32,6 +33,11 @@ a:hover {
 
 .center-block {
   float: none;
+}
+
+input {
+  box-shadow: none!important;
+  border: 1px solid #EDEDED!important;
 }
 
 header {
