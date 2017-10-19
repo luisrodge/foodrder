@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019035407) do
+ActiveRecord::Schema.define(version: 20171019194235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_fragments", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_fragments_on_cart_id"
+    t.index ["restaurant_id"], name: "index_cart_fragments_on_restaurant_id"
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "food_id"
+    t.integer "quantity"
+    t.decimal "sub_total"
+    t.bigint "cart_fragment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_fragment_id"], name: "index_cart_items_on_cart_fragment_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["food_id"], name: "index_cart_items_on_food_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "restaurant_id"
+    t.decimal "price"
+    t.bigint "menu_id"
+    t.string "primary_image"
+    t.time "estimated_cook_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_foods_on_menu_id"
+    t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.bigint "restaurant_id"
+    t.string "primary_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -40,8 +91,19 @@ ActiveRecord::Schema.define(version: 20171019035407) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["restaurant_id"], name: "index_users_on_restaurant_id"
   end
 
+  add_foreign_key "cart_fragments", "carts"
+  add_foreign_key "cart_fragments", "restaurants"
+  add_foreign_key "cart_items", "cart_fragments"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "foods"
+  add_foreign_key "foods", "menus"
+  add_foreign_key "foods", "restaurants"
+  add_foreign_key "menus", "restaurants"
+  add_foreign_key "users", "restaurants"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -9,8 +10,18 @@ Rails.application.routes.draw do
   # Single sign in route for customer, sellers, and admins
   devise_for :users, controllers: { sessions: 'sessions' }, skip: %i[sessions registrations]
   as :user do
-    delete 'logout', to: 'sessions#destroy', as: :destroy_user_session
-    get 'login', to: 'sessions#new', as: :new_user_session
-    post 'login', to: 'sessions#create', as: :user_session
+    delete 'sign_out', to: 'sessions#destroy', as: :destroy_user_session
+    get 'sign_in', to: 'sessions#new', as: :new_user_session
+    post 'sign_in', to: 'sessions#create', as: :user_session
+  end
+
+  # Seller only routes
+  namespace :seller do
+    resource :dashboard, only: :show
+  end
+
+  # Customer only routes
+  namespace :customer do
+    resource :dashboard, only: :show
   end
 end

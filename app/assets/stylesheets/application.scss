@@ -20,6 +20,9 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   color: #443;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 a:hover {
@@ -91,6 +94,11 @@ header {
   background: none;
 }
 
+
+.container.main-content-container {
+  flex: 1;
+}
+
 .home-search-form {
   margin-bottom: 80px;
 }
@@ -115,8 +123,8 @@ header {
 }
 
 footer {
-  border-top: 1px solid #f7f7f7;
   margin-top: 100px;
+  border-top: 1px solid #f7f7f7;
   padding: 20px 0;
   color: #808080;
   p {
