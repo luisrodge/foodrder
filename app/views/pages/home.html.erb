@@ -20,7 +20,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>Trending</h2><br>
+    <h2>Popular</h2><br>
   </div>
   <% Food.all.each do |food| %>
       <div class="col-md-4">
@@ -32,7 +32,10 @@
             <div class="figcaption-footer">
               <div class="row">
                 <div class="col-md-6">
-                  <a href="" class="btn btn-success btn-sm">Order</a>
+                  <%= simple_form_for CartItem.new do |f| %>
+                      <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
+                      <%= f.button :submit, "Order", class: "btn btn-success btn-sm" %>
+                  <% end %>
                 </div>
                 <div class="col-md-6">
                   <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
@@ -47,9 +50,6 @@
 <br><br>
 
 <div class="row">
-  <div class="col-md-12">
-    <h2>Recently Ordered</h2><br>
-  </div>
   <div class="col-md-4">
     <div class="figure">
       <img src="http://www.seriouseats.com/images/2015/07/20150728-homemade-whopper-food-lab-35.jpg" alt="" class="img-responsive">
