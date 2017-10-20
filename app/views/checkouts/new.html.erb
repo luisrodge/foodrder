@@ -23,8 +23,15 @@
     <% end %>
   </div>
   <div class="col-md-6 pull-right">
-    <h2>Order Overview</h2>
-    <h3 class="remove-margin text-price">Total: <%= price_format(@cart.total)%></h3>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Order Total:</h2>
+      </div>
+      <div class="col-md-6 text-right">
+        <h2 class="text-price"><%= price_format(@cart.total)%></h2>
+
+      </div>
+    </div>
     <br>
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="col-box col-sb">
@@ -38,7 +45,7 @@
                   </div>
                   <div class="col-md-3">
                     <h4><%= cart_item.food_name %></h4>
-                    <h4 class="text-price remove-margin"><%= cart_item.food_price %></h4>
+                    <h4 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h4>
                   </div>
                   <div class="col-md-3">
                     <h4>Quantity <br><%= cart_item.quantity %></h4>

@@ -10,7 +10,7 @@ class CartItemDecorator < Draper::Decorator
   end
 
   def food_price
-    h.number_to_currency(object.food.price, unit: "$")
+    object.food.price
   end
 
   def restaurant_name
