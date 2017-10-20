@@ -7,7 +7,7 @@ class Seller::MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-    @foods = @menu.foods
+    @foods = @menu.foods.order("created_at DESC")
   end
 
   def new

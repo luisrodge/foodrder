@@ -2,6 +2,9 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :cart_fragments, dependent: :destroy
 
+  monetize :total_cents
+
+
   def cart_item_exist?(cart_item_params)
     cart_items.where(food_id: cart_item_params[:food_id]).any?
   end

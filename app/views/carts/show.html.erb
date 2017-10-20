@@ -4,7 +4,7 @@
       (<%= @cart_items.count %>)</h2>
   </div>
   <div class="col-md-6 text-right">
-    <h2 class="remove-margin text-price">Total: <%= @cart.format_total %></h2>
+    <h2 class="remove-margin text-price">Total: <%= price_format(@cart.total)%></h2>
   </div>
 </div>
 <br><br>

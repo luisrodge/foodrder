@@ -27,7 +27,6 @@
           <tr>
             <td>
               <%= image_tag(food.primary_image.thumb) if food.primary_image? %>
-              <%= food.name %>
             </td>
             <td><%= price_format(food.price) %></td>
             <td><%= food.estimated_cook_time %></td>

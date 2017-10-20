@@ -20,6 +20,11 @@ class CartItemsController < ApplicationController
     redirect_to request.referer
   end
 
+  def destroy
+    CartItem.find(params[:id]).remove_item
+    redirect_to cart_path, notice: "Food successfully removed from cart"
+  end
+
   private
 
   def cart_item_params

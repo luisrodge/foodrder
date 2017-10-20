@@ -1,7 +1,8 @@
 module ApplicationHelper
 
+  # Format money saved with money-rails
   def price_format(price)
-    number_to_currency(price, :unit => "$")
+    "#{humanized_money_with_symbol(price)} #{price.currency.iso_code}"
   end
 
   def pluralize_normal(model_name, count)
