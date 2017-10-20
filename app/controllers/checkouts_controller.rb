@@ -11,16 +11,18 @@ class CheckoutsController < ApplicationController
 
     if @order.valid?
       @cart.cart_fragments.each do |cart_fragment|
+=begin
         delivery = false
         if checkout_params[:delivery].include?(cart_fragment.restaurant.id)
           delivery = true
         end
+=end
 
         order = Order.create(checkout_params
-                                 .merge(restaurant_id: cart_fragment.restaurant.id,
-                                        delivery: delivery))
+                                 .merge(restaurant_id: cart_fragment.restaurant.id))
         cart_fragment.cart_items.each do |cart_item|
-          order.order_items.create(food: cart_item.food, quantity: cart_item.quantity)
+          order.order_items.create(food: cart_item.food,
+                                   quantity: cart_item.quantity)
         end
       end
       @cart.destroy
@@ -30,7 +32,6 @@ class CheckoutsController < ApplicationController
       redirect_to root_path
     else
       @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
-      @cart_items = CartItemDecorator.decorate_collection(@cart.cart_items)
       render :new
     end
   end
