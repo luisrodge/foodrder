@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'checkouts/new'
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -37,4 +39,10 @@ Rails.application.routes.draw do
 
   resource :cart, only: :show
   resources :cart_items
+
+  # Cart checkout
+  resources :cart, only: [:nil]  do
+    resources :checkouts
+  end
+
 end

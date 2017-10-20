@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :menus, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   # Virtual attributes
   attr_accessor :origin_seller_email

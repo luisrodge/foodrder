@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="remove-margin">Order Checkout</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to "Return To Cart", cart_path, class: "btn btn-success" %>
+  </div>
+</div>
+<hr>
+
+<br><br><br>
+<div class="row">
+  <div class="col-md-5">
+    <%= simple_form_for [@cart, @order], url: cart_checkouts_path do |f| %>
+        <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+        <%= f.input :phone_number, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+        <%= f.input :location, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+        <%= f.input :street, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+        <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
+                    input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+        <br>
+        <%= f.submit "Send Order", class: "btn btn-success btn-lg btn-block" %>
+    <% end %>
+  </div>
+  <div class="col-md-6 pull-right">
+    <h2>Order Overview</h2>
+    <h3 class="remove-margin text-price">Total: <%= price_format(@cart.total)%></h3>
+    <br>
+    <% @cart_fragments.each do |cart_fragment| %>
+        <div class="col-box col-sb">
+          <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+            From <%= cart_fragment.restaurant.name %></h3>
+          <br>
+          <% cart_fragment.cart_items.each do |cart_item| %>
+                <div class="row text-center">
+                  <div class="col-md-3">
+                    <%= cart_item.cart_item_image %>
+                  </div>
+                  <div class="col-md-3">
+                    <h4><%= cart_item.food_name %></h4>
+                    <h4 class="text-price remove-margin"><%= cart_item.food_price %></h4>
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Quantity <br><%= cart_item.quantity %></h4>
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Delivery Yes</h4>
+                  </div>
+                </div>
+              <br>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
