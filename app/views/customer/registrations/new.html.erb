@@ -6,11 +6,16 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true, input_html: { class: "input-lg" } %>
+          <%= f.input :email, required: true, autofocus: true,
+                      input_html: { class: "input-lg" },
+                      label_html: { class: 'lb-lg' } %>
           <%= f.input :password, required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { class: "input-lg" } %>
-          <%= f.input :password_confirmation, required: true, input_html: { class: "input-lg" } %>
+                      input_html: { class: "input-lg" },
+                      label_html: { class: 'lb-lg' } %>
+          <%= f.input :password_confirmation, required: true,
+                      input_html: { class: "input-lg" },
+                      label_html: { class: 'lb-lg' } %>
         </div>
         <br>
         <div class="form-actions">
