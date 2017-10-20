@@ -1,2 +1,47 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="remove-margin">Food <%= pluralize_normal("Order", @cart_items.count) %> In Your Cart
+      (<%= @cart_items.count %>)</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <h2 class="remove-margin text-price">Total: <%= @cart.format_total %></h2>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-box text-center">
+      <h2 class="text-center">Ready To Send Your Orders?</h2>
+      <p><%= link_to "Proceed To Checkout","#", class: "btn btn-success btn-lg" %></p><br>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<% @cart_fragments.each do |cart_fragment| %>
+    <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %> From <%= cart_fragment.restaurant.name %></h2>
+    <% cart_fragment.cart_items.each do |cart_item| %>
+        <div class="col-box">
+        <div class="row">
+          <div class="col-md-3">
+            <%= cart_item.cart_item_image %>
+          </div>
+          <div class="col-md-3">
+            <h3><%= cart_item.food_name %></h3>
+            <h3 class="text-price remove-margin"><%= cart_item.food_price %></h3>
+          </div>
+          <div class="col-md-3">
+            <%= simple_form_for cart_item do |f| %>
+                <%= f.input :quantity, label_html: { class: 'lb-lg' } %>
+            <% end %>
+          </div>
+          <div class="col-md-3 text-right">
+            <br/>
+            <%= link_to "Update", "#", class: "btn btn-success" %>
+            <%= link_to "Remove", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+          </div>
+        </div>
+        </div><br>
+    <% end %>
+<% end %>
