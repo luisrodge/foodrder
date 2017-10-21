@@ -14,4 +14,8 @@ class CartItem < ApplicationRecord
 
     existing_cart.update_attributes(total: existing_cart.cart_total)
   end
+
+  def total
+    food.price * quantity
+  end
 end

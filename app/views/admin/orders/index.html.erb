@@ -1,11 +1,32 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>Orders That Require Processing</h2>
+    <h2>Orders That Require Processing (<%= @orders.count %>)</h2>
   </div>
 </div>
 
-<% @orders.each do |order| %>
-  <div class="row">
+<br><br>
 
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Order Items</th>
+        <th>Order Placed</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.restaurant.name %></td>
+              <td><%= order.order_items.count %></td>
+              <td><%= time_ago_in_words(order.created_at) %> ago</td>
+              <td class="text-price"><%= price_format(order.total) %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-<% end %>
+</div>

@@ -28,7 +28,7 @@
             <td>
               <%= image_tag(food.primary_image.thumb) if food.primary_image? %>
             </td>
-            <td><%= price_format(food.price) %></td>
+            <td class="text-price"><%= price_format(food.price) %></td>
             <td><%= food.estimated_cook_time %></td>
             <td>
               <%= link_to "Edit", edit_seller_food_path(food), class: "btn btn-success btn-sm" %>

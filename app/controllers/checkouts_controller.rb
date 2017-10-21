@@ -19,7 +19,8 @@ class CheckoutsController < ApplicationController
 =end
 
         order = Order.create(checkout_params
-                                 .merge(restaurant_id: cart_fragment.restaurant.id))
+                                 .merge(restaurant_id: cart_fragment.restaurant.id,
+                                        total: cart_fragment.total))
         cart_fragment.cart_items.each do |cart_item|
           order.order_items.create(food: cart_item.food,
                                    quantity: cart_item.quantity)

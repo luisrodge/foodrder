@@ -102,3 +102,27 @@ input, textarea {
   color: #468847;
   text-align: left;
 }
+
+/* Table */
+table {
+  font-size: 19px;
+}
+
+.table > tbody > tr > td,
+.table > thead > tr > th {
+  padding: 14px;
+}
+
+.table-bordered {
+  border: 1px solid #F7F7F7;
+}
+
+.table-bordered > tbody > tr > td {
+  border: 1px solid #F7F7F7;
+}
+
+.table-bordered > thead > tr > th {
+  border: 1px solid #F7F7F7;
+  font-weight: normal;
+  color: #000;
+}
