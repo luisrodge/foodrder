@@ -40,7 +40,11 @@
                   <li><a href="#">Add Your Restaurant</a></li>
                 </ul>
               </li>
-              <li><%= link_to "Cart (#{@cart.cart_items.count})",  cart_path %></li>
+              <li>
+                <%= link_to cart_path do %>
+                  <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
+                <% end %>
+              </li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
