@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :dashboard, only: :show
     resources :restaurants
+    resources :orders
   end
 
   resource :cart, only: :show

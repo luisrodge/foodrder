@@ -8,10 +8,12 @@
     <% end %>
   </div>
   <div class="col-md-4">
-    <div class="col-box">
-      <h2>Orders</h2>
-      <p>Overview of all orders</p>
-    </div>
+    <%= link_to admin_orders_path do %>
+      <div class="col-box">
+        <h2>Orders (<%= Order.count %>)</h2>
+        <p>Overview of all orders</p>
+      </div>
+    <% end %>
   </div>
   <div class="col-md-4">
     <div class="col-box">
