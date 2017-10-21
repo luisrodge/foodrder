@@ -1,12 +1,13 @@
 class Order < ApplicationRecord
-  belongs_to :restaurant, optional: true
+  has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
+  # money-rails currency integration
   monetize :total_cents
 
   validates_presence_of :full_name, :phone_number, :location, :street
 
-  # Order possible statuses
+  # Order statuses
   enum status: [:Pending, :Confirmed, :Cancelled]
 
   # Return all pending orders

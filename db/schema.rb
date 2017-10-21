@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021174402) do
+ActiveRecord::Schema.define(version: 20171021175347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,9 @@ ActiveRecord::Schema.define(version: 20171021174402) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_fragment_id"
     t.index ["food_id"], name: "index_order_items_on_food_id"
+    t.index ["order_fragment_id"], name: "index_order_items_on_order_fragment_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
@@ -94,14 +96,12 @@ ActiveRecord::Schema.define(version: 20171021174402) do
     t.string "location"
     t.string "street"
     t.text "location_description"
-    t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_cents", default: 0, null: false
     t.string "total_currency", default: "BZD", null: false
     t.boolean "delivery", default: false
     t.integer "status", default: 0
-    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20171021174402) do
   add_foreign_key "order_fragments", "orders"
   add_foreign_key "order_fragments", "restaurants"
   add_foreign_key "order_items", "foods"
+  add_foreign_key "order_items", "order_fragments"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "restaurants"
   add_foreign_key "users", "restaurants"
 end
