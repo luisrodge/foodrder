@@ -32,7 +32,7 @@
           </div>
           <div class="col-md-3">
             <h3><%= cart_item.food_name %></h3>
-            <h3 class="text-price remove-margin"><%= cart_item.food_price %></h3>
+            <h3 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h3>
           </div>
           <div class="col-md-3">
             <%= simple_form_for cart_item do |f| %>
@@ -41,8 +41,12 @@
           </div>
           <div class="col-md-3 text-right">
             <br/>
-            <%= link_to "Update", "#", class: "btn btn-success" %>
-            <%= link_to "Remove", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+            <%= link_to "#", class: "btn btn-success" do %>
+              <i class="glyphicon glyphicon-refresh"></i> Update
+            <% end %>
+            <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
+              <i class="glyphicon glyphicon-remove"></i>
+            <% end %>
           </div>
         </div>
         </div><br>
