@@ -1,218 +1,22 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  color: #4F4F4F;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
+@import "fonts";
+@import "colors";
 
-a {
-  color: inherit;
-}
-a:hover {
-  text-decoration: none;
-  color: inherit;
-}
+@import "overrides/bootstrap";
+@import "overrides/general";
 
-.remove-margin {
-  margin: 0;
-}
+@import "components/figures";
+@import "components/labels";
+@import "components/home_search_form";
+@import "components/columns";
 
-.text-price {
-  color: #00B23B;
-}
-
-.center-block {
-  float: none;
-}
-
-.img-responsive {
-  width: 100%;
-}
-
-input, textarea {
-  box-shadow: none!important;
-  border: 1px solid #EDEDED!important;
-  border-radius: 3px!important;
-}
-
-/* Label Overrides */
-label {
-  font-weight: normal;
-}
-
-.lb-sm {
-  font-size: 12px;
-}
-
-.lb-md {
-  font-size: 16px;
-}
-
-.lb-lg {
-  font-size: 20px;
-}
-
-.alert {
-  border-radius: 3px;
-  border: none;
-}
-
-.btn {
-  border-radius: 3px;
-}
-
-header {
-  margin-bottom: 70px;
-}
-
-.navbar {
-  border-radius: 0;
-}
-
-.navbar-default {
-  background: #71BA51;
-  border: none;
-  .navbar-brand {
-    color: #FFF;
-    font-weight: bold;
-    font-size: 30px;
-    &:hover {
-      color: #FFF;
-    }
-  }
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #FFF;
-  font-size: 17px;
-  &:hover {
-    color: #FFF;
-  }
-}
-
-.navbar-brand,
-.navbar-nav > li > a {
-  line-height: 70px;
-  height: 70px;
-  padding-top: 0;
-}
-
-.dropdown-menu > li > a {
-  font-size: 16px;
-  padding: 10px 20px;
-  &:hover {
-    background: none;
-  }
-}
-
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #FFF;
-  background: none;
-}
+@import "layout";
 
 
-.container.main-content-container {
-  flex: 1;
-}
 
-.home-search-form {
-  margin-bottom: 80px;
-}
 
-.figure {
-  .figcaption {
-    border: 1px solid #f7f7f7;
-    padding: 20px 14px;
-  }
-  .figcaption-footer {
-    margin-top: 24px;
-    h4 {
-      margin: 0;
-    }
-  }
-}
 
-.col-box {
-  border: 1px solid #f7f7f7;
-  padding: 18px;
-}
-
-.col-sb {
-  margin-bottom: 34px;
-}
-
-/* Flashes */
-.alert {
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-}
-
-.alert-error {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
-  text-align: left;
-}
-
-.alert-alert {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
-  text-align: left;
-}
-
-.alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-  text-align: left;
-}
-
-.alert-notice {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-  text-align: left;
-}
-
-@media (min-width: 1200px) {
-  .container{
-    max-width: 1080px;
-  }
-}
-
-footer {
-  margin-top: 100px;
-  border-top: 1px solid #f7f7f7;
-  padding: 20px 0;
-  color: #808080;
-  p {
-    margin: 0;
-  }
-}
 
 

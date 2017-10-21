@@ -1,0 +1,104 @@
+/* Contains various bootstrap overrides for inputs, buttons, etc.*/
+
+/* NavBar */
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-default {
+  background: #71BA51;
+  border: none;
+  .navbar-brand {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+    &:hover {
+      color: #FFF;
+    }
+  }
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+  font-size: 17px;
+  &:hover {
+    color: #FFF;
+  }
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+  line-height: 70px;
+  height: 70px;
+  padding-top: 0;
+}
+
+.dropdown-menu > li > a {
+  font-size: 16px;
+  padding: 10px 20px;
+  &:hover {
+    background: none;
+  }
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #FFF;
+  background: none;
+}
+
+/* Responsive Image */
+.img-responsive {
+  width: 100%;
+}
+
+/* Form Inputs */
+input, textarea {
+  box-shadow: none!important;
+  border: 1px solid #EDEDED!important;
+  border-radius: 3px!important;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 3px;
+}
+
+/* Flashes */
+.alert {
+  border-radius: 3px;
+  border: none;
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
