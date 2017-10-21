@@ -11,19 +11,21 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>Restaurant</th>
+        <th>Restaurants</th>
         <th>Order Items</th>
         <th>Order Placed</th>
         <th>Total</th>
+        <th>Manage</th>
       </tr>
       </thead>
       <tbody>
         <% @orders.each do |order| %>
             <tr>
-              <td><%= order.restaurant.name %></td>
+              <td><%= order.order_fragments.count %></td>
               <td><%= order.order_items.count %></td>
               <td><%= time_ago_in_words(order.created_at) %> ago</td>
               <td class="text-price"><%= price_format(order.total) %></td>
+              <td><%= link_to "See More", admin_order_path(order), class: "btn btn-success" %></td>
             </tr>
         <% end %>
       </tbody>

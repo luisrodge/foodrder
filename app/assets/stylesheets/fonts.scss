@@ -5,3 +5,26 @@
 .text-price {
   color: #00B23B;
 }
+
+.text-title {
+  color: #000;
+}
+
+.text-sb {
+  padding-bottom: 8px;
+}
+
+/* Text border bottom */
+.text-bb {
+  position: relative;
+}
+
+.text-bb::after{
+  content:'';
+  position:absolute;
+  width: 100%;
+  height: 0;
+  left:0;
+  bottom:-6px;
+  border-bottom: 3px solid #3ACA55;
+}
