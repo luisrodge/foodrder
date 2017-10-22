@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022194321) do
+ActiveRecord::Schema.define(version: 20171022194558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171022194321) do
     t.string "total_currency", default: "BZD", null: false
   end
 
-  create_table "foods", force: :cascade do |t|
+  create_table "foods", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.bigint "restaurant_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20171022194321) do
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
   end
 
-  create_table "menus", force: :cascade do |t|
+  create_table "menus", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.string "primary_image"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20171022194321) do
     t.integer "status", default: 0
   end
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "restaurants", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.string "street"
