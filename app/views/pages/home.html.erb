@@ -30,7 +30,7 @@
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
               <div class="figcaption">
                 <h3><%= food.name %></h3>
-                <h4>By <%= food.restaurant.name %></h4>
+                <h4>By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                 <div class="figcaption-footer">
                   <div class="row">
                     <div class="col-md-6">
