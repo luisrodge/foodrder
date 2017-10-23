@@ -1,4 +1,4 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < Admin::BaseController
   layout 'dashboard'
   before_action :authenticate_admin!
 

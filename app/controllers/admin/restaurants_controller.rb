@@ -1,4 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
+class Admin::RestaurantsController < Admin::BaseController
   before_action :authenticate_admin!
 
   def index
