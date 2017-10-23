@@ -26,7 +26,7 @@
   </div>
   <div class="col-md-12">
     <div class="row row-grid">
-      <% Food.all.each do |food| %>
+      <% Food.limit(8).each do |food| %>
           <div class="col-md-3 col-sb">
             <div class="figure">
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
