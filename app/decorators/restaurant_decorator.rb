@@ -6,7 +6,7 @@ class RestaurantDecorator < Draper::Decorator
   end
 
   def menu_food_counter
-    h.pluralize(object.menus.count, "Menu") + ', ' + h.pluralize(object.foods.count, "Total Food")
+    h.pluralize(object.menus.count, "Menu") + ', ' + h.pluralize(object.foods.count, "Food") + " In Total"
   end
 
 end
