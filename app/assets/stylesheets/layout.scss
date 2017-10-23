@@ -17,6 +17,25 @@ header {
   flex: 1;
 }
 
+.restaurant-name-address {
+  margin-bottom: 32px;
+  h2 {
+    margin: 0 0 4px 0;
+  }
+  h3 {
+    margin: 0;
+  }
+}
+
+.restaurant-other-information {
+  padding: 20px;
+  background-color: #F7F7F7;
+  h3 {
+    margin: 0;
+    line-height: 1.5em;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1080px;

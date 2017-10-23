@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+    <img src="http://www.algarve-restaurants.com/wp-content/uploads/2016/01/restaurants.jpg" alt="" class="img-responsive">
+  </div>
+  <div class="col-md-5 pull-right">
+    <div class="restaurant-name-address">
+      <h2><%= @restaurant.name %></h2>
+      <h3><%= @restaurant.address %></h3>
+    </div>
+    <div class="restaurant-information">
+      <div class="restaurant-other-information">
+        <h3>Open: 9:00AM - 10:00PM</h3>
+        <h3><%= @restaurant.menu_food_counter %></h3>
+        <h3>Offers Delivery</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Restaurant Menus (<%= @restaurant.menus.count %>)</h2>
+    <br>
+  </div>
+  <% @restaurant.menus.each do |menu| %>
+      <div class="col-md-6 col-sb">
+        <div class="col-box">
+          <h3><%= menu.name %></h3><br>
+          <% menu.foods.each do |food| %>
+              <div class="row">
+                <div class="col-md-4">
+                  <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
+                </div>
+                <div class="col-md-4">
+                  <h4><%= food.name %></h4>
+                  <h4 class="text-price"><%= price_format(food.price) %></h4>
+                </div>
+                <div class="col-md-4 text-right">
+                  <%= simple_form_for CartItem.new do |f| %>
+                      <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
+                      <%= button_tag(type: 'submit', class: "btn btn-success btn-sm") do %>
+                          <i class="glyphicon glyphicon-shopping-cart"></i>
+                      <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <br>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
