@@ -7,7 +7,7 @@
 }
 
 .text-title {
-  color: #000;
+  color: #1C1C1C;
 }
 
 .text-sb {
@@ -27,4 +27,17 @@
   left:0;
   bottom:-6px;
   border-bottom: 3px solid #3ACA55;
+}
+
+/* Text truncate */
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Text line height */
+.text-lh {
+  line-height: 1.3em;
 }

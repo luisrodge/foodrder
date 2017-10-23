@@ -1,7 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  color: #4F4F4F;
+  color: #424242;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -9,7 +9,7 @@ body {
 
 /* Primary Header */
 header {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 /* Main Body Content Container */
@@ -19,7 +19,7 @@ header {
 
 /* Restaurant show view */
 .restaurant-name-address {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   h2 {
     margin: 0 0 4px 0;
   }

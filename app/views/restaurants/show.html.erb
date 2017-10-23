@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-6">
-    <img src="http://www.algarve-restaurants.com/wp-content/uploads/2016/01/restaurants.jpg" alt="" class="img-responsive">
+    <%= image_tag(@restaurant.primary_image, class: "img-responsive") if @restaurant.primary_image? %>
   </div>
   <div class="col-md-5 pull-right">
     <div class="restaurant-name-address">
-      <h2><%= @restaurant.name %></h2>
+      <h2 class="text-title"><%= @restaurant.name %></h2>
       <h3><%= @restaurant.address %></h3>
     </div>
     <div class="restaurant-information">

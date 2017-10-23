@@ -37,6 +37,9 @@ class CheckoutsController < ApplicationController
       @cart.destroy
       cookies.delete(:cart)
 
+      # Send new order email to admins
+      OrderMailer.send_new_order_email(Admin.last).deliver
+
       flash[:success] = 'Your order had been sent successfully. We will reach out to you soon.'
       redirect_to root_path
     else

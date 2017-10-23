@@ -7,8 +7,10 @@ class OrderDecorator < Draper::Decorator
     title = ''
     if object.pending?
       title = 'Order Items That Require Processing'
+    elsif object.order_confirmed?
+      title = "Inform #{h.pluralize_normal("Restaurant", object.order_fragments.count)}"
     else
-      title = 'Order Processed'
+      title = 'Order Processed And Archived'
     end
     h.content_tag :h2, title
   end

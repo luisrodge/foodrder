@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-6">
-    <h2 class="remove-margin">Restaurants</h2>
+    <h2 class="remove-margin">Restaurants (<%= @restaurants.count %>)</h2>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to "Add New Restaurant", new_admin_restaurant_path, class: "btn btn-success" %>
+    <%= link_to "Add New Restaurant", new_admin_restaurant_path, class: "btn btn-success btn-lg" %>
   </div>
 </div>
 
@@ -19,6 +19,7 @@
         <th>Origin Employee Email</th>
         <th>Location</th>
         <th>Phone</th>
+        <th>Manage</th>
       </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
               <td>test@yahoo.com</td>
               <td><%= restaurant.location %></td>
               <td><%= restaurant.phone_number %></td>
+              <td><%= link_to "Update", edit_admin_restaurant_path(restaurant), class: "btn btn-success" %></td>
             </tr>
         <% end %>
       </tbody>

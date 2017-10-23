@@ -28,8 +28,8 @@
 
 .navbar-brand,
 .navbar-nav > li > a {
-  line-height: 70px;
-  height: 70px;
+  line-height: 65px;
+  height: 65px;
   padding-top: 0;
 }
 
@@ -63,6 +63,7 @@ input, textarea {
 /* Buttons */
 .btn {
   border-radius: 3px;
+  border: none;
 }
 
 /* Flashes */

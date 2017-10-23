@@ -1,8 +1,8 @@
 class Admin::RestaurantsController < Admin::BaseController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, :set_restaurant, except: [:index, :new, :create]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order("created_at DESC")
   end
 
   def show
@@ -26,10 +26,23 @@ class Admin::RestaurantsController < Admin::BaseController
     end
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def update
+    @restaurant.update_attributes(restaurant_params)
+    redirect_to admin_restaurants_path, notice: "Restaurant updated successfully"
+  end
+
   private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :location, :street, :phone_number,
                                        :primary_image, :origin_seller_email)
+  end
+
+  def set_restaurant
+    @restaurant ||= Restaurant.find(params[:id])
   end
 end

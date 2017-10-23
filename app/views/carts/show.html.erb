@@ -1,54 +1,68 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2 class="remove-margin">Food <%= pluralize_normal("Order", @cart_items.count) %> In Your Cart
-      (<%= @cart_items.count %>)</h2>
-  </div>
-  <div class="col-md-6 text-right">
-    <h2 class="remove-margin text-price">Total: <%= price_format(@cart.total)%></h2>
-  </div>
-</div>
-<br><br>
-<div class="row">
-  <div class="col-md-12">
-    <div class="col-box text-center">
-      <h2 class="text-center">Ready To Send Your Orders?</h2>
-      <h4>Before checking out please ensure that you've specified whether or not you want delivery
-        from the restaurants you are ordering
-      from below. By default delivery is set to false and pickup is set to true for all orders.</h4><br>
-      <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-success btn-lg" %></p><br>
+<% if @cart.cart_items.any? %>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="remove-margin">Food <%= pluralize_normal("Order", @cart_items.count) %> In Your Cart
+          (<%= @cart_items.count %>)</h2>
+      </div>
+      <div class="col-md-6 text-right">
+        <h2 class="remove-margin text-price">Total: <%= price_format(@cart.total) %></h2>
+      </div>
     </div>
-  </div>
-</div>
-
-<br><br>
-
-<% @cart_fragments.each do |cart_fragment| %>
-    <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %> From <%= cart_fragment.restaurant.name %></h2>
-    <% cart_fragment.cart_items.each do |cart_item| %>
-        <div class="col-box">
-        <div class="row">
-          <div class="col-md-3">
-            <%= cart_item.cart_item_image %>
-          </div>
-          <div class="col-md-3">
-            <h3><%= cart_item.food_name %></h3>
-            <h3 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h3>
-          </div>
-          <div class="col-md-3">
-            <%= simple_form_for cart_item do |f| %>
-                <%= f.input :quantity, label_html: { class: 'lb-lg' } %>
-            <% end %>
-          </div>
-          <div class="col-md-3 text-right">
-            <br/>
-            <%= link_to "#", class: "btn btn-success" do %>
-              <i class="glyphicon glyphicon-refresh"></i> Update
-            <% end %>
-            <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
-              <i class="glyphicon glyphicon-remove"></i>
-            <% end %>
-          </div>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-box text-center">
+          <h2 class="text-center text-sb">Ready To Send Your Orders?</h2>
+          <h4 class="text-lh">Before checking out please ensure that you've specified whether or not you want delivery
+            from the restaurants you are ordering
+            from below. By default delivery is set to false and pickup is set to true for all orders.</h4><br>
+          <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-success btn-lg" %></p>
+          <br>
         </div>
-        </div><br>
+      </div>
+    </div>
+
+    <br><br>
+
+    <% @cart_fragments.each do |cart_fragment| %>
+        <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+          From <%= cart_fragment.restaurant.name %></h2>
+        <% cart_fragment.cart_items.each do |cart_item| %>
+            <div class="col-box">
+              <div class="row">
+                <div class="col-md-3">
+                  <%= cart_item.cart_item_image %>
+                </div>
+                <div class="col-md-3">
+                  <h3><%= cart_item.food_name %></h3>
+                  <h3 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h3>
+                </div>
+                <div class="col-md-3">
+                  <%= simple_form_for cart_item do |f| %>
+                      <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
+                  <% end %>
+                </div>
+                <div class="col-md-3 text-right">
+                  <br/>
+                  <%= link_to "#", class: "btn btn-success" do %>
+                      <i class="glyphicon glyphicon-refresh"></i> Update
+                  <% end %>
+                  <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
+                      <i class="glyphicon glyphicon-remove"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div><br>
+        <% end %>
     <% end %>
+<% else %>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1><i class="glyphicon glyphicon-shopping-cart"></i> (0)</h1>
+        <h2 class="remove-margin">No Orders In Cart :(</h2>
+        <br><br><br>
+        <%= link_to "Foods", "", class: "btn btn-success btn-lg" %>
+        <%= link_to "Restaurants", "", class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
 <% end %>
