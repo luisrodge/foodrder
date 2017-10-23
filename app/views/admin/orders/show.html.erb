@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <h2>Order Items That Require Processing</h2>
+    <%= @order.process_title %>
   </div>
   <div class="col-md-6 text-right">
     <h2 class="text-price">Total: <%= price_format(@order.total) %></h2>
@@ -11,7 +11,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= link_to "Order Confirmed", "#", class: "btn btn-success btn-lg" %>
+    <%= @order.update_status_btn %>
   </div>
 </div>
 <br><br>

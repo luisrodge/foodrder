@@ -10,11 +10,11 @@ class Order < ApplicationRecord
   validates_presence_of :full_name, :phone_number, :location, :street
 
   # Order statuses
-  enum status: [:pending, :order_confirmed, :restaurant_informed]
+  enum status: [:pending, :order_confirmed, :processed]
 
   # Return all pending orders
   def self.pending_orders
-    where(status: 0).order("created_at DESC")
+    where('status = ? OR status = ?', 0, 1).order("created_at DESC")
   end
 
 
