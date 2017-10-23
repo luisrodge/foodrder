@@ -29,13 +29,15 @@ Rails.application.routes.draw do
     resource :dashboard, only: :show
   end
 
-  # Customer only routes
+  # Admin only routes
   namespace :admin do
     resource :dashboard, only: :show
     resources :restaurants
     resources :orders
+    resources :order_fragments, only: :update
   end
 
+  # Customer cart
   resource :cart, only: :show
   resources :cart_items
 

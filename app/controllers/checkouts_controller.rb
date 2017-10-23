@@ -6,7 +6,7 @@ class CheckoutsController < ApplicationController
     @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
   end
 
-  # @ToDO wrap in transaction block
+  # @TODO wrap in transaction block
   def create
     @order = Order.new(checkout_params)
 

@@ -1,40 +1,34 @@
 <div class="row">
-  <div class="col-md-4">
-    <%= link_to admin_restaurants_path do %>
-        <div class="col-box">
-          <h2>Restaurants</h2>
-          <p>Overview of all restaurants</p>
-        </div>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to admin_orders_path do %>
-      <div class="col-box">
-        <h2>Orders (<%= Order.count %>)</h2>
-        <p>Overview of all orders</p>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-    <div class="col-box">
-      <h2>Users</h2>
-      <p>Overview of all restaurants</p>
-    </div>
+  <div class="col-md-12">
+    <h2>Orders That Require Processing (<%= @orders.count %>)</h2>
   </div>
 </div>
+
 <br><br>
-<div class="row">
-  <div class="col-md-4">
-    <div class="col-box">
-      <h2>Restaurant Requests</h2>
-      <p>Overview of all restaurants</p>
-    </div>
-  </div>
-</div>
-<br><br>
-<hr>
+
 <div class="row">
   <div class="col-md-12">
-    <h2>Recent Orders</h2>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Restaurants</th>
+        <th>Order Items</th>
+        <th>Order Placed</th>
+        <th>Total</th>
+        <th>Manage</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.order_fragments.count %></td>
+            <td><%= order.order_items.count %></td>
+            <td><%= time_ago_in_words(order.created_at) %> ago</td>
+            <td class="text-price"><%= price_format(order.total) %></td>
+            <td><%= link_to "See More", admin_order_path(order), class: "btn btn-success" %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

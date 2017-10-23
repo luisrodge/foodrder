@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022194558) do
+ActiveRecord::Schema.define(version: 20171022213015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20171022194558) do
     t.string "total_currency", default: "BZD", null: false
     t.boolean "delivery", default: false
     t.integer "status", default: 0
+    t.integer "confirmation_code"
   end
 
   create_table "restaurants", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
