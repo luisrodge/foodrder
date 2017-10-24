@@ -28,8 +28,8 @@
 
 .navbar-brand,
 .navbar-nav > li > a {
-  line-height: 65px;
-  height: 65px;
+  line-height: 50px;
+  height: 50px;
   padding-top: 0;
 }
 
@@ -48,7 +48,12 @@
   background: none;
 }
 
-/* Responsive Image */
+.navbar-collapse {
+ padding-left: 0;
+  padding-right: 0;
+}
+
+  /* Responsive Image */
 .img-responsive {
   width: 100%;
 }
@@ -65,6 +70,21 @@ input, textarea {
   border-radius: 3px;
   border: none;
 }
+
+.btn-success {
+  background: #383838;
+  &:hover, &:focus {
+    background: #454545;
+  }
+}
+
+.btn-primary {
+  background: #454545;
+  &:hover, &:focus {
+    background: #4F4F4F;
+  }
+}
+
 
 /* Flashes */
 .alert {

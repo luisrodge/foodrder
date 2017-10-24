@@ -9,7 +9,57 @@ body {
 
 /* Primary Header */
 header {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+.top-header {
+  background: #383838;
+  color: #FFF;
+  padding: 20px 0;
+  .logo {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .slogan {
+    color: #3ACA55;
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .top-header-col-2 {
+    h3 {
+      font-size: 21px;
+    }
+    /* Search */
+    input {
+      border-radius: 0px!important;
+      border-top-left-radius: 3px!important;
+      border-bottom-left-radius: 3px!important;
+    }
+    .stylish-input-group .input-group-addon{
+      background: white !important;
+      border: none!important;
+    }
+
+    .input-group-addon {
+      border-radius: 0px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    .stylish-input-group .form-control{
+      border-right:0!important;
+      box-shadow:0 0 0!important;
+      border-color:#ccc;
+    }
+    .stylish-input-group button{
+      border:0!important;
+      background:transparent!important;
+    }
+  }
+  .top-header-col-3 {
+
+  }
 }
 
 /* Main Body Content Container */

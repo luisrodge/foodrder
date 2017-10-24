@@ -1,4 +1,36 @@
 <header>
+  <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h1 class="logo">
+            <%= link_to root_path do %>
+                foodrder <span class="slogan">Search, Order..Eat</span>
+            <% end %>
+          </h1>
+        </div>
+        <div class="col-md-6 top-header-col-2 text-center">
+          <div class="center-block">
+            <h3>Order food from the best restaurants in <br>Santa Elena & San Ignacio</h3>
+            <div id="top-header-search-wrapper">
+              <div class="input-group stylish-input-group">
+                <input type="text" class="form-control input-lg"  placeholder="Search For Food" >
+                <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 top-header-col-3 pull-right text-right ">
+          <h3>Are You Interested?</h3>
+          <a href="" class="btn btn-primary btn-lg">Add Your Restaurant</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <nav class="navbar navbar-default" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,13 +41,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "foodrder", root_path, class: "navbar-brand" %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to "Restaurants", restaurants_path %></li>
+          <li><%= link_to "Foods", restaurants_path %></li>
           <li><a href="#">How It Works</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -32,7 +64,6 @@
           <% else %>
               <li><%= link_to "Sign In", new_user_session_path %></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Customer Register", new_customer_registration_path %></li>
                   <li class="divider"></li>
@@ -41,7 +72,7 @@
               </li>
               <li>
                 <%= link_to cart_path do %>
-                  <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
+                    <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
                 <% end %>
               </li>
           <% end %>
