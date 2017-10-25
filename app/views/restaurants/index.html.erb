@@ -8,7 +8,7 @@
       <div class="col-md-4">
         <%= link_to restaurant_path(restaurant) do %>
             <div class="figure">
-              <img src="http://www.algarve-restaurants.com/wp-content/uploads/2016/01/restaurants.jpg" alt="" class="img-responsive">
+              <%= image_tag(restaurant.primary_image.medium, class: "img-responsive") if restaurant.primary_image? %>
               <div class="figcaption">
                 <h3><%= restaurant.name %></h3>
                 <h4><%= restaurant.location %></h4>

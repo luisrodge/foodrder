@@ -1,0 +1,19 @@
+<h2 class="text-center">Interested? Send us your information and we'll get back to you.</h2><br><br>
+
+<div class="row">
+  <div class="col-md-7 center-block">
+    <%= simple_form_for @restaurant_request do |f| %>
+        <%= f.input :first_name, input_html: {class: "input-lg"} %>
+        <%= f.input :last_name, input_html: {class: "input-lg"} %>
+        <%= f.input :email, input_html: {class: "input-lg"} %>
+        <%= f.input :mobile_number, input_html: {class: "input-lg"} %>
+        <%= f.input :restaurant_phone_number, input_html: {class: "input-lg"} %>
+        <%= f.input :location, input_html: {class: "input-lg"} %>
+        <%= f.input :street_name, input_html: {class: "input-lg"} %>
+        <%= f.input :number_of_employees, input_html: {class: "input-lg"} %>
+
+        <br>
+        <%= f.button :submit, "Send Restaurant Request", class: "btn btn-primary btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>

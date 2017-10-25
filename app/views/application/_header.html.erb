@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-3 top-header-col-3 pull-right text-right ">
           <h3>Are You Interested?</h3>
-          <a href="" class="btn btn-primary btn-lg">Add Your Restaurant</a>
+          <%= link_to "Add Your Restaurant", new_restaurant_request_path, class: "btn btn-primary bt-lg" %>
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Restaurants", restaurants_path %></li>
+          <li><%= link_to "Restaurants", restaurants_path, class: "nav-fl" %></li>
           <li><%= link_to "Foods", restaurants_path %></li>
           <li><a href="#">How It Works</a></li>
         </ul>

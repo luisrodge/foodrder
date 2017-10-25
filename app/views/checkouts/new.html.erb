@@ -3,7 +3,7 @@
     <h2 class="remove-margin">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></h2>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to "Return To Cart", cart_path, class: "btn btn-success" %>
+    <%= link_to "Return To Cart", cart_path, class: "btn btn-primary" %>
   </div>
 </div>
 <hr>
@@ -19,7 +19,7 @@
         <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
                     input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
         <br>
-        <%= f.submit "Send Order", class: "btn btn-success btn-lg btn-block" %>
+        <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
   </div>
   <div class="col-md-6 pull-right">

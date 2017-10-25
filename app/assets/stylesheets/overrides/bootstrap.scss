@@ -3,6 +3,9 @@
 /* NavBar */
 .navbar {
   border-radius: 0;
+  .nav-fl {
+    padding-left: 0px!important;
+  }
 }
 
 .navbar-default {
@@ -74,14 +77,14 @@ input, textarea {
 .btn-success {
   background: #383838;
   &:hover, &:focus {
-    background: #454545;
+    background: #454545!important;
   }
 }
 
 .btn-primary {
   background: #454545;
   &:hover, &:focus {
-    background: #4F4F4F;
+    background: #4F4F4F!important;
   }
 }
 

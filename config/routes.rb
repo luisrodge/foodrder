@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_fragments, only: :update
     resources :order_archives, only: [:index, :show]
+    resources :restaurant_requests
   end
 
   # Customer cart
@@ -48,5 +49,7 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants
+
+  resources :restaurant_requests, only: [:new, :create]
 
 end
