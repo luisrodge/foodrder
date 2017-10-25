@@ -28,7 +28,11 @@
               </div>
               <div class="col-md-6 text-right">
                 <h3 class="text-price">Sub-Total: <%= price_format(order_fragment.total) %></h3>
-                <h4>Delivery</h4>
+                <% if order_fragment.delivery? %>
+                    <h4>Delivery</h4>
+                <% else %>
+                <h4>Pick Up</h4>
+                <% end %>
               </div>
             </div>
             <div class="row">

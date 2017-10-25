@@ -16,16 +16,11 @@ class CheckoutsController < ApplicationController
       order = Order.create(checkout_params.merge(total: @cart.total))
 
       @cart.cart_fragments.each do |cart_fragment|
-=begin
-        delivery = false
-        if checkout_params[:delivery].include?(cart_fragment.restaurant.id)
-          delivery = true
-        end
-=end
         # Create segregation of order items by restaurant using OrderFragment.
         # Associate OrderFragment with parent Order record.
         order_fragment = OrderFragment.create(order: order,
-                                              restaurant: cart_fragment.restaurant)
+                                              restaurant: cart_fragment.restaurant,
+                                              delivery: cart_fragment.delivery)
 
         # Assign each OrderItem to it's appropriate OrderFragment.
         cart_fragment.cart_items.each do |cart_item|

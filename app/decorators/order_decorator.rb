@@ -27,7 +27,7 @@ class OrderDecorator < Draper::Decorator
       h.button_to "#{btn_text}",
                   h.admin_order_path(order),
                   method: :put, disable_with: "Updating Status",
-                  class: "btn btn-success btn-lg"
+                  class: "btn btn-primary btn-lg"
     end
 
   end
