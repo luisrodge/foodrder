@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 20171022213015) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_fragment_id"
+    t.bigint "order_fragments_id"
     t.index ["food_id"], name: "index_order_items_on_food_id"
-    t.index ["order_fragment_id"], name: "index_order_items_on_order_fragment_id"
+    t.index ["order_fragments_id"], name: "index_order_items_on_order_fragments_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20171022213015) do
   add_foreign_key "order_fragments", "orders"
   add_foreign_key "order_fragments", "restaurants"
   add_foreign_key "order_items", "foods"
-  add_foreign_key "order_items", "order_fragments"
+  add_foreign_key "order_items", "order_fragments", column: "order_fragments_id"
   add_foreign_key "order_items", "orders"
   add_foreign_key "users", "restaurants"
 end
