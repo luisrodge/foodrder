@@ -6,35 +6,38 @@
 
 <br><br>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Mobile Number</th>
-        <th>Restaurant Phone Number</th>
-        <th>Address</th>
-        <th>Employees</th>
-        <th>Manage</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @restaurant_requests.each do |restaurant_request| %>
+<% if @restaurant_requests.any? %>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
           <tr>
-            <td><%= restaurant_request.first_name %></td>
-            <td><%= restaurant_request.last_name %></td>
-            <td><%= restaurant_request.email %></td>
-            <td><%= restaurant_request.mobile_number %></td>
-            <td><%= restaurant_request.restaurant_phone_number %></td>
-            <td><%=  restaurant_request.street_name + ", " +restaurant_request.location  %></td>
-            <td><%= restaurant_request.number_of_employees %></td>
-            <td><%= link_to "Mark As Reviewed", "#", class: "btn btn-primary" %></td>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+            <th>Restaurant Phone Number</th>
+            <th>Address</th>
+            <th>Employees</th>
+            <th>Manage</th>
           </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+          </thead>
+          <tbody>
+          <% @restaurant_requests.each do |restaurant_request| %>
+              <tr>
+                <td><%= restaurant_request.first_name %></td>
+                <td><%= restaurant_request.last_name %></td>
+                <td><%= restaurant_request.email %></td>
+                <td><%= restaurant_request.mobile_number %></td>
+                <td><%= restaurant_request.restaurant_phone_number %></td>
+                <td><%= restaurant_request.street_name + ", " +restaurant_request.location %></td>
+                <td><%= restaurant_request.number_of_employees %></td>
+                <td><%= link_to "Mark As Reviewed", admin_restaurant_request_path(restaurant_request),
+                                method: :put, class: "btn btn-primary" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>

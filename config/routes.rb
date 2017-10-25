@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   # Customer cart
   resource :cart, only: :show
   resources :cart_items
+  resources :cart_fragments
 
   # Cart checkout
   resources :cart, only: [:nil]  do
