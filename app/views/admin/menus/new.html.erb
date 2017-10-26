@@ -1,2 +1,10 @@
-<h1>Admin::Menus#new</h1>
-<p>Find me in app/views/admin/menus/new.html.erb</p>
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h2>Add New Menu To <%= @restaurant.name %></h2><br><br>
+    <%= simple_form_for [:admin, @restaurant, @menu] do |f| %>
+        <%= f.input :name, input_html: {class: "input-lg"} %>
+        <br>
+        <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>

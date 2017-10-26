@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   # Admin only routes
   namespace :admin do
     resource :dashboard, only: :show
-    resources :restaurants
+    resources :restaurants do
+      resources :menus, only: [:new, :create]
+    end
     resources :orders
     resources :order_fragments, only: :update
     resources :order_archives, only: [:index, :show]
@@ -59,5 +61,7 @@ Rails.application.routes.draw do
   resources :restaurants
 
   resources :restaurant_requests, only: [:new, :create]
+
+  resources :foods
 
 end
