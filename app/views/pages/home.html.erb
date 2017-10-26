@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <h2 class="text-title">Popular</h2><br>
+    <h2 class="text-title">Latest</h2><br>
   </div>
   <div class="col-md-12">
     <div class="row row-grid">
-      <% Food.limit(8).each do |food| %>
+      <% Food.order("created_at DESC").limit(8).each do |food| %>
           <div class="col-md-3 col-sb">
             <div class="figure">
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>

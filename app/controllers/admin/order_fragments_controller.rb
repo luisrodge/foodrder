@@ -1,5 +1,5 @@
-class Admin::OrderFragmentsController < ApplicationController
-  before_action :authenticate_admin!, :set_order_fragment
+class Admin::OrderFragmentsController < Admin::BaseController
+  before_action :set_order_fragment
 
   # Update the order status for a specific restaurant
   def update

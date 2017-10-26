@@ -1,11 +1,12 @@
 class Admin::RestaurantsController < Admin::BaseController
-  before_action :authenticate_admin!, :set_restaurant, except: [:index, :new, :create]
+  before_action :set_restaurant, except: [:index, :new, :create]
 
   def index
     @restaurants = Restaurant.order("created_at DESC")
   end
 
   def show
+    @menus = @restaurant.menus
   end
 
   def new

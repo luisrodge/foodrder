@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   layout 'dashboard'
-  before_action :authenticate_admin!, :set_order, except: :index
+  before_action :set_order, except: :index
 
   def index
     @orders = Order.pending_orders

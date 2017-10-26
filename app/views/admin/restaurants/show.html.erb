@@ -1,2 +1,63 @@
-<h1>Admin::Restaurants#show</h1>
-<p>Find me in app/views/admin/restaurants/show.html.erb</p>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h2><%= @restaurant.name %></h2>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="remove-margin">Menus (<%= @menus.count %>)</h2>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to "Add New Menu", new_admin_menu_path, class: "btn btn-primary btn-lg" %>
+  </div>
+</div>
+
+<br><br><br><br>
+
+<div class="row grid">
+  <!-- add sizing element for columnWidth -->
+  <div class="grid-sizer col-md-4"></div>
+  <% @menus.each do |menu| %>
+      <div class="grid-item col-md-4 col-sm-12 col-xs-12 col-sb">
+        <div class="grid-item-content col-box">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="remove-margin"><span class="text-bb"><%= menu.name %></span></h3><br>
+            </div>
+            <div class="col-md-6 text-right">
+              <%= link_to "Edit Menu", "#", class: "btn btn-primary btn-sm" %>
+              <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-success btn-sm" %>
+            </div>
+          </div>
+          <hr>
+          <% menu.foods.each do |food| %>
+              <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <h4><%= food.name %></h4>
+                  <h4 class="text-price"><%= price_format(food.price) %></h4>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                  <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-primary btn-sm" %>
+                </div>
+              </div>
+              <br>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $('.grid').isotope({
+        itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+        percentPosition: true,
+        masonry: {
+            columnWidth: '.grid-sizer'
+        }
+    });
+</script>

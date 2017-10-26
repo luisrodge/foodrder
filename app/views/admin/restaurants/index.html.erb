@@ -27,7 +27,7 @@
             <tr>
               <td>
                 <%= image_tag(restaurant.primary_image.thumb) if restaurant.primary_image? %>
-                <%= restaurant.name %>
+                <%= link_to restaurant.name, admin_restaurant_path(restaurant) %>
               </td>
               <td>test@yahoo.com</td>
               <td><%= restaurant.location %></td>

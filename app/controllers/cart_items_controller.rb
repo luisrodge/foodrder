@@ -17,6 +17,7 @@ class CartItemsController < ApplicationController
     else
       flash[:error] = 'Food could not be added to cart'
     end
+    flash[:success] = "Food added to cart successfully"
     redirect_to request.referer
   end
 

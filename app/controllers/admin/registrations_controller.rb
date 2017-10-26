@@ -1,2 +1,2 @@
-class Admin::RegistrationsController < ApplicationController
+class Admin::RegistrationsController < Admin::BaseController
 end
