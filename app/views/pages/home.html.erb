@@ -10,6 +10,7 @@
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
               <div class="figcaption">
                 <h3 class="truncate"><%= food.name %></h3>
+                <h5 class="text-sb text-muted"><%= fa_icon "car" %> Deliverable</h5>
                 <h4>By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                 <div class="figcaption-footer">
                   <div class="row">
