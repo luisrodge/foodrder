@@ -5,11 +5,12 @@
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <%= f.input :origin_seller_email, input_html: {class: "input-lg"} %>
         <%= f.input :location, input_html: {class: "input-lg"} %>
-        <%= f.input :street, input_html: { class: "input-lg" } %>
-        <%= f.input :phone_number, input_html: { class: "input-lg" } %>
-        <%= f.input :primary_image, as: :file  %>
+        <%= f.input :street, input_html: {class: "input-lg"} %>
+        <%= f.input :phone_number, input_html: {class: "input-lg"} %>
+        <%= f.input :delivery, input_html: {class: "input-lg"} %>
+        <%= f.input :primary_image, as: :file %>
         <br>
         <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
-  <% end %>
+    <% end %>
   </div>
 </div>
