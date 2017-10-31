@@ -1,13 +1,16 @@
 <div class="row">
-  <div class="col-md-6 center-block">
-    <h2>Add New Restaurant</h2><br><br>
+  <div class="col-md-5 center-block">
+    <h2><span class="text-bb">Add New Restaurant</span></h2><br><br>
     <%= simple_form_for [:admin, @restaurant] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <%= f.input :origin_seller_email, input_html: {class: "input-lg"} %>
         <%= f.input :location, input_html: {class: "input-lg"} %>
         <%= f.input :street, input_html: {class: "input-lg"} %>
         <%= f.input :phone_number, input_html: {class: "input-lg"} %>
-        <%= f.input :delivery %>
+        <%= f.input :order_medium_type,
+                    collection: Restaurant.order_medium_types.keys.map { |w| [w.humanize, w] },
+                    include_blank: false,
+                    input_html: {class: "input-lg"} %>
         <%= f.input :primary_image, as: :file %>
         <br>
         <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
