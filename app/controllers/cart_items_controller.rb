@@ -14,10 +14,10 @@ class CartItemsController < ApplicationController
                               quantity: 1, cart_fragment: cart_fragment)
 
       @cart.update_attributes(total: @cart.cart_total)
+      flash[:success] = "Food added to cart successfully"
     else
       flash[:error] = 'Food could not be added to cart'
     end
-    flash[:success] = "Food added to cart successfully"
     redirect_to request.referer
   end
 

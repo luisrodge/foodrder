@@ -12,4 +12,7 @@ class Restaurant < ApplicationRecord
 
   # Carrierwave uploader
   mount_uploader :primary_image, PrimaryImageUploader
+
+  enum order_medium: [:pickup, :delivery_and_pickup, :delivery]
+
 end
