@@ -1,16 +1,18 @@
 <div class="row">
   <div class="col-md-12">
-    <h2 class="text-title">Latest</h2><br>
+    <h2 class="text-title"><span class="text-bb">Latest Foods</span></h2><br>
   </div>
   <div class="col-md-12">
-    <div class="row row-grid">
+    <div class="row row-grid gutter-70">
       <% Food.order("created_at DESC").limit(8).each do |food| %>
           <div class="col-md-3 col-sm-4 col-xs-6 col-sb">
             <div class="figure">
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
               <div class="figcaption">
                 <h3 class="truncate"><%= food.name %></h3>
-                <h5 class="text-sb text-muted"><%= fa_icon "car" %> Deliverable</h5>
+                <% if food.restaurant.offers_delivery? %>
+                    <h5 class="text-sb text-muted"><%= fa_icon "car" %> Deliverable</h5>
+                <% end %>
                 <h4>By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                 <div class="figcaption-footer">
                   <div class="row">
@@ -38,10 +40,10 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2 class="text-title">Latest Restaurants</h2><br>
+    <h2 class="text-title"><span class="text-bb">Latest Restaurants</span></h2><br>
   </div>
   <div class="col-md-12">
-    <div class="row">
+    <div class="row gutter-70">
       <% Restaurant.order("created_at DESC").limit(6).each do |restaurant| %>
           <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
             <%= link_to restaurant_path(restaurant) do %>
