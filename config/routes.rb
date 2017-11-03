@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'searches/index'
+
+  get 'search/index'
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -63,5 +67,9 @@ Rails.application.routes.draw do
   resources :restaurant_requests, only: [:new, :create]
 
   resources :foods
+
+  resource :search, only: :show
+
+  get 'how_it_works', to: 'pages#how_it_works'
 
 end

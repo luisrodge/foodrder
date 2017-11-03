@@ -11,8 +11,10 @@
       <div class="restaurant-other-information">
         <h3>Monday - Saturday</h3>
         <h3>9:00AM - 10:00PM</h3>
-        <hr>
-        <h3>Offers Delivery</h3>
+        <% if @restaurant.offers_delivery? %>
+            <hr>
+            <h3>Offers Delivery</h3>
+        <% end %>
       </div>
     </div>
   </div>

@@ -15,4 +15,8 @@ class Restaurant < ApplicationRecord
   # Carrierwave uploader
   mount_uploader :primary_image, PrimaryImageUploader
 
+  def offers_delivery?
+    delivery? || only_delivery?
+  end
+
 end

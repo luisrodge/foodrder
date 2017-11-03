@@ -49,11 +49,16 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.2, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.3.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="draper (v3.0.1, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="elasticsearch (v5.0.4, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="elasticsearch-api (v5.0.4, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="elasticsearch-transport (v5.0.4, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.7.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v0.13.1, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.18, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="font-awesome-rails (v4.7.0.2, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.0, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hashie (v3.5.6, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.8.6, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.7.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.3.1, rbenv: 2.4.2) [gem]" level="application" />
@@ -70,6 +75,7 @@
     <orderEntry type="library" scope="PROVIDED" name="money (v6.9.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="money-rails (v1.9.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.12.2, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.0.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.1.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.1, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.4.2) [gem]" level="application" />
@@ -90,6 +96,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.5.2, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-listen (v4.0.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.6, rbenv: 2.4.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="searchkick (v2.3.2, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simple_form (v3.5.0, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring (v2.0.2, rbenv: 2.4.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spring-watcher-listen (v2.0.1, rbenv: 2.4.2) [gem]" level="application" />

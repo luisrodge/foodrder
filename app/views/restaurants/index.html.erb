@@ -5,7 +5,7 @@
 </div>
 <div class="row gutter-80">
   <% @restaurants.each do |restaurant| %>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sb">
         <%= link_to restaurant_path(restaurant) do %>
             <div class="figure">
               <%= image_tag(restaurant.primary_image.medium, class: "img-responsive") if restaurant.primary_image? %>

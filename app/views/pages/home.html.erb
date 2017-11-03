@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="row row-grid">
       <% Food.order("created_at DESC").limit(8).each do |food| %>
-          <div class="col-md-3 col-sb">
+          <div class="col-md-3 col-sm-4 col-xs-6 col-sb">
             <div class="figure">
               <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
               <div class="figcaption">
@@ -42,8 +42,8 @@
   </div>
   <div class="col-md-12">
     <div class="row">
-      <% Restaurant.limit(3).each do |restaurant| %>
-          <div class="col-md-4">
+      <% Restaurant.order("created_at DESC").limit(6).each do |restaurant| %>
+          <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
             <%= link_to restaurant_path(restaurant) do %>
                 <div class="figure">
                   <%= image_tag(restaurant.primary_image.medium, class: "img-responsive") if restaurant.primary_image? %>

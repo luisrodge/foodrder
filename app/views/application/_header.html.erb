@@ -13,14 +13,17 @@
           <div class="center-block">
             <h3>Order food from the best restaurants in <br>Santa Elena & San Ignacio</h3>
             <div id="top-header-search-wrapper">
-              <div class="input-group stylish-input-group">
-                <input type="text" class="form-control input-lg"  placeholder="Search For Food" >
-                <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
+              <%= form_tag search_path, method: :get do %>
+                  <div class="input-group stylish-input-group">
+                    <%= text_field_tag :q, params[:q], class: "form-control input-lg",
+                                       placeholder: "Search For Food" %>
+                    <span class="input-group-addon">
+                      <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                      </button>
                     </span>
-              </div>
+                  </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -48,7 +51,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "Restaurants", restaurants_path, class: "nav-fl" %></li>
           <li><%= link_to "Foods", foods_path %></li>
-          <li><a href="#">How It Works</a></li>
+          <li><%= link_to "How It Works", how_it_works_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_customer %>
@@ -62,14 +65,6 @@
               <li><%= link_to "Dashboard", admin_dashboard_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-              <li class="dropdown">
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Customer Register", new_customer_registration_path %></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Add Your Restaurant</a></li>
-                </ul>
-              </li>
               <li>
                 <%= link_to cart_path do %>
                     <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
