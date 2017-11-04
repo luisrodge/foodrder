@@ -7,9 +7,11 @@
       <div class="col-md-12">
         <%= simple_form_for [@cart, @order], url: cart_checkouts_path do |f| %>
             <%= f.input :phone_number, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-            <%= f.input :location, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-            <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
-                        input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+            <% if @cart.delivery_selected? %>
+                <%= f.input :location, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+                <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
+                            input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+            <% end %>
             <br>
             <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block" %>
         <% end %>

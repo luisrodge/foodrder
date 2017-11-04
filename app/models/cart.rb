@@ -13,6 +13,12 @@ class Cart < ApplicationRecord
     cart_fragments.where(restaurant_id: restaurant.id).any?
   end
 
+  # Checks if a cart has delivery selected for restaurant orders
+  def delivery_selected?
+    cart_fragments.where(delivery: true).any?
+  end
+
+  # Total of everything in client cart
   def cart_total
     total = 0
     cart_items.each do |cart_item|
