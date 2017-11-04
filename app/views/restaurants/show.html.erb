@@ -37,7 +37,7 @@
 
   <% @restaurant.menus.each do |menu| %>
       <div class="grid-item col-md-6 col-sm-12 col-xs-12 col-sb">
-        <div class="grid-item-content col-box">
+        <div class="grid-item-content col-box col-box-db">
           <h3><span class="text-bb"><%= menu.name %></span></h3><br>
           <% menu.foods.each do |food| %>
               <div class="row">

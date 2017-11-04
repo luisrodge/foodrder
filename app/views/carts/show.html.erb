@@ -5,13 +5,13 @@
           (<%= @cart_items.count %>)</span></h2>
       </div>
       <div class="col-md-6 text-right">
-        <h2 class="remove-margin text-price">Total: <%= price_format(@cart.total) %></h2>
+        <h2 class="remove-margin">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
       </div>
     </div>
     <br><br>
     <div class="row">
       <div class="col-md-12">
-        <div class="col-box text-center">
+        <div class="col-box col-box-db text-center">
           <h2 class="text-center text-sb">Ready To Send Your Orders?</h2>
           <h4 class="text-lh">Before checking out please ensure that you've specified whether or not you want delivery
             from the restaurants you are ordering
@@ -37,7 +37,7 @@
           </div>
         </div>
         <% cart_fragment.cart_items.each do |cart_item| %>
-            <div class="col-box">
+            <div class="col-box ">
               <div class="row">
                 <div class="col-md-3">
                   <%= cart_item.cart_item_image %>

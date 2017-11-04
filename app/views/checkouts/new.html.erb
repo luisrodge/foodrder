@@ -1,46 +1,46 @@
 <div class="row">
-  <div class="col-md-6">
-    <h2 class="remove-margin"><span class="text-bb">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></span></h2>
-  </div>
-  <div class="col-md-6 text-right">
-    <%= link_to "Return To Cart", cart_path, class: "btn btn-primary" %>
-  </div>
-</div>
-
-<br><br><br>
-<div class="row">
   <div class="col-md-5">
-    <%= simple_form_for [@cart, @order], url: cart_checkouts_path do |f| %>
-        <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-        <%= f.input :phone_number, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-        <%= f.input :location, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-        <%= f.input :street, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-        <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
-                    input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-        <br>
-        <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block" %>
-    <% end %>
+    <h2 class="remove-margin">
+      <span class="text-bb">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></span></h2>
+    <br><br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <%= simple_form_for [@cart, @order], url: cart_checkouts_path do |f| %>
+            <%= f.input :phone_number, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+            <%= f.input :location, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+            <%= f.input :location_description, placeholder: "Details about your house (color, type, etc...)",
+                        input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+            <br>
+            <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block" %>
+        <% end %>
+      </div>
+
+    </div>
   </div>
+
   <div class="col-md-6 pull-right">
     <div class="row">
-      <div class="col-md-6">
-        <h2>Overall Total:</h2>
-      </div>
-      <div class="col-md-6 text-right">
-        <h2 class="text-price"><%= price_format(@cart.total) %></h2>
-
+      <div class="col-md-12 text-right">
+        <h2>Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
       </div>
     </div>
     <br>
     <% @cart_fragments.each do |cart_fragment| %>
-        <div class="col-box col-sb">
-          <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
-            From <%= cart_fragment.restaurant.name %></h3>
-          <% if cart_fragment.delivery? %>
-              <h4 class="text-positive">Delivery</h4>
-          <% else %>
-              <h4 class="text-positive">Pick Up</h4>
-        <% end %>
+        <div class="col-box col-box-db col-sb">
+          <div class="row">
+            <div class="col-md-8">
+              <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+                From <%= cart_fragment.restaurant.name %></h3>
+            </div>
+            <div class="col-md-4 text-right">
+              <% if cart_fragment.delivery? %>
+                  <h3 class="text-muted">Delivery</h3>
+              <% else %>
+                  <h3 class="text-muted">Pick Up</h3>
+              <% end %>
+            </div>
+          </div>
+
           <hr>
           <br>
           <% cart_fragment.cart_items.each do |cart_item| %>
@@ -64,3 +64,4 @@
     <% end %>
   </div>
 </div>
+
