@@ -3,6 +3,18 @@ class CartItem < ApplicationRecord
   belongs_to :food
   belongs_to :cart_fragment
 
+  monetize :total_cents
+
+  # Update a CartItem quantity then update Cart total
+  def update_item(quantity)
+    existing_cart = cart
+    transaction do
+      update_attributes(quantity: quantity)
+      update_attributes(total: cart_item_total)
+      existing_cart.update_total
+    end
+  end
+
   # Remove a CartItem and associations then update Cart total
   def remove_item
     existing_cart = cart
@@ -14,15 +26,8 @@ class CartItem < ApplicationRecord
     existing_cart.update_total
   end
 
-  # Update a CartItem quantity then update Cart total
-  def update_item(quantity)
-    existing_cart = cart
-    update_attributes(quantity: quantity)
-    existing_cart.update_total
-  end
-
   # Calculate single CartItem total
-  def total
+  def cart_item_total
     food.price * quantity
   end
 end

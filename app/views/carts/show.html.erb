@@ -1,7 +1,7 @@
 <% if @cart.cart_items.any? %>
     <div class="row">
       <div class="col-md-6">
-        <h2 class="remove-margin"><span class="text-bb">Food <%= pluralize_normal("Order", @cart_items.count) %> In Your Cart
+        <h2 class="remove-margin"><span class="text-bb"><%= pluralize_normal("Order", @cart_items.count) %> In Your Cart
           (<%= @cart_items.count %>)</span></h2>
       </div>
       <div class="col-md-6 text-right">
@@ -41,13 +41,16 @@
         </div>
         <% cart_fragment.cart_items.each do |cart_item| %>
             <div class="col-box ">
-              <div class="row">
+              <div class="row gutter-70">
                 <div class="col-md-3">
                   <%= cart_item.cart_item_image %>
                 </div>
                 <div class="col-md-3">
-                  <h3><%= cart_item.food_name %></h3>
-                  <h3 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h3>
+                  <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>
+                  <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.food_price) %></h4>
+                  <hr>
+                  <h4>Orders: <%= cart_item.quantity %></h4>
+                  <h4 class="remove-margin">Sub Total: <span class="text-price "><%= price_format(cart_item.total) %></span></h4>
                 </div>
                 <div class="col-md-3">
                   <%= simple_form_for cart_item, method: :put do |f| %>
