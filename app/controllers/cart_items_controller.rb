@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
-  before_action :set_restaurant, except: [:index, :destroy]
+  before_action :set_restaurant, except: [:index, :update, :destroy]
+  before_action :set_cart_item, only: [:update, :destroy]
 
   # Handle adding a food order to cart
   def create
@@ -22,11 +23,12 @@ class CartItemsController < ApplicationController
   end
 
   def update
-
+    @cart_item.update_item(cart_item_params[:quantity])
+    redirect_to cart_path, notice: "Order quantity successfully updated"
   end
 
   def destroy
-    CartItem.find(params[:id]).remove_item
+    @cart_item.remove_item
     redirect_to cart_path, notice: "Food successfully removed from cart"
   end
 
@@ -37,6 +39,10 @@ class CartItemsController < ApplicationController
   end
 
   def set_restaurant
-    @restaurant = Food.find(cart_item_params[:food_id]).restaurant
+    @restaurant ||= Food.find(cart_item_params[:food_id]).restaurant
+  end
+
+  def set_cart_item
+    @cart_item ||= CartItem.find(params[:id])
   end
 end

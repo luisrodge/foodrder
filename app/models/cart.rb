@@ -18,12 +18,17 @@ class Cart < ApplicationRecord
     cart_fragments.where(delivery: true).any?
   end
 
-  # Total of everything in client cart
+  # Calculate total of all CartItem records in cart
   def cart_total
     total = 0
     cart_items.each do |cart_item|
-      total += cart_item.food.price
+      total += cart_item.total
     end
     total
+  end
+
+  # Update Cart total after any made changes to CartItem records
+  def update_total
+    update_attributes(total: cart_total)
   end
 end

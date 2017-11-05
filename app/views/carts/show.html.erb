@@ -8,7 +8,9 @@
         <h2 class="remove-margin">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
       </div>
     </div>
+
     <br><br>
+
     <div class="row">
       <div class="col-md-12">
         <div class="col-box col-box-db text-center">
@@ -32,8 +34,9 @@
           </div>
           <div class="col-md-6 text-right">
             <label for="delivery">Delivery?</label>
-            <%= check_box_tag :delivery, 1, cart_fragment.delivery, onchange: "cart.toggleDelivery(this, event)",
-                              data: { "cf-id" => "#{cart_fragment.id}" } %>
+            <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                              onchange: "cart.toggleDelivery(this, event)",
+                              data: {"cf-id" => "#{cart_fragment.id}"} %>
           </div>
         </div>
         <% cart_fragment.cart_items.each do |cart_item| %>
@@ -47,17 +50,17 @@
                   <h3 class="text-price remove-margin"><%= price_format(cart_item.food_price) %></h3>
                 </div>
                 <div class="col-md-3">
-                  <%= simple_form_for cart_item do |f| %>
+                  <%= simple_form_for cart_item, method: :put do |f| %>
                       <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
+                      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                          <i class="glyphicon glyphicon-refresh"></i> Update
+                      <% end %>
                   <% end %>
                 </div>
                 <div class="col-md-3 text-right">
                   <br/>
-                  <%= link_to "#", class: "btn btn-primary" do %>
-                      <i class="glyphicon glyphicon-refresh"></i> Update
-                  <% end %>
                   <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
-                      <i class="glyphicon glyphicon-remove"></i>
+                      <i class="glyphicon glyphicon-remove"></i> Remove
                   <% end %>
                 </div>
               </div>

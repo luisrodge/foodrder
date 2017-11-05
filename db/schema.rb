@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031040712) do
+ActiveRecord::Schema.define(version: 20171105023610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20171031040712) do
     t.bigint "cart_fragment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_cents", default: 0, null: false
+    t.string "total_currency", default: "BZD", null: false
     t.index ["cart_fragment_id"], name: "index_cart_items_on_cart_fragment_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["food_id"], name: "index_cart_items_on_food_id"
