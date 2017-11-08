@@ -8,4 +8,7 @@ class Food < ApplicationRecord
   mount_uploader :primary_image, PrimaryImageUploader
 
   monetize :price_cents
+
+  # For searchkick model searching
+  searchkick
 end

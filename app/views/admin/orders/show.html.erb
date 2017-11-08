@@ -23,6 +23,7 @@
             <div class="row">
               <div class="col-md-6">
                 <h3 class="text-title"><span class="text-bb">Order For <%= order_fragment.restaurant.name %></span></h3>
+                <h4>Phone #: <%= order_fragment.restaurant.phone_number %></h4>
                 <br>
                 <br>
               </div>
@@ -72,10 +73,9 @@
         <div class="col-box col-box-bg">
           <h3>Customer Information</h3>
           <hr>
-          <h4 class="text-sb">Name: <%= @order.full_name %></h4>
-          <h4 class="text-sb">Phone #: <%= @order.phone_number %></h4>
-          <h4 class="text-sb">Location: <%= @order.location %></h4>
-          <h4 class="text-sb">Street: <%= @order.street %></h4>
+          <h4 class="text-sb"><span class="text-title">Phone #:</span> <%= @order.phone_number %></h4>
+          <h4 class="text-sb"><span class="text-title">Location:</span> <%= @order.location %></h4>
+          <h4 class="text-sb"><span class="text-title">Location Description: </span><%= @order.location_description %></h4>
         </div>
       </div>
     </div>

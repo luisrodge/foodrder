@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   # money-rails currency integration
   monetize :total_cents
 
-  validates_presence_of :phone_number, :location, :street
+  validates_presence_of :phone_number
 
   # Order statuses
   enum status: [:pending, :order_confirmed, :processed]

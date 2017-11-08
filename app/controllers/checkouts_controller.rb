@@ -46,8 +46,8 @@ class CheckoutsController < ApplicationController
   private
 
   def checkout_params
-    params.require(:order).permit(:full_name, :phone_number, :location,
-                                  :street, :location_description, :delivery)
+    params.require(:order).permit(:phone_number, :location, :location_description,
+                                  :delivery)
   end
 
   # Prevent user from checking out if the cart is empty
