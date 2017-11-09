@@ -2,7 +2,7 @@ class CartItemDecorator < Draper::Decorator
   delegate_all
 
   def cart_item_image
-    h.image_tag(object.food.primary_image.medium, class: "img-responsive") if food.primary_image?
+    h.image_tag(object.food.primary_image_url(:medium), class: "img-responsive")
   end
 
   def food_name

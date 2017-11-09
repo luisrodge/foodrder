@@ -2,22 +2,18 @@ class PrimaryImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
-
-  storage :file
-
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
+  # include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
 
   process resize_to_fit: [800, 800]
 
   version :medium do
-    process resize_to_fill: [300, 240]
+    eager
+    process resize_to_fill: [300, 220]
   end
 
   version :thumb do
+    eager
     process resize_to_fill: [60, 60]
   end
 

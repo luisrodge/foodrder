@@ -11,4 +11,11 @@ class Food < ApplicationRecord
 
   # For searchkick model searching
   searchkick
+
+  # Search Food records only by name
+  def search_data
+    {
+        name: name
+    }
+  end
 end

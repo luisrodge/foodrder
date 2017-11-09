@@ -8,7 +8,9 @@
       <div class="col-md-4 col-sb">
         <%= link_to restaurant_path(restaurant) do %>
             <div class="figure">
-              <%= image_tag(restaurant.primary_image.medium, class: "img-responsive") if restaurant.primary_image? %>
+              <div class="image-medium">
+                <%= image_tag(restaurant.primary_image_url(:medium), class: "img-responsive") %>
+              </div>
               <div class="figcaption">
                 <h3><%= restaurant.name %></h3>
                 <h4><%= restaurant.location %></h4>

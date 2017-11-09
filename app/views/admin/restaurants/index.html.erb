@@ -16,6 +16,7 @@
       <thead>
       <tr>
         <th>Name</th>
+        <th>Primary Image</th>
         <th>Origin Employee Email</th>
         <th>Location</th>
         <th>Phone</th>
@@ -25,9 +26,12 @@
       <tbody>
         <% @restaurants.each do |restaurant| %>
             <tr>
+              <td>                <%= link_to restaurant.name, admin_restaurant_path(restaurant) %>
+              </td>
               <td>
-                <%= image_tag(restaurant.primary_image.thumb) if restaurant.primary_image? %>
-                <%= link_to restaurant.name, admin_restaurant_path(restaurant) %>
+                <div class="image-thumb">
+                  <%= image_tag(restaurant.primary_image_url(:thumb)) %>
+                </div>
               </td>
               <td>test@yahoo.com</td>
               <td><%= restaurant.location %></td>
