@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'searches/index'
-
-  get 'search/index'
-
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins

@@ -42,7 +42,7 @@ class Cart < ApplicationRecord
     cart_items.each do |cart_item|
       total += cart_item.total
     end
-    total + Money.new(100)
+    total
   end
 
   # Update Cart total after any made changes to CartItem records

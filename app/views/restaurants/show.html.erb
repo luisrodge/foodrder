@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-sm-6 col-xs-6">
-    <%= image_tag(@restaurant.primary_image, class: "img-responsive") if @restaurant.primary_image? %>
+    <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
   </div>
   <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
     <div class="restaurant-name-address">
@@ -34,7 +34,6 @@
 <div class="row grid">
   <!-- add sizing element for columnWidth -->
   <div class="grid-sizer col-md-6"></div>
-
   <% @restaurant.menus.each do |menu| %>
       <div class="grid-item col-md-6 col-sm-12 col-xs-12 col-sb">
         <div class="grid-item-content col-box col-box-db">
@@ -42,7 +41,7 @@
           <% menu.foods.each do |food| %>
               <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= image_tag(food.primary_image.medium, class: "img-responsive") if food.primary_image? %>
+                  <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
                   <h4><%= food.name %></h4>

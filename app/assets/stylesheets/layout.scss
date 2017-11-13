@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   color: #424242;
   display: flex;
@@ -17,10 +17,12 @@ header {
   color: #FFF;
   padding: 20px 0;
   .logo {
+    font-family: 'Roboto', sans-serif;
     font-size: 48px;
     font-weight: bold;
   }
   .slogan {
+    font-family: 'Montserrat', sans-serif;
     color: #71BA51;
     display: block;
     font-size: 24px;
