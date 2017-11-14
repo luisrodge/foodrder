@@ -16,7 +16,7 @@ class Restaurant < ApplicationRecord
   mount_uploader :primary_image, PrimaryImageUploader
 
   def offers_delivery?
-    delivery? || only_delivery?
+    only_delivery? || pickup_and_delivery?
   end
 
 end

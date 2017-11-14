@@ -16,10 +16,17 @@ header {
   background: #383838;
   color: #FFF;
   padding: 20px 0;
+  h3 {
+    font-size: 22px;
+  }
   .logo {
     font-family: 'Roboto', sans-serif;
     font-size: 48px;
     font-weight: bold;
+    a:focus {
+      color: #FFF;
+      text-decoration: none;
+    }
   }
   .slogan {
     font-family: 'Montserrat', sans-serif;
@@ -60,6 +67,15 @@ header {
   .top-header-col-3 {
 
   }
+}
+
+.cart_fragment-wrapper {
+  margin-bottom: 40px;
+}
+
+.content-bg {
+  background: #f7f7f7;
+  padding: 20px;
 }
 
 /* Main Body Content Container */

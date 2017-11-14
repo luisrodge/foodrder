@@ -24,51 +24,58 @@
       </div>
     </div>
 
-    <br><br>
+    <br><br><br><br>
 
     <% @cart_fragments.each do |cart_fragment| %>
-        <div class="row">
-          <div class="col-md-6">
-            <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
-              From <%= cart_fragment.restaurant.name %></h2>
+        <div class="cart_fragment-wrapper">
+          <div class="row">
+            <div class="col-md-6">
+              <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+                From <%= cart_fragment.restaurant.name %></h2>
+            </div>
+            <div class="col-md-6 text-right">
+              <label for="delivery">Delivery?</label>
+              <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                                onchange: "cart.toggleDelivery(this, event)",
+                                data: {"cf-id" => "#{cart_fragment.id}"} %>
+            </div>
           </div>
-          <div class="col-md-6 text-right">
-            <label for="delivery">Delivery?</label>
-            <%= check_box_tag :delivery, 1, cart_fragment.delivery,
-                              onchange: "cart.toggleDelivery(this, event)",
-                              data: {"cf-id" => "#{cart_fragment.id}"} %>
-          </div>
-        </div>
-        <% cart_fragment.cart_items.each do |cart_item| %>
-            <div class="col-box ">
-              <div class="row gutter-70">
-                <div class="col-md-3">
-                  <%= cart_item.cart_item_image %>
-                </div>
-                <div class="col-md-3">
-                  <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>
-                  <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.food_price) %></h4>
-                  <hr>
-                  <h4>Orders: <%= cart_item.quantity %></h4>
-                  <h4 class="remove-margin">Sub Total: <span class="text-price "><%= price_format(cart_item.total) %></span></h4>
-                </div>
-                <div class="col-md-3">
-                  <%= simple_form_for cart_item, method: :put do |f| %>
-                      <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
-                      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-                          <i class="glyphicon glyphicon-refresh"></i> Update
-                      <% end %>
-                  <% end %>
-                </div>
-                <div class="col-md-3 text-right">
-                  <br/>
-                  <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
-                      <i class="glyphicon glyphicon-remove"></i> Remove
-                  <% end %>
+          <% cart_fragment.cart_items.each do |cart_item| %>
+              <div class="col-box col-box-xp">
+                <div class="row gutter-70">
+                  <div class="col-md-3">
+                    <%= cart_item.cart_item_image %>
+                  </div>
+                  <div class="col-md-3">
+                    <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>
+                    <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.food_price) %>
+                    </span></h4>
+                    <br>
+                    <div class="content-bg">
+                      <h4 class="remove-margin text-sb">Orders: <%= cart_item.quantity %></h4>
+                      <h4 class="remove-margin">Sub Total:
+                        <span class="text-price "><%= price_format(cart_item.total) %></span></h4>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <%= simple_form_for cart_item, method: :put do |f| %>
+                        <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
+                        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                            <i class="glyphicon glyphicon-refresh"></i> Update
+                        <% end %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-3 text-right">
+                    <br/>
+                    <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
+                        <i class="glyphicon glyphicon-remove"></i> Remove
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div><br>
-        <% end %>
+              <br>
+          <% end %>
+        </div>
     <% end %>
 <% else %>
     <div class="row">

@@ -4,22 +4,30 @@
   </div>
   <div class="col-md-12">
     <div class="row row-grid gutter-70">
-      <% Food.order("created_at DESC").limit(8).each do |food| %>
-          <div class="col-md-3 col-sm-4 col-xs-6 col-sb">
+      <% Food.order("created_at DESC").limit(6).each do |food| %>
+          <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
             <div class="figure">
               <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
               <div class="figcaption">
-                <h3 class="truncate"><%= food.name %></h3>
+                <h3 class="truncate text-strong"><%= food.name %></h3>
                 <% if food.restaurant.offers_delivery? %>
-                    <h5 class="text-sb text-muted"><%= fa_icon "car" %> Deliverable</h5>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h4 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <h4 class="remove-margin text-muted"><%= fa_icon "car" %> Deliverable</h4>
+                      </div>
+                    </div>
+                <% else %>
+                    <h4 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                 <% end %>
-                <h4>By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                 <div class="figcaption-footer">
                   <div class="row">
                     <div class="col-md-5">
                       <%= simple_form_for CartItem.new do |f| %>
                           <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
-                          <%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
+                          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                               <i class="glyphicon glyphicon-shopping-cart"></i> Order
                           <% end %>
                       <% end %>
@@ -52,7 +60,7 @@
                     <%= image_tag(restaurant.primary_image_url(:medium), class: "img-responsive") %>
                   </div>
                   <div class="figcaption">
-                    <h3><%= restaurant.name %></h3>
+                    <h3 class="truncate text-strong"><%= restaurant.name %></h3>
                     <h4><%= restaurant.location %></h4>
                     <div class="figcaption-footer text-muted">
                       <div class="row">

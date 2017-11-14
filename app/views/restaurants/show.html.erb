@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
     <div class="restaurant-name-address">
-      <h2 class="text-title"><span class="text-bb"><%= @restaurant.name %></span></h2>
+      <h1 class="text-title remove-margin"><span class="text-bb"><%= @restaurant.name %></span></h1><br>
       <h3><%= @restaurant.address %></h3>
     </div>
     <div class="restaurant-information">
@@ -37,20 +37,20 @@
   <% @restaurant.menus.each do |menu| %>
       <div class="grid-item col-md-6 col-sm-12 col-xs-12 col-sb">
         <div class="grid-item-content col-box col-box-db">
-          <h3><span class="text-bb"><%= menu.name %></span></h3><br>
+          <h2><span class="text-bb"><%= menu.name %></span></h2><br><br>
           <% menu.foods.each do |food| %>
               <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4">
                   <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <h4><%= food.name %></h4>
+                  <h3><%= food.name %></h3>
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-right">
                   <%= simple_form_for CartItem.new do |f| %>
                       <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
-                      <%= button_tag(type: 'submit', class: "btn btn-primary btn-sm") do %>
+                      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                           <i class="glyphicon glyphicon-shopping-cart"></i> Order
                       <% end %>
                   <% end %>
