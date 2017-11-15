@@ -33,18 +33,23 @@
               <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
                 From <%= cart_fragment.restaurant.name %></h2>
             </div>
-            <div class="col-md-6 text-right">
-              <label for="delivery">Delivery?</label>
-              <%= check_box_tag :delivery, 1, cart_fragment.delivery,
-                                onchange: "cart.toggleDelivery(this, event)",
-                                data: {"cf-id" => "#{cart_fragment.id}"} %>
-            </div>
+            <% if cart_fragment.restaurant.offers_delivery? %>
+                <div class="col-md-6 text-right">
+                  <div class="delivery-cb-wrapper">
+                    <p class="remove-margin">Delivery? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                                                   onchange: "cart.toggleDelivery(this, event)",
+                                                   data: {"cf-id" => "#{cart_fragment.id}"} %></p>
+                  </div>
+                </div>
+            <% end %>
           </div>
           <% cart_fragment.cart_items.each do |cart_item| %>
               <div class="col-box col-box-xp">
                 <div class="row gutter-70">
                   <div class="col-md-3">
-                    <%= cart_item.cart_item_image %>
+                    <div class="image-medium-wrapper">
+                      <%= cart_item.cart_item_image %>
+                    </div>
                   </div>
                   <div class="col-md-3">
                     <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>

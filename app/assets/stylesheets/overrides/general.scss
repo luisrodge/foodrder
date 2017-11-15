@@ -33,3 +33,11 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset!important;
   transition: background-color 5000s ease-in-out 0s!important;
 }
+
+input[type="checkbox"]{
+  width: 18px; /*Desired width*/
+  height: 18px; /*Desired height*/
+  vertical-align: top;
+  position: relative;
+  bottom: 2px;
+}

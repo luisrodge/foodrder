@@ -32,7 +32,7 @@
                 <% if order_fragment.delivery? %>
                     <h4>Delivery</h4>
                 <% else %>
-                <h4>Pick Up</h4>
+                    <h4>Pick Up</h4>
                 <% end %>
               </div>
             </div>
@@ -50,7 +50,13 @@
                   <% order_fragment.order_items.each do |order_item| %>
                       <tr>
                         <td>
-                          <%= image_tag(order_item.food.primary_image.thumb) if order_item.food.primary_image? %>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <div class="image-medium-wrapper">
+                                <%= image_tag(order_item.food.primary_image_url(:medium)) %>
+                              </div>
+                            </div>
+                          </div>
                           <%= order_item.food.name %>
                         </td>
                         <td><%= order_item.quantity %></td>
@@ -75,7 +81,8 @@
           <hr>
           <h4 class="text-sb"><span class="text-title">Phone #:</span> <%= @order.phone_number %></h4>
           <h4 class="text-sb"><span class="text-title">Location:</span> <%= @order.location %></h4>
-          <h4 class="text-sb"><span class="text-title">Location Description: </span><%= @order.location_description %></h4>
+          <h4 class="text-sb"><span class="text-title">Location Description: </span><%= @order.location_description %>
+          </h4>
         </div>
       </div>
     </div>

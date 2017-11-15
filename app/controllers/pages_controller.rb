@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   def home
   end
 
-  def how_it_works
-
+  def about
   end
 end

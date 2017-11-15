@@ -7,7 +7,9 @@
       <% Food.order("created_at DESC").limit(6).each do |food| %>
           <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
             <div class="figure">
-              <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
+              <div class="image-medium-wrapper">
+                <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
+              </div>
               <div class="figcaption">
                 <h3 class="truncate text-strong"><%= food.name %></h3>
                 <% if food.restaurant.offers_delivery? %>
@@ -56,7 +58,7 @@
           <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
             <%= link_to restaurant_path(restaurant) do %>
                 <div class="figure">
-                  <div class="image-medium">
+                  <div class="image-medium-wrapper">
                     <%= image_tag(restaurant.primary_image_url(:medium), class: "img-responsive") %>
                   </div>
                   <div class="figcaption">

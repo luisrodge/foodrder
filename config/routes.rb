@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   # Single sign in route for customer, sellers, and admins
   devise_for :users, controllers: {sessions: 'sessions'}, skip: %i[sessions registrations]
   as :user do
-    delete 'sign_out', to: 'sessions#destroy', as: :destroy_user_session
-    get 'sign_in', to: 'sessions#new', as: :new_user_session
-    post 'sign_in', to: 'sessions#create', as: :user_session
+    delete 'logout', to: 'sessions#destroy', as: :destroy_user_session
+    get 'admin/login', to: 'sessions#new', as: :new_user_session
+    post 'admin/login', to: 'sessions#create', as: :user_session
   end
 
   # Seller only routes
@@ -65,6 +65,6 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
-  get 'how_it_works', to: 'pages#how_it_works'
+  get 'about', to: 'pages#about'
 
 end

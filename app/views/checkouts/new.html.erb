@@ -48,7 +48,9 @@
           <% cart_fragment.cart_items.each do |cart_item| %>
               <div class="row text-center">
                 <div class="col-md-3">
-                  <%= cart_item.cart_item_image %>
+                  <div class="image-medium-wrapper">
+                    <%= cart_item.cart_item_image %>
+                  </div>
                 </div>
                 <div class="col-md-3">
                   <h4><%= cart_item.food_name %></h4>
