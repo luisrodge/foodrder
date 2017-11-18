@@ -57,6 +57,10 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     cloudinary (1.8.1)
       aws_cf_signer
       rest-client
@@ -245,6 +249,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   carrierwave (~> 1.0)
+  chosen-rails
   cloudinary
   coffee-rails (~> 4.2)
   devise

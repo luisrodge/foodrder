@@ -88,6 +88,13 @@ input, textarea, select {
   }
 }
 
+.btn-gb {
+  border-bottom: 2px solid #71BA51;
+  &:hover {
+    border-bottom: 2px solid #71BA51;
+  }
+}
+
 
 /* Flashes */
 .alert {

@@ -31,7 +31,17 @@
               <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-success btn-sm" %>
             </div>
           </div>
+          <% if menu.menu_categories.any? %>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  Tags: <%= menu.menu_categories.map {|mc| mc.name}.join(", ") %>
+                </div>
+              </div>
+          <% end %>
+
           <hr>
+          <br>
           <% menu.foods.each do |food| %>
               <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4">

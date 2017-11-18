@@ -1,10 +1,22 @@
 <div class="row">
   <div class="col-md-5 center-block">
-    <h2>Add New Menu To <%= @restaurant.name %></h2><br><br>
+    <h2><span class="text-bb">New Menu To <%= @restaurant.name %></span></h2><br><br><br>
     <%= simple_form_for [:admin, @restaurant, @menu] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
+        <br>
+        <%= f.label :menu_catgory_tokens, "Optional Menu Categories" %>
+        <br>
+        <%= f.text_field :menu_catgory_tokens %>
+        <br>
         <br>
         <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("#menu_menu_catgory_tokens").tokenInput('/menu_categories.json',
+            {theme: 'bootstrap'});
+    });
+</script>

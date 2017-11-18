@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -58,10 +59,9 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants
-
   resources :restaurant_requests, only: [:new, :create]
-
   resources :foods
+  resources :menu_categories, only: :index
 
   resource :search, only: :show
 

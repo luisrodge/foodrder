@@ -1,10 +1,33 @@
 <div class="row">
+  <div class="col-md-8">
+    <h2 class="text-title remove-margin">
+      <% if params[:mc].present? %>
+          <span class="text-bb">Feel Like Eating: <%= params[:mc] %></span>
+      <% else %>
+          <span class="text-bb"><%= pluralize_normal("Food", @foods.count) %> In Santa Elena & San Ignacio</span>
+      <% end %>
+    </h2>
+    <br><br>
+  </div>
+  <% if params[:mc].present? %>
+      <div class="col-md-4 text-right">
+        <%= link_to "Show All Foods", foods_path, class: "btn btn-primary btn-gb" %>
+      </div>
+  <% end %>
+</div>
+
+<div class="row">
   <div class="col-md-12">
-    <h2 class="text-title">
-      <span class="text-bb"><%= pluralize_normal("Food", @foods.count) %> In Santa Elena & San Ignacio</span></h2>
-    <br><br><br>
+    <ul class="categories">
+      <% MenuCategory.limit(20).each do |category| %>
+          <li><%= link_to category.name, foods_path(mc: category.name) %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
+
+<br><br><br>
+
 <div class="row gutter-70">
   <% @foods.each do |food| %>
       <div class="col-md-4 col-sm-4 col-xs-6 col-sb">

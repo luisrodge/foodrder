@@ -14,8 +14,9 @@ class Food < ApplicationRecord
 
   # Search Food records only by name
   def search_data
-    {
-        name: name
-    }
+    attributes.merge(
+        name: name,
+        categories_title: menu.menu_categories.map(&:name)
+    )
   end
 end

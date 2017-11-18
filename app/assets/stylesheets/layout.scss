@@ -136,6 +136,17 @@ header {
 
 }
 
+ul.categories {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    padding: 8px;
+    background: #f7f7f7;
+    margin: 0 2px 5px 0;
+  }
+}
+
 footer {
   margin-top: 100px;
   border-top: 2px solid #39CA55;
@@ -164,6 +175,20 @@ footer {
       padding-top: 10px;
     }
   }
+}
+
+ul.token-input-list-bootstrap {
+  padding: 7px 0;
+  box-shadow: none !important;
+  border: 1px solid #EDEDED !important;
+  border-radius: 3px !important;
+  input {
+    border: none!important;
+  }
+}
+
+li.token-input-token-bootstrap p {
+  font-size: 15px;
 }
 
 /* Dashboard styles */

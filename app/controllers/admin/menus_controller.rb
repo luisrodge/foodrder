@@ -9,6 +9,7 @@ class Admin::MenusController < Admin::BaseController
     @menu = @restaurant.menus.new(menu_params)
 
     if @menu.valid?
+      @menu.menu_catgory_tokens=(menu_params[:menu_catgory_tokens])
       @menu.save
       redirect_to admin_restaurant_path(@restaurant),
                   notice: "Menu successfully added to restaurant"
@@ -20,7 +21,7 @@ class Admin::MenusController < Admin::BaseController
   private
 
   def menu_params
-    params.require(:menu).permit(:name)
+    params.require(:menu).permit(:name, :menu_catgory_tokens)
   end
 
   def set_restaurant
