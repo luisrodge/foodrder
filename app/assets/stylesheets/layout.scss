@@ -144,6 +144,25 @@ footer {
   color: #FFF;
   p {
     margin: 0;
+    padding-bottom: 16px;
+    font-size: 18px;
+    color: #39CA55;
+  }
+  .cr-text {
+    padding-bottom: 0;
+  }
+  .cr-sub-text {
+    color: #FFF;
+    font-size: 16px;
+    padding-top: 2px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding-top: 10px;
+    }
   }
 }
 
