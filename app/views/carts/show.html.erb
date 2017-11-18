@@ -41,6 +41,12 @@
                                                    data: {"cf-id" => "#{cart_fragment.id}"} %></p>
                   </div>
                 </div>
+            <% else %>
+                <div class="col-md-6 text-right">
+                  <div class="delivery-cb-wrapper">
+                    <p class="remove-margin">Delivery not offered</p>
+                  </div>
+                </div>
             <% end %>
           </div>
           <% cart_fragment.cart_items.each do |cart_item| %>
