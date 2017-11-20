@@ -46,12 +46,12 @@ set :deploy_to, '/home/deploy/foodrder'
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-namespace :deploy do
-  desc "reload the database with seed data"
-  task :seed do
-    on roles(:all) do
-      within current_path do
-        execute :bundle, :exec, 'rails', 'db:seed', 'RAILS_ENV=production'
+task :seed do
+  puts "\n=== Seeding Database ===\n"
+  on primary :db do
+    within current_path do
+      with rails_env: fetch(:stage) do
+        execute :rake, 'db:seed'
       end
     end
   end
