@@ -37,3 +37,11 @@ set :repo_url, "git@example.com:me/my_repo.git"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :application, "foodrder"
+set :repo_url, "git@bitbucket.org:realrodriguez/foodrder.git"
+
+set :deploy_to, '/home/deploy/foodrder'
+
+append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
