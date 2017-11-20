@@ -46,13 +46,6 @@ set :deploy_to, '/home/deploy/foodrder'
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-task :seed do
-  puts "\n=== Seeding Database ===\n"
-  on primary :db do
-    within current_path do
-      with rails_env: fetch(:stage) do
-        execute :rake, 'db:seed'
-      end
-    end
-  end
+after 'deploy:cold' do
+  run "RAILS_ENV=#{rails_env} #{bundle} exec rake seed"
 end
