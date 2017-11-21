@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   resources :restaurant_requests, only: [:new, :create]
   resources :foods
   resources :menu_categories, only: :index
+  resources :subscribers, only: :create
 
   resource :search, only: :show
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118174955) do
+ActiveRecord::Schema.define(version: 20171121040934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,13 @@ ActiveRecord::Schema.define(version: 20171118174955) do
     t.string "primary_image"
     t.boolean "delivery", default: false
     t.integer "order_medium_type", default: 0
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "mobile_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mobile_number"], name: "index_subscribers_on_mobile_number", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -105,12 +105,10 @@
   <br>
   <div class="row">
     <div class="col-md-6 center-block">
-      <form action="">
-        <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Enter your phone number">
-        </div>
-        <button class="btn btn-primary btn-lg btn-block">Subscribe</button>
-      </form>
+      <%= simple_form_for Subscriber.new do |f| %>
+        <%= f.input :mobile_number, label: false, input_html: {class: 'input-lg'} %>
+          <%= f.button :submit, "Subscribe", class: "btn btn-primary btn-lg btn-block" %>
+      <% end %>
     </div>
   </div>
 </div>
