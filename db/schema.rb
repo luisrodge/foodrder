@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121154135) do
+ActiveRecord::Schema.define(version: 20171121175526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,22 +60,6 @@ ActiveRecord::Schema.define(version: 20171121154135) do
     t.string "price_currency", default: "BZD", null: false
     t.index ["menu_id"], name: "index_foods_on_menu_id"
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
-  end
-
-  create_table "menu_categories", force: :cascade do |t|
-    t.string "name"
-    t.string "primary_image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menu_tags", force: :cascade do |t|
-    t.bigint "menu_category_id"
-    t.bigint "menu_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["menu_category_id"], name: "index_menu_tags_on_menu_category_id"
-    t.index ["menu_id"], name: "index_menu_tags_on_menu_id"
   end
 
   create_table "menus", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -205,8 +189,6 @@ ActiveRecord::Schema.define(version: 20171121154135) do
   add_foreign_key "cart_items", "foods"
   add_foreign_key "foods", "menus"
   add_foreign_key "foods", "restaurants"
-  add_foreign_key "menu_tags", "menu_categories"
-  add_foreign_key "menu_tags", "menus"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "order_fragments", "orders"
   add_foreign_key "order_fragments", "restaurants"
