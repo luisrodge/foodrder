@@ -14,7 +14,7 @@ class Food < ApplicationRecord
   # For searchkick model searching
   searchkick
 
-  # Search Food records by name and tags
+  # Search Food records by food name and Tags
   def search_data
     attributes.merge(
         name: name,
