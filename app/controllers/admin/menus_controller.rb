@@ -2,12 +2,11 @@ class Admin::MenusController < Admin::BaseController
   before_action :set_restaurant
 
   def new
-    @menu = Menu.new
+    @menu = @restaurant.menus.new(menu_params.except(:taggable_tokens))
   end
 
   def create
-    # Explicit instantiation of a new Menu object because
-    # validation fails with submitted taggable_tokens param.
+    # Validation fails with submitted taggable_tokens param.
     # Instantiate a new Menu with the taggable_tokens param filtered out.
     @menu = Menu.new(restaurant_id: @restaurant.id, name: menu_params[:name])
 

@@ -6,10 +6,11 @@ class Admin::FoodsController < Admin::BaseController
   end
 
   def create
-    @food = @menu.foods.new(food_params)
+    @food = @menu.foods.new(food_params.except(:taggable_tokens))
 
     if @food.valid?
       @food.save
+      @food.taggable_tokens=(food_params[:taggable_tokens])
       redirect_to admin_restaurant_path(@menu.restaurant),
                   notice: "Food added to menu successfully"
     else
@@ -25,7 +26,7 @@ class Admin::FoodsController < Admin::BaseController
 
   def food_params
     params.require(:food).permit(:name, :price, :description, :primary_image,
-                                 :estimated_cook_time)
+                                 :estimated_cook_time, :taggable_tokens)
         .merge(restaurant: @menu.restaurant)
   end
 end
