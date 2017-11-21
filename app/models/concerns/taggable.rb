@@ -7,9 +7,15 @@ module Taggable
 
     attr_accessor :taggable_tokens
     attr_reader :taggable_tokens
+
+    # Used for assigning tags submitted with
+    # jqueryTokeInput plugin
+    def taggable_tokens=(ids)
+      self.tag_ids = ids.split(",")
+    end
   end
 
   def tag_names
-    tags.map(&:name)
+    tags.map {|t| t.name}.join(", ")
   end
 end
