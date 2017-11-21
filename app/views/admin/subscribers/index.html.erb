@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2><span class="text-bb">Subscribers (<%= @subscribers.count %>)</span></h2>
+  </div>
+</div>
+
+<br><br><br>
+<% if @subscribers.any? %>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Mobile Number</th>
+            <th>Subscribed On</th>
+            <th>Manage</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @subscribers.each do |subscriber| %>
+              <tr>
+                <td><%= subscriber.mobile_number %></td>
+                <td><%= format_date(subscriber.created_at) %></td>
+                <td><%= link_to "Remove", admin_subscriber_path(subscriber), method: :delete, class: "btn btn-danger" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>

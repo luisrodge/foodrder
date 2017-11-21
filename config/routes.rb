@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :restaurants do
       resources :menus, only: [:new, :create]
     end
+    resources :subscribers
     resources :orders
     resources :order_fragments, only: :update
     resources :order_archives, only: [:index, :show]

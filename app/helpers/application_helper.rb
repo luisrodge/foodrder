@@ -8,4 +8,8 @@ module ApplicationHelper
   def pluralize_normal(model_name, count)
     "#{model_name}".pluralize(count)
   end
+
+  def format_date(date)
+    date.strftime("%A, %B #{date.day.ordinalize}")
+  end
 end

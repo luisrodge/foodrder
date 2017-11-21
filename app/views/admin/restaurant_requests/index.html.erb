@@ -16,9 +16,8 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
-            <th>Restaurant Phone Number</th>
+            <th>Phone Number</th>
             <th>Address</th>
-            <th>Employees</th>
             <th>Manage</th>
           </tr>
           </thead>
@@ -31,7 +30,6 @@
                 <td><%= restaurant_request.mobile_number %></td>
                 <td><%= restaurant_request.restaurant_phone_number %></td>
                 <td><%= restaurant_request.street_name + ", " +restaurant_request.location %></td>
-                <td><%= restaurant_request.number_of_employees %></td>
                 <td><%= link_to "Mark As Reviewed", admin_restaurant_request_path(restaurant_request),
                                 method: :put, class: "btn btn-primary" %></td>
               </tr>
