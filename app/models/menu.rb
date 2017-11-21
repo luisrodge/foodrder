@@ -1,4 +1,5 @@
 class Menu < ApplicationRecord
+  include Taggable
   attr_accessor :menu_catgory_tokens
 
   belongs_to :restaurant
@@ -7,8 +8,6 @@ class Menu < ApplicationRecord
   has_many :menu_tags
   has_many :menu_categories, through: :menu_tags
 
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
 
   validates_presence_of :name
 

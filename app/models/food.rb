@@ -1,9 +1,8 @@
 class Food < ApplicationRecord
+  include Taggable
+
   belongs_to :restaurant
   belongs_to :menu
-
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
 
   validates_presence_of :name, :price_cents, :description
 
