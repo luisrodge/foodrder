@@ -46,6 +46,3 @@ set :deploy_to, '/home/deploy/foodrder'
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-after 'deploy:cold' do
-  run "RAILS_ENV=#{rails_env} #{bundle} exec rake seed"
-end

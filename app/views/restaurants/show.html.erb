@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-6">
+  <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="image-wrapper">
       <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
     </div>
   </div>
-  <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+  <div class="col-md-5 col-sm-5 col-xs-12 pull-right">
     <div class="restaurant-name-address">
       <h1 class="text-title remove-margin"><span class="text-bb"><%= @restaurant.name %></span></h1><br>
       <h3><%= @restaurant.address %></h3>

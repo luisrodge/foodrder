@@ -22,19 +22,6 @@ body {
   }
 }
 
-.image-wrapper {
-  background: #f7f7f7;
-  position: relative;
-  padding-bottom: 66.593406593%; /* ratio of image height to width */
-  height: 0;
-  overflow: hidden;
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
 
 /* Primary Header */
 header {
@@ -193,7 +180,7 @@ ul.token-input-list-bootstrap {
   border: 1px solid #EDEDED !important;
   border-radius: 3px !important;
   input {
-    border: none!important;
+    border: none !important;
   }
 }
 
