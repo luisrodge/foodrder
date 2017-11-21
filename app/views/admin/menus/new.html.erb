@@ -4,9 +4,9 @@
     <%= simple_form_for [:admin, @restaurant, @menu] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <br>
-        <%= f.label :menu_catgory_tokens, "Optional Menu Categories" %>
+        <%= f.label :taggable_tokens, "Optional Menu Tags" %>
         <br>
-        <%= f.text_field :menu_catgory_tokens %>
+        <%= f.text_field :taggable_tokens %>
         <br>
         <br>
         <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
@@ -16,7 +16,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(function () {
-        $("#menu_menu_catgory_tokens").tokenInput('/menu_categories.json',
+        $("#menu_taggable_tokens").tokenInput('/admin/tags.json',
             {theme: 'bootstrap'});
     });
 </script>

@@ -6,11 +6,14 @@ class Admin::MenusController < Admin::BaseController
   end
 
   def create
-    @menu = @restaurant.menus.new(menu_params)
+    # Explicit instantiation of a new Menu object because
+    # validation fails with submitted taggable_tokens param.
+    # Instantiate a new Menu with the taggable_tokens param filtered out.
+    @menu = Menu.new(restaurant_id: @restaurant.id, name: menu_params[:name])
 
     if @menu.valid?
-      @menu.menu_catgory_tokens=(menu_params[:menu_catgory_tokens])
-      @menu.save
+      @menu.save!
+      @menu.taggable_tokens=(menu_params[:taggable_tokens])
       redirect_to admin_restaurant_path(@restaurant),
                   notice: "Menu successfully added to restaurant"
     else
@@ -21,7 +24,7 @@ class Admin::MenusController < Admin::BaseController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :menu_catgory_tokens)
+    params.require(:menu).permit(:name, :taggable_tokens)
   end
 
   def set_restaurant
