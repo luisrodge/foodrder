@@ -18,7 +18,7 @@ class Food < ApplicationRecord
   def search_data
     attributes.merge(
         name: name,
-        tag_name: tags.map(&:name)
+        tags_name: tags.map(&:name)
     )
   end
 end
