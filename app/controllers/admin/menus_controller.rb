@@ -11,8 +11,8 @@ class Admin::MenusController < Admin::BaseController
     @menu = @restaurant.menus.new(menu_params.except(:taggable_tokens))
 
     if @menu.valid?
-      @menu.save!
       @menu.taggable_tokens=(menu_params[:taggable_tokens])
+      @menu.save
       redirect_to admin_restaurant_path(@restaurant),
                   notice: "Menu successfully added to restaurant"
     else
