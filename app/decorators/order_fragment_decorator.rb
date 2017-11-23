@@ -3,13 +3,11 @@ class OrderFragmentDecorator < Draper::Decorator
 
   def update_status_btn
     btn_text = ''
-    if object.pending_confirmation?
-      btn_text = '1. Confirmation Received From Customer'
+    if object.pending?
+      btn_text = '1. Restaurant Informed'
 
-    elsif object.restaurant_notified?
-      btn_text = '2. Restaurant Notified'
-    elsif object.pickup_ready?
-      btn_text = '3. Informed Customer Pickup Ready'
+    elsif object.pending_pickup_ready?
+      btn_text = '2. Pickup Message Dispatched'
     end
 
     h.button_to "#{btn_text}",

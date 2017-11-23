@@ -10,15 +10,22 @@ class Order < ApplicationRecord
   validates_presence_of :phone_number
 
   # Order statuses
-  enum status: [:pending, :order_confirmed, :processed]
+  enum status: [:pending, :processed]
 
   # Return all pending orders
   def self.pending_orders
-    where('status = ? OR status = ?', 0, 1).order("created_at DESC")
+    where('status = ?', 0).order("created_at DESC")
   end
 
+  # Associated OrderFragment records that have not been processed
   def pending_order_fragments
-    order_fragments.where.not(status: "3").where.not(delivery: true)
+    order_fragments.where.not(status: '2')
+  end
+
+  # Checks if an Order has any associated OrderFragment
+  # records that have not been processed
+  def pending_order_fragments?
+    order_fragments.where('status = ? or status = ?', 0, 1).any?
   end
 
   protected

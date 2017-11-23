@@ -3,7 +3,7 @@ class OrderFragment < ApplicationRecord
   belongs_to :restaurant
   has_many :order_items, dependent: :destroy
 
-  enum status: [:pending_confirmation, :restaurant_notified, :pickup_ready, :processed, :cancelled]
+  enum status: [:pending, :pending_pickup_ready, :processed, :cancelled]
 
 
   def total
