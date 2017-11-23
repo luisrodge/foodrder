@@ -188,6 +188,17 @@ li.token-input-token-bootstrap p {
   font-size: 15px;
 }
 
+.order-frag-wrapper {
+  padding: 70px 0;
+  border-bottom: 2px dashed #CCC;
+  &:first-of-type {
+    padding-top: 40px;
+  }
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
 /* Dashboard styles */
 #dashboard-wrapper {
   padding-left: 250px;

@@ -145,15 +145,16 @@ table {
 }
 
 .table-bordered {
-  border: 1px solid #F7F7F7;
+  border: 1px solid #CCC;
+
 }
 
 .table-bordered > tbody > tr > td {
-  border: 1px solid #F7F7F7;
+  border: 1px solid #CCC;
 }
 
 .table-bordered > thead > tr > th {
-  border: 1px solid #F7F7F7;
+  border: 1px solid #CCC;
   font-weight: normal;
   color: #000;
 }

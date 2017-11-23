@@ -36,7 +36,7 @@
             <% if cart_fragment.restaurant.offers_delivery? %>
                 <div class="col-md-6 text-right">
                   <div class="delivery-cb-wrapper">
-                    <p class="remove-margin">Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                    <p class="remove-margin checkbox-text">Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
                                                    onchange: "cart.toggleDelivery(this, event)",
                                                    data: {"cf-id" => "#{cart_fragment.id}"} %></p>
                   </div>

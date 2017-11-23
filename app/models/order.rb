@@ -17,6 +17,9 @@ class Order < ApplicationRecord
     where('status = ? OR status = ?', 0, 1).order("created_at DESC")
   end
 
+  def pending_order_fragments
+    order_fragments.where.not(status: "3").where.not(delivery: true)
+  end
 
   protected
 

@@ -35,9 +35,13 @@ select:-webkit-autofill:focus {
 }
 
 input[type="checkbox"]{
-  width: 18px; /*Desired width*/
-  height: 18px; /*Desired height*/
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
   vertical-align: top;
   position: relative;
   bottom: 2px;
+}
+
+.checkbox-text {
+  font-size: 18px;
 }

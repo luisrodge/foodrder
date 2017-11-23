@@ -8,7 +8,7 @@ class Admin::OrdersController < Admin::BaseController
 
   def show
     @order = @order.decorate
-    @order_fragments = @order.order_fragments
+    @order_fragments = @order.pending_order_fragments.decorate
   end
 
   def update
