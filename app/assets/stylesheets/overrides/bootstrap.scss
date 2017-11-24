@@ -76,8 +76,11 @@ input, textarea, select {
 
 .btn-info {
   background-color: #CCC;
+  border-bottom: 2px solid #ADADAD;
   &:hover, &:focus {
     background: #71BA51!important;
+    border: none;
+    border-bottom: 2px solid #03DD5D;
   }
 }
 
@@ -85,6 +88,7 @@ input, textarea, select {
   background: #383838;
   &:hover, &:focus {
     background: #454545!important;
+
   }
 }
 
