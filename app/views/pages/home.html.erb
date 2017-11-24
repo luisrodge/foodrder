@@ -45,7 +45,7 @@
                 <% end %>
                 <div class="figcaption-footer">
                   <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
                       <%= simple_form_for CartItem.new do |f| %>
                           <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
                           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
@@ -53,8 +53,8 @@
                           <% end %>
                       <% end %>
                     </div>
-                    <div class="col-md-7">
-                      <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                      <h4 class="text-right text-price mobile-price"><%= price_format(food.price) %></h4>
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@
 
 <div class="subscribe-wrapper home-subscribe">
   <h2 class="text-center remove-margin text-title"><span class="text-bb">Become a foodrder subscriber!</span></h2><br><br>
-  <h4 class="text-center text-lh">
+  <h4 class="text-center text-lh mobile-h">
     Subscribe to our website if you would like to be notified, via text message, about any special offers being offered
     by foodrder listed restaurants. <span class="text-strong">By subscribing you are agreeing that foodrder will be able to send text
     messages to your phone number.</span>

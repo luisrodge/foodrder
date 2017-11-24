@@ -37,13 +37,13 @@
             <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
           </div>
           <div class="figcaption">
-            <h3 class="truncate text-strong"><%= food.name %></h3>
+            <h3 class="truncate text-strong mobile-sb"><%= food.name %></h3>
             <% if food.restaurant.offers_delivery? %>
                 <div class="row">
                   <div class="col-md-6 col-sm-6 col-sm-12">
                     <h4 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                   </div>
-                  <div class="col-md-6 col-sm-6 col-sm-12 text-right">
+                  <div class="col-md-6 col-sm-6 col-sm-12 text-right deliverable-col">
                     <h4 class="remove-margin text-muted"><%= fa_icon "motorcycle" %> Deliverable</h4>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
             <% end %>
             <div class="figcaption-footer">
               <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 col-sm-5 col-xs-5">
                   <%= simple_form_for CartItem.new do |f| %>
                       <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
                       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
@@ -60,8 +60,8 @@
                       <% end %>
                   <% end %>
                 </div>
-                <div class="col-md-7">
-                  <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
+                <div class="col-md-7 col-sm-7 col-xs-7">
+                  <h4 class="text-right text-price truncate mobile-price"><%= price_format(food.price) %></h4>
                 </div>
               </div>
             </div>

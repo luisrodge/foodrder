@@ -4,8 +4,14 @@
     margin-right: 0;
     margin-left: 0;
   }
+  .mobile-h {
+    display: none;
+  }
   li.mobile-link {
     display: block;
+  }
+  .mobile-price {
+    font-size: 16px;
   }
   .checkout-price {
     margin-top: 50px;
