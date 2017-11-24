@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-md-4 text-center">
         <div class="col-box col-box-bg">
-          <h3 class="remove-margin">Delivery Address</h3>
+          <h3 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery Address</h3>
           <hr>
           <h4 class="text-sb"><%= @order.location %></h4>
           <h4 class="text-sb"><%= @order.location_description %>
@@ -25,14 +25,14 @@
       </div>
       <div class="col-md-4 text-center">
         <div class="col-box col-box-bg">
-          <h3 class="remove-margin">Contact Number</h3>
+          <h3 class="remove-margin"><i class="fa fa-phone"></i> Customer Contact Number</h3>
           <hr>
           <h4 class="text-sb"><%= @order.phone_number %></h4>
         </div>
       </div>
       <div class="col-md-4 text-center">
         <div class="col-box col-box-bg">
-          <h3 class="remove-margin">Pickup Confirmation Code</h3>
+          <h3 class="remove-margin">Pickup Confirmation Number</h3>
           <hr>
           <h4> <%= @order.confirmation_code %></h4>
         </div>
@@ -90,13 +90,14 @@
               <div class="col-box col-box-db">
                 <h3>Restaurant Contact #: <%= order_fragment.restaurant.phone_number %></h3>
                 <% if order_fragment.delivery? %>
-                    <h3 class="remove-margin">Delivery</h3>
+                    <h3 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery</h3>
                 <% else %>
-                    <h3 class="remove-margin">Pick Up</h3><br>
-                    <div class="col-box col-box-bg">
-                      <p>Remember to ask the restaurant to provide an estimate time to call back to verify if the order is fully ready.</p>
-                    </div>
+                    <h3 class="remove-margin">Pick Up</h3>
                 <% end %>
+                <br>
+                <div class="col-box col-box-bg">
+                  <%= order_fragment.status_instructions %>
+                </div>
                 <br><br>
                 <%= order_fragment.update_status_btn %>
               </div>

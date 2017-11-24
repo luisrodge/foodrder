@@ -36,15 +36,17 @@
             <% if cart_fragment.restaurant.offers_delivery? %>
                 <div class="col-md-6 text-right">
                   <div class="delivery-cb-wrapper">
-                    <p class="remove-margin checkbox-text">Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                    <p class="remove-margin checkbox-text">
+                      <i class="fa fa-car" aria-hidden="true"></i> Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
                                                    onchange: "cart.toggleDelivery(this, event)",
-                                                   data: {"cf-id" => "#{cart_fragment.id}"} %></p>
+                                                   data: {"cf-id" => "#{cart_fragment.id}"} %>
+                    </p>
                   </div>
                 </div>
             <% else %>
                 <div class="col-md-6 text-right">
                   <div class="delivery-cb-wrapper">
-                    <p class="remove-margin">Delivery not offered</p>
+                    <p class="remove-margin checkbox-text">Delivery not offered</p>
                   </div>
                 </div>
             <% end %>

@@ -17,9 +17,10 @@ class Order < ApplicationRecord
     where('status = ?', 0).order("created_at DESC")
   end
 
-  # Associated OrderFragment records that have not been processed
+  # Associated OrderFragment records that have not been processed.
+  # Order them by delivery = true
   def pending_order_fragments
-    order_fragments.where.not(status: '2')
+    order_fragments.where.not(status: '2').order(delivery: :desc)
   end
 
   # Checks if an Order has any associated OrderFragment

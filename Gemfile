@@ -24,6 +24,8 @@ gem 'money-rails', '~> 1.7'
 gem 'font-awesome-rails'
 gem 'searchkick'
 gem 'cloudinary'
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123203640) do
+ActiveRecord::Schema.define(version: 20171124021749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20171123203640) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BZD", null: false
     t.string "primary_image"
+    t.string "address"
     t.index ["restaurant_id"], name: "index_specials_on_restaurant_id"
   end
 
