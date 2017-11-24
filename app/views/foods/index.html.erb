@@ -31,7 +31,7 @@
 
 <div class="row">
   <% @foods.each do |food| %>
-      <div class="col-md-4 col-sm-6 col-xs-6 col-sb">
+      <div class="col-md-4 col-sm-6 col-xs-12 col-sb">
         <div class="figure">
           <div class="image-medium-wrapper">
             <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
@@ -40,10 +40,10 @@
             <h3 class="truncate text-strong mobile-sb"><%= food.name %></h3>
             <% if food.restaurant.offers_delivery? %>
                 <div class="row">
-                  <div class="col-md-6 col-sm-6 col-sm-12">
+                  <div class="col-md-6 col-sm-6 col-sm-6 col-xs-6">
                     <h4 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                   </div>
-                  <div class="col-md-6 col-sm-6 col-sm-12 text-right deliverable-col">
+                  <div class="col-md-6 col-sm-6 col-sm-6 col-xs6 text-right">
                     <h4 class="remove-margin text-muted"><%= fa_icon "motorcycle" %> Deliverable</h4>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                   <% end %>
                 </div>
                 <div class="col-md-7 col-sm-7 col-xs-7">
-                  <h4 class="text-right text-price truncate mobile-price"><%= price_format(food.price) %></h4>
+                  <h4 class="text-right text-price truncate"><%= price_format(food.price) %></h4>
                 </div>
               </div>
             </div>
