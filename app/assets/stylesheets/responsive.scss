@@ -1,0 +1,128 @@
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .container {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  li.mobile-link {
+    display: block;
+  }
+  .checkout-price {
+    margin-top: 50px;
+  }
+  footer {
+    p {
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .row {
+      text-align: center;
+      .col-md-4 {
+        margin-bottom: 40px;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .mobile-pull {
+    float: none!important;
+  }
+  .top-header {
+    text-align: center;
+    .logo {
+      font-size: 58px;
+    }
+    .slogan {
+      font-size: 26px;
+    }
+    .pull-right {
+      float: none!important;
+    }
+    .top-header-col-2 {
+      margin-top: 10px;
+      border-top: 2px solid #454545;
+      padding-bottom: 30px;
+    }
+    .top-header-col-3 {
+      margin-top: 10px;
+      text-align: center;
+      padding-bottom: 20px;
+      display: none;
+    }
+  }
+  .deliverable-col {
+    padding-top: 8px;
+    text-align: left;
+  }
+  .col-mobile-pl {
+    text-align: left;
+  }
+  .mobile-sb {
+    padding-bottom: 6px;
+  }
+  .cart_fragment-wrapper {
+    .btn {
+      width: 100%;
+    }
+    .btn-danger {
+      margin-top: 12px;
+    }
+  }
+  .cart-total {
+    margin-top: 28px;
+  }
+  .cart-fragment-header {
+    margin-bottom: 20px;
+  }
+  .cart-notice {
+    display: none;
+  }
+  .mobile-col-box {
+    padding: 10px;
+    h2 {
+      margin: 0;
+    }
+  }
+  .restaurant-header {
+    .image-wrapper {
+      margin-bottom: 24px;
+    }
+  }
+  .navbar-nav {
+    margin: 0;
+    a {
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+  .nav > li {
+    border-bottom: 1px solid #00B326;
+  }
+  .navbar .nav-fl {
+    padding-left: 15px !important;
+  }
+  .navbar-default .navbar-collapse {
+    border-color: transparent;
+  }
+  .navbar-toggle, .navbar-toggle:hover {
+    background: #00B326 !important;
+    color: #FFF;
+    border: none;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}

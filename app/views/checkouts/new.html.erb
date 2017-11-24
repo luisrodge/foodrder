@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-5 col-sm-5 col-xs-12">
     <h2 class="remove-margin">
       <span class="text-bb">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></span></h2>
     <br><br><br>
@@ -20,21 +20,21 @@
     </div>
   </div>
 
-  <div class="col-md-6 pull-right">
-    <div class="row">
-      <div class="col-md-12 text-right">
-        <h2>Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
+  <div class="col-md-6 col-sm-7 col-xs-12 pull-right">
+    <div class="row checkout-price">
+      <div class="col-md-12 text-right col-mobile-pl">
+        <h2 class="remove-margin">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
       </div>
     </div>
     <br>
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="col-box col-box-db col-sb">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-6 ">
               <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
                 From <%= cart_fragment.restaurant.name %></h3>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-4 col-sm-6 text-right col-mobile-pl">
               <% if cart_fragment.delivery? %>
                   <h3 class="text-muted">Delivery</h3>
               <% else %>
@@ -47,12 +47,12 @@
           <br>
           <% cart_fragment.cart_items.each do |cart_item| %>
               <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-5 col-xs-5">
                   <div class="image-medium-wrapper">
                     <%= cart_item.cart_item_image %>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-7">
                   <h4><%= cart_item.food_name %></h4>
                 </div>
                 <div class="col-md-3">

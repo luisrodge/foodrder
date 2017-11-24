@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row restaurant-header">
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="image-wrapper">
       <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
     </div>
   </div>
-  <div class="col-md-5 col-sm-5 col-xs-12 pull-right">
+  <div class="col-md-5 col-sm-6 col-xs-12 pull-right">
     <div class="restaurant-name-address">
       <h1 class="text-title remove-margin"><span class="text-bb"><%= @restaurant.name %></span></h1><br>
       <h3><%= @restaurant.address %></h3>
@@ -15,7 +15,7 @@
         <h3>9:00AM - 10:00PM</h3>
         <% if @restaurant.offers_delivery? %>
             <hr>
-            <h3>Offers Delivery</h3>
+            <h3><%= fa_icon "motorcycle" %> Offers Delivery</h3>
         <% end %>
       </div>
     </div>
@@ -26,10 +26,10 @@
 
 <div class="row">
   <div class="col-md-6 col-sm-6 col-xs-6">
-    <h2 class="remove-margin">Restaurant Menus (<%= @restaurant.menus.count %>)</h2>
+    <h2 class="remove-margin">Menus (<%= @restaurant.menus.count %>)</h2>
   </div>
   <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-    <h3 class="remove-margin text-muted"><%= @restaurant.menu_food_counter %></h3>
+    <h3 class="remove-margin text-muted truncate"><%= @restaurant.menu_food_counter %></h3>
   </div>
 </div>
 <br><br>
@@ -47,11 +47,11 @@
                     <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="col-md-4 col-sm-4 col-xs-5">
                   <h3><%= food.name %></h3>
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                <div class="col-md-4 col-sm-4 col-xs-3 text-right">
                   <%= simple_form_for CartItem.new do |f| %>
                       <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
                       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>

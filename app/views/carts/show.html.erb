@@ -1,11 +1,11 @@
 <% if @cart.cart_items.any? %>
     <div class="row">
-      <div class="col-md-6">
-        <h2 class="remove-margin"><span class="text-bb">Orders In Your Cart
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <h2 class="remove-margin"><span class="text-bb">Orders In Cart
           (<%= @cart_items.count %>)</span></h2>
       </div>
-      <div class="col-md-6 text-right">
-        <h2 class="remove-margin">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-right col-mobile-pl">
+        <h2 class="remove-margin cart-total">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
       </div>
     </div>
 
@@ -13,13 +13,12 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="col-box col-box-db text-center">
+        <div class="col-box col-box-db text-center mobile-col-box">
           <h2 class="text-center text-sb">Ready To Send Your Orders?</h2>
-          <h4 class="text-lh">Before checking out please ensure that you've specified whether or not you want delivery
+          <h4 class="text-lh cart-notice">Before checking out please ensure that you've specified whether or not you want delivery
             from the restaurants you are ordering
             from below. By default delivery is set to false and pickup is set to true for all orders.</h4><br>
           <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg" %></p>
-          <br>
         </div>
       </div>
     </div>
@@ -28,23 +27,23 @@
 
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="cart_fragment-wrapper">
-          <div class="row">
-            <div class="col-md-6">
+          <div class="row cart-fragment-header">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <h2><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
                 From <%= cart_fragment.restaurant.name %></h2>
             </div>
             <% if cart_fragment.restaurant.offers_delivery? %>
-                <div class="col-md-6 text-right">
+                <div class="col-md-6 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
                     <p class="remove-margin checkbox-text">
-                      <i class="fa fa-car" aria-hidden="true"></i> Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                      <%= fa_icon "motorcycle" %> Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
                                                    onchange: "cart.toggleDelivery(this, event)",
                                                    data: {"cf-id" => "#{cart_fragment.id}"} %>
                     </p>
                   </div>
                 </div>
             <% else %>
-                <div class="col-md-6 text-right">
+                <div class="col-md-6 col-sm-6 xol-xs-12 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
                     <p class="remove-margin checkbox-text">Delivery not offered</p>
                   </div>
@@ -53,13 +52,13 @@
           </div>
           <% cart_fragment.cart_items.each do |cart_item| %>
               <div class="col-box col-box-xp">
-                <div class="row gutter-70">
-                  <div class="col-md-3">
+                <div class="row ">
+                  <div class="col-md-3 col-sm-4 col-xs-4">
                     <div class="image-medium-wrapper">
                       <%= cart_item.cart_item_image %>
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-8 col-xs-8">
                     <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>
                     <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.food_price) %>
                     </span></h4>
@@ -70,7 +69,7 @@
                         <span class="text-price "><%= price_format(cart_item.total) %></span></h4>
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 col-sm-12 col-xs-12">
                     <%= simple_form_for cart_item, method: :put do |f| %>
                         <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
                         <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
@@ -78,7 +77,7 @@
                         <% end %>
                     <% end %>
                   </div>
-                  <div class="col-md-3 text-right">
+                  <div class="col-md-3 text-right col-mobile-pl">
                     <br/>
                     <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>
                         <i class="glyphicon glyphicon-remove"></i> Remove

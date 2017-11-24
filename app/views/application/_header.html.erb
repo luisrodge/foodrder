@@ -2,32 +2,35 @@
   <div class="top-header">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-12">
           <h1 class="logo">
             <%= link_to root_path do %>
                 foodrder <span class="slogan">Search, Order...Eat</span>
             <% end %>
           </h1>
         </div>
-        <div class="col-md-6 top-header-col-2 text-center">
-          <div class="center-block">
-            <h3>Order food from the best restaurants in <br>Santa Elena & San Ignacio</h3>
-            <div id="top-header-search-wrapper">
-              <%= form_tag search_path, method: :get do %>
-                  <div class="input-group stylish-input-group">
-                    <%= text_field_tag :q, params[:q], class: "form-control input-lg",
-                                       placeholder: "What do you want to eat?" %>
-                    <span class="input-group-addon">
+        <div class="col-md-6 col-sm-12 text-center">
+          <div class="top-header-col-2">
+            <div class="center-block">
+              <h3>Order food from the best restaurants in <br>Santa Elena & San Ignacio</h3>
+              <div id="top-header-search-wrapper">
+                <%= form_tag search_path, method: :get do %>
+                    <div class="input-group stylish-input-group">
+                      <%= text_field_tag :q, params[:q], class: "form-control input-lg",
+                                         placeholder: "What do you want to eat?" %>
+                      <span class="input-group-addon">
                       <button type="submit">
                         <span class="glyphicon glyphicon-search"></span>
                       </button>
                     </span>
-                  </div>
-              <% end %>
+                    </div>
+                <% end %>
+              </div>
             </div>
           </div>
+
         </div>
-        <div class="col-md-3 top-header-col-3 pull-right text-right ">
+        <div class="col-md-3 col-sm-12 top-header-col-3 pull-right text-right ">
           <h3>Are You Interested?</h3>
           <%= link_to "Add Your Restaurant", new_restaurant_request_path, class: "btn btn-primary btn-lg" %>
         </div>
@@ -39,19 +42,17 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <i class="fa fa-bars" aria-hidden="true"></i> Menu
         </button>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to "Foods", foods_path, class: "nav-fl" %></li>
           <li><%= link_to "Restaurants", restaurants_path %></li>
           <li><%= link_to "About", about_path %></li>
+          <li class="mobile-link"><%= link_to "Add Your Restaurant", restaurant_requests_path %></li>
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_customer %>

@@ -93,6 +93,10 @@ header {
   padding: 20px;
 }
 
+li.mobile-link {
+  display: none;
+}
+
 /* Main Body Content Container */
 .container.main-content-container {
   flex: 1;
@@ -323,6 +327,7 @@ div#sidebar-wrapper.active {
   padding: 20px;
 }
 
+/* Dashboard Responsive Styles */
 @media (max-width: 767px) {
 
   #dashboard-wrapper {

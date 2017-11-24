@@ -1,13 +1,13 @@
 <% if @foods.any? %>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <h2 class="text-title"><span class="text-bb">Search Results (<%= @foods.count %>)</span></h2>
         <br><br><br>
       </div>
     </div>
-    <div class="row gutter-70">
+    <div class="row">
       <% @foods.each do |food| %>
-          <div class="col-md-4 col-sm-4 col-xs-6 col-sb">
+          <div class="col-md-4 col-sm-6 col-xs-6 col-sb">
             <div class="figure">
               <div class="image-medium-wrapper">
                 <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
@@ -20,7 +20,7 @@
                         <h4 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant) %></h4>
                       </div>
                       <div class="col-md-6 text-right">
-                        <h4 class="remove-margin text-muted"><%= fa_icon "car" %> Deliverable</h4>
+                        <h4 class="remove-margin text-muted"><%= fa_icon "motorcycle" %> Deliverable</h4>
                       </div>
                     </div>
                 <% else %>
