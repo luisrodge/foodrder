@@ -1,7 +1,7 @@
 class Tag < ApplicationRecord
   validates_presence_of :name
 
-  searchkick
+  searchkick word_start: [:name]
 
   def search_data
     {

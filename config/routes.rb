@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'tags/index'
-  end
-
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
@@ -38,6 +34,7 @@ Rails.application.routes.draw do
     resource :dashboard, only: :show
     resources :restaurants do
       resources :menus, only: [:new, :create]
+      resources :specials
     end
     resources :tags, only: :index
     resources :subscribers

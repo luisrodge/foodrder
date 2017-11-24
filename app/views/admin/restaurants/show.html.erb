@@ -1,16 +1,18 @@
 <div class="row">
   <div class="col-md-12 text-center">
-    <h2><%= @restaurant.name %></h2>
+    <h1><%= @restaurant.name %></h1>
   </div>
 </div>
 <hr>
 
 <div class="row">
   <div class="col-md-6">
-    <h2 class="remove-margin">Menus (<%= @menus.count %>)</h2>
+    <h1 class="remove-margin text-sb">Menus (<%= @menus.count %>)</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to "Add New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Add New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
+    <%= link_to "New Special", new_admin_restaurant_special_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
+    <%= link_to "View Specials (#{@restaurant.specials.count})", admin_restaurant_specials_path(@restaurant), class: "btn btn-info btn-lg" %>
   </div>
 </div>
 

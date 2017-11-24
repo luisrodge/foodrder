@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h2><span class="text-bb">Create A New Special</span></h2><br/><br><br>
+    <div class="col-box col-box-bg">
+      <p class="remove-margin">
+        Unlike normal menu foods which are available on a regular basis,
+        specials are only offered on a specific date. Delivery is usually
+        provided for free.
+      </p>
+    </div>
+    <br><br>
+    <%= simple_form_for [:admin, @restaurant, @special], html: {multipart: true} do |f| %>
+        <%= f.input :name, input_html: {class: "input-lg"} %>
+        <%= f.input :price, input_html: {class: "input-lg"} %>
+        <%= f.input :selling_date, input_html: {class: "input-lg"} %>
+        <%= f.input :description %>
+        <%= f.label :taggable_tokens, "Optional Food Tags" %>
+        <br>
+        <%= f.text_field :taggable_tokens %>
+        <br>
+        <%= f.input :primary_image, as: :file %><br/>
+        <%= f.button :submit, class: "btn btn-success btn-gb btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("#special_taggable_tokens").tokenInput('/admin/tags.json',
+            {theme: 'bootstrap', preventDuplicates: true});
+    });
+</script>

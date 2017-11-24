@@ -1,10 +1,9 @@
-class Food < ApplicationRecord
+class Special < ApplicationRecord
   include Taggable
 
   belongs_to :restaurant
-  belongs_to :menu
 
-  validates_presence_of :name, :price_cents
+  validates_presence_of :name, :price_cents, :selling_date
 
   # Carrierwave uploader
   mount_uploader :primary_image, PrimaryImageUploader
