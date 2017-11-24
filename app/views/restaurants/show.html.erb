@@ -47,11 +47,11 @@
                     <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-5">
-                  <h3><%= food.name %></h3>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <h3 class="remove-margin menu-food-name text-strong"><%= food.name %></h3>
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-3 text-right">
+                <div class="col-md-4 col-sm-4 col-xs-4 text-right">
                   <%= simple_form_for CartItem.new do |f| %>
                       <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
                       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
