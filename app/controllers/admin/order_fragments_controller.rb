@@ -6,6 +6,7 @@ class Admin::OrderFragmentsController < Admin::BaseController
     msg = ''
     if @order_fragment.pending?
       if @order_fragment.delivery?
+        msg_restaurant
         # Mark OrderFragment and parent Order as processed
         @order_fragment.update_attributes(status: 2)
         @order.update_attributes(status: 1) unless @order.pending_order_fragments?
@@ -25,6 +26,10 @@ class Admin::OrderFragmentsController < Admin::BaseController
   end
 
   private
+
+  def msg_restaurant
+    EngineSparkService.new(@order.phone_number).message_restaurant
+  end
 
   def set_order_fragment
     @order_fragment ||= OrderFragment.find(params[:id])
