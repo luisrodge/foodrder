@@ -9,8 +9,8 @@ class OrderFragmentDecorator < Draper::Decorator
       modal_txt = "Are you sure you have called #{object.restaurant.name}
                   and informed them of the order details and confirmation number?"
     elsif object.pending_pickup_ready?
-      btn_text = 'Pickup Message Dispatched'
-      modal_txt = 'Do not proceed unless you have verified that the order is ready. Are you sure you have dispatched a text message to the customer notifying them that their order is ready for pickup and that you have included the order confirmation number.'
+      btn_text = 'Dispatch Pickup Ready Message'
+      modal_txt = "Do not proceed unless you have verified from #{object.restaurant.name} that the order is ready."
     end
 
     h.link_to h.admin_order_fragment_path(order_fragment),

@@ -2,8 +2,6 @@ class Order < ApplicationRecord
   has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
-  before_create :set_confirmation_code
-
   # money-rails currency integration
   monetize :total_cents
 
@@ -29,14 +27,4 @@ class Order < ApplicationRecord
     order_fragments.where('status = ? or status = ?', 0, 1).any?
   end
 
-  protected
-
-  # Generate order confirmation code
-  def generate_confirmation_code
-    rand(0000..9999).to_s.rjust(4, "0")
-  end
-
-  def set_confirmation_code
-    self.confirmation_code = generate_confirmation_code
-  end
 end

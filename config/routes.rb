@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post 'admin/login', to: 'sessions#create', as: :user_session
   end
 
+
   # Seller only routes
   namespace :seller do
     resource :dashboard, only: :show
@@ -69,6 +70,6 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
-  get 'about', to: 'pages#about'
+  get 'order_food', to: 'pages#order_food'
 
 end

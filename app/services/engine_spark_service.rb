@@ -12,15 +12,13 @@ class EngineSparkService
   def message_restaurant
     message_body = ""
     message_end = ""
-    dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.date.strftime("%I:%M %p")}.")
+    dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.created_at.strftime("%I:%M %p")}.")
     @order_fragment.order_items.each_with_index do |order_item, index|
       message_body = "#{order_item.food.name}, Amount: #{order_item.quantity}."
       dispatch_message(message_body)
     end
     if @order_fragment.delivery?
       message_end = "Delivery @ #{@order_fragment.order.location}, #{@order_fragment.order.location_description}."
-    else
-      message_end = "Order Confirmation Code: #{@order_fragment.order.confirmation_code}"
     end
     dispatch_message(message_end)
   end
