@@ -72,4 +72,7 @@ Rails.application.routes.draw do
 
   get 'order_food', to: 'pages#order_food'
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end
