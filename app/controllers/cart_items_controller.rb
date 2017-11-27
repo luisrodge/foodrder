@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
     else
       flash[:warning] = 'Food already added to cart. Try adding another food instead.'
     end
-    redirect_to request.referer
+    redirect_to cart_path
   end
 
   def update

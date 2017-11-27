@@ -16,4 +16,8 @@ module ApplicationHelper
   def format_datetime(datetime)
     datetime.strftime("%A, %B #{datetime.day.ordinalize} @ %I:%M %p")
   end
+
+  def format_time(datetime)
+    datetime.strftime("%I:%M %p")
+  end
 end

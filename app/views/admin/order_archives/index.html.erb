@@ -1,2 +1,36 @@
-<h1>Admin::OrderArchives#index</h1>
-<p>Find me in app/views/admin/order_archives/index.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <h2><span class="text-bb">Orders Archives (<%= @orders.count %>)</span></h2>
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Restaurants</th>
+        <th>Order Items</th>
+        <th>Placed On</th>
+        <th>Processed At</th>
+        <th>Total</th>
+        <th>Overview</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.order_fragments.count %></td>
+            <td><%= order.order_items.count %></td>
+            <td><%= format_datetime(order.created_at) %></td>
+            <td><%= format_time(order.created_at) %></td>
+            <td class="text-price"><%= price_format(order.total) %></td>
+            <td><%= link_to "Order Details", admin_order_path(order), class: "btn btn-primary" %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

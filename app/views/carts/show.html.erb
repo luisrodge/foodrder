@@ -18,7 +18,7 @@
           <h4 class="text-lh cart-notice">Before checking out please ensure that you've specified whether or not you want delivery
             from the restaurants you are ordering
             from below. By default delivery is set to false and pickup is set to true for all orders.</h4><br>
-          <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg" %></p>
+          <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb" %></p>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
                   <div class="col-md-3 col-sm-12 col-xs-12">
                     <%= simple_form_for cart_item, method: :put do |f| %>
                         <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
-                        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                        <%= button_tag(type: 'submit', class: "btn btn-info") do %>
                             <i class="glyphicon glyphicon-refresh"></i> Update
                         <% end %>
                     <% end %>

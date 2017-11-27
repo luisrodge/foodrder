@@ -113,7 +113,7 @@
   <div class="row">
     <div class="col-md-6 center-block">
       <%= simple_form_for Subscriber.new do |f| %>
-        <%= f.input :mobile_number, label: false, input_html: {class: 'input-lg'} %>
+        <%= f.input :mobile_number, label: false, placeholder: "Enter your phone number", input_html: {class: 'input-lg'} %>
           <%= f.button :submit, "Subscribe", class: "btn btn-primary btn-lg btn-block" %>
       <% end %>
     </div>
