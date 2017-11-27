@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   resource :search, only: :show
 
   get 'order_food', to: 'pages#order_food'
+  get 'restaurant_info', to: 'pages#restaurant_info'
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
