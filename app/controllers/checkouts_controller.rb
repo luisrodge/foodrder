@@ -6,19 +6,13 @@ class CheckoutsController < ApplicationController
     @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
   end
 
-  # @TODO wrap in transaction block
   def create
     @order = Order.new(checkout_params)
 
     if @order.valid?
       Order.checkout(@order, @cart)
-
       @cart.destroy
       cookies.delete(:cart)
-
-      # Send new order email to admins
-      # OrderMailer.send_new_order_email(Admin.last).deliver
-
       flash[:success] = 'Your order had been sent successfully.'
       redirect_to root_path
     else
@@ -30,7 +24,7 @@ class CheckoutsController < ApplicationController
   private
 
   def checkout_params
-    params.require(:order).permit(:phone_number, :location, :location_description,
+    params.require(:order).permit(:phone_number, :delivery_address, :full_name,
                                   :delivery, :total).merge(total: @cart.total)
   end
 

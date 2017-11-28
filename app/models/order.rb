@@ -7,7 +7,8 @@ class Order < ApplicationRecord
   # money-rails currency integration
   monetize :total_cents
 
-  validates_presence_of :phone_number
+  validates_presence_of :full_name, :phone_number
+  validates :phone_number, :numericality => {:only_integer => true}, length: { :minimum => 7, :maximum => 7 }
 
   # Order statuses
   enum status: [:pending, :processed]
