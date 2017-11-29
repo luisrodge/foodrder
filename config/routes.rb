@@ -39,7 +39,6 @@ Rails.application.routes.draw do
       resources :drinks
     end
     resources :tags, only: :index
-    resources :drinks, only: :index
     resources :subscribers
     resources :orders
     resources :order_fragments, only: :update
