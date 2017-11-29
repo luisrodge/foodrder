@@ -10,11 +10,13 @@
     <h1 class="remove-margin text-sb">Menus (<%= @menus.count %>)</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to "Add New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
+    <%= link_to "New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
     <%= link_to "New Special", new_admin_restaurant_special_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
-    <%= link_to "View Specials (#{@restaurant.specials.count})", admin_restaurant_specials_path(@restaurant), class: "btn btn-info btn-lg" %>
   </div>
 </div>
+
+<hr>
+<%= link_to "View Specials (#{@restaurant.specials.count})", admin_restaurant_specials_path(@restaurant), class: "btn btn-info btn-lg" %>
 
 <br><br><br><br>
 
@@ -29,7 +31,7 @@
               <h3 class="remove-margin"><span class="text-bb"><%= menu.name %></span></h3><br>
             </div>
             <div class="col-md-6 text-right">
-              <%= link_to "Edit Menu", "#", class: "btn btn-primary btn-sm" %>
+              <%= link_to "Edit Menu", "#", class: "btn btn-info btn-sm" %>
               <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-success btn-sm" %>
             </div>
           </div>
@@ -56,7 +58,7 @@
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-                  <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-primary btn-sm" %>
+                  <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-info btn-sm" %>
                 </div>
               </div>
               <br>
