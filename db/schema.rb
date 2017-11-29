@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129045052) do
+ActiveRecord::Schema.define(version: 20171129070526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,9 @@ ActiveRecord::Schema.define(version: 20171129045052) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BZD", null: false
+    t.bigint "restaurant_id"
     t.index ["name"], name: "index_drinks_on_name", unique: true
+    t.index ["restaurant_id"], name: "index_drinks_on_restaurant_id"
   end
 
   create_table "foods", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -207,11 +209,23 @@ ActiveRecord::Schema.define(version: 20171129045052) do
     t.index ["restaurant_id"], name: "index_users_on_restaurant_id"
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.string "name"
+    t.integer "variantable_id"
+    t.string "variantable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BZD", null: false
+    t.index ["variantable_id", "variantable_type"], name: "index_variants_on_variantable_id_and_variantable_type"
+  end
+
   add_foreign_key "cart_fragments", "carts"
   add_foreign_key "cart_fragments", "restaurants"
   add_foreign_key "cart_items", "cart_fragments"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "foods"
+  add_foreign_key "drinks", "restaurants"
   add_foreign_key "foods", "menus"
   add_foreign_key "foods", "restaurants"
   add_foreign_key "menus", "restaurants"

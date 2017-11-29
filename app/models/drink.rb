@@ -1,6 +1,5 @@
 class Drink < ApplicationRecord
-  has_many :common_drinks
-  has_many :restaurants, through: :common_drinks
+  has_many :variants, as: :variantable
 
   monetize :price_cents
 

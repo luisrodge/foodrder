@@ -17,5 +17,6 @@
 //= require jquery.tokeninput
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require cocoon
 //= require turbolinks
 //= require_tree .

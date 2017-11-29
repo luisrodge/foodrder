@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h2><span class="text-bb">Add New Drink To <%= @restaurant.name %></span></h2><br/><br><br>
+
+    <%= simple_form_for [:admin, @restaurant, @drink], html: {multipart: true} do |f| %>
+        <%= f.input :name, input_html: {class: "input-lg"} %>
+        <%= f.input :price, input_html: {class: "input-lg"} %>
+        <br>
+        <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>
