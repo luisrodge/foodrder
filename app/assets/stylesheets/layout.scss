@@ -22,7 +22,6 @@ body {
   }
 }
 
-
 /* Primary Header */
 header {
   margin-bottom: 40px;
@@ -109,6 +108,23 @@ li.mobile-link {
 /* Main Body Content Container */
 .container.main-content-container {
   flex: 1;
+}
+
+#variants {
+  background-color: #F7F7F7;
+  margin: 40px 0;
+  padding: 22px 16px;
+  .variant-title {
+    padding-bottom: 48px;
+  }
+  .nested-fields {
+    margin-bottom: 40px;
+    border-bottom: 6px dashed #FFF;
+    padding-bottom: 30px;
+    &:last-of-type {
+      border: none;
+    }
+  }
 }
 
 /* Restaurant show view */
