@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :reject_checkout
+  layout 'minimal'
 
   def new
     @order = Order.new

@@ -31,6 +31,7 @@ header {
   background: #383838;
   color: #FFF;
   padding: 20px 0;
+  padding-top: 6px;
   h3 {
     font-size: 22px;
   }
@@ -81,6 +82,23 @@ header {
   .top-header-col-3 {
 
   }
+}
+
+.minimal-navbar {
+  margin-bottom: 60px;
+  .navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px !important;
+    font-weight: bold;
+  }
+
+  .navbar-brand,
+  .navbar-nav li a {
+    line-height: 66px;
+    height: 66px;
+    padding-top: 0;
+  }
+
 }
 
 .cart_fragment-wrapper {

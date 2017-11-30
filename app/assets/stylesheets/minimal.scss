@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "token-input-bootstrap3";
+@import "font-awesome";
+@import "fonts";
+@import "colors";
+@import "overrides/bootstrap";
+@import "overrides/general";
+@import "components/labels";
+@import "components/columns";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #424242;
+  background: #f7f7f7;
+}
+
+
+

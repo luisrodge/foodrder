@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :decorate_cart
+  layout 'minimal'
 
   def show
     @cart_items = CartItemDecorator.decorate_collection(@cart.cart_items)

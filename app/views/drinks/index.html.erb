@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="text-sb text-strong remove-margin">
+      <span class="text-bb">Would You Also Like To Order Something To Drink From <%= @restaurant.name %></span>?</h2>
+    <h3 class="text-muted">You are allowed to order drinks only from the restaurants your order food from.</h3>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to "Go To Cart", cart_path, class: "btn btn-info btn-lg btn-block" %>
+  </div>
+  <div class="col-md-3">
+    <%= link_to "Find More Food", foods_path, class: "btn btn-primary btn-lg btn-block btn-gb" %>
+  </div>
+</div>
+
+<br><br><br>
+
+<h2>Drinks (<%= @drinks.count %>)</h2>
+<br>
+<div class="row row-grid">
+  <% @drinks.order("created_at DESC").each do |drink| %>
+      <div class="grid-item col-md-4 col-sb">
+        <div class="grid-item-content col-box col-box-db">
+          <h3 class="text-strong"><span class="text-bb"><%= drink.name %></span></h3><br>
+          <% if drink.variants.any? %>
+              <h3>Variants</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <% drink.variants.each do |variant| %>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h4 class="remove-margin text-strong"><%= variant.name %></h4>
+                          <h4 class="text-price"><%= price_format(variant.price) %></h4>
+                        </div>
+                        <div class="col-md-4">
+                          <%= simple_form_for CartItem.new do |f| %>
+                              <%= f.input :food_id, as: :hidden, input_html: {value: variant.id} %>
+                              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                                  <i class="glyphicon glyphicon-shopping-cart"></i> Order
+                              <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $('.grid').isotope({
+        itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+        percentPosition: true,
+        masonry: {
+            columnWidth: '.grid-sizer'
+        }
+    });
+</script>

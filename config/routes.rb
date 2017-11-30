@@ -66,7 +66,9 @@ Rails.application.routes.draw do
     resources :checkouts
   end
 
-  resources :restaurants
+  resources :restaurants do
+    resources :drinks, only: :index
+  end
   resources :restaurant_requests, only: [:new, :create]
   resources :foods
   resources :menu_categories, only: :index

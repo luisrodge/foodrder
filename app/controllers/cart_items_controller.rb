@@ -6,14 +6,14 @@ class CartItemsController < ApplicationController
   def create
     if @cart.cart_items.where(food_id: @food).none?
       if @cart.create_cart_item(@food)
-        flash[:success] = 'Food added to cart successfully'
+        flash[:success] = 'Food added to cart successfully. What about something to drink?'
       else
         flash[:warning] = 'Something went wrong. Food could not be added to cart.'
       end
     else
       flash[:warning] = 'Food already added to cart. Try adding another food instead.'
     end
-    redirect_to cart_path
+    redirect_to restaurant_drinks_path(@food.restaurant, cf_id: CartFragment.find_by_restaurant_id(@food.restaurant).id)
   end
 
   def update
