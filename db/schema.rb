@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129154311) do
+ActiveRecord::Schema.define(version: 20171130181234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,12 @@ ActiveRecord::Schema.define(version: 20171129154311) do
     t.datetime "updated_at", null: false
     t.integer "total_cents", default: 0, null: false
     t.string "total_currency", default: "BZD", null: false
+    t.string "itemable_type"
+    t.bigint "itemable_id"
     t.index ["cart_fragment_id"], name: "index_cart_items_on_cart_fragment_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["food_id"], name: "index_cart_items_on_food_id"
+    t.index ["itemable_type", "itemable_id"], name: "index_cart_items_on_itemable_type_and_itemable_id"
   end
 
   create_table "carts", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|

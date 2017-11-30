@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:update, :destroy]
   before_action :set_food, only: :create
 
-  # Adding a food order to cart
+  # Adding a food/drink order to cart
   def create
     if @cart.cart_items.where(food_id: @food).none?
       if @cart.create_cart_item(@food)
@@ -29,7 +29,7 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:food_id, :quantity)
+    params.require(:cart_item).permit(:food_id, :itemable_id, :quantity)
   end
 
   def set_cart_item

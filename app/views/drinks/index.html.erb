@@ -21,26 +21,32 @@
 <br>
 <div class="row row-grid">
   <% @drinks.order("created_at DESC").each do |drink| %>
-      <div class="grid-item col-md-4 col-sb">
+      <div class="grid-item col-md-6 col-sb">
         <div class="grid-item-content col-box col-box-db">
-          <h3 class="text-strong"><span class="text-bb"><%= drink.name %></span></h3><br>
+          <h2 class="text-strong"><span class="text-bb"><%= drink.name %></span></h2><br>
           <% if drink.variants.any? %>
-              <h3>Variants</h3>
               <div class="row">
                 <div class="col-md-12">
                   <% drink.variants.each do |variant| %>
                       <hr>
                       <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-5">
                           <h4 class="remove-margin text-strong"><%= variant.name %></h4>
                           <h4 class="text-price"><%= price_format(variant.price) %></h4>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-7">
                           <%= simple_form_for CartItem.new do |f| %>
-                              <%= f.input :food_id, as: :hidden, input_html: {value: variant.id} %>
-                              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-                                  <i class="glyphicon glyphicon-shopping-cart"></i> Order
-                              <% end %>
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <%= f.input :quantity, input_html: {value: 1}, class: "form-control" %>
+                                </div>
+                                <div class="col-md-4"><br>
+                                  <%= f.input :itemable_i, as: :hidden, input_html: {value: variant.id} %>
+                                  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                                      <i class="glyphicon glyphicon-shopping-cart"></i> Order
+                                  <% end %>
+                                </div>
+                              </div>
                           <% end %>
                         </div>
                       </div>

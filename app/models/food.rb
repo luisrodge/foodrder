@@ -5,6 +5,7 @@ class Food < ApplicationRecord
   belongs_to :menu
 
   has_many :variants, as: :variantable
+  has_many :cart_items, as: :itemable
 
   validates_presence_of :name, :price_cents
 

@@ -15,6 +15,7 @@ class Cart < ApplicationRecord
         cart_fragment = cart_fragments.create(restaurant: restaurant)
       end
       cart_items.create(food: food, quantity: 1,
+                        itemable: food,
                         cart_fragment: cart_fragment,
                         total: food.price)
       update_total
