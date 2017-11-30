@@ -70,17 +70,17 @@ input, textarea, select {
 
 /* Buttons */
 .btn {
-  border-radius: 3px;
+  border-radius: 20px;
   border: none;
 }
 
 .btn-info {
-  background-color: #CCC;
+  background-color: #8C8C8C;
   border-bottom: 2px solid #ADADAD;
   &:hover, &:focus {
-    background: #71BA51!important;
+    background: #6E6E6E!important;
     border: none;
-    border-bottom: 2px solid #03DD5D;
+    border-bottom: 2px solid #ADADAD;
   }
 }
 
