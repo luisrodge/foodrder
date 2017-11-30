@@ -48,6 +48,14 @@ Rails.application.routes.draw do
     end
   end
 
+  # API routes
+  namespace :api do
+    namespace :v1 do
+      resources :foods, only: :show
+      resources :drinks, only: :index
+    end
+  end
+
   # Customer cart
   resource :cart, only: :show
   resources :cart_items
@@ -56,10 +64,6 @@ Rails.application.routes.draw do
   # Cart checkout
   resources :cart, only: [:nil] do
     resources :checkouts
-  end
-
-  resources :orders, only: [:nil] do
-    resource :confirmation_number, only: :show
   end
 
   resources :restaurants

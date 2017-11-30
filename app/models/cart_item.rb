@@ -5,6 +5,10 @@ class CartItem < ApplicationRecord
 
   monetize :total_cents
 
+  attr_accessor :delivery
+  attr_accessor :drink
+
+
   # Update a CartItem quantity then update Cart total
   def update_item(quantity)
     existing_cart = cart

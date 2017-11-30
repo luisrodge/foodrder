@@ -1,4 +1,5 @@
 var cart = (function () {
+
     // Toggle CartFragment delivery to true or false when on Cart show page
     var toggleDelivery = function (elem, event) {
         var checked = event.target.checked;
@@ -9,7 +10,9 @@ var cart = (function () {
 
         $.ajax({
             type: "PUT",
-            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+            },
             url: "/cart_fragments/" + cfId,
             data: {delivery: checked},
             success: function () {

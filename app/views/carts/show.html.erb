@@ -5,25 +5,31 @@
           (<%= @cart_items.count %>)</span></h2>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 text-right col-mobile-pl">
-        <h2 class="remove-margin cart-total">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
+        <h2 class="remove-margin cart-total">Your Total: <span class="text-price"><%= price_format(@cart.total) %></span>
+        </h2>
       </div>
     </div>
 
     <br><br>
 
     <div class="row">
-      <div class="col-md-12">
-        <div class="col-box col-box-db text-center mobile-col-box">
-          <h2 class="text-center text-sb">Ready To Send Your Orders?</h2>
-          <h4 class="text-lh cart-notice">Before checking out please ensure that you've specified whether or not you want delivery
-            from the restaurants you are ordering
-            from below. By default delivery is set to false and pickup is set to true for all orders.</h4><br>
-          <p><%= link_to "Proceed To Checkout", new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb" %></p>
-        </div>
+      <div class="col-md-6 col-sb">
+        <p>
+          <%= link_to foods_path(@cart), class: "btn btn-info btn-lg btn-block" do %>
+              <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Food
+          <% end %>
+        </p>
+      </div>
+      <div class="col-md-6 pull-right mobile-pull">
+        <p>
+          <%= link_to new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb btn-block" do %>
+              <i class="fa fa-hand-o-right" aria-hidden="true"></i> Proceed To Checkout
+          <% end %>
+        </p>
       </div>
     </div>
 
-    <br><br><br><br>
+    <br><br>
 
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="cart_fragment-wrapper">
@@ -36,9 +42,10 @@
                 <div class="col-md-6 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
                     <p class="remove-margin checkbox-text">
-                      <%= fa_icon "motorcycle" %> Delivery from <%= cart_fragment.restaurant.name %>? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
-                                                   onchange: "cart.toggleDelivery(this, event)",
-                                                   data: {"cf-id" => "#{cart_fragment.id}"} %>
+                      <%= fa_icon "motorcycle" %> Delivery from <%= cart_fragment.restaurant.name %>
+                      ? <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                                          onchange: "cart.toggleDelivery(this, event)",
+                                          data: {"cf-id" => "#{cart_fragment.id}"} %>
                     </p>
                   </div>
                 </div>
@@ -95,8 +102,8 @@
         <h1><i class="glyphicon glyphicon-shopping-cart"></i> (0)</h1>
         <h2 class="remove-margin">No Orders In Cart :(</h2>
         <br><br><br>
-        <%= link_to "Foods", "", class: "btn btn-primary btn-lg" %>
-        <%= link_to "Restaurants", "", class: "btn btn-primary btn-lg" %>
+        <%= link_to "Foods", foods_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Restaurants", restaurants_path, class: "btn btn-primary btn-lg" %>
       </div>
     </div>
 <% end %>

@@ -4,8 +4,7 @@ class Restaurant < ApplicationRecord
   has_many :foods, dependent: :destroy
   has_many :specials, dependent: :destroy
 
-  has_many :common_drinks
-  has_many :drinks, through: :common_drinks
+  has_many :drinks
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
   enum order_notify_type: %w[phone_call text_message]

@@ -29,6 +29,7 @@ gem 'sweet-alert2-rails'
 gem 'httparty'
 gem 'sidekiq'
 gem 'cocoon'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'

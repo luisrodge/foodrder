@@ -69,6 +69,36 @@
   <% end %>
 </div>
 
+<br>
+<hr>
+<h2>Drinks (<%= @restaurant.drinks.count %>)</h2>
+<hr>
+<br>
+<div class="row row-grid">
+  <% @restaurant.drinks.order("created_at DESC").each do |drink| %>
+      <div class="grid-item col-md-3 col-sb">
+        <div class="grid-item-content col-box col-box-db">
+          <h3 class="text-strong"><span class="text-bb"><%= drink.name %></span></h3><br>
+          <% unless drink.variants.any? %>
+              <h4 class="text-price">Default Price: <%= price_format(drink.default_price) %></h4>
+          <% end %>
+          <% if drink.variants.any? %>
+              <h3>Variants</h3>
+              <div class="row">
+                <div class="col-md-12">
+                  <% drink.variants.each do |variant| %>
+                      <hr>
+                      <h4>Name: <%= variant.name %></h4>
+                      <h4 class="text-price"><%= price_format(variant.price) %></h4>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
 <script type="text/javascript" charset="utf-8">
     $('.grid').isotope({
         itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
