@@ -4,7 +4,7 @@
 .navbar {
   border-radius: 0;
   .nav-fl {
-    padding-left: 0px!important;
+    padding-left: 0px !important;
   }
 }
 
@@ -24,8 +24,8 @@
 .navbar-default .navbar-nav > li > a {
   color: #FFF;
   font-size: 19px;
-  &:hover {
-    color: #E6E6E6;
+  &:hover, &:focus {
+    color: #71BA51;
   }
 }
 
@@ -52,20 +52,20 @@
 }
 
 .navbar-collapse {
- padding-left: 0;
+  padding-left: 0;
   padding-right: 0;
 }
 
-  /* Responsive Image */
+/* Responsive Image */
 .img-responsive {
   width: 100%;
 }
 
 /* Form Inputs */
 input, textarea, select {
-  box-shadow: none!important;
-  border: 1px solid #EDEDED!important;
-  border-radius: 3px!important;
+  box-shadow: none !important;
+  border: 1px solid #EDEDED !important;
+  border-radius: 3px !important;
 }
 
 /* Buttons */
@@ -78,7 +78,7 @@ input, textarea, select {
   background-color: #4A4A4A;
   border-bottom: 2px solid #363636;
   &:hover, &:focus {
-    background: #6E6E6E!important;
+    background: #6E6E6E !important;
     border: none;
     border-bottom: 2px solid #363636;
   }
@@ -87,7 +87,7 @@ input, textarea, select {
 .btn-success {
   background: #383838;
   &:hover, &:focus {
-    background: #454545!important;
+    background: #454545 !important;
 
   }
 }
@@ -106,17 +106,16 @@ input, textarea, select {
 .btn-primary {
   background: #71BA51;
   &:hover, &:focus {
-    background: #8BC272!important;
+    background: #8BC272 !important;
   }
 }
 
 .btn-gb {
-  border-bottom: 2px solid #71BA51!important;
+  border-bottom: 2px solid #71BA51 !important;
   &:hover {
-    border-bottom: 2px solid #71BA51!important;
+    border-bottom: 2px solid #71BA51 !important;
   }
 }
-
 
 /* Flashes */
 .alert {
@@ -187,51 +186,62 @@ table {
   margin-right: -85px;
   margin-left: -85px;
 }
+
 .gutter-100 > [class^="col-"], .gutter-100 > [class^=" col-"] {
   padding-right: 85px;
   padding-left: 85px;
 }
+
 /* 80px gutter */
 .gutter-80.row {
   margin-right: -40px;
   margin-left: -40px;
 }
+
 .gutter-80 > [class^="col-"], .gutter-80 > [class^=" col-"] {
   padding-right: 40px;
   padding-left: 40px;
 }
+
 /* 70px gutter */
 .gutter-70.row {
   margin-right: -35px;
   margin-left: -35px;
 }
+
 .gutter-70 > [class^="col-"], .gutter-70 > [class^=" col-"] {
   padding-right: 35px;
   padding-left: 35px;
 }
+
 /* 60px gutter */
 .gutter-60.row {
   margin-right: -30px;
   margin-left: -30px;
 }
+
 .gutter-60 > [class^="col-"], .gutter-60 > [class^=" col-"] {
   padding-right: 30px;
   padding-left: 30px;
 }
+
 /* 50px gutter */
 .gutter-50.row {
   margin-right: -25px;
   margin-left: -25px;
 }
+
 .gutter-50 > [class^="col-"], .gutter-50 > [class^=" col-"] {
   padding-right: 25px;
   padding-left: 25px;
 }
+
 /* 40px gutter */
 .gutter-40.row {
   margin-right: -20px;
   margin-left: -20px;
 }
+
 .gutter-40 > [class^="col-"], .gutter-40 > [class^=" col-"] {
   padding-right: 20px;
   padding-left: 20px;
@@ -242,6 +252,7 @@ table {
   margin-right: -15px;
   margin-left: -15px;
 }
+
 .gutter-30 > [class^="col-"], .gutter-30 > [class^=" col-"] {
   padding-right: 15px;
   padding-left: 15px;
@@ -252,25 +263,30 @@ table {
   margin-right: -10px;
   margin-left: -10px;
 }
+
 .gutter-20 > [class^="col-"], .gutter-20 > [class^=" col-"] {
   padding-right: 10px;
   padding-left: 10px;
 }
+
 /* 10px gutter */
 .gutter-10.row {
   margin-right: -5px;
   margin-left: -5px;
 }
+
 .gutter-10 > [class^="col-"], .gutter-10 > [class^=" col-"] {
   padding-right: 5px;
   padding-left: 5px;
 }
+
 // 0px gutter
 .gutter-0.row {
   margin-right: 0;
   margin-left: 0;
 }
-.gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"]{
+
+.gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"] {
   padding-right: 0;
   padding-left: 0;
 }
