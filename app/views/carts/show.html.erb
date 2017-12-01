@@ -35,12 +35,12 @@
     <div class="heading-wrapper heading-wrapper-sb">
       <div class="row">
         <div class="col-md-8 col-sm-8 col-xs-8">
-          <h2 class="remove-margin truncate"><%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
+          <h2 class="remove-margin truncate mobile-sb"><%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
             From <%= @cart_fragments.first.restaurant.name %></h2>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-          <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-info" %>
-          <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-info" %>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-right col-mobile-pl">
+          <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>
+          <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-default" %>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
                   <div class="col-md-3 col-sm-12 col-xs-12">
                     <%= simple_form_for cart_item, method: :put do |f| %>
                         <%= f.input :quantity, label_html: {class: 'lb-lg'} %>
-                        <%= button_tag(type: 'submit', class: "btn btn-info") do %>
+                        <%= button_tag(type: 'submit', class: "btn btn-default") do %>
                             <i class="glyphicon glyphicon-refresh"></i> Update
                         <% end %>
                     <% end %>
@@ -135,7 +135,7 @@
                         <br>
                         <%= simple_form_for drink, method: :put do |f| %>
                             <%= f.input :quantity, label: false %>
-                            <%= button_tag(type: 'submit', class: "btn btn-info") do %>
+                            <%= button_tag(type: 'submit', class: "btn btn-default") do %>
                                 <i class="glyphicon glyphicon-refresh"></i> Update
                             <% end %>
                         <% end %>
