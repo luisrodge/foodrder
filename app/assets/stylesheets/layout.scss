@@ -7,6 +7,11 @@ body {
   flex-direction: column;
 }
 
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: #71BA51;
+}
+
 /* Loading Image Wrapper */
 .image-medium-wrapper {
   background: #f7f7f7;
@@ -221,7 +226,7 @@ ul.categories {
 
 .subscribe-wrapper {
   border: 1px solid #CCC;
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
 .home-subscribe {

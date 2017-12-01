@@ -9,8 +9,8 @@
 
 <hr>
 
-
 <br><br>
+
 <div class="row ">
   <div class="col-md-12">
     <div class="row">
@@ -64,17 +64,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% order_fragment.order_items.each do |order_item| %>
+                    <% order_fragment.food_order_items.each do |order_item| %>
                         <tr>
                           <td>
                             <div class="row">
                               <div class="col-md-3">
                                 <div class="image-medium-wrapper">
-                                  <%= image_tag(order_item.food.primary_image_url(:medium)) %>
+                                  <%= image_tag(order_item.itemable.primary_image_url(:medium)) %>
                                 </div>
                               </div>
                             </div>
-                            <%= order_item.food.name %>
+                            <%= order_item.itemable.name %>
                           </td>
                           <td><%= order_item.quantity %></td>
                           <td class="text-price"><%= price_format(order_item.total) %></td>

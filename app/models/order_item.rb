@@ -4,6 +4,6 @@ class OrderItem < ApplicationRecord
   belongs_to :itemable, polymorphic: true
 
   def total
-    food.price * quantity
+    itemable.price || itemable.variantable.price * quantity
   end
 end
