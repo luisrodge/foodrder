@@ -24,6 +24,11 @@ class Cart < ApplicationRecord
     return false
   end
 
+  # Count how many Foods are in the cart
+  def count
+    cart_fragments.count
+  end
+
   def cart_item_exist?(cart_item_params)
     cart_items.where(itemable_id: cart_item_params[:itemable_id]).any?
   end

@@ -75,10 +75,10 @@ input, textarea, select {
 }
 
 .btn-info {
-  background-color: #6E6E6E;
+  background-color: #4A4A4A;
   border-bottom: 2px solid #363636;
   &:hover, &:focus {
-    background: #575757!important;
+    background: #6E6E6E!important;
     border: none;
     border-bottom: 2px solid #363636;
   }
@@ -93,9 +93,9 @@ input, textarea, select {
 }
 
 .btn-primary {
-  background: #454545;
+  background: #71BA51;
   &:hover, &:focus {
-    background: #575757!important;
+    background: #8BC272!important;
   }
 }
 

@@ -3,8 +3,8 @@ class CartsController < ApplicationController
   layout 'minimal'
 
   def show
-    @cart_items = CartItemDecorator.decorate_collection(@cart.cart_items)
-    @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
+    @cart_fragments = @cart.cart_fragments.order("created_at DESC").page(params[:page]).per(1)
+    @drinks = @cart.cart_items.where(itemable_type: "Variant")
   end
 
   private

@@ -3,6 +3,14 @@ class CartFragment < ApplicationRecord
   belongs_to :cart
   has_many :cart_items, dependent: :destroy
 
+  def food_cart_items
+    cart_items.where(itemable_type: "Food")
+  end
+
+  def drink_cart_items
+    cart_items.where(itemable_type: "Variant")
+  end
+
   def total
     cf_total = 0.0
     cart_items.each do |cart_item|

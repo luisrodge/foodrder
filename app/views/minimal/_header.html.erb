@@ -19,7 +19,7 @@
         <li><a href="#">Foods</a></li>
         <li>
           <%= link_to cart_path do %>
-              <i class="glyphicon glyphicon-shopping-cart"></i> (<%= @cart.cart_items.count %>)
+              <i class="glyphicon glyphicon-shopping-cart"></i> (<%= @cart.count %>)
           <% end %>
         </li>
       </ul>
