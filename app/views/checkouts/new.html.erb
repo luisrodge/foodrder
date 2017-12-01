@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-5 col-sm-5 col-xs-12">
     <h2 class="remove-margin text-sb">
-      <span class="text-bb">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></span>
+      Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %>
     </h2>
     <br>
     <%= link_to cart_path, class: "btn btn-info" do %>
@@ -28,7 +28,14 @@
   <div class="col-md-6 col-sm-7 col-xs-12 pull-right">
     <div class="row checkout-price">
       <div class="col-md-12 text-right col-mobile-pl">
-        <h2 class="remove-margin">Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
+        <h2 class="remove-margin">Overall Total: <span class="text-price"><%= price_format(@cart.total) %></span></h2>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-mobile-pl text-right">
+        <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>
+        <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-default" %>
       </div>
     </div>
     <br>
@@ -50,7 +57,7 @@
 
           <hr>
           <br>
-          <% cart_fragment.cart_items.each do |cart_item| %>
+          <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
               <div class="row text-center">
                 <div class="col-md-3 col-sm-5 col-xs-5">
                   <div class="image-medium-wrapper">
@@ -69,6 +76,31 @@
               </div>
               <br>
           <% end %>
+          <% if cart_fragment.drink_cart_items.any? %>
+              <br>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="remove-margin truncate">Drink Orders</h3>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <% cart_fragment.drink_cart_items.each do |drink| %>
+                    <div class="col-md-4">
+                      <div class="cart-drink text-center">
+                        <h4 class="remove-margin"><%= pluralize(drink.quantity, drink.itemable.variantable.name) %></h4>
+                        <h4 class="truncate"><%= drink.itemable.name %></h4>
+                        <h4>
+                        <span class="text-price "><%= price_format(drink.itemable.price) %>
+                        </span>
+                        </h4>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+          <% end %>
+
         </div>
     <% end %>
   </div>

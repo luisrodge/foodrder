@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
 
   def new
     @order = Order.new
-    @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
+    @cart_fragments = @cart.cart_fragments.order("created_at DESC").page(params[:page]).per(1)
   end
 
   def create
