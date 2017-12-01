@@ -35,7 +35,7 @@
                           <h4 class="text-price"><%= price_format(variant.price) %></h4>
                         </div>
                         <div class="col-md-7">
-                          <%= simple_form_for CartItem.new do |f| %>
+                          <%= simple_form_for [variant, CartItem.new] do |f| %>
                               <div class="row">
                                 <div class="col-md-8">
                                   <%= f.input :quantity, input_html: {value: 1}, class: "form-control" %>

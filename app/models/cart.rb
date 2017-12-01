@@ -4,20 +4,20 @@ class Cart < ApplicationRecord
 
   monetize :total_cents
 
-  # Create a CartItem record upon adding a Food to Cart
+  # Create a CartItem record upon adding a Food/Drink to Cart
   # and associate created record with a CartFragment record
-  def create_cart_item(food)
-    restaurant = food.restaurant
+  def create_cart_item(itemable)
+    restaurant = itemable.restaurant
     transaction do
       if restaurant_cart_fragment?(restaurant)
         cart_fragment = cart_fragments.where(restaurant: restaurant).first
       else
         cart_fragment = cart_fragments.create(restaurant: restaurant)
       end
-      cart_items.create(food: food, quantity: 1,
-                        itemable: food,
+      cart_items.create(itemable: itemable,
+                        quantity: 1,
                         cart_fragment: cart_fragment,
-                        total: food.price)
+                        total: itemable.price)
       update_total
     end
   rescue StandardError
@@ -25,7 +25,7 @@ class Cart < ApplicationRecord
   end
 
   def cart_item_exist?(cart_item_params)
-    cart_items.where(food_id: cart_item_params[:food_id]).any?
+    cart_items.where(itemable_id: cart_item_params[:itemable_id]).any?
   end
 
   def restaurant_cart_fragment?(restaurant)

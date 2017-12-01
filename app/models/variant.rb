@@ -1,4 +1,5 @@
 class Variant < ApplicationRecord
+  belongs_to :restaurant
   belongs_to :variantable, polymorphic: true
   has_many :cart_items, as: :itemable
 

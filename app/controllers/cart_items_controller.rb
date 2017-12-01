@@ -1,19 +1,23 @@
 class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:update, :destroy]
-  before_action :set_food, only: :create
+  before_action :set_itemable, only: :create
 
   # Adding a food/drink order to cart
   def create
-    if @cart.cart_items.where(food_id: @food).none?
-      if @cart.create_cart_item(@food)
-        flash[:success] = 'Food added to cart successfully. What about something to drink?'
+    if @cart.cart_items.where(itemable_id: @itemable).none?
+      if @cart.create_cart_item(@itemable)
+        if CartItem.find_by_itemable_id(@itemable).itemable_type == "Food"
+          flash[:success] = 'Food added to cart successfully. What about something to drink?'
+          redirect_to restaurant_drinks_path(@itemable.restaurant,
+                                             cf_id: CartFragment.find_by_restaurant_id(@itemable.restaurant).id) and return
+        end
       else
         flash[:warning] = 'Something went wrong. Food could not be added to cart.'
       end
     else
       flash[:warning] = 'Food already added to cart. Try adding another food instead.'
     end
-    redirect_to restaurant_drinks_path(@food.restaurant, cf_id: CartFragment.find_by_restaurant_id(@food.restaurant).id)
+    redirect_to cart_path
   end
 
   def update
@@ -36,7 +40,8 @@ class CartItemsController < ApplicationController
     @cart_item ||= CartItem.find(params[:id])
   end
 
-  def set_food
-    @food ||= Food.find(cart_item_params[:food_id])
+  def set_itemable
+    resource, id = request.path.split('/')[1, 2]
+    @itemable = resource.singularize.classify.constantize.find(id)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130181234) do
+ActiveRecord::Schema.define(version: 20171130221901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20171130181234) do
 
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id"
-    t.bigint "food_id"
     t.integer "quantity"
     t.decimal "sub_total"
     t.bigint "cart_fragment_id"
@@ -39,7 +38,6 @@ ActiveRecord::Schema.define(version: 20171130181234) do
     t.bigint "itemable_id"
     t.index ["cart_fragment_id"], name: "index_cart_items_on_cart_fragment_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
-    t.index ["food_id"], name: "index_cart_items_on_food_id"
     t.index ["itemable_type", "itemable_id"], name: "index_cart_items_on_itemable_type_and_itemable_id"
   end
 
@@ -219,6 +217,8 @@ ActiveRecord::Schema.define(version: 20171130181234) do
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "BZD", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_variants_on_restaurant_id"
     t.index ["variantable_id", "variantable_type"], name: "index_variants_on_variantable_id_and_variantable_type"
   end
 
@@ -226,7 +226,6 @@ ActiveRecord::Schema.define(version: 20171130181234) do
   add_foreign_key "cart_fragments", "restaurants"
   add_foreign_key "cart_items", "cart_fragments"
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "cart_items", "foods"
   add_foreign_key "drinks", "restaurants"
   add_foreign_key "foods", "menus"
   add_foreign_key "foods", "restaurants"
@@ -239,4 +238,5 @@ ActiveRecord::Schema.define(version: 20171130181234) do
   add_foreign_key "specials", "restaurants"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "restaurants"
+  add_foreign_key "variants", "restaurants"
 end

@@ -1,6 +1,5 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
-  belongs_to :food
   belongs_to :cart_fragment
   belongs_to :itemable, polymorphic: true
 
@@ -8,7 +7,6 @@ class CartItem < ApplicationRecord
 
   attr_accessor :delivery
   attr_accessor :drink
-
 
   # Update a CartItem quantity then update Cart total
   def update_item(quantity)
@@ -33,6 +31,6 @@ class CartItem < ApplicationRecord
 
   # Calculate single CartItem total
   def cart_item_total
-    food.price * quantity
+    itemable.price * quantity
   end
 end

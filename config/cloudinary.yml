@@ -5,6 +5,7 @@ development:
   api_secret: LQbR43L_cks9asw8ptWH_x6GCN8
   enhance_image_tag: true
   static_image_support: false
+  secure: true
 production:
   cloud_name: dwaavflqp
   api_key: '224668318764929'
