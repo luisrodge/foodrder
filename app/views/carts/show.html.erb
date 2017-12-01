@@ -13,14 +13,14 @@
     <br><br>
 
     <div class="row">
-      <div class="col-md-6 col-sb">
+      <div class="col-md-4 col-sb">
         <p>
           <%= link_to foods_path(@cart), class: "btn btn-info btn-lg btn-block" do %>
               <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Food
           <% end %>
         </p>
       </div>
-      <div class="col-md-6 pull-right mobile-pull">
+      <div class="col-md-8">
         <p>
           <%= link_to new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb btn-block" do %>
               <i class="fa fa-hand-o-right" aria-hidden="true"></i> Proceed To Checkout
@@ -66,8 +66,8 @@
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-8 col-xs-12">
-                    <h3 class="text-title remove-margin text-sb"><%= cart_item.food_name %></h3>
-                    <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.food_price) %>
+                    <h3 class="text-title remove-margin text-sb"><%= cart_item.cart_item_name %></h3>
+                    <h4 class="remove-margin">Price: <span class="text-price "><%= price_format(cart_item.cart_item_price) %>
                     </span></h4>
                     <br>
                     <div class="content-bg">

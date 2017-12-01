@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130221901) do
+ActiveRecord::Schema.define(version: 20171201030455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cart_fragments", force: :cascade do |t|
+  create_table "cart_fragments", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.bigint "restaurant_id"
     t.bigint "cart_id"
     t.datetime "created_at", null: false

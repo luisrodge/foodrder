@@ -6,11 +6,13 @@ class CartItemsController < ApplicationController
   def create
     if @cart.cart_items.where(itemable_id: @itemable).none?
       if @cart.create_cart_item(@itemable)
-        if CartItem.find_by_itemable_id(@itemable).itemable_type == "Food"
-          flash[:success] = 'Food added to cart successfully. What about something to drink?'
-          redirect_to restaurant_drinks_path(@itemable.restaurant,
-                                             cf_id: CartFragment.find_by_restaurant_id(@itemable.restaurant).id) and return
+        if CartItem.find_by_itemable_id(@itemable).itemable_type == 'Food' && @itemable.restaurant.drinks.any?
+          flash[:success] = 'Food added to cart successfully. What about ordering something to drink?'
+        else
+          flash[:success] = 'Drink added to cart successfully.'
         end
+        redirect_to restaurant_drinks_path(@itemable.restaurant,
+                                           cf_id: CartFragment.find_by_restaurant_id(@itemable.restaurant).id) and return
       else
         flash[:warning] = 'Something went wrong. Food could not be added to cart.'
       end
