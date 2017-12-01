@@ -28,7 +28,7 @@ class Order < ApplicationRecord
 
         # Assign each OrderItem to it's appropriate OrderFragment.
         cart_fragment.cart_items.each do |cart_item|
-          order.order_items.create(food: cart_item.food,
+          order.order_items.create(itemable: cart_item.itemable,
                                    quantity: cart_item.quantity,
                                    order_fragment: order_fragment)
         end

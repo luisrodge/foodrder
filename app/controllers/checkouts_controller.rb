@@ -37,8 +37,4 @@ class CheckoutsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  def message_restaurant(order_fragment)
-    EngineSparkService.new(order_fragment).message_restaurant
-  end
 end

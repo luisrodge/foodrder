@@ -8,5 +8,4 @@ class Variant < ApplicationRecord
   monetize :price_cents
 
   validates_presence_of :name
-
 end
