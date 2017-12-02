@@ -29,8 +29,8 @@
                 <div class="figcaption-footer">
                   <div class="row">
                     <div class="col-md-5 col-sm-5 col-xs-5">
-                      <%= simple_form_for CartItem.new do |f| %>
-                          <%= f.input :food_id, as: :hidden, input_html: {value: food.id} %>
+                      <%= simple_form_for [food, CartItem.new] do |f| %>
+                          <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
                           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                               <i class="glyphicon glyphicon-shopping-cart"></i> Order
                           <% end %>
