@@ -8,7 +8,6 @@ body {
 }
 
 .turbolinks-progress-bar {
-  height: 5px;
   background-color: #71BA51;
 }
 
@@ -128,7 +127,6 @@ header {
   .cart-fragment-header {
     padding-bottom: 34px;
     .delivery-cb-wrapper {
-      padding-top: 14px;
       input[type="checkbox"] {
         bottom:-1px;
       }
@@ -383,7 +381,7 @@ div#sidebar-wrapper.active {
 .content-header {
   height: 65px;
   line-height: 65px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   #home {
     font-family: 'Roboto', sans-serif;
     color: #39CA55;

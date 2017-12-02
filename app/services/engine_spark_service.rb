@@ -13,9 +13,15 @@ class EngineSparkService
     message_body = ""
     message_end = ""
     dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.created_at.strftime("%I:%M %p")}.")
-    @order_fragment.order_items.each_with_index do |order_item, index|
-      message_body = "#{order_item.food.name}, Amount: #{order_item.quantity}."
+    @order_fragment.food_order_items.each do |order_item|
+      message_body = "#{order_item.itemable.name}, Amount: #{order_item.quantity}."
       dispatch_message(message_body)
+    end
+    if @order_fragment.drink_order_items.any?
+      @order_fragment.drink_order_items.each do |order_item|
+        message_body = "#{order_item.itemable.variantable.name} - #{order_item.itemable.name}, Amount: #{order_item.quantity}."
+        dispatch_message(message_body)
+      end
     end
     if @order_fragment.delivery?
       message_end = "Delivery @ #{@order_fragment.order.location}, #{@order_fragment.order.location_description}."

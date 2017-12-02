@@ -16,13 +16,15 @@ class Admin::RestaurantsController < Admin::BaseController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.valid?
-      @restaurant.save
+      puts "Valid"
+      @restaurant.save!
       # Assign restaurant seller account
-      Seller.create(email: restaurant_params[:origin_seller_email],
+      Seller.create!(email: restaurant_params[:origin_seller_email],
                     password: "password1234", password_confirmation: "password1234",
                     restaurant: @restaurant)
       redirect_to admin_restaurants_path, notice: "Restaurant added successfully"
     else
+      puts "invaid"
       render :new
     end
   end

@@ -34,25 +34,23 @@
 
     <div class="heading-wrapper heading-wrapper-sb">
       <div class="row">
-        <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="col-md-8 col-sm-6 col-xs-12">
           <h2 class="remove-margin truncate mobile-sb"><%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
             From <%= @cart_fragments.first.restaurant.name %></h2>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 text-right col-mobile-pl">
+        <div class="col-md-4 col-sm-6 col-xs-12 text-right col-xs-pl">
           <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>
           <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-default" %>
         </div>
       </div>
     </div>
 
-
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="cart_fragment-wrapper">
           <div class="row cart-fragment-header">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-            </div>
+
             <% if cart_fragment.restaurant.offers_delivery? %>
-                <div class="col-md-6 text-right col-mobile-pl">
+                <div class="col-md-12 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
                     <h2 class="remove-margin checkbox-text">
                       <%= fa_icon "motorcycle" %> Delivery?
@@ -63,7 +61,7 @@
                   </div>
                 </div>
             <% else %>
-                <div class="col-md-6 col-sm-6 xol-xs-12 text-right col-mobile-pl">
+                <div class="col-md-12 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
                     <p class="remove-margin checkbox-text">Delivery not offered</p>
                   </div>
@@ -115,8 +113,7 @@
                     <h2 class="remove-margin truncate">Drink Orders</h2>
                   </div>
                   <div class="col-md-6 col-sm-5 col-xs-5 text-right">
-                    <%= link_to restaurant_drinks_path(cart_fragment.restaurant,
-                                                       cf_id: cart_fragment), class: "btn btn-info" do %>
+                    <%= link_to restaurant_drinks_path(cart_fragment.restaurant), class: "btn btn-info" do %>
                         <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Drinks
                   <% end %>
                   </div>

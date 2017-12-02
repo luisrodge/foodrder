@@ -10,10 +10,9 @@ class CartItemsController < ApplicationController
           if CartItem.find_by_itemable_id(@itemable).itemable_type == 'Food'
             flash[:success] = 'Food added to cart successfully. What about ordering something to drink?'
           else
-            flash[:success] = 'Drink added to cart successfully.'
+            flash[:info] = 'Drink added to cart successfully.'
           end
-          redirect_to restaurant_drinks_path(@itemable.restaurant,
-                                             cf_id: CartFragment.find_by_restaurant_id(@itemable.restaurant).id) and return
+          redirect_to restaurant_drinks_path(@itemable.restaurant) and return
         else
           flash[:success] = 'Food added to cart successfully.'
         end

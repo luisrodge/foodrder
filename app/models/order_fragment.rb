@@ -10,6 +10,10 @@ class OrderFragment < ApplicationRecord
     order_items.where(itemable_type: "Food")
   end
 
+  def drink_order_items
+    order_items.where(itemable_type: "Variant")
+  end
+
   def total
     of_total = 0.0
     order_items.each do |order_item|
