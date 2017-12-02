@@ -10,7 +10,7 @@ class OrderDecorator < Draper::Decorator
     else
       title = 'Order Processed And Archived'
     end
-    h.content_tag :h2, title, class: "text-title"
+    h.content_tag :h1, title, class: "text-title"
   end
 
   def update_status_btn

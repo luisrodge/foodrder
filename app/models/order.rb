@@ -93,6 +93,10 @@ class Order < ApplicationRecord
     order_fragments.where(delivery: true).count == order_fragments.count
   end
 
+  def any_deliveries?
+    order_fragments.where(delivery: true).any?
+  end
+
   # Check if all restaurants associated with the checked out
   # OrderFragments have opted for order notices via sms message
   def all_sms_opted?
