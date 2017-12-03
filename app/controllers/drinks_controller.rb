@@ -14,7 +14,7 @@ class DrinksController < ApplicationController
   end
 
   def should_redirect
-    unless @cart.restaurant_cart_fragment?(@restaurant)
+    unless @cart.restaurant_cart_fragment?(@restaurant) && @restaurant.drinks.any?
       redirect_to root_path
     end
   end

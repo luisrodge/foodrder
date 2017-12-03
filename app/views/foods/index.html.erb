@@ -37,7 +37,7 @@
             <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
           </div>
           <div class="figcaption">
-            <h3 class="truncate text-strong mobile-sb"><%= food.name %></h3>
+            <h3 class="truncate text-strong"><%= food.name %></h3>
             <% if food.restaurant.offers_delivery? %>
                 <div class="row">
                   <div class="col-md-6 col-sm-6 col-sm-6 col-xs-6">

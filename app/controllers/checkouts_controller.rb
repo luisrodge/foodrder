@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :reject_checkout
+  before_action :set_cart_fragments
   layout 'minimal'
 
   def new
@@ -14,11 +15,11 @@ class CheckoutsController < ApplicationController
       Order.checkout(@order, @cart)
       @cart.destroy
       cookies.delete(:cart)
-      flash[:success] = 'Your order had been sent successfully.'
+      flash[:success] = 'Your order had been sent successfully. Thanks for ordering with foodrder.bz'
       redirect_to root_path
     else
-      @cart_fragments = CartFragmentDecorator.decorate_collection(@cart.cart_fragments)
-      render :new
+      flash[:danger] = "Your order could not be sent. Make sure you are filling out all the required fields & that you are entering valid values"
+      redirect_to new_cart_checkout_path(@cart)
     end
   end
 
@@ -36,5 +37,9 @@ class CheckoutsController < ApplicationController
     if @cart.cart_items.none? || @cart.id != params[:cart_id].to_i
       redirect_to root_path
     end
+  end
+
+  def set_cart_fragments
+    @cart_fragments = @cart.cart_fragments.order("created_at DESC").page(params[:page]).per(1)
   end
 end
