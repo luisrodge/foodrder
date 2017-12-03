@@ -1,4 +1,5 @@
 class Subscriber < ApplicationRecord
-  validates_presence_of :mobile_number
-  validates_uniqueness_of :mobile_number
+  validates :mobile_number, presence: true, uniqueness: true,
+            numericality: {only_integer: true},
+            length: {minimum: 7, maximum: 7}
 end
