@@ -7,10 +7,14 @@
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #FFF;
   }
+  .nav > li {
+    border-bottom: 1px solid #00B326;
+  }
   .col-xs-pl {
     float: none;
     text-align: left;
   }
+
   .mobile-h {
     display: none;
   }
@@ -53,6 +57,12 @@
 @media only screen and (max-width : 992px) {
   .mobile-pull {
     float: none!important;
+  }
+  .col-md-sb {
+    margin-bottom: 20px;
+  }
+  .text-md-left {
+    text-align: left;
   }
   .top-header {
     text-align: center;
@@ -120,9 +130,7 @@
       font-size: 20px;
     }
   }
-  .nav > li {
-    border-bottom: 1px solid #00B326;
-  }
+
   .navbar .nav-fl {
     padding-left: 15px !important;
   }

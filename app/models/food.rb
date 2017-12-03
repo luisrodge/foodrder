@@ -19,6 +19,12 @@ class Food < ApplicationRecord
   # For searchkick model searching
   searchkick
 
+  def self.deliverable
+    joins(:restaurant)
+        .where('restaurants.order_medium_type = ? OR restaurants.order_medium_type=?', 1, 2)
+        .order("created_at DESC")
+  end
+
   # Search Food records by food name and Tags
   def search_data
     attributes.merge(

@@ -24,4 +24,8 @@ class Restaurant < ApplicationRecord
     only_delivery? || pickup_and_delivery?
   end
 
+  def self.delivery_available
+    where('order_medium_type = ? OR order_medium_type=?', 1, 2).order("created_at DESC")
+  end
+
 end

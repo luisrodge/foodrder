@@ -106,6 +106,10 @@ input, textarea, select {
   }
 }
 
+.btn.btn-primary.dropdown-toggle {
+  background: #71BA51 !important;
+}
+
 .btn-gb {
   border-bottom: 2px solid #71BA51 !important;
   &:hover {

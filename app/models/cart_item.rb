@@ -8,14 +8,19 @@ class CartItem < ApplicationRecord
   attr_accessor :delivery
   attr_accessor :drink
 
+  validates :quantity, presence: true,
+            numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
+
   # Update a CartItem quantity then update Cart total
   def update_item(quantity)
     existing_cart = cart
     transaction do
-      update_attributes(quantity: quantity)
-      update_attributes(total: cart_item_total)
+      update_attributes!(quantity: quantity)
+      update_attributes!(total: cart_item_total)
       existing_cart.update_total
     end
+  rescue StandardError
+    return false
   end
 
   # Remove a CartItem and associations then update Cart total

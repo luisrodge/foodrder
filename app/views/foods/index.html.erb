@@ -1,6 +1,5 @@
-<br>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 col-sm-12 col-xs-12">
     <h2 class="text-title remove-margin">
       <% if params[:mc].present? %>
           <span class="text-bb">Feel Like Eating: <%= params[:mc] %></span>
@@ -11,10 +10,19 @@
     <br><br>
   </div>
   <% if params[:mc].present? %>
-      <div class="col-md-4 text-right">
-        <%= link_to "Show All Foods", foods_path, class: "btn btn-primary btn-gb" %>
+      <div class="col-md-2 col-sm-3 col-xs-5 text-md-left col-md-sb text-right">
+        <%= link_to "Show All Foods", foods_path, class: "btn btn-default btn-block" %>
       </div>
   <% end %>
+  <div class="col-md-2 col-sm-3 col-xs-5 text-md-left col-md-sb <%= "pull-right mobile-pull" unless params[:mc].present? %> text-right">
+    <div class="dropdown generic-dropdown">
+      <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+        <span class="caret"></span></button>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li class="text-center"><%= link_to "Deliverable", foods_path(sort: "deliverable") %></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="row">
