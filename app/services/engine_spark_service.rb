@@ -10,8 +10,6 @@ class EngineSparkService
   # Build out the new order text messages that
   # will be dispatched to the restaurant.
   def message_restaurant
-    message_body = ""
-    message_end = ""
     dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.created_at.strftime("%I:%M %p")}.")
     @order_fragment.food_order_items.each do |order_item|
       message_body = "#{order_item.itemable.name}, Amount: #{order_item.quantity}."
@@ -25,8 +23,14 @@ class EngineSparkService
     end
     if @order_fragment.delivery?
       message_end = "Delivery @ #{@order_fragment.order.location}, #{@order_fragment.order.location_description}."
+      dispatch_message(message_end)
     end
-    dispatch_message(message_end)
+  end
+
+  # Build out message to inform the customer
+  # that their placed order is ready for pickup.
+  def message_customer
+    dispatch_message("Your recently placed order at #{@order_fragment.restaurant.name} is ready for pickup.")
   end
 
   def dispatch_message(message)

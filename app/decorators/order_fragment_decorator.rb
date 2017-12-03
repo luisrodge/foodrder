@@ -7,7 +7,7 @@ class OrderFragmentDecorator < Draper::Decorator
     if object.pending?
       btn_text = 'Restaurant Informed'
       modal_txt = "Are you sure you have called #{object.restaurant.name}
-                  and informed them of the order details and confirmation number?"
+                  and fully informed them about the order details?"
     elsif object.pending_pickup_ready?
       btn_text = 'Dispatch Pickup Ready Message'
       modal_txt = "Do not proceed unless you have verified from #{object.restaurant.name} that the order is ready."

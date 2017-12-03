@@ -6,18 +6,20 @@ class Admin::OrderFragmentsController < Admin::BaseController
     msg = ''
     if @order_fragment.pending?
       if @order_fragment.delivery?
-        msg_restaurant(@order_fragment)
         # Mark OrderFragment and parent Order as processed
         @order_fragment.update_attributes(status: 2)
         @order.update_attributes(status: 1) unless @order.pending_order_fragments?
+        # DispatchRestaurantSmsJob.perform_later(@order_fragment)
         msg = 'Order processed and archived successfully'
       else
         @order_fragment.update_attributes(status: 1)
-        msg = "Order partially processed, pending pickup ready message dispatch to customer"
+        msg = 'Order partially processed, pending pickup ready message dispatch to customer'
       end
     elsif @order_fragment.pending_pickup_ready?
+      puts "Here I am"
       @order_fragment.update_attributes(status: 2)
       @order.update_attributes(status: 1) unless @order.pending_order_fragments?
+      DispatchCustomerSmsJob.perform_later(@order_fragment)
       msg = 'Order processed and archived successfully'
     end
 
@@ -35,7 +37,4 @@ class Admin::OrderFragmentsController < Admin::BaseController
     @order ||= @order_fragment.order
   end
 
-  def msg_restaurant(order_fragment)
-    EngineSparkService.new(order_fragment).message_restaurant
-  end
 end

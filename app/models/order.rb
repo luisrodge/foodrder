@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
-  after_commit :dispatch_restaurant_sms
+  after_commit :dispatch_restaurant_sms, on: :create
 
   # money-rails currency integration
   monetize :total_cents

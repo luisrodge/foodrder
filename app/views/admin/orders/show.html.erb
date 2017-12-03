@@ -11,146 +11,148 @@
 
 <br><br>
 <% unless @order.processed? %>
-<div class="row">
-  <div class="col-md-12">
     <div class="row">
-      <% if @order.any_deliveries? %>
-          <div class="col-md-4 text-center">
-            <div class="col-box col-box-db">
-              <h3 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery Address</h3>
-              <hr>
-              <h4 class="text-sb"><%= @order.delivery_address %></h4>
-              </h4>
-            </div>
-          </div>
-      <% end %>
-      <div class="col-md-4 text-center">
-        <div class="col-box col-box-db">
-          <h3 class="remove-margin"><i class="fa fa-phone"></i> Customer Contact Number</h3>
-          <hr>
-          <h4 class="text-sb"><%= @order.phone_number %></h4>
-        </div>
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="col-box col-box-db">
-          <h3 class="remove-margin"><i class="fa fa-user-circle"></i> Customer Name</h3>
-          <hr>
-          <h4 class="text-sb">Luis Rodriguez</h4>
-        </div>
-      </div>
-    </div>
-    <br><br>
-  </div>
-</div>
-<br>
-<div class="heading-wrapper heading-wrapper-sb">
-  <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <h2 class="remove-margin">From <%= @order_fragments.first.restaurant.name %></h2>
-    </div>
-    <div class="col-md-3">
-      <h2 class="remove-margin">Contact #: <%= @order_fragments.first.restaurant.phone_number %></h2>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <h2 class="remove-margin">Sub Total: <span class="text-price"><%= price_format(@order_fragments.first.total) %></span></h2>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12 text-right col-xs-pl">
-      <%= link_to_previous_page @order_fragments, 'Previous order', class: "btn btn-default btn-lg" %>
-      <%= link_to_next_page @order_fragments, 'Next Order', class: "btn btn-default btn-lg" %>
-    </div>
-  </div>
-</div>
-
-
-<div class="row ">
-  <div class="col-md-12">
-    <% @order_fragments.decorate.each do |order_fragment| %>
-        <div class="order-frag-wrapper">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="row">
-                <div class="col-md-6">
-                  <h2 class="text-title remove-margin"><span class="text-bb">Food Orders</span></h2><br><br>
+      <div class="col-md-12">
+        <div class="row">
+          <% if @order.any_deliveries? %>
+              <div class="col-md-4 text-center">
+                <div class="col-box col-box-db">
+                  <h3 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery Address</h3>
+                  <hr>
+                  <h4 class="text-sb"><%= @order.delivery_address %></h4>
+                  </h4>
                 </div>
               </div>
+          <% end %>
+          <div class="col-md-4 text-center">
+            <div class="col-box col-box-db">
+              <h3 class="remove-margin"><i class="fa fa-phone"></i> Customer Contact Number</h3>
+              <hr>
+              <h4 class="text-sb"><%= @order.phone_number %></h4>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="col-box col-box-db">
+              <h3 class="remove-margin"><i class="fa fa-user-circle"></i> Customer Name</h3>
+              <hr>
+              <h4 class="text-sb">Luis Rodriguez</h4>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <br>
+    <div class="heading-wrapper heading-wrapper-sb">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <h2 class="remove-margin text-sb">From <%= @order_fragments.first.restaurant.name %></h2>
+          <h4 class="remove-margin">Opted
+            For <%= @order_fragments.first.restaurant.order_notify_type == 'phone_call' ? 'Phone Call' : 'Text Message' %></h4>
+        </div>
+        <div class="col-md-3">
+          <h2 class="remove-margin">Contact #: <%= @order_fragments.first.restaurant.phone_number %></h2>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <h2 class="remove-margin">Sub Total:
+            <span class="text-price"><%= price_format(@order_fragments.first.total) %></span></h2>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 text-right col-xs-pl">
+          <%= link_to_previous_page @order_fragments, 'Previous order', class: "btn btn-default btn-lg" %>
+          <%= link_to_next_page @order_fragments, 'Next Order', class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-md-12">
+        <% @order_fragments.decorate.each do |order_fragment| %>
+            <div class="order-frag-wrapper">
               <div class="row">
-                <div class="col-md-12">
-                  <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                      <th>Food</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% order_fragment.food_order_items.each do |order_item| %>
-                        <tr>
-                          <td>
-                            <div class="row">
-                              <div class="col-md-3">
-                                <div class="image-medium-wrapper">
-                                  <%= image_tag(order_item.itemable.primary_image_url(:medium)) %>
-                                </div>
-                              </div>
-                            </div>
-                            <%= order_item.itemable.name %>
-                          </td>
-                          <td><%= order_item.quantity %></td>
-                          <td class="text-price"><%= price_format(order_item.total) %></td>
-                        </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-12">
-                  <br><br>
-                  <% if order_fragment.drink_order_items.any? %>
-                      <h2 class="remove-margin"><span class="text-bb">Drink Orders</span></h2><br><br>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h2 class="text-title remove-margin"><span class="text-bb">Food Orders</span></h2><br><br>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
                       <table class="table table-bordered">
                         <thead>
                         <tr>
-                          <th>Drink</th>
+                          <th>Food</th>
                           <th>Quantity</th>
                           <th>Price</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <% order_fragment.drink_order_items.each do |drink| %>
+                        <% order_fragment.food_order_items.each do |order_item| %>
                             <tr>
                               <td>
-                                <%= drink.itemable.variantable.name %>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="image-medium-wrapper">
+                                      <%= image_tag(order_item.itemable.primary_image_url(:medium)) %>
+                                    </div>
+                                  </div>
+                                </div>
+                                <%= order_item.itemable.name %>
                               </td>
-                              <td><%= drink.quantity %></td>
-                              <td class="text-price"><%= price_format(drink.total) %></td>
+                              <td><%= order_item.quantity %></td>
+                              <td class="text-price"><%= price_format(order_item.total) %></td>
                             </tr>
                         <% end %>
                         </tbody>
                       </table>
-                  <% end %>
+                    </div>
+                    <div class="col-md-12">
+                      <br><br>
+                      <% if order_fragment.drink_order_items.any? %>
+                          <h2 class="remove-margin"><span class="text-bb">Drink Orders</span></h2><br><br>
+                          <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                              <th>Drink</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% order_fragment.drink_order_items.each do |drink| %>
+                                <tr>
+                                  <td>
+                                    <%= drink.itemable.variantable.name %>
+                                  </td>
+                                  <td><%= drink.quantity %></td>
+                                  <td class="text-price"><%= price_format(drink.total) %></td>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                          </table>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 text-center">
+                  <div class="col-box col-box-db">
+                    <% if order_fragment.delivery? %>
+                        <h2 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Opted For Delivery</h2>
+                    <% else %>
+                        <h2 class="remove-margin">Opted For Pick Up</h2>
+                    <% end %>
+                    <br>
+                    <div class="col-box col-box-bg">
+                      <%= order_fragment.status_instructions %>
+                    </div>
+                    <br><br>
+                    <%= order_fragment.update_status_btn %>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 text-center">
-              <div class="col-box col-box-db">
-                <% if order_fragment.delivery? %>
-                    <h2 class="remove-margin"><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery</h2>
-                <% else %>
-                    <h2 class="remove-margin">Opted For Pick Up</h2>
-                <% end %>
-                <br>
-                <div class="col-box col-box-bg">
-                  <%= order_fragment.status_instructions %>
-                </div>
-                <br><br>
-                <%= order_fragment.update_status_btn %>
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
-  </div>
-</div>
+        <% end %>
+      </div>
+    </div>
 <% else %>
-  <p class="text-center"><%= link_to "View Archive", admin_order_archive_path(@order), class: "btn btn-primary btn-lg" %></p>
+    <p class="text-center"><%= link_to "View Archive", admin_order_archive_path(@order), class: "btn btn-primary btn-lg" %></p>
 <% end %>
