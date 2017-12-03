@@ -7,7 +7,7 @@
         <%= f.input :default_price, input_html: {class: "input-lg"}, label_html: {class: 'lb-lg'}  %>
 
         <div id="variants">
-          <h3 class="variant-title remove-margin text-strong">Add Variations Below</h3>
+          <h3 class="variant-title remove-margin text-strong">Add Variations</h3>
           <%= f.simple_fields_for :variants do |variant| %>
               <%= render 'variant_fields', f: variant %>
           <% end %>
@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <%= f.button :submit, class: "btn btn-success btn-lg btn-block btn-gb" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
   </div>
 </div>

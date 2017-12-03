@@ -4,10 +4,11 @@ class Food < ApplicationRecord
   belongs_to :restaurant
   belongs_to :menu
 
-  has_many :variants, as: :variantable
   has_many :cart_items, as: :itemable
   has_many :order_items, as: :itemable
+  has_many :variants, as: :variantable, validate: false, dependent: :destroy
 
+  accepts_nested_attributes_for :variants
 
   validates_presence_of :name, :price_cents
 
@@ -19,6 +20,7 @@ class Food < ApplicationRecord
   # For searchkick model searching
   searchkick
 
+  # Return all restaurants that offer delivery
   def self.deliverable
     joins(:restaurant)
         .where('restaurants.order_medium_type = ? OR restaurants.order_medium_type=?', 1, 2)

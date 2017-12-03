@@ -6,16 +6,26 @@
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <%= f.input :price, input_html: {class: "input-lg"} %>
         <%= f.input :description %>
-        <br>
         <%= f.label :taggable_tokens, "Optional Food Tags" %>
-        <br>
         <%= f.text_field :taggable_tokens %>
         <br>
-        <%= f.input :primary_image, as: :file %><br/>
-        <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
+        <%= f.input :primary_image, as: :file %>
+        <div id="variants">
+          <h3 class="variant-title remove-margin text-strong">Add Variations</h3>
+          <%= f.simple_fields_for :variants do |variant| %>
+              <%= render 'variant_fields', f: variant %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association  f, :variants, class: "btn btn-primary btn-lg" do %>
+                <i class="fa fa-plus-square" aria-hidden="true"></i> Add
+            <% end %>
+          </div>
+        </div>
+        <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
   </div>
 </div>
+<br>
 
 <script type="text/javascript" charset="utf-8">
     $(function () {

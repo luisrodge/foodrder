@@ -26,7 +26,8 @@ class Admin::FoodsController < Admin::BaseController
 
   def food_params
     params.require(:food).permit(:name, :price, :description, :primary_image,
-                                 :estimated_cook_time, :taggable_tokens)
+                                 :estimated_cook_time, :taggable_tokens,
+                                 variants_attributes: [:id, :name, :price, :restaurant_id, :_destroy])
         .merge(restaurant: @menu.restaurant)
   end
 end

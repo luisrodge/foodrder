@@ -3,7 +3,7 @@
 <br><br><br>
 <div class="row">
   <div class="col-md-7 center-block">
-    <%= simple_form_for @restaurant_request do |f| %>
+    <%= simple_form_for @restaurant_request, validate: true do |f| %>
         <%= f.input :first_name, input_html: {class: "input-lg"} %>
         <%= f.input :last_name, input_html: {class: "input-lg"} %>
         <%= f.input :email, input_html: {class: "input-lg"} %>

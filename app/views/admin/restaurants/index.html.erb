@@ -26,8 +26,7 @@
       <tbody>
         <% @restaurants.each do |restaurant| %>
             <tr>
-              <td>                <%= link_to restaurant.name, admin_restaurant_path(restaurant) %>
-              </td>
+              <td><%= link_to restaurant.name, admin_restaurant_path(restaurant), class: 'primary-link' %></td>
               <td>
                 <div class="image-thumb">
                   <%= image_tag(restaurant.primary_image_url(:thumb)) %>
@@ -36,7 +35,7 @@
               <td>test@yahoo.com</td>
               <td><%= restaurant.location %></td>
               <td><%= restaurant.phone_number %></td>
-              <td><%= link_to "Update", edit_admin_restaurant_path(restaurant), class: "btn btn-success" %></td>
+              <td><%= link_to "Edit", edit_admin_restaurant_path(restaurant), class: "btn btn-default" %></td>
             </tr>
         <% end %>
       </tbody>

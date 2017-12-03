@@ -23,8 +23,8 @@ class Admin::OrderFragmentsController < Admin::BaseController
       msg = 'Order processed and archived successfully'
     end
 
-    flash[:success] = msg
-    redirect_to admin_order_path(@order)
+    flash.now[:success] = msg
+    redirect_to admin_orders_path
   end
 
   private
