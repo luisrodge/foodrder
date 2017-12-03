@@ -9,7 +9,7 @@
     <br><br><br><br>
     <div class="row">
       <div class="col-md-12">
-        <%= simple_form_for [@cart, @order], url: cart_checkouts_path do |f| %>
+        <%= simple_form_for [@cart, @order], url: cart_checkouts_path, validate: true do |f| %>
             <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
             <%= f.input :phone_number, as: :tel, placeholder: "Only numbers allowed", input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
             <% if @cart.delivery_selected? %>

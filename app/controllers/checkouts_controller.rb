@@ -5,12 +5,10 @@ class CheckoutsController < ApplicationController
 
   def new
     @order = Order.new
-    @cart_fragments = @cart.cart_fragments.order("created_at DESC").page(params[:page]).per(1)
   end
 
   def create
     @order = Order.new(checkout_params)
-
     if @order.valid?
       Order.checkout(@order, @cart)
       @cart.destroy
@@ -18,8 +16,7 @@ class CheckoutsController < ApplicationController
       flash[:success] = 'Your order had been sent successfully. Thanks for ordering with foodrder.bz'
       redirect_to root_path
     else
-      flash[:danger] = "Your order could not be sent. Make sure you are filling out all the required fields & that you are entering valid values"
-      redirect_to new_cart_checkout_path(@cart)
+      render :new
     end
   end
 

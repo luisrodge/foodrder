@@ -31,6 +31,8 @@ gem 'sidekiq'
 gem 'cocoon'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'kaminari'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'
