@@ -1,9 +1,10 @@
 <% if @foods.any? %>
     <div class="row">
-      <div class="col-md-8 col-sm-18 col-xs-12">
+      <div class="col-md-8">
         <h2 class="text-title remove-margin"><span class="text-bb">Search Results (<%= @foods.count %>)</span></h2>
+        <br><br><br>
       </div>
-      <div class="col-md-2 col-sm-3 col-xs-5 text-md-left col-md-sb <%= "pull-right mobile-pull" unless params[:mc].present? %> text-right">
+      <div class="col-md-2 col-sm-3 col-xs-5 <%= "pull-right" unless params[:mc].present? %> text-right">
         <div class="dropdown generic-dropdown">
           <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Sort By
             <span class="caret"></span></button>
