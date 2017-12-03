@@ -20,7 +20,7 @@ class CartItemsController < ApplicationController
         flash[:warning] = 'Something went wrong. Food could not be added to cart.'
       end
     else
-      flash[:warning] = 'Food already added to cart. Try adding another food instead.'
+      flash[:warning] = 'Item already added to cart. Try ordering something else.'
     end
     redirect_to cart_path
   end

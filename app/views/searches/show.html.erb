@@ -1,10 +1,19 @@
 <% if @foods.any? %>
     <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <h2 class="text-title"><span class="text-bb">Search Results (<%= @foods.count %>)</span></h2>
-        <br><br><br>
+      <div class="col-md-8 col-sm-18 col-xs-12">
+        <h2 class="text-title remove-margin"><span class="text-bb">Search Results (<%= @foods.count %>)</span></h2>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-5 text-md-left col-md-sb <%= "pull-right mobile-pull" unless params[:mc].present? %> text-right">
+        <div class="dropdown generic-dropdown">
+          <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="text-center"><%= link_to "Deliverable", search_path(q: params[:q], sort: "deliverable") %></li>
+          </ul>
+        </div>
       </div>
     </div>
+    <br><br><br>
     <div class="row">
       <% @foods.each do |food| %>
           <div class="col-md-4 col-sm-6 col-xs-12 col-sb">

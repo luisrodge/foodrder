@@ -15,8 +15,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Restaurants</a></li>
-        <li><a href="#">Foods</a></li>
+        <li><%= link_to "Foods", foods_path %></li>
+        <li><%= link_to "Restaurants", restaurants_path %></li>
         <li>
           <%= link_to cart_path do %>
               <i class="glyphicon glyphicon-shopping-cart"></i> (<%= @cart.count %>)

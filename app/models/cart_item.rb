@@ -26,7 +26,7 @@ class CartItem < ApplicationRecord
   # Remove a CartItem and associations then update Cart total
   def remove_item
     existing_cart = cart
-    if cart_fragment.cart_items.count < 2
+    if cart_fragment.food_cart_items.count < 2
       cart_fragment.destroy
     else
       destroy
