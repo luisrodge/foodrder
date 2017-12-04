@@ -90,7 +90,7 @@
                 <% cart_fragment.drink_cart_items.each do |drink| %>
                     <div class="col-md-4">
                       <div class="cart-drink text-center">
-                        <h4 class="remove-margin"><%= pluralize(drink.quantity, drink.itemable.variantable.name) %></h4>
+                        <h4 class="remove-margin"><%= pluralize(drink.quantity, drink.variant.name) %></h4>
                         <h4 class="truncate"><%= drink.itemable.name %></h4>
                         <h4>
                         <span class="text-price "><%= price_format(drink.itemable.price) %>

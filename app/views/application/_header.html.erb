@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default application-navbar" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -70,7 +70,7 @@
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
               <li>
-                <%= link_to cart_path do %>
+                <%= link_to cart_path, class: "nav-cart" do %>
                     <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.count %>)
                 <% end %>
               </li>

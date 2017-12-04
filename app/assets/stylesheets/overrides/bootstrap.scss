@@ -9,7 +9,8 @@
 }
 
 .navbar-default {
-  background: #383838;
+  background: #f5f5f5;
+
   border: none;
   .navbar-brand {
     color: #FFF;
@@ -22,10 +23,11 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #FFF;
-  font-size: 19px;
+  font-size: 21px;
+  color: #3B3B3B;
+
   &:hover, &:focus {
-    color: #71BA51;
+    color: #3B3B3B;
   }
 }
 
@@ -34,6 +36,11 @@
   line-height: 50px;
   height: 50px;
   padding-top: 0;
+  padding-right: 40px;
+}
+
+.nav-cart {
+  padding-right: 15px!important;
 }
 
 .dropdown-menu > li > a {
@@ -75,11 +82,9 @@ input, textarea, select {
 }
 
 .btn-info {
-  background-color: #383838;
-  border: 1px solid #FFF;
+  background-color: #33AB3B;
   &:hover, &:focus {
-    background: #454545 !important;
-    border: 1px solid #FFF;
+    background: #24A32C !important;
   }
 }
 

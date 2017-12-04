@@ -7,6 +7,11 @@ class Cart < ApplicationRecord
   # Create a CartItem record upon adding a Food/Drink to Cart
   # and associate created record with a CartFragment record
   def create_cart_item(itemable, variant, quantity)
+    quantity = if quantity.nil?
+                 1
+               else
+                 quantity
+               end
     restaurant = itemable.restaurant
     transaction do
       if cart_items.where(itemable: itemable).any?
@@ -19,11 +24,11 @@ class Cart < ApplicationRecord
                         end
         price = if itemable.price == 0
                   variant.price
+                  puts variant.price
                 else
                   itemable.price
                 end
-        puts variant
-        cart_items.create(itemable: itemable,
+        cart_items.create!(itemable: itemable,
                           variant: variant,
                           quantity: quantity,
                           cart_fragment: cart_fragment,
@@ -31,8 +36,7 @@ class Cart < ApplicationRecord
       end
       update_total
     end
-  rescue StandardError
-    return false
+
   end
 
   # Count how many Foods are in the cart
@@ -64,6 +68,6 @@ class Cart < ApplicationRecord
 
   # Update Cart total after any made changes to CartItem records
   def update_total
-    update_attributes(total: cart_total)
+    update_attributes!(total: cart_total)
   end
 end
