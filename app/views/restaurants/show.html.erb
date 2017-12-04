@@ -52,10 +52,16 @@
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-                  <%= simple_form_for [food, CartItem.new] do |f| %>
-                      <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
-                      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                  <% if food.variants.any? %>
+                      <%= link_to food_path(food), class: "btn btn-primary" do %>
                           <i class="glyphicon glyphicon-shopping-cart"></i> Order
+                      <% end %>
+                  <% else %>
+                      <%= simple_form_for [food, CartItem.new] do |f| %>
+                          <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
+                          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                              <i class="glyphicon glyphicon-shopping-cart"></i> Order
+                          <% end %>
                       <% end %>
                   <% end %>
                 </div>

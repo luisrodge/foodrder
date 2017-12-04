@@ -1,11 +1,11 @@
 class Drink < ApplicationRecord
-  has_many :variants, as: :variantable, validate: false, dependent: :destroy
+  belongs_to :restaurant
+
+  include Variantable
 
   validates_presence_of :name
 
-  accepts_nested_attributes_for :variants
-
-  monetize :default_price_cents
+  monetize :price_cents
 
   # For searchkick model searching
   searchkick

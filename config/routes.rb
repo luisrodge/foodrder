@@ -70,10 +70,10 @@ Rails.application.routes.draw do
     resources :drinks, only: :index
   end
   resources :restaurant_requests, only: [:new, :create]
-  resources :foods do
+  resources :foods, only: [:index, :show] do
     resources :cart_items, only: :create
   end
-  resources :variants, only: :nil do
+  resources :drinks, only: :nil do
     resources :cart_items, only: :create
   end
   resources :menu_categories, only: :index

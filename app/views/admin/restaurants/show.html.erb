@@ -10,9 +10,9 @@
     <h1 class="remove-margin text-sb">Menus (<%= @menus.count %>)</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to "New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
-    <%= link_to "New Special", new_admin_restaurant_special_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
-    <%= link_to "Add Drinks", new_admin_restaurant_drink_path(@restaurant), class: "btn btn-primary btn-gb btn-lg" %>
+    <%= link_to "New Menu", new_admin_restaurant_menu_path(@restaurant), class: "btn btn-primary btn-lg" %>
+    <%= link_to "New Special", new_admin_restaurant_special_path(@restaurant), class: "btn btn-default btn-lg" %>
+    <%= link_to "Add Drinks", new_admin_restaurant_drink_path(@restaurant), class: "btn btn-default btn-lg" %>
   </div>
 </div>
 
@@ -32,8 +32,8 @@
               <h3 class="remove-margin"><span class="text-bb"><%= menu.name %></span></h3><br>
             </div>
             <div class="col-md-6 text-right">
-              <%= link_to "Edit Menu", "#", class: "btn btn-info btn-sm" %>
-              <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-success btn-sm" %>
+              <%= link_to "Edit Menu", "#", class: "btn btn-default btn-sm" %>
+              <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-primary btn-sm" %>
             </div>
           </div>
           <% if menu.tags.any? %>
@@ -48,21 +48,39 @@
           <hr>
           <br>
           <% menu.foods.each do |food| %>
-              <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <div class="image-medium-wrapper">
-                    <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
+              <div class="food-wrapper">
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="image-medium-wrapper">
+                      <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-sm-4 col-xs-4">
+                    <h4><%= food.name %></h4>
+                    <% unless food.price.nil? %>
+                        <h4 class="text-price"><%= price_format(food.price) %></h4>
+                    <% end %>
+                  </div>
+                  <div class="col-md-3 col-sm-4 col-xs-4 text-right">
+                    <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-default btn-sm" %>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <h4><%= food.name %></h4>
-                  <h4 class="text-price"><%= price_format(food.price) %></h4>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-                  <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-info btn-sm" %>
-                </div>
+                <% if food.variants.any? %>
+                    <br>
+                    <h4 class="remove-margin text-strong"><span class="text-bb">Variations</span></h4>
+                    <br><br>
+                    <% food.variants.each do |variant| %>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="col-box col-box-bg">
+                              <h4 class="remove-margin text-sb"><%= variant.name %></h4>
+                              <h4 class="text-price remove-margin"><%= price_format(variant.price) %></h4>
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
+                <% end %>
               </div>
-              <br>
           <% end %>
         </div>
       </div>

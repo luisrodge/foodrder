@@ -6,18 +6,29 @@ class Cart < ApplicationRecord
 
   # Create a CartItem record upon adding a Food/Drink to Cart
   # and associate created record with a CartFragment record
-  def create_cart_item(itemable)
+  def create_cart_item(itemable, variant, quantity)
     restaurant = itemable.restaurant
     transaction do
-      if restaurant_cart_fragment?(restaurant)
-        cart_fragment = cart_fragments.where(restaurant: restaurant).first
+      if cart_items.where(itemable: itemable).any?
+        cart_items.where(itemable: itemable).first.increment!(:quantity)
       else
-        cart_fragment = cart_fragments.create(restaurant: restaurant)
+        cart_fragment = if restaurant_cart_fragment?(restaurant)
+                          cart_fragments.where(restaurant: restaurant).first
+                        else
+                          cart_fragments.create(restaurant: restaurant)
+                        end
+        price = if itemable.price == 0
+                  variant.price
+                else
+                  itemable.price
+                end
+        puts variant
+        cart_items.create(itemable: itemable,
+                          variant: variant,
+                          quantity: quantity,
+                          cart_fragment: cart_fragment,
+                          total: price)
       end
-      cart_items.create(itemable: itemable,
-                        quantity: 1,
-                        cart_fragment: cart_fragment,
-                        total: itemable.price)
       update_total
     end
   rescue StandardError
@@ -46,7 +57,7 @@ class Cart < ApplicationRecord
   def cart_total
     total = 0
     cart_items.each do |cart_item|
-      total += cart_item.total
+      total += cart_item.cart_item_total
     end
     total
   end

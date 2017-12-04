@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="remove-margin"><span class="text-bb">Customize Your Order</span></h1>
+  </div>
+</div>
+<br><br><br><br>
+<div class="row">
+  <div class="col-md-5">
+    <div class="image-medium-wrapper">
+      <%= image_tag(@food.primary_image_url(:medium), class: "img-responsive") %>
+    </div>
+  </div>
+  <div class="col-md-6 pull-right">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="remove-margin"><%= @food.name %></h1>
+        <h3 class="remove-margin text-muted">By <%= link_to @food.restaurant.name, restaurants_path(@food.restaurant) %></h3>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-box col-box-db">
+          <%= simple_form_for [@food, CartItem.new] do |f| %>
+              <%= f.input :variant_id,
+                          label: false,
+                          collection: @food.variants,
+                          include_blank: false,
+                          input_html: {class: "input-lg"} %>
+              <%= f.input :quantity, label: false, input_html: {value: 1, class: "form-control input-lg"} %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary btn-block btn-lg") do %>
+                  <i class="glyphicon glyphicon-shopping-cart"></i> Order
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

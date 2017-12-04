@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  layout 'minimal', only: :show
   def index
     @foods = if params[:mc].present?
                Food.search(params[:mc])
@@ -7,5 +8,9 @@ class FoodsController < ApplicationController
              else
                Food.order("created_at DESC")
              end
+  end
+
+  def show
+    @food = Food.find(params[:id])
   end
 end

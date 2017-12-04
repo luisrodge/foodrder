@@ -1,6 +1,7 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :cart_fragment
+  belongs_to :variant, optional: true
   belongs_to :itemable, polymorphic: true
 
   monetize :total_cents
@@ -36,6 +37,10 @@ class CartItem < ApplicationRecord
 
   # Calculate single CartItem total
   def cart_item_total
-    itemable.price * quantity
+    if variant.present?
+      variant.price * quantity
+    else
+      itemable.price * quantity
+    end
   end
 end

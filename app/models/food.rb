@@ -1,14 +1,12 @@
 class Food < ApplicationRecord
   include Taggable
+  include Variantable
 
   belongs_to :restaurant
   belongs_to :menu
 
   has_many :cart_items, as: :itemable
   has_many :order_items, as: :itemable
-  has_many :variants, as: :variantable, validate: false, dependent: :destroy
-
-  accepts_nested_attributes_for :variants
 
   validates_presence_of :name, :price_cents
 

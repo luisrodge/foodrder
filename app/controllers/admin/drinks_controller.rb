@@ -26,7 +26,7 @@ class Admin::DrinksController < Admin::BaseController
 
   def drink_params
     params.require(:drink)
-          .permit(:name, :default_price,
+          .permit(:name, :price,
                 variants_attributes: [:id, :name, :price, :restaurant_id, :_destroy])
   end
 

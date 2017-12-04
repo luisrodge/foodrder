@@ -4,11 +4,11 @@ class CartFragment < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
   def food_cart_items
-    cart_items.where(itemable_type: "Food")
+    cart_items.where("itemable_type = ?", "Food")
   end
 
   def drink_cart_items
-    cart_items.where(itemable_type: "Variant")
+    cart_items.where(itemable_type: "Drink")
   end
 
   def total

@@ -75,10 +75,11 @@ input, textarea, select {
 }
 
 .btn-info {
-  background-color: #4A4A4A;
+  background-color: #383838;
+  border: 1px solid #FFF;
   &:hover, &:focus {
-    background: #6E6E6E !important;
-    border: none;
+    background: #454545 !important;
+    border: 1px solid #FFF;
   }
 }
 

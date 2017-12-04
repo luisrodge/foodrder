@@ -4,7 +4,7 @@ class CartsController < ApplicationController
 
   def show
     @cart_fragments = @cart.cart_fragments.order("created_at DESC").page(params[:page]).per(1)
-    @drinks = @cart.cart_items.where(itemable_type: "Variant")
+    @drinks = @cart.cart_items.where(itemable_type: "Drink")
   end
 
   private
