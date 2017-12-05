@@ -28,7 +28,11 @@ class CartItem < ApplicationRecord
   def remove_item
     existing_cart = cart
     if cart_fragment.food_cart_items.count < 2
-      cart_fragment.destroy
+      if itemable_type == 'Drink'
+        destroy
+      else
+        cart_fragment.destroy
+      end
     else
       destroy
     end

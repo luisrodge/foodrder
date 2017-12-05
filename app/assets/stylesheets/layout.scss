@@ -8,7 +8,7 @@ body {
 }
 
 .turbolinks-progress-bar {
-  background-color: #71BA51;
+  background-color: #33AB3B;
 }
 
 /* Loading Image Wrapper */
@@ -174,6 +174,9 @@ header {
   margin-bottom: 60px;
   border: 1px solid #CCC;
   padding: 34px 20px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .cart-drink {

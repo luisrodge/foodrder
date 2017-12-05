@@ -48,7 +48,6 @@
     <% @cart_fragments.each do |cart_fragment| %>
         <div class="cart_fragment-wrapper">
           <div class="row cart-fragment-header">
-
             <% if cart_fragment.restaurant.offers_delivery? %>
                 <div class="col-md-12 text-right col-mobile-pl">
                   <div class="delivery-cb-wrapper">
@@ -69,8 +68,7 @@
             <% end %>
           </div>
           <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
-
-              <div class="cart-fragment">
+              <div class="cart-item">
                 <div class="row ">
                   <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="image-medium-wrapper">
@@ -106,7 +104,6 @@
                   </div>
                 </div>
               </div>
-
           <% end %>
           <!-- Cart Drinks Section -->
           <% if cart_fragment.drink_cart_items.any? %>
@@ -132,7 +129,8 @@
                       </div>
                       <div class="col-md-3">
                         <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>
-                        <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span></h3>
+                        <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span>
+                        </h3>
                       </div>
                       <div class="col-md-5 col-sm-12 col-xs-12">
                         <%= simple_form_for drink_item do |f| %>
@@ -157,6 +155,8 @@
                     </div>
                   </div>
               <% end %>
+          <% elsif cart_fragment.restaurant.drinks.any? %>
+            <h3 class="text-right"><%= link_to "Add Drink", restaurant_drinks_path(cart_fragment.restaurant), class: "primary-link" %></h3>
           <% end %>
           <!-- End Cart Drinks Section -->
         </div>
@@ -169,10 +169,10 @@
         <br><br><br>
       </div>
       <div class="col-md-6 col-sb">
-        <%= link_to "Find Food", foods_path, class: "btn btn-info btn-lg btn-block" %>
+        <%= link_to "Find Food", foods_path, class: "btn btn-primary btn-lg btn-block" %>
       </div>
       <div class="col-md-6">
-        <%= link_to "View Restaurants", restaurants_path, class: "btn btn-primary btn-lg btn-block btn-gb" %>
+        <%= link_to "View Restaurants", restaurants_path, class: "btn btn-default btn-lg btn-block" %>
       </div>
     </div>
 <% end %>
