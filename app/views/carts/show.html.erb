@@ -76,7 +76,7 @@
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-8 col-xs-12">
-                    <h2 class="text-title remove-margin text-sb"><%= cart_item.cart_item_name %></h2>
+                    <h2 class="text-strong remove-margin text-sb"><%= cart_item.cart_item_name %></h2>
                     <h3>Sub Total:
                       <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>
                     </h3>
@@ -124,8 +124,9 @@
                   <div class="cart-item">
                     <div class="row">
                       <div class="col-md-2">
-                        <img src="https://res.cloudinary.com/dwaavflqp/image/upload/v1512390315/Coca-Cola_logo_2007_fjklgw.jpg"
-                             alt="" class="img-responsive">
+                        <div class="image-medium-wrapper">
+                          <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
+                        </div>
                       </div>
                       <div class="col-md-3">
                         <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>

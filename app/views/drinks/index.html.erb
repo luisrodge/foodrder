@@ -29,8 +29,9 @@
               <h2 class="text-strong"><span class="text-bb"><%= drink.name %></span></h2>
             </div>
             <div class="col-md-3">
-              <img src="https://res.cloudinary.com/dwaavflqp/image/upload/v1512390315/Coca-Cola_logo_2007_fjklgw.jpg"
-                   alt="" class="img-responsive">
+              <div class="image-medium-wrapper">
+                <%= image_tag(drink.primary_image_url(:medium), class: "img-responsive") %>
+              </div>
             </div>
           </div>
           <br><br>
