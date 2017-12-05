@@ -22,12 +22,12 @@
   }
 }
 
-.navbar-default .navbar-nav > li > a {
+nav.navbar.navbar-default.application-navbar .navbar-nav > li > a {
   font-size: 21px;
   color: #3B3B3B;
 
   &:hover, &:focus {
-    color: #3B3B3B;
+    color: #575757;
   }
 }
 

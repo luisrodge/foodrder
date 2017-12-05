@@ -71,7 +71,7 @@
           <% else %>
               <li>
                 <%= link_to cart_path, class: "nav-cart" do %>
-                    <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.count %>)
+                    <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
                 <% end %>
               </li>
           <% end %>

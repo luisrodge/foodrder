@@ -29,6 +29,7 @@ class Order < ApplicationRecord
         # Assign each OrderItem to it's appropriate OrderFragment.
         cart_fragment.cart_items.each do |cart_item|
           order.order_items.create(itemable: cart_item.itemable,
+                                   variant: cart_item.variant,
                                    quantity: cart_item.quantity,
                                    order_fragment: order_fragment)
         end
@@ -48,6 +49,7 @@ class Order < ApplicationRecord
         order.update_attributes(status: 1)
       end
     end
+    cart.destroy
   end
 
   # Conditional check to see if the checked out order

@@ -11,7 +11,7 @@ class OrderFragment < ApplicationRecord
   end
 
   def drink_order_items
-    order_items.where(itemable_type: "Variant")
+    order_items.where(itemable_type: "Drink")
   end
 
   def total

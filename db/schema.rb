@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204090318) do
+ActiveRecord::Schema.define(version: 20171205033751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,9 +104,11 @@ ActiveRecord::Schema.define(version: 20171204090318) do
     t.bigint "order_fragment_id"
     t.string "itemable_type"
     t.bigint "itemable_id"
+    t.bigint "variant_id"
     t.index ["itemable_type", "itemable_id"], name: "index_order_items_on_itemable_type_and_itemable_id"
     t.index ["order_fragment_id"], name: "index_order_items_on_order_fragment_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["variant_id"], name: "index_order_items_on_variant_id"
   end
 
   create_table "orders", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -238,6 +240,7 @@ ActiveRecord::Schema.define(version: 20171204090318) do
   add_foreign_key "order_fragments", "restaurants"
   add_foreign_key "order_items", "order_fragments"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "variants"
   add_foreign_key "specials", "restaurants"
   add_foreign_key "taggings", "tags"
   add_foreign_key "users", "restaurants"

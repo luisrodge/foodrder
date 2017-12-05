@@ -115,6 +115,14 @@ header {
 
 }
 
+.minimal-navbar .navbar-nav li a {
+  color: #FFF;
+  font-size: 18px;
+  &:hover, &:focus {
+    color: #71BA51;
+  }
+}
+
 .application-navbar {
   margin-bottom: 40px;
 }
