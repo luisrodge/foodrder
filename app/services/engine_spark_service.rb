@@ -28,7 +28,7 @@ class EngineSparkService
     end
     if @order_fragment.delivery?
       puts "Dispatch message end"
-      message_end = "Delivery @ #{@order_fragment.order.location}, #{@order_fragment.order.delivery_address}."
+      message_end = "Delivery @ #{@order_fragment.order.delivery_address}."
       dispatch_message(message_end)
     end
   end
@@ -41,7 +41,7 @@ class EngineSparkService
 
   def dispatch_message(message)
     HTTParty.post(API_URL,
-                  :body => {:fullPhoneNumber => "5016082077",
+                  :body => {:fullPhoneNumber => "501#{@order_fragment.restaurant.phone_number}",
                             :organizationId => 5291,
                             :customFields => {"14669" => message}
                   }.to_json,
