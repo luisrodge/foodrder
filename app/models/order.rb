@@ -49,6 +49,7 @@ class Order < ApplicationRecord
         order.update_attributes(status: 1)
       end
     end
+    # Destroy the encapsulating cart
     cart.destroy
   end
 

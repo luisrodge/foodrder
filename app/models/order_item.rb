@@ -8,4 +8,12 @@ class OrderItem < ApplicationRecord
     itemable.price || itemable.variantable.price * quantity
   end
 
+  def item_name
+    if variant.present?
+      "#{itemable.name} - #{variant.name}"
+    else
+      itemable.name
+    end
+  end
+
 end

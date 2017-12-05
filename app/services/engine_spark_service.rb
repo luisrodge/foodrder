@@ -9,15 +9,17 @@ class EngineSparkService
 
   # Build out the new order text messages that
   # will be dispatched to the restaurant.
+  # The message body contains important order details
+  # such as item name, variant, quantity, etc...
   def message_restaurant
     dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.created_at.strftime("%I:%M %p")}.")
     @order_fragment.food_order_items.each do |order_item|
-      message_body = "#{order_item.itemable.name}, Amount: #{order_item.quantity}."
+      message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
       dispatch_message(message_body)
     end
     if @order_fragment.drink_order_items.any?
       @order_fragment.drink_order_items.each do |order_item|
-        message_body = "#{order_item.itemable.variantable.name} - #{order_item.itemable.name}, Amount: #{order_item.quantity}."
+        message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
         dispatch_message(message_body)
       end
     end
