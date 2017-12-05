@@ -12,18 +12,22 @@ class EngineSparkService
   # The message body contains important order details
   # such as item name, variant, quantity, etc...
   def message_restaurant
-    dispatch_message("New order placed on foodrder.bz @ #{@order_fragment.created_at.strftime("%I:%M %p")}.")
+    dispatch_message("New order placed on foodrder.bz")
+    puts "Dispatch header"
     @order_fragment.food_order_items.each do |order_item|
+      puts "Dispatch food body"
       message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
       dispatch_message(message_body)
     end
     if @order_fragment.drink_order_items.any?
+      puts "Dispatch drink body"
       @order_fragment.drink_order_items.each do |order_item|
         message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
         dispatch_message(message_body)
       end
     end
     if @order_fragment.delivery?
+      puts "Dispatch message end"
       message_end = "Delivery @ #{@order_fragment.order.location}, #{@order_fragment.order.location_description}."
       dispatch_message(message_end)
     end

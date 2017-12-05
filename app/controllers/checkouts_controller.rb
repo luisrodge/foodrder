@@ -11,6 +11,7 @@ class CheckoutsController < ApplicationController
     @order = Order.new(checkout_params)
     if @order.valid?
       Order.checkout(@order, @cart)
+      @cart.destroy
       cookies.delete(:cart)
       flash[:success] = 'Your order had been sent successfully. Thanks for ordering with foodrder.bz'
       redirect_to root_path
