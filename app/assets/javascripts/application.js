@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap-select.min
 //= require jquery.tokeninput
 //= require sweetalert2
 //= require sweet-alert2-rails

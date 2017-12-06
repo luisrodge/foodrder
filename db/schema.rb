@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206013839) do
+ActiveRecord::Schema.define(version: 20171206030935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20171206013839) do
     t.string "price_currency", default: "BZD", null: false
     t.index ["menu_id"], name: "index_foods_on_menu_id"
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+  end
+
+  create_table "item_additions", force: :cascade do |t|
+    t.bigint "addition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_additionable_id"
+    t.string "item_additionable_type"
+    t.index ["addition_id"], name: "index_item_additions_on_addition_id"
+    t.index ["item_additionable_id", "item_additionable_type"], name: "idx_item_addition_item_additionable_item_additionable_type"
   end
 
   create_table "menus", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -246,6 +256,7 @@ ActiveRecord::Schema.define(version: 20171206013839) do
   add_foreign_key "drinks", "restaurants"
   add_foreign_key "foods", "menus"
   add_foreign_key "foods", "restaurants"
+  add_foreign_key "item_additions", "additions"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "order_fragments", "orders"
   add_foreign_key "order_fragments", "restaurants"

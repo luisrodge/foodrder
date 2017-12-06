@@ -22,12 +22,19 @@
       <div class="col-md-12">
         <div class="col-box col-box-db">
           <%= simple_form_for [@food, CartItem.new] do |f| %>
-              <%= f.input :variant_id,
-                          label: false,
-                          collection: @food.variants,
-                          include_blank: false,
-                          input_html: {class: "input-lg"} %>
-              <%= f.input :quantity, label: false, input_html: {value: 1, class: "form-control input-lg"} %>
+              <% if @food.variants.any? %>
+                  <%= f.input :variant_id,
+                              label: false,
+                              collection: @food.variants,
+                              include_blank: false,
+                              input_html: {class: "input-lg"} %>
+              <% else %>
+                  <h4 class="lb-lg">Additions</h4>
+                  <%= f.collection_select :addition_ids, @food.menu.additions, :id, :full_name, {}, :multiple => 'true', :class => 'form-control selectpicker' %>
+                  <br><br><br>
+              <% end %>
+              <%= f.input :quantity, input_html: {value: 1, class: "form-control input-lg"}, label_html: {class: 'lb-lg'} %>
+              <br>
               <%= button_tag(type: 'submit', class: "btn btn-primary btn-block btn-lg") do %>
                   <i class="glyphicon glyphicon-shopping-cart"></i> Order
               <% end %>
@@ -38,3 +45,10 @@
 
   </div>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $('.selectpicker').selectpicker({
+        size: 4
+    });
+</script>

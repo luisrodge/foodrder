@@ -25,6 +25,10 @@ class Food < ApplicationRecord
         .order("created_at DESC")
   end
 
+  def customizable?
+    variants.any? || menu.additions.any?
+  end
+
   # Search Food records by food name and Tags
   def search_data
     attributes.merge(

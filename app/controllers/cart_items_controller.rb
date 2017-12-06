@@ -5,7 +5,10 @@ class CartItemsController < ApplicationController
 
   # Adding a food/drink order to cart
   def create
-    if @cart.create_cart_item(@itemable, @variant, cart_item_params[:quantity])
+    if @cart.create_cart_item(@itemable,
+                              @variant,
+                              cart_item_params[:addition_ids],
+                              cart_item_params[:quantity])
       if @itemable.restaurant.drinks.any?
         if CartItem.find_by_itemable_id(@itemable).itemable_type == 'Food'
           flash[:success] = 'Food added to cart successfully. What about ordering something to drink?'
@@ -39,7 +42,7 @@ class CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:itemable_id, :variant_id, :quantity)
+    params.require(:cart_item).permit(:itemable_id, :variant_id, :quantity, addition_ids: [])
   end
 
   def set_cart_item

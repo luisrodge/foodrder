@@ -52,7 +52,7 @@
                   <h4 class="text-price"><%= price_format(food.price) %></h4>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-                  <% if food.variants.any? %>
+                  <% if food.customizable? %>
                       <%= link_to food_path(food), class: "btn btn-primary" do %>
                           <i class="glyphicon glyphicon-shopping-cart"></i> Order
                       <% end %>

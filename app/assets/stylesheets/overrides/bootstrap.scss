@@ -161,6 +161,29 @@ input, textarea, select {
   text-align: left;
 }
 
+/* Multi Select */
+button.btn.dropdown-toggle.bs-placeholder.btn-default {
+  height: 46px;
+  padding: 10px 16px;
+  border: 1px solid #ededed;
+  background: #FFF;
+  box-shadow: none;
+  color: #424242;
+  font-size: 18px;
+}
+
+.bootstrap-select.btn-group:not(.input-group-btn) {
+  button.btn.dropdown-toggle.btn-default {
+    height: 46px;
+    padding: 10px 16px;
+    border: 1px solid #ededed;
+    background: #FFF;
+    box-shadow: none;
+    color: #424242;
+    font-size: 18px;
+  }
+}
+
 /* Table */
 table {
   font-size: 19px;

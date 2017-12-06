@@ -4,10 +4,14 @@ class CartItem < ApplicationRecord
   belongs_to :variant, optional: true
   belongs_to :itemable, polymorphic: true
 
+  has_many :item_additions, as: :item_additionable, validate: false, dependent: :destroy
+  has_many :additions, through: :item_additions
+
   monetize :total_cents
 
   attr_accessor :delivery
   attr_accessor :drink
+
 
   validates :quantity, presence: true,
             numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
@@ -39,12 +43,26 @@ class CartItem < ApplicationRecord
     existing_cart.update_total
   end
 
-  # Calculate single CartItem total
+  # Calculate single CartItem total correlated to
+  # item price, quantity, existing variants, and additions.
   def cart_item_total
-    if variant.present?
+    if variant.present? && additions.any?
+      (variant.price + additions_total) * quantity
+    elsif variant.present?
       variant.price * quantity
+    elsif additions.any?
+      (additions_total + itemable.price) * quantity
     else
       itemable.price * quantity
     end
+  end
+
+  # Calculate additional totals if present
+  def additions_total
+    total = 0
+    additions.each do |addition|
+      total += addition.price
+    end
+    total
   end
 end
