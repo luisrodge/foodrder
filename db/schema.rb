@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205033751) do
+ActiveRecord::Schema.define(version: 20171206013839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "additions", force: :cascade do |t|
+    t.string "name"
+    t.string "additionable_type"
+    t.bigint "additionable_id"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BZD", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["additionable_type", "additionable_id"], name: "index_additions_on_additionable_type_and_additionable_id"
+  end
 
   create_table "cart_fragments", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.bigint "restaurant_id"

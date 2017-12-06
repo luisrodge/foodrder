@@ -1,5 +1,6 @@
 class Menu < ApplicationRecord
   include Taggable
+  include Additionable
 
   belongs_to :restaurant
   has_many :foods, dependent: :destroy

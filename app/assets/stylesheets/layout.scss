@@ -237,6 +237,23 @@ li.mobile-link {
   }
 }
 
+.nested-form-wrapper {
+  border: 1px solid #CCC;
+  margin: 40px 0;
+  padding: 22px 16px;
+  .nested-form-title {
+    padding-bottom: 48px;
+  }
+  .nested-fields {
+    margin-bottom: 40px;
+    border-bottom: 4px dashed #f7f7f7;
+    padding-bottom: 30px;
+    &:last-of-type {
+      border: none;
+    }
+  }
+}
+
 /* Restaurant show view */
 .restaurant-name-address {
   margin-bottom: 36px;

@@ -23,7 +23,8 @@ class Admin::MenusController < Admin::BaseController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :taggable_tokens)
+    params.require(:menu).permit(:name, :taggable_tokens,
+                                 additions_attributes: [:id, :name, :price, :_destroy])
   end
 
   def set_restaurant

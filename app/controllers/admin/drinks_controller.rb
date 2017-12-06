@@ -16,7 +16,8 @@ class Admin::DrinksController < Admin::BaseController
     @drink = @restaurant.drinks.new(drink_params)
     if @drink.valid?
       @drink.save
-      redirect_to admin_restaurant_path(@restaurant), notice: 'Drink created successfully'
+      redirect_to admin_restaurant_path(@restaurant),
+                  notice: 'Drink created successfully'
     else
       render :new
     end

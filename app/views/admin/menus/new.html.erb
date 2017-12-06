@@ -1,15 +1,24 @@
 <div class="row">
   <div class="col-md-5 center-block">
-    <h2><span class="text-bb">New Menu To <%= @restaurant.name %></span></h2><br><br><br>
-    <%= simple_form_for [:admin, @restaurant, @menu] do |f| %>
+    <h2><span class="text-bb">Add New Menu To <%= @restaurant.name %></span></h2><br><br><br>
+    <%= simple_form_for [:admin, @restaurant, @menu], validate: true do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <br>
         <%= f.label :taggable_tokens, "Optional Menu Tags" %>
         <br>
         <%= f.text_field :taggable_tokens %>
         <br>
+        <div id="additions" class="nested-form-wrapper">
+          <h3 class="remove-margin nested-form-title">Add Additions</h3>
+          <%= f.simple_fields_for :additions do |addition| %>
+              <%= render 'addition_fields', f: addition %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Addition', f, :additions, class: "btn btn-primary btn-lg" %>
+          </div>
+        </div>
         <br>
-        <%= f.button :submit, class: "btn btn-success btn-lg btn-block" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
   </div>
 </div>
