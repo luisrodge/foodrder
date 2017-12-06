@@ -7,11 +7,7 @@ class Cart < ApplicationRecord
   # Create a CartItem record upon adding a Food/Drink to Cart
   # and associate created record with a CartFragment record
   def create_cart_item(itemable, variant, additions, quantity)
-    quantity = if quantity.nil?
-                 1
-               else
-                 quantity
-               end
+    quantity = quantity.nil? ? 1 : quantity
     restaurant = itemable.restaurant
     transaction do
       if cart_items.where(itemable: itemable).any?

@@ -31,7 +31,8 @@ class Order < ApplicationRecord
           order.order_items.create(itemable: cart_item.itemable,
                                    variant: cart_item.variant,
                                    quantity: cart_item.quantity,
-                                   order_fragment: order_fragment)
+                                   order_fragment: order_fragment,
+                                   addition_ids: cart_item.addition_ids)
         end
         # Dispatch restaurant text message containing order details
         # if restaurant opted for text message notification of new orders.

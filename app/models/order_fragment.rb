@@ -17,7 +17,7 @@ class OrderFragment < ApplicationRecord
   def total
     of_total = 0.0
     order_items.each do |order_item|
-      of_total += order_item.total
+      of_total += order_item.order_item_total
     end
     of_total
   end

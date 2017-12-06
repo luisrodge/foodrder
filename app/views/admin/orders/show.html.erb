@@ -99,7 +99,7 @@
                                 <%= order_item.itemable.name %>
                               </td>
                               <td><%= order_item.quantity %></td>
-                              <td class="text-price"><%= price_format(order_item.total) %></td>
+                              <td class="text-price"><%= price_format(order_item.order_item_total) %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -121,10 +121,10 @@
                             <% order_fragment.drink_order_items.each do |drink| %>
                                 <tr>
                                   <td>
-                                    <%= drink.itemable.variantable.name %>
+                                    <%= "#{drink.itemable.name} - #{drink.variant.name}" %>
                                   </td>
                                   <td><%= drink.quantity %></td>
-                                  <td class="text-price"><%= price_format(drink.total) %></td>
+                                  <td class="text-price"><%= price_format(drink.order_item_total) %></td>
                                 </tr>
                             <% end %>
                             </tbody>

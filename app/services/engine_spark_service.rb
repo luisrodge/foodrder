@@ -13,21 +13,20 @@ class EngineSparkService
   # such as item name, variant, quantity, etc...
   def message_restaurant
     dispatch_message("New order placed on foodrder.bz")
-    puts "Dispatch header"
     @order_fragment.food_order_items.each do |order_item|
-      puts "Dispatch food body"
       message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
+      if order_item.additions.any?
+        message_body += " Additions: #{order_item.additions_name}."
+      end
       dispatch_message(message_body)
     end
     if @order_fragment.drink_order_items.any?
-      puts "Dispatch drink body"
       @order_fragment.drink_order_items.each do |order_item|
         message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
         dispatch_message(message_body)
       end
     end
     if @order_fragment.delivery?
-      puts "Dispatch message end"
       message_end = "Delivery @ #{@order_fragment.order.delivery_address}."
       dispatch_message(message_end)
     end

@@ -20,4 +20,5 @@ class Drink < ApplicationRecord
     )
   end
 
+
 end

@@ -65,4 +65,8 @@ class CartItem < ApplicationRecord
     end
     total
   end
+
+  def additions_name
+    additions.map{|a| a.name}.join(" ,")
+  end
 end

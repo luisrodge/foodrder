@@ -46,7 +46,7 @@
                 <div class="figcaption-footer">
                   <div class="row">
                     <div class="col-md-5 col-sm-5 col-xs-5">
-                      <% if food.variants.any? %>
+                      <% if food.customizable? %>
                           <%= link_to food_path(food), class: "btn btn-primary" do %>
                               <i class="glyphicon glyphicon-shopping-cart"></i> Order
                           <% end %>
