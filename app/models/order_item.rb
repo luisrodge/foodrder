@@ -36,5 +36,8 @@ class OrderItem < ApplicationRecord
   end
 
 
+  def additions_name
+    additions.map{|a| a.name}.join(" ,")
+  end
 
 end
