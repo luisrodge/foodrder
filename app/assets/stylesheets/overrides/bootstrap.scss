@@ -76,6 +76,10 @@ input, textarea, select {
 }
 
 /* Buttons */
+.btn-xl {
+  font-size: 24px;
+}
+
 .btn {
   border-radius: 4px;
   border: none;
@@ -122,6 +126,8 @@ input, textarea, select {
     border-bottom: 2px solid #71BA51 !important;
   }
 }
+
+.dropdown-menu>li>a {}
 
 /* Flashes */
 .alert {
@@ -182,6 +188,11 @@ button.btn.dropdown-toggle.bs-placeholder.btn-default {
     color: #424242;
     font-size: 18px;
   }
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #3B3B3B!important;
+  font-size: 18px!important;
 }
 
 /* Table */

@@ -7,14 +7,13 @@ class Restaurant < ApplicationRecord
   has_many :drinks
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
-  enum order_notify_type: %w[phone_call text_message]
 
   # Virtual attributes
   attr_accessor :origin_seller_email
 
   # Validations
   validates_presence_of :name, :location, :street, :phone_number,
-                        :order_medium_type, :order_notify_type
+                        :order_medium_type
   validates_presence_of :origin_seller_email, on: :create
 
   # Carrierwave uploader

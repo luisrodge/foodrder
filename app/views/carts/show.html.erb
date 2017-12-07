@@ -77,9 +77,19 @@
                   </div>
                   <div class="col-md-3 col-sm-8 col-xs-12">
                     <h2 class="text-strong remove-margin text-sb"><%= cart_item.cart_item_name %></h2>
+                    <h4 class="remove-margin">Regular Price:
+                      <span class="text-price"><%= price_format(cart_item.itemable.price) %></span></h4>
+                    <hr>
                     <h3>Sub Total:
                       <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>
                     </h3>
+                    <% if cart_item.variant.present? %>
+                      <h4>Variant: <%= cart_item.variant_name_price %></h4>
+                    <% end %>
+                    <% if cart_item.additions.any? %>
+                        <h4>Your Additions:</h4>
+                        <h4 class="remove-margin"><%= cart_item.additions_name_price %></h4>
+                    <% end %>
                     <br>
                   </div>
                   <div class="col-md-4 col-sm-12 col-xs-12">
@@ -130,8 +140,14 @@
                       </div>
                       <div class="col-md-3">
                         <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>
+                        <h4 >Regular Price:
+                          <span class="text-price"><%= price_format(drink_item.variant.price) %></span></h4>
+                        <hr>
                         <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span>
                         </h3>
+                        <% if drink_item.variant.present? %>
+                            <h4>Variant: <%= drink_item.variant_name_price %></h4>
+                        <% end %>
                       </div>
                       <div class="col-md-5 col-sm-12 col-xs-12">
                         <%= simple_form_for drink_item do |f| %>
@@ -157,7 +173,7 @@
                   </div>
               <% end %>
           <% elsif cart_fragment.restaurant.drinks.any? %>
-            <h3 class="text-right"><%= link_to "Add Drink", restaurant_drinks_path(cart_fragment.restaurant), class: "primary-link" %></h3>
+              <h3 class="text-right"><%= link_to "Add Drink", restaurant_drinks_path(cart_fragment.restaurant), class: "primary-link" %></h3>
           <% end %>
           <!-- End Cart Drinks Section -->
         </div>

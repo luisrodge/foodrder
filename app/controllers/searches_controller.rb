@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
 
   def show
-    search = params[:q].present? ? params[:q] : nil
+    search = params[:query].present? ? params[:query] : nil
     @foods = if params[:sort].present? && params[:sort] == "deliverable"
                Food.search(search, where: {
                    _or: [

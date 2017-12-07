@@ -34,38 +34,23 @@ class Order < ApplicationRecord
                                    order_fragment: order_fragment,
                                    addition_ids: cart_item.addition_ids)
         end
-        # Dispatch restaurant text message containing order details
-        # if restaurant opted for text message notification of new orders.
-        if order_fragment.restaurant.text_message?
-          if order_fragment.delivery?
-            order_fragment.update_attributes(status: 2)
-          else
-            order_fragment.update_attributes(status: 1)
-          end
+        # Dispatch restaurant text message containing new order details
+        if order_fragment.delivery?
+          order_fragment.update_attributes(status: 1)
         end
       end
       # Checks if the order should immediately be marked
       # as processed on checkout, given certain conditions
-      if order.processable_on_checkout?
+      if order.all_deliveries?
         order.update_attributes(status: 1)
       end
     end
   end
 
-  # Conditional check to see if the checked out order
-  # satisfies all conditions such as to be marked as
-  # processed immediately after checkout
-  def processable_on_checkout?
-    (all_deliveries? && all_sms_opted?) ||
-        (order_fragments.count == 1 &&
-            order_fragments.last.delivery? &&
-            order_fragments.last.restaurant.text_message?)
-  end
-
   # Invokes background job to dispatch sms messages
   def dispatch_restaurant_sms
     order_fragments.each do |order_fragment|
-      DispatchRestaurantSmsJob.perform_later(order_fragment) if order_fragment.restaurant.text_message?
+      DispatchRestaurantSmsJob.perform_later(order_fragment)
     end
   end
 
@@ -97,13 +82,6 @@ class Order < ApplicationRecord
 
   def any_deliveries?
     order_fragments.where(delivery: true).any?
-  end
-
-  # Check if all restaurants associated with the checked out
-  # OrderFragments have opted for order notices via sms message
-  def all_sms_opted?
-    order_fragments.joins(:restaurant)
-        .where("restaurants.order_notify_type = ?", 1).count == order_fragments.count
   end
 
 end
