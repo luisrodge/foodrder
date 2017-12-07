@@ -1,11 +1,13 @@
 
 
-# About the foorder platform
+# About the foorder.bz platform
 
-foodrder is restaurant/food platform that makes it incredibly easy to find and buy food from a collection of local restaurants. Restaurants can list
-their menus and foods that belong to menus. Customers can browse through a collection of local restaurants/foods and easily add foods to their cart. 
-Customers can even request what it is exactly their looking for and the foorder agency will find the best possible match that meet their requirements
-in a matter of minutes.
+foodrder.bz is a restaurant & food platform that makes it crazy easy to find and order something to eat and drink from a catalog of local restaurants. Restaurants can list
+their various menus and foods/drinks. Customers can browse through a collection of local restaurants & foods and easily add foods/drinks to their cart. foodrder.bz 
+provides an ordering system that enables customers to very easily order food from across multiple restaurants all in one go! It's versatility allows people to customize 
+their orders by opting for delivery, food variants, and food additions. foodrder.bz takes advantage of an external sms gateway which allows restaurants to opt for receiving 
+new order details realtime via text message. Customers that opt for pickup will semi-automatically receive a text message informing them that their order is fully ready for
+pickup.
 
 # Prerequisites
 
@@ -14,6 +16,8 @@ in a matter of minutes.
 * PostgreSQL v9.5.8
 * Rails v5.1.4
 * ImageMagick
+* Redis
+* ElasticSearch
 
 # Installation
 
