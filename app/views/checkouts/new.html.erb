@@ -3,9 +3,8 @@
     <h2 class="remove-margin text-sb">
       <span class="text-bb">Checkout Your <%= pluralize_normal("Order", @cart.cart_items) %></span>
     </h2><br>
-    <%= link_to cart_path, class: "btn btn-default" do %>Return To Cart
-    <% end %>
-    <br><br><br><br>
+
+    <br><br>
     <div class="row">
       <div class="col-md-12">
         <%= simple_form_for [@cart, @order], url: cart_checkouts_path, validate: true do |f| %>
