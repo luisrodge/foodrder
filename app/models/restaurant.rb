@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :menus, dependent: :destroy
   has_many :foods, dependent: :destroy
   has_many :specials, dependent: :destroy
+  has_many :schedules, dependent: :destroy
 
   has_many :drinks
 

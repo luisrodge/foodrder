@@ -19,5 +19,9 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require cocoon
+//= require recurring_select
+//= require moment
+//= require picker
+//= require picker.time
 //= require turbolinks
 //= require_tree .
