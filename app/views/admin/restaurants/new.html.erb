@@ -1,4 +1,11 @@
 <div class="row">
+  <div class="col-md-12">
+    <%= link_to admin_restaurants_path, class: "btn btn-default " do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Return
+    <% end %>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-5 center-block">
     <h2><span class="text-bb">Add New Restaurant</span></h2><br><br>
     <%= simple_form_for [:admin, @restaurant] do |f| %>
@@ -9,10 +16,6 @@
         <%= f.input :phone_number, input_html: {class: "input-lg"} %>
         <%= f.input :order_medium_type,
                     collection: Restaurant.order_medium_types.keys.map { |w| [w.humanize, w] },
-                    include_blank: false,
-                    input_html: {class: "input-lg"} %>
-        <%= f.input :order_notify_type,
-                    collection: Restaurant.order_notify_types.keys.map { |w| [w.humanize, w] },
                     include_blank: false,
                     input_html: {class: "input-lg"} %>
         <%= f.input :primary_image, as: :file %>

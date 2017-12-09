@@ -17,34 +17,43 @@
 </div>
 
 <hr>
-<%= link_to "View Specials (#{@restaurant.specials.count})", admin_restaurant_specials_path(@restaurant), class: "btn btn-info btn-lg" %>
 
 <br><br><br><br>
 
 <div class="row grid">
   <!-- add sizing element for columnWidth -->
-  <div class="grid-sizer col-md-4"></div>
+  <div class="grid-sizer col-md-6"></div>
   <% @menus.each do |menu| %>
-      <div class="grid-item col-md-4 col-sm-12 col-xs-12 col-sb">
+      <div class="grid-item col-md-6 col-sm-12 col-xs-12 col-sb">
         <div class="grid-item-content col-box col-box-db">
           <div class="row">
             <div class="col-md-6">
-              <h3 class="remove-margin"><span class="text-bb"><%= menu.name %></span></h3><br>
+              <h3 class="remove-margin text-strong"><span class="text-bb"><%= menu.name %></span></h3><br>
             </div>
             <div class="col-md-6 text-right">
-              <%= link_to "Edit Menu", "#", class: "btn btn-default btn-sm" %>
-              <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-primary btn-sm" %>
+              <%= link_to "Add New Food", new_admin_menu_food_path(menu), class: "btn btn-primary" %>
+              <%= link_to "Edit Menu", edit_admin_menu_path(menu), class: "btn btn-default" %>
+              <%= link_to "Remove", admin_menu_path(menu), method: :delete, class: "btn btn-danger" %>
             </div>
           </div>
           <% if menu.tags.any? %>
               <hr>
               <div class="row">
                 <div class="col-md-12">
-                  Tags: <%= menu.tag_names %>
+                  <h3 class="remove-margin">Tags</h3>
+                  <h4><%= menu.tag_names %></h4>
                 </div>
               </div>
           <% end %>
-
+          <% if menu.additions.any? %>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="remove-margin">Additions</h3>
+                  <h4><%= menu.additions_name_price %></h4>
+                </div>
+              </div>
+          <% end %>
           <hr>
           <br>
           <% menu.foods.each do |food| %>
@@ -55,30 +64,20 @@
                       <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
                     </div>
                   </div>
-                  <div class="col-md-5 col-sm-4 col-xs-4">
-                    <h4><%= food.name %></h4>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h3><%= food.name %></h3>
                     <% unless food.price.nil? %>
                         <h4 class="text-price"><%= price_format(food.price) %></h4>
                     <% end %>
                   </div>
-                  <div class="col-md-3 col-sm-4 col-xs-4 text-right">
-                    <%= link_to "Edit Food", edit_admin_restaurant_path(food.restaurant), class: "btn btn-default btn-sm" %>
+                  <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                    <%= link_to "Edit Food", edit_admin_food_path(food), class: "btn btn-default" %>
+                    <%= link_to "Remove", admin_food_path(food), method: :delete, class: "btn btn-danger" %>
                   </div>
                 </div>
                 <% if food.variants.any? %>
-                    <br>
-                    <h4 class="remove-margin text-strong"><span class="text-bb">Variations</span></h4>
-                    <br><br>
-                    <% food.variants.each do |variant| %>
-                        <div class="row">
-                          <div class="col-md-4">
-                            <div class="col-box col-box-bg">
-                              <h4 class="remove-margin text-sb"><%= variant.name %></h4>
-                              <h4 class="text-price remove-margin"><%= price_format(variant.price) %></h4>
-                            </div>
-                          </div>
-                        </div>
-                    <% end %>
+                    <h3>Variations</h3>
+                    <h4><%= food.variats_name_price %></h4>
                 <% end %>
               </div>
           <% end %>
@@ -97,6 +96,13 @@
   <% @restaurant.drinks.order("created_at DESC").each do |drink| %>
       <div class="grid-item col-md-4 col-sb">
         <div class="grid-item-content col-box col-box-db">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <%= link_to "Edit Drink", edit_admin_drink_path(drink), class: "btn btn-default" %>
+              <%= link_to "Remove", admin_drink_path(drink), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </div>
+          <br><br>
           <div class="row">
             <div class="col-md-8">
               <h3 class="text-strong"><span class="text-bb"><%= drink.name %></span></h3><br>

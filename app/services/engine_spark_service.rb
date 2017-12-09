@@ -14,7 +14,7 @@ class EngineSparkService
   def message_restaurant
     dispatch_message("New order placed on foodrder.bz")
     @order_fragment.food_order_items.each do |order_item|
-      message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
+      message_body = "#{order_item.quantity} #{order_item.item_name}."
       if order_item.additions.any?
         message_body += " Additions: #{order_item.additions_name}."
       end
@@ -22,7 +22,7 @@ class EngineSparkService
     end
     if @order_fragment.drink_order_items.any?
       @order_fragment.drink_order_items.each do |order_item|
-        message_body = "#{order_item.item_name}, Amount: #{order_item.quantity}."
+        message_body = "#{order_item.quantity} #{order_item.item_name}."
         dispatch_message(message_body)
       end
     end

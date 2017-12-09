@@ -1,5 +1,6 @@
 class Admin::MenusController < Admin::BaseController
-  before_action :set_restaurant
+  before_action :set_restaurant, except: [:edit, :update, :destroy]
+  before_action :set_menu, only: [:edit, :update, :destroy]
 
   def new
     @menu = Menu.new
@@ -20,6 +21,20 @@ class Admin::MenusController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @menu.update_attributes(menu_params)
+    redirect_to admin_restaurant_path(@menu.restaurant), notice: "Menu updated successfully"
+  end
+
+  def destroy
+    restaurant = @menu.restaurant
+    @menu.destroy
+    redirect_to admin_restaurant_path(restaurant), notice: "Menu removed successfully"
+  end
+
   private
 
   def menu_params
@@ -29,5 +44,9 @@ class Admin::MenusController < Admin::BaseController
 
   def set_restaurant
     @restaurant ||= Restaurant.find(params[:restaurant_id])
+  end
+
+  def set_menu
+    @menu ||= Menu.find(params[:id])
   end
 end

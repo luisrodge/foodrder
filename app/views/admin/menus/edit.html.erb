@@ -1,0 +1,46 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to admin_restaurant_path(@menu.restaurant), class: "btn btn-default " do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Return
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h2><span class="text-bb">Edit <%= @menu.name %> Menu by <%= @menu.restaurant.name %></span></h2>
+    <br><br><br>
+
+    <%= simple_form_for [:admin, @menu], validate: true do |f| %>
+        <%= f.input :name, input_html: {class: "input-lg"} %>
+        <br>
+        <%= f.label :taggable_tokens, "Optional Menu Tags" %>
+        <br>
+        <%= f.text_field :taggable_tokens, data: {load: @menu.tags} %>
+        <br>
+        <div id="additions" class="nested-form-wrapper">
+          <h3 class="remove-margin nested-form-title">Add Additions</h3>
+          <%= f.simple_fields_for :additions, validate: true do |addition| %>
+              <%= render 'addition_fields', f: addition %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Addition', f, :additions, class: "btn btn-primary" %>
+          </div>
+        </div>
+        <br>
+        <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("#menu_taggable_tokens").tokenInput('/admin/tags.json',
+            {
+                theme: 'bootstrap',
+                preventDuplicates: true,
+                prePopulate: $("#menu_taggable_tokens").data('load')
+            });
+    });
+</script>

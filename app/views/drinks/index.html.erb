@@ -7,7 +7,7 @@
 </div>
 <br>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 col-sb">
     <%= link_to "Go To Cart", cart_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>
   <div class="col-md-3">
@@ -39,7 +39,7 @@
                 <%= simple_form_for [drink, CartItem.new] do |f| %>
                     <%= f.input :variant_id,
                                 label: false,
-                                collection: drink.variants,
+                                collection: drink.variants.order('price_cents ASC'),
                                 include_blank: false,
                                 input_html: {class: "input-lg"} %>
 

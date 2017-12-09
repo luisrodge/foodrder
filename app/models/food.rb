@@ -37,4 +37,8 @@ class Food < ApplicationRecord
         order_medium_type: restaurant.order_medium_type
     )
   end
+
+  def variats_name_price
+    variants.map{|a| "#{a.name} - $#{a.price}"}.join(", ")
+  end
 end

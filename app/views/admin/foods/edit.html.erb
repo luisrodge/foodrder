@@ -1,13 +1,22 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to admin_restaurant_path(@food.restaurant), class: "btn btn-default " do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Return
+    <% end %>
+  </div>
+</div>
+<br>
 <div class="row">
   <div class="col-md-5 center-block">
-    <h2><span class="text-bb">Add A New Food To <%= @menu.name %> Menu</span></h2><br/><br><br>
+    <h2><span class="text-bb">Edit <%= @food.name %> by <%= @food.restaurant.name %></span></h2><br/><br><br>
 
-    <%= simple_form_for [:admin, @menu, @food], html: {multipart: true} do |f| %>
+    <%= simple_form_for [:admin, @food], html: {multipart: true} do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
         <%= f.input :price, input_html: {class: "input-lg"} %>
         <%= f.input :description %>
         <%= f.label :taggable_tokens, "Optional Food Tags" %>
-        <%= f.text_field :taggable_tokens %>
+        <%= f.text_field :taggable_tokens, data: {load: @food.tags} %>
         <br>
         <%= f.input :primary_image, as: :file %>
         <div id="variants">
@@ -16,7 +25,7 @@
               <%= render 'variant_fields', f: variant %>
           <% end %>
           <div class="links">
-            <%= link_to_add_association  f, :variants, class: "btn btn-primary btn-lg" do %>
+            <%= link_to_add_association f, :variants, class: "btn btn-primary" do %>
                 <i class="fa fa-plus-square" aria-hidden="true"></i> Add
             <% end %>
           </div>
@@ -30,6 +39,10 @@
 <script type="text/javascript" charset="utf-8">
     $(function () {
         $("#food_taggable_tokens").tokenInput('/admin/tags.json',
-            {theme: 'bootstrap', preventDuplicates: true});
+            {
+                theme: 'bootstrap',
+                preventDuplicates: true,
+                prePopulate: $("#food_taggable_tokens").data('load')
+            });
     });
 </script>

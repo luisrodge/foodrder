@@ -10,9 +10,16 @@
   .nav > li {
     border-bottom: 1px solid #00B326;
   }
+  .text-bb::after {
+    border: none;
+  }
   .col-xs-pl {
     float: none;
     text-align: left;
+  }
+
+  .col-xs-sb{
+    margin-bottom: 16px;
   }
 
   .mobile-h {
