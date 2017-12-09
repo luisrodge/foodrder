@@ -99,6 +99,7 @@
                             <%= f.input :variant_id,
                                         label: false,
                                         collection: cart_item.itemable.variants,
+                                        :label_method => lambda { |v| "#{v.name} - $#{v.price}" },
                                         include_blank: false,
                                         input_html: {class: "input-lg"} %>
                         <% end %>
@@ -154,6 +155,7 @@
                                 <%= f.input :variant_id,
                                             label: false,
                                             collection: drink_item.itemable.variants,
+                                            :label_method => lambda { |v| "#{v.name} - $#{v.price}" },
                                             include_blank: false,
                                             input_html: {class: "input-lg"} %>
                             <% end %>

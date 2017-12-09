@@ -26,7 +26,7 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    if @cart_item.update_item(cart_item_params[:quantity])
+    if @cart_item.update_item(cart_item_params)
       redirect_to cart_path, notice: "Order quantity successfully updated"
     else
       flash[:danger] = "Cart item could not be updated"

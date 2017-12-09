@@ -17,10 +17,10 @@ class CartItem < ApplicationRecord
             numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
 
   # Update a CartItem quantity then update Cart total
-  def update_item(quantity)
+  def update_item(params)
     existing_cart = cart
     transaction do
-      update_attributes!(quantity: quantity)
+      update_attributes!(params)
       update_attributes!(total: cart_item_total)
       existing_cart.update_total
     end

@@ -176,6 +176,9 @@ button.btn.dropdown-toggle.bs-placeholder.btn-default {
   box-shadow: none;
   color: #424242;
   font-size: 18px;
+  .dropdown-menu > li > a {
+    font-size: 18px;
+  }
 }
 
 .bootstrap-select.btn-group:not(.input-group-btn) {
@@ -188,6 +191,13 @@ button.btn.dropdown-toggle.bs-placeholder.btn-default {
     color: #424242;
     font-size: 18px;
   }
+  .dropdown-menu > li > a {
+    font-size: 18px;
+  }
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+  margin-top: 11px!important;
 }
 
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {

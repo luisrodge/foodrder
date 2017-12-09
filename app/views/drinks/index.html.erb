@@ -40,6 +40,7 @@
                     <%= f.input :variant_id,
                                 label: false,
                                 collection: drink.variants.order('price_cents ASC'),
+                                :label_method => lambda { |v| "#{v.name} - $#{v.price}" },
                                 include_blank: false,
                                 input_html: {class: "input-lg"} %>
 

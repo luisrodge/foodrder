@@ -14,7 +14,7 @@
     border: none;
   }
   .col-xs-pl {
-    float: none;
+    float: none!important;
     text-align: left;
   }
 
@@ -66,14 +66,16 @@
     float: none!important;
   }
 
+  .col-md-pl {
+    float: none!important;
+    text-align: left;
+  }
 
-  .col-md-sb {
-    margin-bottom: 20px;
+  .col-md-sb{
+    margin-bottom: 16px;
   }
-  .col-xl-sb {
-    margin-bottom: 50px;
-  }
-  .text-md-left {
+
+    .text-md-left {
     text-align: left;
   }
   .top-header {
