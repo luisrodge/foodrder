@@ -18,6 +18,15 @@ class Food < ApplicationRecord
   # For searchkick model searching
   searchkick
 
+  # Search Food records by food name and Tags
+  def search_data
+    attributes.merge(
+        name: name,
+        tags_name: tags.map(&:name),
+        order_medium_type: restaurant.order_medium_type
+    )
+  end
+
   # Return all restaurants that offer delivery
   def self.deliverable
     joins(:restaurant)
@@ -27,15 +36,6 @@ class Food < ApplicationRecord
 
   def customizable?
     variants.any? || menu.additions.any?
-  end
-
-  # Search Food records by food name and Tags
-  def search_data
-    attributes.merge(
-        name: name,
-        tags_name: tags.map(&:name),
-        order_medium_type: restaurant.order_medium_type
-    )
   end
 
   def variats_name_price
