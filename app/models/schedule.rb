@@ -1,6 +1,9 @@
 class Schedule < ApplicationRecord
   serialize :recurring, Hash
+  has_many :time_frames, dependent: :destroy
   belongs_to :restaurant
+
+  accepts_nested_attributes_for :time_frames
 
   validates_presence_of :open, :close, :recurring
 

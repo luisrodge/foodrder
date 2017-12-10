@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       resources :specials
       resources :drinks
     end
+    resources :schedules, only: [:edit, :update, :destroy]
     resources :tags, only: :index
     resources :subscribers
     resources :orders

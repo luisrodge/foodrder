@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-6 center-block">
-    <h2><span class="text-bb">Add New Schedule To <%= @restaurant.name %></span></h2>
+    <h2><span class="text-bb">Edit <%= @restaurant.name %> Schedule</span></h2>
+
     <br><br><br>
     <%= form_for [:admin, @restaurant, @schedule] do |f| %>
         <div class="form-group">
@@ -10,11 +11,11 @@
         <br>
         <div class="form-group">
           <h4>Open At:</h4>
-          <%= f.time_select :open, {ampm: true, include_blank: true}, class: 'form-control input-lg' %>
+          <%= f.time_select :open, {ampm: true}, class: 'form-control input-lg' %>
         </div>
         <div class="form-group">
-          <h4>Close At</h4>
-          <%= f.time_select :close, {ampm: true, include_blank: true}, class: 'form-control input-lg' %>
+          <h4>Close At:</h4>
+          <%= f.time_select :close, {ampm: true}, class: 'form-control input-lg' %>
         </div>
         <div id="time_frames" class="nested-form-wrapper">
           <h3 class="remove-margin nested-form-title">Add TimeFrame</h3>
@@ -26,7 +27,7 @@
           </div>
         </div>
         <br>
-        <%= f.submit "Create Schedule", class: "btn btn-primary btn-lg btn-block" %>
+        <%= f.submit "Update Schedule", class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
   </div>
 </div>

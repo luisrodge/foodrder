@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
-  before_action :set_cart_item, only: [:update, :destroy]
   before_action :set_itemable, only: :create
+  before_action :should_redirect, only: :create
+  before_action :set_cart_item, only: [:update, :destroy]
   before_action :set_variant, only: :create
 
   # Adding a food/drink order to cart
@@ -41,8 +42,11 @@ class CartItemsController < ApplicationController
 
   private
 
-  def cart_item_params
-    params.require(:cart_item).permit(:itemable_id, :variant_id, :quantity, addition_ids: [])
+  def should_redirect
+    unless @itemable.restaurant.open?
+      flash[:warning] = "Your order could not be placed. #{@itemable.restaurant.name} is currently not open."
+      redirect_to root_path
+    end
   end
 
   def set_cart_item
@@ -61,4 +65,9 @@ class CartItemsController < ApplicationController
                  nil
                end
   end
+
+  def cart_item_params
+    params.require(:cart_item).permit(:itemable_id, :variant_id, :quantity, addition_ids: [])
+  end
+
 end

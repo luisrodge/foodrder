@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209161718) do
+ActiveRecord::Schema.define(version: 20171209235754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -224,6 +224,15 @@ ActiveRecord::Schema.define(version: 20171209161718) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "time_frames", force: :cascade do |t|
+    t.time "open"
+    t.time "close"
+    t.bigint "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_time_frames_on_schedule_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -275,6 +284,7 @@ ActiveRecord::Schema.define(version: 20171209161718) do
   add_foreign_key "schedules", "restaurants"
   add_foreign_key "specials", "restaurants"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "time_frames", "schedules"
   add_foreign_key "users", "restaurants"
   add_foreign_key "variants", "restaurants"
 end
