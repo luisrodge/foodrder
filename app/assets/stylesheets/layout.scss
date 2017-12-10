@@ -36,14 +36,15 @@ header {
   background: #71BA51;
   color: #FFF;
   .container {
-    padding-top: 12px;
     padding-bottom: 12px;
   }
+  .top-header-col-1 {
+    padding-top: 8px;
+  }
   .logo {
-    font-family: 'Roboto', sans-serif;
-    color: #FFF;
-    font-size: 36px;
+    color: #FAFAFA;
     font-weight: bold;
+    font-size: 36px;
     a:focus, a:hover {
       color: #FFF;
       text-decoration: none;
@@ -53,18 +54,18 @@ header {
     color: #EBEBEB;
     font-family: 'Roboto', sans-serif;
     display: block;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: normal;
-    margin-top: -6px;
+    margin-top: -7px;
   }
   .top-header-col-2 {
-    padding-top: 2px;
+    padding-top: 13px;
     /* Search */
     input {
       border-radius: 0px !important;
     }
     .stylish-input-group .input-group-addon {
-      background: white !important;
+      background: #F7F7F7 !important;
       border: none !important;
     }
 
@@ -83,7 +84,7 @@ header {
     }
   }
   .top-header-col-3 {
-    padding-top: 3px;
+    padding-top: 14px;
   }
 }
 
@@ -91,7 +92,6 @@ header {
   margin-bottom: 60px;
   background: #3B3B3B;
   .navbar-brand {
-    font-family: 'Roboto', sans-serif;
     font-size: 40px !important;
     font-weight: bold;
     color: #71BA51;
