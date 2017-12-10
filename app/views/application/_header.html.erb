@@ -2,7 +2,7 @@
   <div class="top-header">
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-2 col-sm-12">
           <h1 class="logo remove-margin">
             <%= link_to root_path do %>
                 foodrder <span class="slogan">Search, Order...Eat</span>
@@ -28,7 +28,9 @@
 
         </div>
         <div class="col-md-3 col-sm-12 top-header-col-3 pull-right text-right ">
-          <%= link_to "Add Your Restaurant", new_restaurant_request_path, class: "btn btn-info btn-lg" %>
+          <%= link_to cart_path, class: "btn btn-info btn-lg" do %>
+              <i class="glyphicon glyphicon-shopping-cart"></i> My Cart (<%= @cart.cart_items.count %>)
+          <% end %>
         </div>
       </div>
     </div>
@@ -70,9 +72,8 @@
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
               <li>
-                <%= link_to cart_path, class: "nav-cart" do %>
-                    <i class="glyphicon glyphicon-shopping-cart"></i> Cart (<%= @cart.cart_items.count %>)
-                <% end %>
+              <li><%= link_to "Add Your Restaurant", new_restaurant_request_path,
+                              class: "nav-cart" %>
               </li>
           <% end %>
         </ul>
