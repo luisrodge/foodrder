@@ -42,6 +42,20 @@ nav.navbar.navbar-default.application-navbar .navbar-nav > li > a {
 .nav-cart {
   padding-right: 15px!important;
 }
+.navbar .cart-btn {
+  display: none;
+  color: #3B3B3B;
+  background: transparent;
+  position: absolute;
+  top: -2px;
+  left: 15px;
+  &:hover, &:focus {
+    box-shadow: none;
+    color: #3B3B3B;
+    background: transparent;
+  }
+}
+
 
 .dropdown-menu > li > a {
   font-size: 16px;
@@ -63,7 +77,11 @@ nav.navbar.navbar-default.application-navbar .navbar-nav > li > a {
   padding-right: 0;
 }
 
-/* Responsive Image */
+button.navbar-toggle{
+  border-radius: 0px;
+}
+
+  /* Responsive Image */
 .img-responsive {
   width: 100%;
 }

@@ -1,5 +1,8 @@
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+  .navbar .cart-btn{
+    display: block;
+  }
   .container {
     margin-right: 0;
     margin-left: 0;
