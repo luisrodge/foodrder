@@ -8,7 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "foodrder", root_path, class: "navbar-brand minimal-navbar-brand" %>
+      <div class="minimal-navbar-logo">
+        <%= link_to root_path, class: "header-logo" do %>
+            <img src="https://res.cloudinary.com/dwaavflqp/image/upload/v1513058642/logo5_vnoak4.png"
+                 alt="">
+        <% end %>
+      </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
