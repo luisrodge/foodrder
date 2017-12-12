@@ -29,4 +29,21 @@ class Schedule < ApplicationRecord
   def close_time
     Time.parse(read_attribute(:close).strftime("%H:%M:%S"))
   end
+
+  def day_names
+    recurring[:validations][:day].map {|d| Date::DAYNAMES[d]}.join(", ")
+  end
+
+  def open_close_time_frames
+    if time_frames.present?
+      return time_frames.map {|tf| "#{tf.open_time.strftime('%I:%M %p')} - #{tf.close_time.strftime('%I:%M %p')}"}.join(", ")
+    end
+    "#{open_time.strftime('%I:%M %p')} - #{close_time.strftime('%I:%M %p')}"
+  end
+
+  def currently_open?
+    converted_schedule.occurs_on?(Date.today) && time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
+  end
 end
+
+#Date::DAYNAMES[Schedule.last.recurring[:validations][:day].first]

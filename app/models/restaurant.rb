@@ -31,18 +31,27 @@ class Restaurant < ApplicationRecord
 
   # Returns true if a restaurant is currently open
   def open?
-    unless schedule.present? && (open_today || close?)
+    if schedule.present? && (open_today? == false || close?)
       return false
     end
     true
   end
 
-  def open_today
-    schedule.converted_schedule.occurs_on?(Date.today)
+  def open_today?
+    schedule.converted_schedule.occurs_on?(Date.today) && time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
   end
 
   # Returns true if the restaurant is currently close
   def close?
+    if schedule.time_frames.any?
+      schedule.time_frames.each do |time_frame|
+        if Time.now < time_frame.open_time || Time.now > time_frame.close_time
+          return true
+        else
+          return false
+        end
+      end
+    end
     Time.now < schedule.open_time || Time.now > schedule.close_time
   end
 
