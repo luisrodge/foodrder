@@ -42,7 +42,16 @@ class Schedule < ApplicationRecord
   end
 
   def currently_open?
-    converted_schedule.occurs_on?(Date.today) && time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
+    if converted_schedule.occurs_on?(Date.today)
+      if time_frames.present? && time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
+        return true
+      elsif open_time < Time.now && close_time > Time.now
+        return true
+      else
+        return false
+      end
+    end
+    false
   end
 end
 
