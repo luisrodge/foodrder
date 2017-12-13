@@ -2,6 +2,9 @@
   <div class="col-md-6 center-block">
     <h2>Edit <%= @restaurant.name %> Restaurant</h2>
     <%= link_to "Add Schedule", new_admin_restaurant_schedule_path(@restaurant), class: "btn btn-primary" %>
+    <% @restaurant.schedules.order("created_at ASC").each_with_index do |schedule, index| %>
+      <%= link_to "Edit Schedule #{index + 1}", edit_admin_schedule_path(schedule), class: "btn btn-default" %>
+    <% end %>
     <br><br><br>
     <%= simple_form_for [:admin, @restaurant] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
