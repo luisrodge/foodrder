@@ -7,7 +7,7 @@ class Admin::SchedulesController < Admin::BaseController
   end
 
   def create
-    @schedule = @restaurant.build_schedule(schedule_params)
+    @schedule = @restaurant.schedules.new(schedule_params)
     if @schedule.valid?
       @schedule.save
       redirect_to root_path, notice: "Schedule saved successfully"

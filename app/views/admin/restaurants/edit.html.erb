@@ -1,11 +1,7 @@
 <div class="row">
   <div class="col-md-6 center-block">
     <h2>Edit <%= @restaurant.name %> Restaurant</h2>
-    <% if @restaurant.schedule.present? %>
-        <%= link_to "Edit Schedule", edit_admin_schedule_path(@restaurant.schedule), class: "btn btn-default" %>
-    <% else %>
-        <%= link_to "Add Schedule", new_admin_restaurant_schedule_path(@restaurant), class: "btn btn-primary" %>
-    <% end %>
+    <%= link_to "Add Schedule", new_admin_restaurant_schedule_path(@restaurant), class: "btn btn-primary" %>
     <br><br><br>
     <%= simple_form_for [:admin, @restaurant] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>

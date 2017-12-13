@@ -1,0 +1,6 @@
+<% @restaurant.schedules.each do |schedule| %>
+    <div class="schedule-period">
+      <h3 class="days"><%= schedule.day_names %></h3>
+      <h3><i class="fa fa-clock-o" aria-hidden="true"></i> <%= schedule.open_close_time_frames %></h3>
+    </div>
+<% end %>

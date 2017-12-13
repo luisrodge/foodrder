@@ -11,9 +11,7 @@
     </div>
     <div class="restaurant-information">
       <div class="restaurant-other-information">
-        <h3><%= @restaurant.schedule.day_names if @restaurant.schedule.present? %></h3>
-        <hr>
-        <h3><%= @restaurant.schedule.open_close_time_frames %></h3>
+        <%= render 'schedule' %>
         <% if @restaurant.offers_delivery? %>
             <hr>
             <h3><%= fa_icon "motorcycle" %> Offers Delivery</h3>

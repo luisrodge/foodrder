@@ -3,8 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :menus, dependent: :destroy
   has_many :foods, dependent: :destroy
   has_many :specials, dependent: :destroy
-  has_one :schedule, dependent: :destroy
-
+  has_many :schedules, dependent: :destroy
   has_many :drinks
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
@@ -53,6 +52,35 @@ class Restaurant < ApplicationRecord
       end
     end
     Time.now < schedule.open_time || Time.now > schedule.close_time
+  end
+
+  def day_names
+    schedule_days = nil
+    schedules.each do |schedule|
+      schedule_days = schedule.recurring[:validations][:day].map {|d| Date::DAYNAMES[d]}.join(", ")
+      if schedule.time_frames.present?
+        schedule_days += schedule.time_frames.map {|tf| " (#{tf.open_time.strftime('%I:%M %p')} - #{tf.close_time.strftime('%I:%M %p')})"}.join(", ")
+      end
+      schedule_days += " (#{schedule.open_time.strftime('%I:%M %p')} - #{schedule.close_time.strftime('%I:%M %p')})"
+    end
+    schedule_days
+    #schedules.map {|s| s.recurring[:validations][:day].map {|d| Date::DAYNAMES[d]}.join(", ")}
+  end
+
+  def currently_open?
+    schedules.each do |schedule|
+      if schedule.converted_schedule.occurs_on?(Date.today)
+        if schedule.time_frames.present? && schedule.time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
+          return true
+        elsif schedule.open_time < Time.now && schedule.close_time > Time.now
+          return true
+        else
+          return false
+        end
+      else
+        return false
+      end
+    end
   end
 
 end
