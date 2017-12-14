@@ -67,6 +67,7 @@ class Restaurant < ApplicationRecord
     #schedules.map {|s| s.recurring[:validations][:day].map {|d| Date::DAYNAMES[d]}.join(", ")}
   end
 
+  # Does not account for midnight
   def currently_open?
     schedules.each do |schedule|
       if schedule.converted_schedule.occurs_on?(Date.today)
@@ -75,10 +76,13 @@ class Restaurant < ApplicationRecord
         elsif schedule.open_time < Time.now && schedule.close_time > Time.now
           return true
         end
+        next
+      else
+        return false
       end
-      next
     end
     false
   end
+
 
 end

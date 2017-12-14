@@ -41,7 +41,7 @@ class Schedule < ApplicationRecord
     "#{open_time.strftime('%I:%M %p')} - #{close_time.strftime('%I:%M %p')}"
   end
 
-  def currently_open?
+  def is_open?
     if converted_schedule.occurs_on?(Date.today)
       if time_frames.present? && time_frames.where('open < ? AND close > ?', Time.now, Time.now).any?
         return true
@@ -55,4 +55,3 @@ class Schedule < ApplicationRecord
   end
 end
 
-#Date::DAYNAMES[Schedule.last.recurring[:validations][:day].first]
