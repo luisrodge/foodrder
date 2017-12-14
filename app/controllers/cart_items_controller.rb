@@ -37,7 +37,7 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cart_item.remove_item
-    redirect_to cart_path, notice: "Food successfully removed from cart"
+    redirect_to cart_path, notice: "Cart item successfully removed from cart"
   end
 
   private

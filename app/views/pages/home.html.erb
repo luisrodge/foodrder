@@ -58,7 +58,8 @@
                       <% else %>
                           <%= simple_form_for [food, CartItem.new] do |f| %>
                               <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
-                              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                              <%= button_tag(type: 'submit', class: "btn btn-primary",
+                                             data: {disable_with: "Adding To Cart..."}) do %>
                                   <i class="glyphicon glyphicon-shopping-cart"></i> Order
                               <% end %>
                           <% end %>
