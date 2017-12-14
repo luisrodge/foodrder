@@ -5,6 +5,9 @@
     </div>
   </div>
   <div class="col-md-5 col-sm-6 col-xs-12 pull-right">
+    <% unless @restaurant.currently_open? %>
+      <h4 class="text-right remove-margin"><span class="resaurant-info">Now Closed</span></h4><br>
+    <% end %>
     <div class="restaurant-name-address">
       <h1 class="text-title remove-margin"><span class="text-bb"><%= @restaurant.name %></span></h1><br>
       <h3><%= @restaurant.address %></h3>

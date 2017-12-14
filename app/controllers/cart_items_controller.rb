@@ -44,7 +44,7 @@ class CartItemsController < ApplicationController
 
   def should_redirect
     unless @itemable.restaurant.currently_open?
-      flash[:warning] = "Your order could not be placed. #{@itemable.restaurant.name} is currently not open."
+      flash[:warning] = "Your order could not be placed. #{@itemable.restaurant.name} restuarant is currently not open."
       redirect_back(fallback_location: root_path)
     end
   end

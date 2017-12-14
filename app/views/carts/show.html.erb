@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-12">
           <h2 class="remove-margin truncate mobile-sb text-strong"><%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
-            From <%= @cart_fragments.first.restaurant.name %></h2>
+            From <%= link_to @cart_fragments.first.restaurant.name, restaurant_path(@cart_fragments.first.restaurant) %></h2>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12 text-right col-xs-pl">
           <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>

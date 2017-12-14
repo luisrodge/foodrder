@@ -1,6 +1,21 @@
 
 .figure {
   border: 1px solid #CCC;
+  position: relative;
+  .close-caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    background: #363636;
+    padding: 9px 8px;
+    text-align: center;
+    color: #71BA51;
+    opacity: 0.96;
+  }
+  .close-caption.md {
+    width: 55%;
+  }
   .figcaption {
     padding: 14px;
   }

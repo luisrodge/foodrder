@@ -21,6 +21,11 @@
             <div class="figure">
               <div class="image-medium-wrapper">
                 <%= image_tag(food.primary_image_url(:medium), class: "img-responsive") %>
+                <% unless food.restaurant.currently_open? %>
+                    <div class="close-caption md">
+                      <h4 class="remove-margin">Restaurant Closed</h4>
+                    </div>
+                <% end %>
               </div>
               <div class="figcaption">
                 <h3 class="truncate text-strong"><%= food.name %></h3>
