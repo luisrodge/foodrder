@@ -32,7 +32,7 @@
               <% end %>
               <% if @food.menu.additions.any? %>
                   <h4 class="lb-lg">Additions</h4>
-                  <%= f.collection_select :addition_ids, @food.menu.additions, :id,
+                  <%= f.collection_select :addition_ids, @food.menu.additions,  :id,
                                           :full_name, {}, :multiple => 'true',
                                           :class => 'form-control selectpicker' %>
                   <br><br>

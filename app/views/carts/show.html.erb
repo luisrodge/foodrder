@@ -99,9 +99,15 @@
                             <%= f.input :variant_id,
                                         label: false,
                                         collection: cart_item.itemable.variants,
-                                        :label_method => lambda { |v| "#{v.name} - $#{v.price}" },
+                                        :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
                                         include_blank: false,
                                         input_html: {class: "input-lg"} %>
+                        <% end %>
+                        <% if cart_item.itemable.menu.additions.any? %>
+                            <%= f.collection_select :addition_ids, cart_item.itemable.menu.additions, :id,
+                                                    :full_name, {}, :multiple => 'true',
+                                                    :class => 'form-control selectpicker' %>
+                            <br><br>
                         <% end %>
                         <%= f.input :quantity, label: false, input_html: {class: "form-control input-lg"} %>
                         <%= button_tag(type: 'submit', class: "btn btn-default btn-lg btn-block") do %>
@@ -155,7 +161,7 @@
                                 <%= f.input :variant_id,
                                             label: false,
                                             collection: drink_item.itemable.variants,
-                                            :label_method => lambda { |v| "#{v.name} - $#{v.price}" },
+                                            :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
                                             include_blank: false,
                                             input_html: {class: "input-lg"} %>
                             <% end %>
