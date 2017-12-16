@@ -4,6 +4,7 @@ class Restaurant < ApplicationRecord
   has_many :foods, dependent: :destroy
   has_many :specials, dependent: :destroy
   has_many :schedules, dependent: :destroy
+  has_many :order_fragments, dependent: :destroy
   has_many :drinks
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
@@ -18,6 +19,10 @@ class Restaurant < ApplicationRecord
 
   # Carrierwave uploader
   mount_uploader :primary_image, PrimaryImageUploader
+
+  def pending_order_fragments
+    order_fragments.order("created_at DESC")
+  end
 
   def offers_delivery?
     only_delivery? || pickup_and_delivery?

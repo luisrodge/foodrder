@@ -35,6 +35,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'recurring_select', github: 'RundownApp/recurring_select'
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'redis', '~> 3.0'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'

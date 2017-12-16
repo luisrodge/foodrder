@@ -7,6 +7,8 @@ class OrderItem < ApplicationRecord
   has_many :item_additions, as: :item_additionable, validate: false, dependent: :destroy
   has_many :additions, through: :item_additions
 
+  monetize :total_cents
+
   def total
     if itemable.price > 0
       itemable.price
@@ -27,6 +29,7 @@ class OrderItem < ApplicationRecord
     end
   end
 
+
   def item_name
     if variant.present?
       "#{itemable.name} - #{variant.name}"
@@ -36,8 +39,17 @@ class OrderItem < ApplicationRecord
   end
 
 
+  def additions_total
+    total = 0
+    additions.each do |addition|
+      total += addition.price
+    end
+    total
+  end
+
+
   def additions_name
-    additions.map{|a| a.name}.join(" ,")
+    additions.map {|a| a.name}.join(" ,")
   end
 
 end

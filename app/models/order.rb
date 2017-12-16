@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
-  after_commit :dispatch_restaurant_sms, on: :create
+  after_commit :start_jobs, on: :create
 
   # money-rails currency integration
   monetize :total_cents
@@ -29,6 +29,7 @@ class Order < ApplicationRecord
         # Assign each OrderItem to it's appropriate OrderFragment.
         cart_fragment.cart_items.each do |cart_item|
           order.order_items.create(itemable: cart_item.itemable,
+                                   total_cents: cart_item.total_cents,
                                    variant: cart_item.variant,
                                    quantity: cart_item.quantity,
                                    order_fragment: order_fragment,
@@ -48,9 +49,12 @@ class Order < ApplicationRecord
   end
 
   # Invokes background job to dispatch sms messages
-  def dispatch_restaurant_sms
+  # and perform action cable broadcast new restaurant
+  # orders to seller dashboard
+  def start_jobs
     order_fragments.each do |order_fragment|
       DispatchRestaurantSmsJob.perform_later(order_fragment)
+      OrderFragmentRelayJob.perform_later(order_fragment)
     end
   end
 

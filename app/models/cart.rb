@@ -19,10 +19,9 @@ class Cart < ApplicationRecord
                           cart_fragments.create(restaurant: restaurant)
                         end
         price = if itemable.price == 0
-                  variant.price
-                  puts variant.price
+                  variant.price_cents
                 else
-                  itemable.price
+                  itemable.price_cents
                 end
         cart_item = cart_items.create!(itemable: itemable,
                                        variant: variant,

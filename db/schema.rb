@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209235754) do
+ActiveRecord::Schema.define(version: 20171216165514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 20171209235754) do
     t.string "itemable_type"
     t.bigint "itemable_id"
     t.bigint "variant_id"
+    t.integer "total_cents", default: 0, null: false
+    t.string "total_currency", default: "BZD", null: false
     t.index ["itemable_type", "itemable_id"], name: "index_order_items_on_itemable_type_and_itemable_id"
     t.index ["order_fragment_id"], name: "index_order_items_on_order_fragment_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"

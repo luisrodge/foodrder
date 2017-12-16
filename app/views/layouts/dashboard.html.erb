@@ -16,7 +16,7 @@
   <div id="sidebar-wrapper">
     <nav id="spy">
       <ul class="sidebar-nav nav">
-        <%= render 'application/dashboard/admin_nav' %>
+        <%= render "application/dashboard/#{current_user.type.downcase}_nav" %>
       </ul>
     </nav>
   </div>
@@ -28,6 +28,9 @@
         <a id="menu-toggle" href="#">
           <i class="fa fa-bars"></i>
         </a>
+        <% if current_seller %>
+          <%= @current_restaurant.name %> Restaurant
+        <% end %>
       </h1>
     </div>
 

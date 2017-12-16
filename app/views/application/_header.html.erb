@@ -63,13 +63,12 @@
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
               <li>
-              <li><%= link_to "Add Your Restaurant", new_restaurant_request_path,
+              <li><%= link_to "Sign In", new_user_session_path,
                               class: "nav-cart" %>
               </li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
-
       <%= link_to cart_path, class: "btn btn-default btn-lg navbar-btn cart-btn" do %>
           <i class="glyphicon glyphicon-shopping-cart"></i> My Cart (<%= @cart.cart_items.count %>)
       <% end %>

@@ -1,7 +1,7 @@
 require 'httparty'
 
 class EngineSparkService
-  API_URL = 'https://start.engagespark.com/api/v1/engagements/279054/contacts/'
+  API_URL = 'https://start.engagespark.com/api/v1/engagements/286319/contacts/'
 
   def initialize(order_fragment)
     @order_fragment = order_fragment
@@ -40,7 +40,7 @@ class EngineSparkService
 
   def dispatch_message(message)
     HTTParty.post(API_URL,
-                  :body => {:fullPhoneNumber => "501#{@order_fragment.restaurant.phone_number}",
+                  :body => {:fullPhoneNumber => "5016082077",
                             :organizationId => 5291,
                             :customFields => {"14669" => message}
                   }.to_json,
