@@ -80,10 +80,11 @@ class Restaurant < ApplicationRecord
           return true
         elsif schedule.open_time < Time.now && schedule.close_time > Time.now
           return true
+        else
+          next
         end
-        next
       else
-        return false
+        next
       end
     end
     false
