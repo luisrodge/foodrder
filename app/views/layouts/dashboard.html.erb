@@ -36,7 +36,7 @@
           <% if current_seller %>
               <h1 class="title truncate remove-margin"><%= current_seller.restaurant.name %> Restaurant</h1>
           <% else %>
-              <h3 class="remove-margin">Welcome, <%= current_seller.email %></h3>
+              <h2 class="title truncate">Welcome, <%= current_admin.email %></h2>
           <% end %>
         </div>
       </div>
