@@ -16,6 +16,12 @@ class OrderFragment < ApplicationRecord
     order_items.where(itemable_type: "Drink")
   end
 
+  def read_by
+    User.have_read(self).map{|u| "#{u.email}"}.join(" ,")
+  end
+
+
+
   def total
     of_total = 0.0
     order_items.each do |order_item|

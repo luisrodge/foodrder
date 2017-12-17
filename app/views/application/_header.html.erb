@@ -28,7 +28,7 @@
 
         </div>
         <div class="col-md-3 col-sm-12 top-header-col-3 pull-right text-right ">
-          <%= link_to cart_path, class: "btn btn-info btn-lg" do %>
+          <%= link_to cart_path, class: "btn btn-info btn-lg title" do %>
               <i class="glyphicon glyphicon-shopping-cart"></i> My Cart (<%= @cart.cart_items.count %>)
           <% end %>
         </div>
@@ -69,7 +69,7 @@
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
-      <%= link_to cart_path, class: "btn btn-default btn-lg navbar-btn cart-btn" do %>
+      <%= link_to cart_path, class: "btn btn-default btn-lg navbar-btn cart-btn title" do %>
           <i class="glyphicon glyphicon-shopping-cart"></i> My Cart (<%= @cart.cart_items.count %>)
       <% end %>
 
