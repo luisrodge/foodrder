@@ -59,6 +59,10 @@ header {
   margin-bottom: 40px;
 }
 
+.title {
+  font-family: 'Oswald', sans-serif;
+}
+
 .top-header {
   background: #71BA51;
   color: #FFF;
@@ -414,6 +418,7 @@ div#sidebar-wrapper.active {
 
 #page-content-wrapper {
   width: 100%;
+  padding-bottom: 50px;
 }
 
 .sidebar-nav {
@@ -488,7 +493,6 @@ div#sidebar-wrapper.active {
 
 .content-header h1 {
   margin: 0;
-  margin-left: 20px;
   line-height: 65px;
   display: inline-block;
 }
@@ -534,7 +538,7 @@ div#sidebar-wrapper.active {
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      padding: 35px;
+      padding: 35px 18px;
       border: 1px solid #CCC;
       margin-bottom: 44px;
     }

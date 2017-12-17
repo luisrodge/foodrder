@@ -24,22 +24,32 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <div class="content-header">
-      <h1 id="home">
-        <a id="menu-toggle" href="#">
-          <i class="fa fa-bars"></i>
-        </a>
-        <% if current_seller %>
-          <%= @current_restaurant.name %> Restaurant
-        <% end %>
-      </h1>
+      <div class="container-fluid">
+        <div class="col-md-4 col-sm-4 col-xs-2">
+          <h1 id="home">
+            <a id="menu-toggle" href="#">
+              <i class="fa fa-bars"></i>
+            </a>
+          </h1>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-10 text-right">
+          <% if current_seller %>
+              <h1 class="title truncate remove-margin"><%= current_seller.restaurant.name %> Restaurant</h1>
+          <% else %>
+              <h3 class="remove-margin">Welcome, <%= current_seller.email %></h3>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="page-content inset" data-spy="scroll" data-target="#spy">
-      <div class="row">
-        <div class="col-md-12">
-          <%= render 'messages' %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <%= render 'messages' %>
 
-          <%= yield %>
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>

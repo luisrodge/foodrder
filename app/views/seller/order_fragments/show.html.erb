@@ -1,27 +1,25 @@
 <br>
 
 <div class="row">
-  <div class="col-md-12">
-    <h1 class="text-strong">Order Placed <%= format_datetime(@order_fragment.created_at) %></h1>
+  <div class="col-md-8 center-block">
+    <h1 class="text-strong title"><span class="text-bb">Placed <%= format_datetime(@order_fragment.created_at) %></span></h1>
   </div>
 </div>
-<br><br>
+<br><br><br><br>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8 center-block">
     <div class="col-box col-box-db">
       <div class="row">
-        <div class="col-md-5 col-md-sb">
+        <div class="col-md-6 col-md-sb">
           <h2 class="text-strong">Customer Information</h2>
           <hr>
-          <br>
           <h2><%= @order_fragment.order.full_name %></h2>
           <h2><%= number_to_phone(@order_fragment.order.phone_number, :groupings => [3, 4], :delimiter => "-") %></h2>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
           <h2 class="text-strong">Customer Opted For</h2>
           <hr>
-          <br>
           <% if @order_fragment.delivery? %>
               <h2><i class="fa fa-motorcycle" aria-hidden="true"></i>Delivery @</h2>
               <h2><%= @order_fragment.order.delivery_address %></h2>
@@ -37,49 +35,11 @@
 <br><br><br><br>
 
 <div class="seller-order-fragment">
-  <ul>
-    <% @order_fragment.food_order_items.each do |order_item| %>
-        <li class="seller-order_item">
-          <div class="row">
-            <div class="col-md-3 col-md-sb">
-              <div class="image-medium-wrapper">
-                <%= image_tag(order_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div class="row">
-                <div class="col-md-4 col-md-sb">
-                  <h2 class="truncate text-strong"><%= order_item.itemable.name %></h2>
-                  <hr>
-                  <% if order_item.variant.present? %>
-                      <h2><%= order_item.variant_name_price %></h2>
-                  <% end %>
-                  <% if order_item.additions.any? %>
-                      <h2 class="remove-margin"><%= order_item.additions_name_price %></h2>
-                  <% end %>
-                </div>
-                <div class="col-md-4 col-md-sb">
-                  <h2 class="text-strong">Amount</h2>
-                  <hr>
-                  <h2> <%= order_item.quantity %></h2>
-                </div>
-                <div class="col-md-4">
-                  <h2 class="text-strong">Sub Total</h2>
-                  <hr>
-                  <h2 class="text-price"><%= price_format(order_item.order_item_total) %></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-    <% end %>
-  </ul>
-  <% if @order_fragment.drink_order_items.any? %>
-      <br>
-      <h1>Drinks</h1>
-      <br>
+  <div class="row">
+    <div class="col-md-8 center-block">
+      <h1 class="title"><span class="text-bb">Food Orders</span></h1><br><br>
       <ul>
-        <% @order_fragment.drink_order_items.each do |order_item| %>
+        <% @order_fragment.food_order_items.each do |order_item| %>
             <li class="seller-order_item">
               <div class="row">
                 <div class="col-md-3 col-md-sb">
@@ -96,7 +56,9 @@
                           <h2><%= order_item.variant_name_price %></h2>
                       <% end %>
                       <% if order_item.additions.any? %>
-                          <h2 class="remove-margin"><%= order_item.additions_name_price %></h2>
+                          <% order_item.additions.each do |addition| %>
+                              <h2 class="remove-margin"><%= addition.name%> - <%= price_format(addition.price) %></h2>
+                          <% end %>
                       <% end %>
                     </div>
                     <div class="col-md-4 col-md-sb">
@@ -115,5 +77,48 @@
             </li>
         <% end %>
       </ul>
-  <% end %>
+      <% if @order_fragment.drink_order_items.any? %>
+          <br>
+          <h2 class="title"><span class="text-bb">Drink Orders</span></h2>
+          <br><br>
+          <ul>
+            <% @order_fragment.drink_order_items.each do |order_item| %>
+                <li class="seller-order_item">
+                  <div class="row">
+                    <div class="col-md-3 col-md-sb">
+                      <div class="image-medium-wrapper">
+                        <%= image_tag(order_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
+                      </div>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="col-md-4 col-md-sb">
+                          <h2 class="truncate text-strong"><%= order_item.itemable.name %></h2>
+                          <hr>
+                          <% if order_item.variant.present? %>
+                              <h2><%= order_item.variant_name_price %></h2>
+                          <% end %>
+                          <% if order_item.additions.any? %>
+                              <h2 class="remove-margin"><%= order_item.additions_name_price %></h2>
+                          <% end %>
+                        </div>
+                        <div class="col-md-4 col-md-sb">
+                          <h2 class="text-strong">Amount</h2>
+                          <hr>
+                          <h2> <%= order_item.quantity %></h2>
+                        </div>
+                        <div class="col-md-4">
+                          <h2 class="text-strong">Sub Total</h2>
+                          <hr>
+                          <h2 class="text-price"><%= price_format(order_item.order_item_total) %></h2>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+      <% end %>
+    </div>
+  </div>
 </div>
