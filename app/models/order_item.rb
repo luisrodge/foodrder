@@ -39,6 +39,14 @@ class OrderItem < ApplicationRecord
   end
 
 
+  def variant_name_price
+    "#{variant.name} - $#{variant.price}"
+  end
+
+  def additions_name_price
+    additions.map{|a| "#{a.name} - $#{a.price}"}.join(" ,")
+  end
+
   def additions_total
     total = 0
     additions.each do |addition|

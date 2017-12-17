@@ -510,7 +510,7 @@ div#sidebar-wrapper.active {
   padding: 0;
   list-style-type: none;
   li {
-    padding: 35px 14px;
+    padding: 35px 20px;
     border: 1px solid #CCC;
     margin-bottom: 44px;
     background: #F7F7F7;
@@ -522,6 +522,39 @@ div#sidebar-wrapper.active {
     }
   }
 
+}
+
+.seller-order-fragment {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 35px;
+      border: 1px solid #CCC;
+      margin-bottom: 44px;
+    }
+  }
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+  [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #CCC;
+  }
 }
 
 /* Dashboard Responsive Styles */

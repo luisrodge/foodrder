@@ -1,7 +1,7 @@
 require 'httparty'
 
 class EngineSparkService
-  API_URL = 'https://start.engagespark.com/api/v1/engagements/286319/contacts/'
+  API_URL = 'https://start.engagespark.com/api/v1/engagements/287096/contacts/'
 
   def initialize(order_fragment)
     @order_fragment = order_fragment
@@ -9,27 +9,8 @@ class EngineSparkService
 
   # Build out the new order text messages that
   # will be dispatched to the restaurant.
-  # The message body contains important order details
-  # such as item name, variant, quantity, etc...
   def message_restaurant
-    dispatch_message("New order placed on foodrder.bz")
-    @order_fragment.food_order_items.each do |order_item|
-      message_body = "#{order_item.quantity} #{order_item.item_name}."
-      if order_item.additions.any?
-        message_body += " Additions: #{order_item.additions_name}."
-      end
-      dispatch_message(message_body)
-    end
-    if @order_fragment.drink_order_items.any?
-      @order_fragment.drink_order_items.each do |order_item|
-        message_body = "#{order_item.quantity} #{order_item.item_name}."
-        dispatch_message(message_body)
-      end
-    end
-    if @order_fragment.delivery?
-      message_end = "Delivery @ #{@order_fragment.order.delivery_address}."
-      dispatch_message(message_end)
-    end
+    dispatch_message("New order placed on foodrder.bz. View order details here localhost:3000/seller/order_fragments/#{@order_fragment.id}")
   end
 
   # Build out message to inform the customer
@@ -42,7 +23,7 @@ class EngineSparkService
     HTTParty.post(API_URL,
                   :body => {:fullPhoneNumber => "5016082077",
                             :organizationId => 5291,
-                            :customFields => {"14669" => message}
+                            :customFields => {"14753" => message}
                   }.to_json,
                   :headers => {'Content-Type' => 'application/json',
                                'Authorization' => 'Token 4e774d9a6d93795307cb4d29c7576b7755d2c31a'})

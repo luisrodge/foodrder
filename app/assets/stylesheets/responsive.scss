@@ -1,9 +1,9 @@
 /* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
   .minimal-navbar {
     padding-left: 15px;
   }
-  .navbar .cart-btn{
+  .navbar .cart-btn {
     display: block;
   }
   .container {
@@ -20,11 +20,11 @@
     border: none;
   }
   .col-xs-pl {
-    float: none!important;
+    float: none !important;
     text-align: left;
   }
 
-  .col-xs-sb{
+  .col-xs-sb {
     margin-bottom: 16px;
   }
 
@@ -65,23 +65,28 @@
   }
 }
 
-
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .mobile-pull {
-    float: none!important;
+    float: none !important;
+  }
+
+  .col-md-bb {
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+
+  .col-md-sb {
+    margin-bottom: 65px;
   }
 
   .col-md-pl {
-    float: none!important;
+    float: none !important;
     text-align: left;
   }
 
-  .col-md-sb{
-    margin-bottom: 16px;
-  }
-
-    .text-md-left {
+  .text-md-left {
     text-align: left;
   }
   .top-header {
@@ -93,7 +98,7 @@
       font-size: 26px;
     }
     .pull-right {
-      float: none!important;
+      float: none !important;
     }
     .top-header-col-2 {
       margin-top: 10px;
@@ -165,11 +170,11 @@
 }
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width: 480px) {
 
 }
 
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
 
 }
