@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-8 col-sm-8 col-xs-10 text-right">
           <% if current_seller %>
-              <h1 class="title truncate remove-margin"><%= current_seller.restaurant.name %> Restaurant</h1>
+              <h2 class="title truncate"><%= current_seller.restaurant.name %> Restaurant</h2>
           <% else %>
               <h2 class="title truncate">Welcome, <%= current_admin.email %></h2>
           <% end %>
