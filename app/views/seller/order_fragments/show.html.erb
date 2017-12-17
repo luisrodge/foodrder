@@ -1,8 +1,12 @@
-<br>
-
+<%= link_to seller_dashboard_path, class: "btn btn-primary" do %>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+<% end %>
 <div class="row">
   <div class="col-md-8 center-block">
-    <h1 class="text-strong title"><span class="text-bb">Placed <%= format_datetime(@order_fragment.created_at) %></span></h1>
+    <h1 class="title text-sb"><span class="text-bb">Placed <%= format_datetime(@order_fragment.created_at) %></span></h1>
+    <% if current_seller.have_read?(@order_fragment) %>
+      <h3 class="text-muted">Order has been archived</h3>
+    <% end %>
   </div>
 </div>
 <br><br><br><br>
@@ -57,7 +61,7 @@
                       <% end %>
                       <% if order_item.additions.any? %>
                           <% order_item.additions.each do |addition| %>
-                              <h2 class="remove-margin"><%= addition.name%> - <%= price_format(addition.price) %></h2>
+                              <h2 class="remove-margin"><%= addition.name %> - <%= price_format(addition.price) %></h2>
                           <% end %>
                       <% end %>
                     </div>

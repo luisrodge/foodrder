@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     resources :foods
     resources :order_fragments
+    resources :archives
   end
 
   # Customer only routes

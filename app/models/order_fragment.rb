@@ -5,6 +5,8 @@ class OrderFragment < ApplicationRecord
 
   enum status: [:pending_pickup_ready, :processed, :cancelled]
 
+  acts_as_readable on: :created_at
+
 
   def food_order_items
     order_items.where(itemable_type: "Food")

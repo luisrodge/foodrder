@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   belongs_to :restaurant, optional: true
 
+  acts_as_reader
 end
