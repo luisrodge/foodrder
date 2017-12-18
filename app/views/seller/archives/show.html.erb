@@ -5,7 +5,8 @@
   <div class="col-md-8 center-block">
     <h1 class="title text-sb"><span class="text-bb">Archived Order</span></h1><br>
     <h3 class="text-muted">Placed <%= format_datetime(@order_fragment.created_at) %></h3>
-    <h3 class="remove-margin text-muted">Archived on <%= format_datetime(@order_fragment.archived_on) if @order_fragment.archived_on.present? %></h3>
+    <h3 class="remove-margin text-muted">Archived
+      on <%= format_datetime(@order_fragment.archived_on) if @order_fragment.archived_on.present? %></h3>
   </div>
 </div>
 
@@ -25,7 +26,7 @@
           <h2 class="text-strong">Customer Opted For</h2>
           <hr>
           <% if @order_fragment.delivery? %>
-              <h2><i class="fa fa-motorcycle" aria-hidden="true"></i>Delivery @</h2>
+              <h2><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery @</h2>
               <h2><%= @order_fragment.order.delivery_address %></h2>
           <% else %>
               <h2>Pick Up</h2>
@@ -61,7 +62,7 @@
                       <% end %>
                       <% if order_item.additions.any? %>
                           <% order_item.additions.each do |addition| %>
-                              <h2 class="remove-margin"><%= addition.name %> - <%= price_format(addition.price) %></h2>
+                              <h2 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)}BZD" %></h2>
                           <% end %>
                       <% end %>
                     </div>

@@ -28,6 +28,8 @@ class Seller::OrderFragmentsController < ApplicationController
   def should_redirect
     if @order_fragment.restaurant != @current_restaurant
       redirect_to seller_dashboard_path
+    elsif @order_fragment.archived?
+      redirect_to seller_archive_path(@order_fragment)
     end
   end
 
