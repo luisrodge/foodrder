@@ -119,22 +119,3 @@
   </div>
 </div>
 
-<div class="subscribe-wrapper home-subscribe">
-  <h2 class="text-center remove-margin text-title">Become a foodrder subscriber!</h2>
-  <br>
-  <h4 class="text-center text-lh mobile-h">
-    Subscribe to our website if you would like to be notified, via text message, about any special offers being offered
-    by foodrder listed restaurants.
-    <span class="text-strong">By subscribing you are agreeing that foodrder will be able to send text
-    messages to your phone number.</span>
-  </h4>
-  <br>
-  <div class="row">
-    <div class="col-md-6 center-block">
-      <%= simple_form_for Subscriber.new, validate: true do |f| %>
-          <%= f.input :mobile_number, label: false, placeholder: "Enter your phone number", input_html: {class: 'input-lg'} %>
-          <%= f.button :submit, "Subscribe", class: "btn btn-primary btn-lg btn-block" %>
-      <% end %>
-    </div>
-  </div>
-</div>
