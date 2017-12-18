@@ -11,7 +11,7 @@
             <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
             <%= f.input :phone_number, as: :tel, placeholder: "Only numbers allowed", input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
             <% if @cart.delivery_selected? %>
-                <%= f.input :delivery_address, required: true, placeholder: "Example - Santa Elena, Zaiden Street. Blue Board House Beside Church.",
+                <%= f.input :delivery_address, required: true, placeholder: "Santa Elena, Zaiden Street. Blue Board House Beside Church.",
                             input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
             <% end %>
             <br>

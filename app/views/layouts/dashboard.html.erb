@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>foodrder - Dashboard</title>
+
   <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag if current_seller %>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dwaavflqp/image/upload/v1510985526/Logomakr_1neUk4_dkpzgi.png"/>
 
