@@ -56,7 +56,7 @@
           <h2 class="text-strong">Customer Opted For</h2>
           <hr>
           <% if @order_fragment.delivery? %>
-              <h2><i class="fa fa-motorcycle" aria-hidden="true"></i>Delivery @</h2>
+              <h2><i class="fa fa-motorcycle" aria-hidden="true"></i> Delivery @</h2>
               <h2><%= @order_fragment.order.delivery_address %></h2>
           <% else %>
               <h2>Pick Up</h2>
