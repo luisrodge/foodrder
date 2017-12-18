@@ -10,7 +10,7 @@ class EngineSparkService
   # Build out the new order text messages that
   # will be dispatched to the restaurant.
   def message_restaurant
-    dispatch_message("New order placed on foodrder.bz. View here foodrder.bz/seller/o/#{@order_fragment.id}")
+    dispatch_message("New order placed on foodrder.bz. View here foodrder.bz/seller/order_fragments/#{@order_fragment.id}")
   end
 
   # Build out message to inform the customer
