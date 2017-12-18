@@ -62,7 +62,7 @@
                       <% end %>
                       <% if order_item.additions.any? %>
                           <% order_item.additions.each do |addition| %>
-                              <h2 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)}BZD" %></h2>
+                              <h2 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)} BZD" %></h2>
                           <% end %>
                       <% end %>
                     </div>
