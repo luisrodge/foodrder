@@ -3,8 +3,9 @@
 <% end %>
 <div class="row">
   <div class="col-md-8 center-block">
-    <h1 class="title text-sb"><span class="text-bb">Archived Order</span></h1>
+    <h1 class="title text-sb"><span class="text-bb">Archived Order</span></h1><br>
     <h3 class="text-muted">Placed <%= format_datetime(@order_fragment.created_at) %></h3>
+    <h3 class="remove-margin text-muted">Archived on <%= format_datetime(@order_fragment.archived_on) if @order_fragment.archived_on.present? %></h3>
   </div>
 </div>
 
@@ -125,3 +126,4 @@
     </div>
   </div>
 </div>
+

@@ -9,12 +9,12 @@ class Seller::OrderFragmentsController < ApplicationController
   end
 
   def archive
-    @order_fragment.update_attributes(status: 1)
+    @order_fragment.update_attributes(status: 1, archived_on: DateTime.now)
     redirect_to seller_dashboard_path, notice: "Order has been successfully archived."
   end
 
   def order_ready
-    @order_fragment.update_attributes(status: 1)
+    @order_fragment.update_attributes(status: 1, archived_on: DateTime.now)
     DispatchCustomerSmsJob.perform_later(@order_fragment)
     redirect_to seller_dashboard_path, notice: "Order has been archived and a pickup ready message has been dispatched to the customer."
   end

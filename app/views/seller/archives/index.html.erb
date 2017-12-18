@@ -19,7 +19,8 @@
                     <li>
                       <div class="row">
                         <div class="col-md-5 col-xs-sb">
-                          <h3>Placed <%= time_ago_in_words(order_fragment.created_at) %> ago</h3>
+                          <h3>Archived <%= format_datetime(order_fragment.archived_on) if order_fragment.archived_on.present? %>
+                          </h3>
                         </div>
                         <div class="col-md-4 col-xs-sb">
                           <h3><%= pluralize(order_fragment.order_items.count, "item") %> in order</h3>
@@ -38,3 +39,4 @@
 <% else %>
     <h1 class="title text-center"><span class="text-bb">No Order Archives To Show</span></h1>
 <% end %>
+

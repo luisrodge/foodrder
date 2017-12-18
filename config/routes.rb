@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :foods, only: [:new, :create]
     end
     resources :foods
-    resources :order_fragments do
+    resources :order_fragments, path: 'ofrags' do
       member do
         put :archive
         put :order_ready
