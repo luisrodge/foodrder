@@ -23,5 +23,6 @@
 //= require moment
 //= require picker
 //= require picker.time
+//= require jquery.timeago
 //= require turbolinks
 //= require_tree .

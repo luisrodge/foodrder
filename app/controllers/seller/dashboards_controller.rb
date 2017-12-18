@@ -9,8 +9,6 @@ class Seller::DashboardsController < ApplicationController
   private
 
   def set_order_fragments
-    @order_fragments = @current_restaurant
-                           .pending_order_fragments
-                           .unread_by(current_seller)
+    @order_fragments = @current_restaurant.pending_order_fragments
   end
 end

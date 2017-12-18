@@ -21,7 +21,11 @@ class Restaurant < ApplicationRecord
   mount_uploader :primary_image, PrimaryImageUploader
 
   def pending_order_fragments
-    order_fragments.order("created_at DESC")
+    order_fragments.where(status: 0).order("created_at DESC")
+  end
+
+  def archived_order_fragments
+    order_fragments.where(status: 1).order("created_at DESC")
   end
 
   def offers_delivery?

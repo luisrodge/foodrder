@@ -1,12 +1,43 @@
-<%= link_to seller_dashboard_path, class: "btn btn-primary" do %>
-    <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
-<% end %>
+<div class="row">
+  <div class="col-md-4 col-md-sb">
+    <%= link_to seller_dashboard_path, class: "btn btn-default" do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+    <% end %>
+  </div>
+  <div class="col-md-5 pull-right mobile-pull">
+    <div class="row">
+      <div class="col-md-6 col-sb">
+        <% unless @order_fragment.delivery? %>
+            <%= link_to "Order Ready", order_ready_seller_order_fragment_path(@order_fragment),
+                        method: :put,
+                        data: {
+                            confirm: 'Is the order ready?',
+                            'confirm-button-text': 'Yes',
+                            'cancel-button-color': '#d9534f',
+                            text: "By clicking Yes, the customer will be sent a text message informing them that their order is ready for pickup.",
+                        },
+                        class: "btn btn-primary btn-block btn-lg" %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to "Archive", archive_seller_order_fragment_path(@order_fragment),
+                    method: :put,
+                    data: {
+                        confirm: 'Are you sure?',
+                        'confirm-button-text': 'Yes',
+                        'cancel-button-color': '#d9534f',
+                        text: "Do you really want to archive this order?",
+                    },
+                    class: "btn btn-default btn-block btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
 <div class="row">
   <div class="col-md-8 center-block">
-    <h1 class="title text-sb"><span class="text-bb">Placed <%= format_datetime(@order_fragment.created_at) %></span></h1>
-    <% if current_seller.have_read?(@order_fragment) %>
-      <h3 class="text-muted">Order has been archived</h3>
-    <% end %>
+    <h1 class="title text-sb"><span class="text-bb">Placed <%= format_datetime(@order_fragment.created_at) %></span>
+    </h1>
   </div>
 </div>
 <br><br><br><br>

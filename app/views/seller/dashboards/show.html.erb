@@ -1,28 +1,23 @@
 <br>
-<% if @order_fragments.any? %>
-    <div class="row">
-      <div class="col-md-8 center-block">
-        <h1 class="title">
-          <span class="text-bb">Pending Orders (<span data-behavior="pending-orders-count"><%= @order_fragments.count %></span>)</span>
-        </h1>
-      </div>
+<div class="row">
+  <div class="col-md-8 center-block">
+    <h1 class="title">
+      <span class="text-bb">Pending Orders (<span data-behavior="pending-orders-count"><%= @order_fragments.count %></span>)</span>
+    </h1>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-8 center-block">
+    <div>
+      <ul data-behavior='seller-orders' data-restaurant-id='<%= @current_restaurant.id %>' class="seller-orders">
+        <% @order_fragments.each do |order_fragment| %>
+            <!-- OrderFragment partial !-->
+            <%= render order_fragment %>
+        <% end %>
+      </ul>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-md-8 center-block">
-        <div>
-          <ul data-behavior='seller-orders' data-restaurant-id='<%= @current_restaurant.id %>' class="seller-orders">
-            <% @order_fragments.each do |order_fragment| %>
-                <!-- OrderFragment partial !-->
-                <%= render order_fragment %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-<% else %>
-    <h1 class="title text-center"><span class="text-bb">No New Orders</span></h1><br>
-    <h2 class="text-center">New orders will automatically show here.</h2>
-<% end %>
+  </div>
+</div>

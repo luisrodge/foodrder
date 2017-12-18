@@ -35,15 +35,6 @@ class Order < ApplicationRecord
                                    order_fragment: order_fragment,
                                    addition_ids: cart_item.addition_ids)
         end
-        # Dispatch restaurant text message containing new order details
-        if order_fragment.delivery?
-          order_fragment.update_attributes(status: 1)
-        end
-      end
-      # Checks if the order should immediately be marked
-      # as processed on checkout, given certain conditions
-      if order.all_deliveries?
-        order.update_attributes(status: 1)
       end
     end
   end

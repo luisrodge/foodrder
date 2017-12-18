@@ -9,13 +9,12 @@ class Seller::ArchivesController < ApplicationController
   end
 
   def show
-
   end
 
   private
 
   def set_order_fragments
-    @order_fragments = @current_restaurant.order_fragments.order(created_at: :desc).read_by(current_seller)
+    @order_fragments = @current_restaurant.archived_order_fragments.order(created_at: :desc)
   end
 
   def set_order_fragment

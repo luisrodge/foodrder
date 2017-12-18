@@ -21,7 +21,12 @@ Rails.application.routes.draw do
       resources :foods, only: [:new, :create]
     end
     resources :foods
-    resources :order_fragments
+    resources :order_fragments do
+      member do
+        put :archive
+        put :order_ready
+      end
+    end
     resources :archives
   end
 

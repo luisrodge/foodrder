@@ -16,7 +16,7 @@ class EngineSparkService
   # Build out message to inform the customer
   # that their placed order is ready for pickup.
   def message_customer
-    dispatch_message("Your recently placed order at #{@order_fragment.restaurant.name} is ready for pickup.")
+    dispatch_message("Your recently placed order at #{@order_fragment.restaurant.name} restaurant is ready for pickup.")
   end
 
   def dispatch_message(message)

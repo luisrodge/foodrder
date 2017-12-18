@@ -3,7 +3,7 @@ class OrderFragment < ApplicationRecord
   belongs_to :restaurant
   has_many :order_items, dependent: :destroy
 
-  enum status: [:pending_pickup_ready, :processed, :cancelled]
+  enum status: [:pending, :archived, :cancelled]
 
   acts_as_readable on: :created_at
 
@@ -19,8 +19,6 @@ class OrderFragment < ApplicationRecord
   def read_by
     User.have_read(self).map{|u| "#{u.email}"}.join(" ,")
   end
-
-
 
   def total
     of_total = 0.0
