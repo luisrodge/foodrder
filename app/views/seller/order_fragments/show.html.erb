@@ -88,11 +88,11 @@
                       <h2 class="truncate text-strong"><%= order_item.itemable.name %></h2>
                       <hr>
                       <% if order_item.variant.present? %>
-                          <h2><%= order_item.variant_name_price %></h2>
+                          <h2><%= "#{order_item.variant.name} - #{price_format(order_item.variant.price)}" %></h2>
                       <% end %>
                       <% if order_item.additions.any? %>
                           <% order_item.additions.each do |addition| %>
-                              <h2 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)} BZD" %></h2>
+                              <h2 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)}" %></h2>
                           <% end %>
                       <% end %>
                     </div>
