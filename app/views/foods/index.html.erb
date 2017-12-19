@@ -81,7 +81,11 @@
                   <% end %>
                 </div>
                 <div class="col-md-7 col-sm-7 col-xs-7">
-                  <h4 class="text-right text-price truncate"><%= price_format(food.price) %></h4>
+                  <% if food.variants.any? %>
+                      <h4 class="text-right text-price">Variants</h4>
+                  <% else %>
+                      <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
+                  <% end %>
                 </div>
               </div>
             </div>

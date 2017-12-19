@@ -32,7 +32,7 @@
                   <%= image_tag(restaurant.primary_image_url(:thumb)) %>
                 </div>
               </td>
-              <td>test@yahoo.com</td>
+              <td><%= restaurant.users.first.email %></td>
               <td><%= restaurant.location %></td>
               <td><%= restaurant.phone_number %></td>
               <td><%= link_to "Edit", edit_admin_restaurant_path(restaurant), class: "btn btn-default" %></td>

@@ -51,7 +51,11 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
                   <h3 class="remove-margin menu-food-name text-strong"><%= food.name %></h3>
-                  <h4 class="text-price"><%= price_format(food.price) %></h4>
+                  <% if food.variants.any? %>
+                      <h4 class="text-price">Variants</h4>
+                  <% else %>
+                      <h4 class="text-price"><%= price_format(food.price) %></h4>
+                  <% end %>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4 text-right">
                   <% if food.customizable? %>
