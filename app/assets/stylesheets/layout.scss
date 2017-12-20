@@ -548,6 +548,14 @@ div#sidebar-wrapper.active {
   }
 }
 
+/* Alert Modal */
+button.swal2-confirm.styled {
+  background: #71BA51 !important;
+  &:hover, &:focus {
+    background: #8BC272 !important;
+  }
+}
+
 .vcenter {
   display: inline-block;
   vertical-align: middle;
