@@ -12,6 +12,8 @@ class SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     if current_user.type == "Admin"
       admin_dashboard_path
+    elsif current_user.type == "Seller"
+      seller_dashboard_path
     else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     end

@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  namespace :info do
+    get 'pages/customers'
+  end
+
+  namespace :info do
+    get 'pages/restaurants'
+  end
+
   root to: 'pages#home'
 
   # Custom registration routes for customer and admins
-  devise_for :customer, controllers: {registrations: 'customer/registrations'}, skip: :sessions
-  devise_for :sellers, controllers: {registrations: 'seller/registrations'}, skip: :sessions
-  devise_for :admins, controllers: {registrations: 'admin/registrations'}, skip: :sessions
+  # devise_for :customer, controllers: {registrations: 'customer/registrations'}, skip: :sessions
+  # devise_for :sellers, controllers: {registrations: 'seller/registrations'}, skip: :sessions
+  # devise_for :admins, controllers: {registrations: 'admin/registrations'}, skip: :sessions
 
   # Single sign in route for customer, sellers, and admins
   devise_for :users, controllers: {sessions: 'sessions'}, skip: %i[sessions registrations]
@@ -91,10 +99,11 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
-  get 'order_food', to: 'pages#order_food'
-  get 'restaurant_info', to: 'pages#restaurant_info'
+  namespace :info do
+    get 'customers', to: 'pages#customers'
+    get 'restaurants', to: 'pages#restaurants'
+  end
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
-
 end
