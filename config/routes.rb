@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :info do
-    get 'pages/customers'
-  end
-
-  namespace :info do
-    get 'pages/restaurants'
-  end
 
   root to: 'pages#home'
 
