@@ -79,8 +79,14 @@
     <h3 class="text-muted remove-margin">There are no add-on charges whatsoever. Food prices are the same
       on and off foodrder.bz.
       <br><br><br>
-      <%= link_to "Show Foods", foods_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to "Show Restaurants", restaurants_path, class: "btn btn-primary btn-lg" %>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-sb">
+          <%= link_to "Show Foods", foods_path, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+        <div class="col-md-3 col-sm-4">
+          <%= link_to "Show Restaurants", restaurants_path, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+      </div>
     </h3>
   </div>
 </div>
