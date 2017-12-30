@@ -10,18 +10,20 @@ class EngineSparkService
   # Build out the new order text messages that
   # will be dispatched to the restaurant.
   def message_restaurant
-    dispatch_message("New order placed on foodrder.bz. View here foodrder.bz/seller/order_fragments/#{@order_fragment.id}")
+    dispatch_message("New order placed on foodrder.bz. View here foodrder.bz/seller/order_fragments/#{@order_fragment.id}",
+                     @order_fragment.restaurant.phone_number)
   end
 
   # Build out message to inform the customer
   # that their placed order is ready for pickup.
   def message_customer
-    dispatch_message("Your recently placed order at #{@order_fragment.restaurant.name} restaurant is ready for pickup.")
+    dispatch_message("Your recently placed order at #{@order_fragment.restaurant.name} restaurant is ready for pickup.",
+                     @order_fragment.order.phone_number)
   end
 
-  def dispatch_message(message)
+  def dispatch_message(message, phone_number)
     HTTParty.post(API_URL,
-                  :body => {:fullPhoneNumber => @order_fragment.order.phone_number,
+                  :body => {:fullPhoneNumber => phone_number,
                             :organizationId => 5291,
                             :customFields => {"14753" => message}
                   }.to_json,
