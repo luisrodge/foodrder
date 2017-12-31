@@ -23,7 +23,7 @@ class EngineSparkService
 
   def dispatch_message(message, phone_number)
     HTTParty.post(API_URL,
-                  :body => {:fullPhoneNumber => phone_number,
+                  :body => {:fullPhoneNumber => '501' + phone_number,
                             :organizationId => 5291,
                             :customFields => {"14753" => message}
                   }.to_json,
