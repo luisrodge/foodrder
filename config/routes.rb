@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   # Cart checkout
   resources :cart, only: [:nil] do
     resources :checkouts
+    resources :reservations
   end
 
   resources :restaurants do
