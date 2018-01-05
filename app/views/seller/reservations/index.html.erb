@@ -22,7 +22,7 @@
       <% @reservations.each do |reservation| %>
         <tr>
           <td><%= reservation.full_name %></td>
-          <td><%= reservation.email %></td>
+          <td><a href="mailto:<%= reservation.email %>" target="_top"><%= reservation.email %></a></td>
           <td><%= reservation.phone_number %></td>
           <td><%= format_date(reservation.reserve_date) %></td>
           <td><%= format_time(reservation.reserve_time) %></td>

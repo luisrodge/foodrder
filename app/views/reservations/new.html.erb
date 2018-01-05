@@ -1,6 +1,14 @@
 <div class="row">
-  <div class="col-md-12">
-    <h2><span class="text-bb">New Reservation Request To <%= @restaurant.name %> Restaurant</span></h2>
+  <div class="col-md-2 col-sm-4">
+    <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
+  </div>
+  <div class="col-md-10 col-sm-8">
+    <h2 class="">Send Reservation Request To <%= @restaurant.name %> Restaurant</h2>
+    <h3>
+      <%= link_to restaurant_path(@restaurant), class: "primary-link" do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Return
+      <% end %>
+    </h3>
   </div>
 </div>
 <br><br><br>
