@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
+    resources :reservations
     resources :drinks, only: :index
   end
   resources :restaurant_requests, only: [:new, :create]
