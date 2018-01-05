@@ -1,11 +1,13 @@
 <div class="row restaurant-header">
   <div class="col-md-5 col-sm-6 col-xs-12">
     <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
-    <h3>
-      <%= link_to new_restaurant_reservation_path(@restaurant), class: "primary-link" do %>
-        <i class="fa fa-share" aria-hidden="true"></i> Reservation Request
-      <% end %>
-    </h3>
+    <% if @restaurant.reservation %>
+      <h3>
+        <%= link_to new_restaurant_reservation_path(@restaurant), class: "primary-link" do %>
+          <i class="fa fa-share" aria-hidden="true"></i> Reservation Request
+        <% end %>
+      </h3>
+    <% end %>
   </div>
   <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
     <% unless @restaurant.currently_open? %>

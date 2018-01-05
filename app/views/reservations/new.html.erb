@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-2 col-sm-4">
-    <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
+    <div class="image-medium-wrapper">
+      <%= image_tag(@restaurant.primary_image_url(:medium), class: "img-responsive") %>
+    </div>
   </div>
   <div class="col-md-10 col-sm-8">
     <h2 class="">Send Reservation Request To <%= @restaurant.name %> Restaurant</h2>

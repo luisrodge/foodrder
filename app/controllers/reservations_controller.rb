@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_restaurant
+  before_action :should_redirect
   layout 'minimal'
 
   def new
@@ -27,4 +28,7 @@ class ReservationsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
+  def should_redirect
+    redirect_to restaurant_path(@restaurant) unless @restaurant.reservation
+  end
 end
