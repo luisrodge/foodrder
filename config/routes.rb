@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # Seller only routes
   namespace :seller do
     resource :dashboard, only: :show
+    resources :reservations
     resources :menus do
       resources :foods, only: [:new, :create]
     end

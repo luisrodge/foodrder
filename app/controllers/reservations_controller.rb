@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.new(reservation_params)
     if @reservation.valid?
       @reservation.save
-      redirect_to root_path, notice: "Reservation request sent successfully. You'll hear back from #{@restaurant.name} soon."
+      redirect_to root_path, notice: "Reservation request sent successfully. You'll hear back from #{@restaurant.name} restaurant soon."
     else
       render :new
     end

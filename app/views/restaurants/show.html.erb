@@ -1,19 +1,14 @@
 <div class="row restaurant-header">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="image-wrapper">
-      <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
-    </div>
+  <div class="col-md-5 col-sm-6 col-xs-12">
+    <%= image_tag(@restaurant.primary_image_url, class: "img-responsive") %>
   </div>
-  <div class="col-md-5 col-sm-6 col-xs-12 pull-right">
+  <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
     <% unless @restaurant.currently_open? %>
       <h4 class="text-right remove-margin"><span class="resaurant-info">Now Closed</span></h4><br>
     <% end %>
     <div class="restaurant-name-address">
       <h1 class="text-title remove-margin"><span class="text-bb"><%= @restaurant.name %></span></h1><br>
       <h3><%= @restaurant.address %></h3>
-    </div>
-    <div class="text-right">
-      <h3><%= link_to "Reservation Request", new_restaurant_reservation_path(@restaurant), class: "btn btn-default" %></h3>
     </div>
     <div class="restaurant-information">
       <div class="restaurant-other-information">
