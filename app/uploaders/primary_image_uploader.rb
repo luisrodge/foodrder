@@ -9,8 +9,8 @@ class PrimaryImageUploader < CarrierWave::Uploader::Base
 
   version :medium do
     eager
-    process resize_to_fill: [300, 220]
-    cloudinary_transformation :quality => 80
+    process resize_to_fill: [400, 320]
+    cloudinary_transformation :quality => 100
   end
 
   version :thumb do

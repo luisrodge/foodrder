@@ -13,9 +13,11 @@
     </h3>
   </div>
 </div>
-<br><br><br>
+<br>
+<hr>
+<br><br>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 center-block">
     <%= simple_form_for [@restaurant, @reservation], validate: true do |f| %>
       <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
       <%= f.input :email, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
@@ -27,16 +29,5 @@
       <br>
       <%= f.submit "Send Request", class: "btn btn-primary btn-lg btn-block" %>
     <% end %>
-  </div>
-  <div class="col-md-5 pull-right">
-    <div class="col-box col-box-bg">
-      <h3>Reservation Notice</h3><br>
-      <p>1. We're thrilled that you've decided to drop us a line. And we look forward to you dining with us.</p>
-      <p>2. Your reservation is confirmed after you receive an email confirmation from us.</p>
-      <p>4. We accept reservations 60 days in advance. For reservations further out, please fill out this form 60 days
-        beforehand.</p>
-      <p>5. For events or groups of 20 or more, we accept inquiries and reservations 90 days in advance.</p>
-      <p>6. We don't take reservations for breakfast or lunch.</p>
-    </div>
   </div>
 </div>
