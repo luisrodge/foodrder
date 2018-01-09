@@ -1,5 +1,5 @@
 <div class="row restaurant-header">
-  <div class="col-md-4 col-sm-6 col-md-sb">
+  <div class="col-md-5 col-sm-6 col-md-sb">
     <div class="image-medium-wrapper">
       <%= image_tag(@restaurant.primary_image_url(:medium), class: "img-responsive") %>
     </div>
@@ -14,7 +14,7 @@
       <hr>
     <% end %>
   </div>
-  <div class="col-md-7 col-sm-6 col-xs-12 pull-right">
+  <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
     <% unless @restaurant.currently_open? %>
       <h4 class="text-right remove-margin"><span class="resaurant-info">Now Closed</span></h4><br>
     <% end %>
