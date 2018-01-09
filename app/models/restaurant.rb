@@ -6,6 +6,7 @@ class Restaurant < ApplicationRecord
   has_many :schedules, dependent: :destroy
   has_many :order_fragments, dependent: :destroy
   has_many :drinks
+  has_many :reservations
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
 

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="title"><span class="text-bb">New Reservation Requests (<%= @reservations.count %>)</span></h1>
+  </div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Reservation Date</th>
+        <th>Reservation Time</th>
+        <th>Persons</th>
+        <th>Placed On</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.full_name %></td>
+          <td><a href="mailto:<%= reservation.email %>" target="_top"><%= reservation.email %></a></td>
+          <td><%= reservation.phone_number %></td>
+          <td><%= format_date(reservation.reserve_date) %></td>
+          <td><%= format_time(reservation.reserve_time) %></td>
+          <td><%= reservation.persons %></td>
+          <td>
+            <p class="text-sb"><%= format_datetime(reservation.created_at) %></p>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -44,7 +44,7 @@ class Admin::RestaurantsController < Admin::BaseController
     params.require(:restaurant).permit(:name, :location, :street, :phone_number,
                                        :primary_image, :origin_seller_email,
                                        :order_medium_type, :order_notify_type,
-                                       :delivery)
+                                       :delivery, :reservation)
   end
 
   def set_restaurant

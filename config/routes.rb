@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # Seller only routes
   namespace :seller do
     resource :dashboard, only: :show
+    resources :reservations
     resources :menus do
       resources :foods, only: [:new, :create]
     end
@@ -75,9 +76,11 @@ Rails.application.routes.draw do
   # Cart checkout
   resources :cart, only: [:nil] do
     resources :checkouts
+    resources :reservations
   end
 
   resources :restaurants do
+    resources :reservations
     resources :drinks, only: :index
   end
   resources :restaurant_requests, only: [:new, :create]

@@ -1,0 +1,2 @@
+module Seller::ReservationsHelper
+end
