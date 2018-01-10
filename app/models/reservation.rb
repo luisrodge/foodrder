@@ -7,7 +7,7 @@ class Reservation < ApplicationRecord
 
   enum status: [:pending, :archived]
 
-  # Invokes background job to dispatch reservation sms message
+  # Invokes background job to dispatch new reservation sms notice
   def start_job
     DispatchReservationSmsJob.perform_later(self)
   end
