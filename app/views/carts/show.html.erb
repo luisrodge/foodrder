@@ -94,9 +94,10 @@
               <% unless cart_item.variant.present? %>
                 <h4 class="remove-margin">Regular Price:</h4>
                 <h4>
-                  <span class="text-price"><%= price_format(cart_item.itemable.price) %></span></h4>
+                  <span class="text-price"><%= price_format(cart_item.itemable.price) %></span>
+                </h4>
+                <hr>
               <% end %>
-              <hr>
               <h4>Sub Total:</h4>
               <h4>
                 <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>

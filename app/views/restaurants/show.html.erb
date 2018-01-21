@@ -44,10 +44,10 @@
 <br><br><br>
 <hr>
 <div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-6">
+  <div class="col-md-6 col-sm-6 col-xs-12">
     <h2 class="remove-margin truncate text-sb"><%= @restaurant.menu_food_counter %></h2>
   </div>
-  <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+  <div class="col-md-6 col-sm-6 col-xs-12 text-right col-md-pl">
     <div id="menus-paginator">
       <%= paginate @menus, remote: true %>
     </div>

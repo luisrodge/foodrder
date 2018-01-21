@@ -13,8 +13,8 @@ class Admin::FoodsController < Admin::BaseController
     if @food.valid?
       @food.taggable_tokens = (food_params[:taggable_tokens])
       @food.save
-      redirect_to admin_restaurant_path(@menu.restaurant),
-                  notice: "Food added to menu successfully"
+      redirect_to new_admin_menu_food_path(@menu),
+                  notice: "Food added to menu successfully. Add more foods to menu."
     else
       render :new
     end
