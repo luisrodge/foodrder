@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121181857) do
+ActiveRecord::Schema.define(version: 20180121183849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20180121181857) do
     t.string "itemable_type"
     t.bigint "itemable_id"
     t.bigint "variant_id"
+    t.bigint "choice_id"
     t.index ["cart_fragment_id"], name: "index_cart_items_on_cart_fragment_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["choice_id"], name: "index_cart_items_on_choice_id"
     t.index ["itemable_type", "itemable_id"], name: "index_cart_items_on_itemable_type_and_itemable_id"
     t.index ["variant_id"], name: "index_cart_items_on_variant_id"
   end
@@ -310,6 +312,7 @@ ActiveRecord::Schema.define(version: 20180121181857) do
   add_foreign_key "cart_fragments", "restaurants"
   add_foreign_key "cart_items", "cart_fragments"
   add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "choices"
   add_foreign_key "cart_items", "variants"
   add_foreign_key "choices", "foods"
   add_foreign_key "choices", "restaurants"

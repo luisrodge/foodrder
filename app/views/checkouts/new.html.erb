@@ -39,27 +39,34 @@
     <% @cart_fragments.each do |cart_fragment| %>
       <div class="col-box col-box-db col-sb">
         <div class="row">
-          <div class="col-md-8 col-sm-6 ">
-            <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+          <div class="col-md-9 col-sm-6 ">
+            <h3 class="text-strong"><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
               From <%= cart_fragment.restaurant.name %></h3>
           </div>
-          <div class="col-md-4 col-sm-6 text-right col-mobile-pl">
+          <div class="col-md-3 col-sm-6 text-right col-mobile-pl">
             <% if cart_fragment.delivery? %>
-              <h3 class="text-muted">Delivery</h3>
+              <h4 class="text-muted">Delivery</h4>
             <% else %>
-              <h3 class="text-muted">Pick Up</h3>
+              <h4 class="text-muted">Pick Up</h4>
             <% end %>
           </div>
         </div>
-
-        <hr>
-        <br>
         <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
+          <hr>
           <div class="row text-center">
             <div class="col-md-6 col-sm-5 col-xs-5">
-              <h4><%= cart_item.cart_item_name %></h4>
+              <h4 class="text-strong text-sb"><%= cart_item.cart_item_name %></h4>
               <% if cart_item.variant.present? %>
-                <h4 class="text-muted"><%= cart_item.variant.name %></h4>
+                <h4>Variant:</h4>
+                <h4><%= cart_item.variant_name_price %></h4>
+              <% end %>
+              <% if cart_item.additions.present? %>
+                <h4>Additions:</h4>
+                <h4 class="remove-margin"><%= cart_item.additions_name_price %></h4>
+              <% end %>
+              <% if cart_item.choice.present? %>
+                <h4>Flavor:</h4>
+                <h4 class="remove-margin"><%= cart_item.choice.name %></h4>
               <% end %>
             </div>
             <div class="col-md-2">
@@ -69,7 +76,6 @@
               <h4 class="text-price"><%= price_format(cart_item.cart_item_total) %></h4>
             </div>
           </div>
-          <br>
         <% end %>
         <!-- Cart Drinks Section -->
         <% if cart_fragment.drink_cart_items.any? %>

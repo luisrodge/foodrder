@@ -2,6 +2,7 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :cart_fragment
   belongs_to :variant, optional: true
+  belongs_to :choice, optional: true
   belongs_to :itemable, polymorphic: true
 
   has_many :item_additions, as: :item_additionable, validate: false, dependent: :destroy
@@ -11,7 +12,6 @@ class CartItem < ApplicationRecord
 
   attr_accessor :delivery
   attr_accessor :drink
-
 
   validates :quantity, presence: true,
             numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 10}
@@ -71,10 +71,10 @@ class CartItem < ApplicationRecord
   end
 
   def additions_name
-    additions.map{|a| a.name}.join(" ,")
+    additions.map {|a| a.name}.join(" ,")
   end
 
   def additions_name_price
-    additions.map{|a| "#{a.name} - $#{a.price}"}.join(" ,")
+    additions.map {|a| "#{a.name} - $#{a.price}"}.join(" ,")
   end
 end

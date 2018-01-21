@@ -79,6 +79,10 @@
                     <h3>Variations</h3>
                     <h4><%= food.variats_name_price %></h4>
                 <% end %>
+                <% if food.choices.any? %>
+                  <h3>Choices</h3>
+                  <h4><%= food.choices_name %></h4>
+                <% end %>
               </div>
           <% end %>
         </div>

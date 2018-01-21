@@ -3,11 +3,13 @@ class CartItemsController < ApplicationController
   before_action :should_redirect, only: :create
   before_action :set_cart_item, only: [:update, :destroy]
   before_action :set_variant, only: :create
+  before_action :set_choice, only: :create
 
   # Adding a food/drink order to cart
   def create
     if @cart.create_cart_item(@itemable,
                               @variant,
+                              @choice,
                               cart_item_params[:addition_ids],
                               cart_item_params[:quantity])
       if @itemable.restaurant.drinks.any?
@@ -61,13 +63,18 @@ class CartItemsController < ApplicationController
   def set_variant
     @variant = if cart_item_params[:variant_id].present?
                  Variant.find(cart_item_params[:variant_id])
-               else
-                 nil
+               end
+  end
+
+  def set_choice
+    @choice = if cart_item_params[:choice_id].present?
+                 Choice.find(cart_item_params[:choice_id])
                end
   end
 
   def cart_item_params
-    params.require(:cart_item).permit(:itemable_id, :variant_id, :quantity, addition_ids: [])
+    params.require(:cart_item).permit(:itemable_id, :variant_id, :choice_id,
+                                      :quantity, addition_ids: [])
   end
 
 end

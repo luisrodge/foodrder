@@ -38,10 +38,14 @@ class Food < ApplicationRecord
   end
 
   def customizable?
-    variants.any? || menu.additions.any?
+    variants.any? || menu.additions.any? || choices.any?
   end
 
   def variats_name_price
     variants.map {|a| "#{a.name} - $#{a.price}"}.join(", ")
+  end
+
+  def choices_name
+    choices.map {|a| "#{a.name}"}.join(", ")
   end
 end
