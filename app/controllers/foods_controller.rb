@@ -6,7 +6,7 @@ class FoodsController < ApplicationController
              elsif params[:sort].present? && params[:sort] == "deliverable"
                Food.deliverable
              else
-               Food.order("created_at DESC")
+               Food.order("RANDOM()")
              end
   end
 

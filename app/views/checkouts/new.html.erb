@@ -8,14 +8,14 @@
     <div class="row">
       <div class="col-md-12">
         <%= simple_form_for [@cart, @order], url: cart_checkouts_path, validate: true do |f| %>
-            <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-            <%= f.input :phone_number, as: :tel, placeholder: "Only numbers allowed", input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-            <% if @cart.delivery_selected? %>
-                <%= f.input :delivery_address, required: true, placeholder: "Santa Elena, Zaiden Street. Blue Board House Beside Church.",
-                            input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
-            <% end %>
-            <br>
-            <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block btn-gb" %>
+          <%= f.input :full_name, input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+          <%= f.input :phone_number, as: :tel, placeholder: "Only numbers allowed", input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+          <% if @cart.delivery_selected? %>
+            <%= f.input :delivery_address, required: true, placeholder: "Santa Elena, Zaiden Street. Blue Board House Beside Church.",
+                        input_html: {class: 'input-lg'}, label_html: {class: 'lb-lg'} %>
+          <% end %>
+          <br>
+          <%= f.submit "Send Order", class: "btn btn-primary btn-lg btn-block btn-gb" %>
         <% end %>
       </div>
 
@@ -37,78 +37,73 @@
     </div>
     <br>
     <% @cart_fragments.each do |cart_fragment| %>
-        <div class="col-box col-box-db col-sb">
-          <div class="row">
-            <div class="col-md-8 col-sm-6 ">
-              <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
-                From <%= cart_fragment.restaurant.name %></h3>
-            </div>
-            <div class="col-md-4 col-sm-6 text-right col-mobile-pl">
-              <% if cart_fragment.delivery? %>
-                  <h3 class="text-muted">Delivery</h3>
-              <% else %>
-                  <h3 class="text-muted">Pick Up</h3>
+      <div class="col-box col-box-db col-sb">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 ">
+            <h3><%= pluralize_normal("Order", cart_fragment.cart_items.count) %>
+              From <%= cart_fragment.restaurant.name %></h3>
+          </div>
+          <div class="col-md-4 col-sm-6 text-right col-mobile-pl">
+            <% if cart_fragment.delivery? %>
+              <h3 class="text-muted">Delivery</h3>
+            <% else %>
+              <h3 class="text-muted">Pick Up</h3>
+            <% end %>
+          </div>
+        </div>
+
+        <hr>
+        <br>
+        <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
+          <div class="row text-center">
+            <div class="col-md-6 col-sm-5 col-xs-5">
+              <h4><%= cart_item.cart_item_name %></h4>
+              <% if cart_item.variant.present? %>
+                <h4 class="text-muted"><%= cart_item.variant.name %></h4>
               <% end %>
+            </div>
+            <div class="col-md-2">
+              <h4><%= cart_item.quantity %></h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="text-price"><%= price_format(cart_item.cart_item_total) %></h4>
             </div>
           </div>
-
-          <hr>
           <br>
-          <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
-              <div class="row text-center">
-                <div class="col-md-3 col-sm-5 col-xs-5">
-                  <div class="image-medium-wrapper">
-                    <%= cart_item.cart_item_image %>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-7">
-                  <h4><%= cart_item.cart_item_name %></h4>
-                  <% if cart_item.variant.present? %>
-                      <h4 class="text-muted"><%= cart_item.variant.name %></h4>
-                  <% end %>
-                </div>
-                <div class="col-md-2">
-                  <h4><%= cart_item.quantity %></h4>
-                </div>
-                <div class="col-md-3">
-                  <h4 class="text-price"><%= price_format(cart_item.cart_item_total) %></h4>
+        <% end %>
+        <!-- Cart Drinks Section -->
+        <% if cart_fragment.drink_cart_items.any? %>
+          <br>
+          <div class="heading-wrapper heading-wrapper-sb">
+            <div class="row">
+              <div class="col-md-12 col-sm-7 col-xs-7">
+                <h3 class="remove-margin truncate">Drink Orders</h3>
+              </div>
+            </div>
+          </div>
+          <% cart_fragment.drink_cart_items.each do |drink_item| %>
+            <div class="row text-center">
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <div class="image-medium-wrapper">
+                  <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
                 </div>
               </div>
-              <br>
-          <% end %>
-          <!-- Cart Drinks Section -->
-          <% if cart_fragment.drink_cart_items.any? %>
-              <br>
-              <div class="heading-wrapper heading-wrapper-sb">
-                <div class="row">
-                  <div class="col-md-12 col-sm-7 col-xs-7">
-                    <h3 class="remove-margin truncate">Drink Orders</h3>
-                  </div>
-                </div>
+              <div class="col-md-4 col-sm-7">
+                <h4><%= drink_item.itemable.name %></h4>
+                <h4 class="text-muted"><%= drink_item.variant.name %></h4>
               </div>
-              <% cart_fragment.drink_cart_items.each do |drink_item| %>
-                  <div class="row text-center">
-                    <div class="col-md-3 col-sm-5 col-xs-5">
-                      <div class="image-medium-wrapper">
-                        <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-7">
-                      <h4><%= drink_item.itemable.name %></h4>
-                      <h4 class="text-muted"><%= drink_item.variant.name %></h4>
-                    </div>
-                    <div class="col-md-2 text-center">
-                      <h4><%= drink_item.quantity %></h4>
-                    </div>
-                    <div class="col-md-3">
-                      <h4 class="text-price"><%= price_format(drink_item.cart_item_total) %></h4>
-                    </div>
-                  </div>
-                  <br>
-              <% end %>
+              <div class="col-md-2 text-center">
+                <h4><%= drink_item.quantity %></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 class="text-price"><%= price_format(drink_item.cart_item_total) %></h4>
+              </div>
+            </div>
+            <br>
           <% end %>
-          <!-- End Cart Drinks Section -->
-        </div>
+        <% end %>
+        <!-- End Cart Drinks Section -->
+      </div>
     <% end %>
   </div>
 </div>

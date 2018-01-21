@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105182257) do
+ActiveRecord::Schema.define(version: 20180121181857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20180105182257) do
     t.datetime "updated_at", null: false
     t.integer "total_cents", default: 0, null: false
     t.string "total_currency", default: "BZD", null: false
+  end
+
+  create_table "choices", force: :cascade do |t|
+    t.string "name"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["food_id"], name: "index_choices_on_food_id"
+    t.index ["restaurant_id"], name: "index_choices_on_restaurant_id"
   end
 
   create_table "drinks", force: :cascade do |t|
@@ -301,6 +311,8 @@ ActiveRecord::Schema.define(version: 20180105182257) do
   add_foreign_key "cart_items", "cart_fragments"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "variants"
+  add_foreign_key "choices", "foods"
+  add_foreign_key "choices", "restaurants"
   add_foreign_key "drinks", "restaurants"
   add_foreign_key "foods", "menus"
   add_foreign_key "foods", "restaurants"

@@ -257,12 +257,13 @@ li.mobile-link {
   }
 }
 
-#variants {
-  border: 1px solid #CCC;
+.nested-fields-wrapper {
+  border: 1px solid #EDEDED;
   margin: 40px 0;
   padding: 22px 16px;
   .variant-title {
-    padding-bottom: 48px;
+    padding-bottom: 35px;
+    color: #000;
   }
   .nested-fields {
     margin-bottom: 40px;

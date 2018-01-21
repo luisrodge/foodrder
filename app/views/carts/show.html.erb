@@ -1,206 +1,205 @@
 <% if @cart.cart_items.any? %>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <h2 class="remove-margin text-strong">Orders In Cart
+        (<%= @cart.count %>)</h2>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 text-right col-mobile-pl">
+      <h2 class="remove-margin cart-total">Overall Total:
+        <span class="text-price"><%= price_format(@cart.total) %></span>
+      </h2>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-md-4 col-sb">
+      <p>
+        <%= link_to foods_path, class: "btn btn-default btn-lg btn-block" do %>
+          <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Food
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-8">
+      <p>
+        <%= link_to new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb btn-block" do %>
+          <i class="fa fa-hand-o-right" aria-hidden="true"></i> Send Your Orders
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="heading-wrapper heading-wrapper-sb">
     <div class="row">
-      <div class="col-md-6 col-sm-6 col-xs-12">
-        <h2 class="remove-margin text-strong">Orders In Cart
-          (<%= @cart.count %>)</h2>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 text-right col-mobile-pl">
-        <h2 class="remove-margin cart-total">Overall Total:
-          <span class="text-price"><%= price_format(@cart.total) %></span>
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <h2 class="remove-margin truncate mobile-sb text-strong">
+          <%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
+          From <%= link_to @cart_fragments.first.restaurant.name, restaurant_path(@cart_fragments.first.restaurant) %>
         </h2>
       </div>
-    </div>
-
-    <br><br>
-
-    <div class="row">
-      <div class="col-md-4 col-sb">
-        <p>
-          <%= link_to foods_path, class: "btn btn-default btn-lg btn-block" do %>
-              <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Food
-          <% end %>
-        </p>
-      </div>
-      <div class="col-md-8">
-        <p>
-          <%= link_to new_cart_checkout_path(@cart), class: "btn btn-primary btn-lg btn-gb btn-block" do %>
-              <i class="fa fa-hand-o-right" aria-hidden="true"></i> Send Your Orders
-          <% end %>
-        </p>
+      <div class="col-md-4 col-sm-6 col-xs-12 text-right col-xs-pl">
+        <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>
+        <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-default" %>
       </div>
     </div>
+  </div>
 
-    <br><br>
-
-    <div class="heading-wrapper heading-wrapper-sb">
-      <div class="row">
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          <h2 class="remove-margin truncate mobile-sb text-strong"><%= pluralize_normal("Food Order", @cart_fragments.first.cart_items.count) %>
-            From <%= link_to @cart_fragments.first.restaurant.name, restaurant_path(@cart_fragments.first.restaurant) %></h2>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 text-right col-xs-pl">
-          <%= link_to_previous_page @cart_fragments, 'Previous order', class: "btn btn-default" %>
-          <%= link_to_next_page @cart_fragments, 'Next Order', class: "btn btn-default" %>
-        </div>
-      </div>
-    </div>
-
-    <% @cart_fragments.each do |cart_fragment| %>
-        <div class="cart_fragment-wrapper">
-          <div class="row cart-fragment-header">
-            <% if cart_fragment.restaurant.offers_delivery? %>
-                <div class="col-md-12 text-right col-mobile-pl">
-                  <div class="delivery-cb-wrapper">
-                    <h2 class="remove-margin checkbox-text">
-                      <%= fa_icon "motorcycle" %> Delivery?
-                      <%= check_box_tag :delivery, 1, cart_fragment.delivery,
-                                        onchange: "cart.toggleDelivery(this, event)",
-                                        data: {"cf-id" => "#{cart_fragment.id}"} %>
-                    </h2>
-                  </div>
-                </div>
-            <% else %>
-                <div class="col-md-12 text-right col-mobile-pl">
-                  <div class="delivery-cb-wrapper">
-                    <p class="remove-margin checkbox-text">Delivery not offered</p>
-                  </div>
-                </div>
-            <% end %>
+  <% @cart_fragments.each do |cart_fragment| %>
+    <div class="cart_fragment-wrapper">
+      <div class="row cart-fragment-header">
+        <% if cart_fragment.restaurant.offers_delivery? %>
+          <div class="col-md-12 text-right col-mobile-pl">
+            <div class="delivery-cb-wrapper">
+              <h2 class="remove-margin checkbox-text">
+                <%= fa_icon "motorcycle" %> Delivery?
+                <%= check_box_tag :delivery, 1, cart_fragment.delivery,
+                                  onchange: "cart.toggleDelivery(this, event)",
+                                  data: {"cf-id" => "#{cart_fragment.id}"} %>
+              </h2>
+            </div>
           </div>
-          <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
-              <div class="cart-item">
-                <div class="row ">
-                  <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="image-medium-wrapper">
-                      <%= cart_item.cart_item_image %>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-8 col-xs-12">
-                    <h2 class="text-strong remove-margin text-sb"><%= cart_item.cart_item_name %></h2>
-                    <% unless cart_item.variant.present? %>
-                        <h4 class="remove-margin">Regular Price :
-                          <span class="text-price"><%= price_format(cart_item.itemable.price) %></span></h4>
-                    <% end %>
-                    <hr>
-                    <h3>Sub Total:
-                      <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>
-                    </h3>
-                    <% if cart_item.variant.present? %>
-                        <h4><%= cart_item.variant_name_price %></h4>
-                    <% end %>
-                    <% if cart_item.additions.any? %>
-                        <h4 class="remove-margin"><%= cart_item.additions_name_price %></h4>
-                    <% end %>
-                    <br>
-                  </div>
-                  <div class="col-md-4 col-sm-12 col-xs-12">
-                    <%= simple_form_for cart_item do |f| %>
-                        <% if cart_item.itemable.variants.any? %>
-                            <%= f.input :variant_id,
-                                        label: false,
-                                        collection: cart_item.itemable.variants,
-                                        :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
-                                        include_blank: false,
-                                        input_html: {class: "input-lg"} %>
-                        <% end %>
-                        <% if cart_item.itemable.menu.additions.any? %>
-                            <%= f.collection_select :addition_ids, cart_item.itemable.menu.additions, :id,
-                                                    :full_name, {}, :multiple => 'true',
-                                                    :class => 'form-control selectpicker' %>
-                            <br><br>
-                        <% end %>
-                        <%= f.input :quantity, label: false, input_html: {class: "form-control input-lg"} %>
-                        <%= button_tag(type: 'submit', class: "btn btn-default btn-lg btn-block") do %>
-                            <i class="glyphicon glyphicon-refresh"></i> Update
-                        <% end %>
-                    <% end %>
-                  </div>
-                  <div class="col-md-2 pull-right text-right col-mobile-pl">
-                    <%= button_to cart_item_path(cart_item), method: :delete,
-                                  class: "btn btn-danger", data: { disable_with: "Removing Food..." } do %>
-                        <i class="glyphicon glyphicon-remove"></i> Remove
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-          <% end %>
-          <!-- Cart Drinks Section -->
-          <% if cart_fragment.drink_cart_items.any? %>
-              <br>
-              <div class="heading-wrapper heading-wrapper-sb">
-                <div class="row">
-                  <div class="col-md-6 col-sm-7 col-xs-12 col-xs-sb">
-                    <h2 class="remove-margin truncate text-strong">Drink Orders</h2>
-                  </div>
-                  <div class="col-md-6 col-sm-5 col-xs-12 text-right col-xs-pl">
-                    <%= link_to restaurant_drinks_path(cart_fragment.restaurant), class: "btn btn-info" do %>
-                        <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Drinks
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <% cart_fragment.drink_cart_items.each do |drink_item| %>
-                  <div class="cart-item">
-                    <div class="row">
-                      <div class="col-md-2">
-                        <div class="image-medium-wrapper">
-                          <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>
-                        <hr>
-                        <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span>
-                        </h3>
-                        <% if drink_item.variant.present? %>
-                            <h4><%= drink_item.variant_name_price %></h4>
-                        <% end %>
-                      </div>
-                      <div class="col-md-5 col-sm-12 col-xs-12">
-                        <%= simple_form_for drink_item do |f| %>
-                            <% if drink_item.itemable.variants.any? %>
-                                <%= f.input :variant_id,
-                                            label: false,
-                                            collection: drink_item.itemable.variants,
-                                            :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
-                                            include_blank: false,
-                                            input_html: {class: "input-lg"} %>
-                            <% end %>
-                            <%= f.input :quantity, label: false, input_html: {class: "form-control input-lg"} %>
-                            <%= button_tag(type: 'submit', class: "btn btn-default btn-lg btn-block") do %>
-                                <i class="glyphicon glyphicon-refresh"></i> Update
-                            <% end %>
-                        <% end %>
-                      </div>
-                      <div class="col-md-2 pull-right text-right col-mobile-pl">
-                        <%= button_to cart_item_path(drink_item), method: :delete,
-                                      class: "btn btn-danger", data: { disable_with: "Removing Drink..." } do %>
-                            <i class="glyphicon glyphicon-remove"></i> Remove
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
+        <% else %>
+          <div class="col-md-12 text-right col-mobile-pl">
+            <div class="delivery-cb-wrapper">
+              <p class="remove-margin checkbox-text">Delivery not offered</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% cart_fragment.food_cart_items.decorate.each do |cart_item| %>
+        <div class="cart-item">
+          <div class="row ">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+              <h3 class="text-strong remove-margin text-sb"><%= cart_item.cart_item_name %></h3>
+            </div>
+            <div class="col-md-3 col-sm-8 col-xs-12">
+              <% unless cart_item.variant.present? %>
+                <h4 class="remove-margin">Regular Price :
+                  <span class="text-price"><%= price_format(cart_item.itemable.price) %></span></h4>
               <% end %>
-          <% elsif cart_fragment.restaurant.drinks.any? %>
-              <h3 class="text-right"><%= link_to "Add Drink", restaurant_drinks_path(cart_fragment.restaurant), class: "primary-link" %></h3>
-          <% end %>
-          <!-- End Cart Drinks Section -->
+              <hr>
+              <h4>Sub Total:
+                <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>
+              </h4>
+              <% if cart_item.variant.present? %>
+                <h4><%= cart_item.variant_name_price %></h4>
+              <% end %>
+              <% if cart_item.additions.any? %>
+                <h4 class="remove-margin"><%= cart_item.additions_name_price %></h4>
+              <% end %>
+              <br>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <%= simple_form_for cart_item do |f| %>
+                <% if cart_item.itemable.variants.any? %>
+                  <%= f.input :variant_id,
+                              label: false,
+                              collection: cart_item.itemable.variants,
+                              :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
+                              include_blank: false,
+                              input_html: {class: "input-lg"} %>
+                <% end %>
+                <% if cart_item.itemable.menu.additions.any? %>
+                  <%= f.collection_select :addition_ids, cart_item.itemable.menu.additions, :id,
+                                          :full_name, {}, :multiple => 'true',
+                                          :class => 'form-control selectpicker' %>
+                  <br><br>
+                <% end %>
+                <%= f.input :quantity, label: false, input_html: {class: "form-control input-lg"} %>
+                <%= button_tag(type: 'submit', class: "btn btn-default btn-lg btn-block") do %>
+                  <i class="glyphicon glyphicon-refresh"></i> Update
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-2 pull-right text-right col-mobile-pl">
+              <%= button_to cart_item_path(cart_item), method: :delete,
+                            class: "btn btn-danger", data: {disable_with: "Removing Food..."} do %>
+                <i class="glyphicon glyphicon-remove"></i> Remove
+              <% end %>
+            </div>
+          </div>
         </div>
-    <% end %>
-<% else %>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1><i class="glyphicon glyphicon-shopping-cart"></i> (0)</h1>
-        <h2 class="remove-margin">No Orders In Cart :(</h2>
-        <br><br><br>
-      </div>
-      <div class="col-md-6 col-sb">
-        <%= link_to "Find Food", foods_path, class: "btn btn-primary btn-lg btn-block" %>
-      </div>
-      <div class="col-md-6">
-        <%= link_to "View Restaurants", restaurants_path, class: "btn btn-default btn-lg btn-block" %>
-      </div>
+      <% end %>
+      <!-- Cart Drinks Section -->
+      <% if cart_fragment.drink_cart_items.any? %>
+        <br>
+        <div class="heading-wrapper heading-wrapper-sb">
+          <div class="row">
+            <div class="col-md-6 col-sm-7 col-xs-12 col-xs-sb">
+              <h2 class="remove-margin truncate text-strong">Drink Orders</h2>
+            </div>
+            <div class="col-md-6 col-sm-5 col-xs-12 text-right col-xs-pl">
+              <%= link_to restaurant_drinks_path(cart_fragment.restaurant), class: "btn btn-info" do %>
+                <i class="fa fa-plus-square" aria-hidden="true"></i> Add More Drinks
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% cart_fragment.drink_cart_items.each do |drink_item| %>
+          <div class="cart-item">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="image-medium-wrapper">
+                  <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>
+                <hr>
+                <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span>
+                </h3>
+                <% if drink_item.variant.present? %>
+                  <h4><%= drink_item.variant_name_price %></h4>
+                <% end %>
+              </div>
+              <div class="col-md-5 col-sm-12 col-xs-12">
+                <%= simple_form_for drink_item do |f| %>
+                  <% if drink_item.itemable.variants.any? %>
+                    <%= f.input :variant_id,
+                                label: false,
+                                collection: drink_item.itemable.variants,
+                                :label_method => lambda {|v| "#{v.name} - $#{v.price}"},
+                                include_blank: false,
+                                input_html: {class: "input-lg"} %>
+                  <% end %>
+                  <%= f.input :quantity, label: false, input_html: {class: "form-control input-lg"} %>
+                  <%= button_tag(type: 'submit', class: "btn btn-default btn-lg btn-block") do %>
+                    <i class="glyphicon glyphicon-refresh"></i> Update
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="col-md-2 pull-right text-right col-mobile-pl">
+                <%= button_to cart_item_path(drink_item), method: :delete,
+                              class: "btn btn-danger", data: {disable_with: "Removing Drink..."} do %>
+                  <i class="glyphicon glyphicon-remove"></i> Remove
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% elsif cart_fragment.restaurant.drinks.any? %>
+        <h3 class="text-right"><%= link_to "Add Drink", restaurant_drinks_path(cart_fragment.restaurant), class: "primary-link" %></h3>
+      <% end %>
+      <!-- End Cart Drinks Section -->
     </div>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1><i class="glyphicon glyphicon-shopping-cart"></i> (0)</h1>
+      <h2 class="remove-margin">No Orders In Cart :(</h2>
+      <br><br><br>
+    </div>
+    <div class="col-md-6 col-sb">
+      <%= link_to "Find Food", foods_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "View Restaurants", restaurants_path, class: "btn btn-default btn-lg btn-block" %>
+    </div>
+  </div>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">

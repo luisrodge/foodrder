@@ -5,6 +5,9 @@ class Food < ApplicationRecord
   belongs_to :restaurant
   belongs_to :menu
 
+  has_many :choices
+  accepts_nested_attributes_for :choices
+
   has_many :cart_items, as: :itemable
   has_many :order_items, as: :itemable
 
@@ -39,6 +42,6 @@ class Food < ApplicationRecord
   end
 
   def variats_name_price
-    variants.map{|a| "#{a.name} - $#{a.price}"}.join(", ")
+    variants.map {|a| "#{a.name} - $#{a.price}"}.join(", ")
   end
 end
