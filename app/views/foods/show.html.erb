@@ -7,14 +7,14 @@
 <div class="row">
   <div class="col-md-5 col-md-sb">
     <div class="image-medium-wrapper">
-      <%= image_tag(@food.primary_image_url(:medium), class: "img-responsive") %>
+      <%= image_tag(@food.restaurant.primary_image_url(:medium), class: "img-responsive") %>
     </div>
   </div>
   <div class="col-md-6 pull-right col-md-pl">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1 class="remove-margin"><%= @food.name %></h1>
-        <h3 class="remove-margin text-muted">By <%= link_to @food.restaurant.name, restaurants_path(@food.restaurant) %></h3>
+        <h3 class="remove-margin text-muted">By <%= link_to @food.restaurant.name, restaurant_path(@food.restaurant) %></h3>
       </div>
     </div>
     <br><br>

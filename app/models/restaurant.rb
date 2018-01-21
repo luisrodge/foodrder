@@ -5,8 +5,8 @@ class Restaurant < ApplicationRecord
   has_many :specials, dependent: :destroy
   has_many :schedules, dependent: :destroy
   has_many :order_fragments, dependent: :destroy
-  has_many :drinks
-  has_many :reservations
+  has_many :drinks, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
 
@@ -14,7 +14,7 @@ class Restaurant < ApplicationRecord
   attr_accessor :origin_seller_email
 
   # Validations
-  validates_presence_of :name, :location, :street, :phone_number,
+  validates_presence_of :name, :location, :phone_number,
                         :order_medium_type
   validates_presence_of :origin_seller_email, on: :create
 
