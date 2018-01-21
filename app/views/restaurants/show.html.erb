@@ -42,54 +42,23 @@
 </div>
 
 <br><br><br>
-
+<hr>
 <div class="row">
   <div class="col-md-6 col-sm-6 col-xs-6">
-    <h2 class="remove-margin">Menus (<%= @restaurant.menus.count %>)</h2>
+    <h2 class="remove-margin truncate text-sb"><%= @restaurant.menu_food_counter %></h2>
   </div>
   <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-    <h3 class="remove-margin text-muted truncate"><%= @restaurant.menu_food_counter %></h3>
+    <div id="menus-paginator">
+      <%= paginate @menus, remote: true %>
+    </div>
   </div>
 </div>
+<hr>
 <br><br>
-<div class="row grid">
+<div class="row grid" id="restaurant-menus">
   <!-- add sizing element for columnWidth -->
-  <div class="grid-sizer col-md-6"></div>
-  <% @restaurant.menus.each do |menu| %>
-    <div class="grid-item col-md-6 col-sm-12 col-xs-12 col-sb">
-      <div class="grid-item-content col-box col-box-db">
-        <h2 class="text-strong title-sb"><span class="text-bb"><%= menu.name %></span></h2>
-        <% menu.foods.each do |food| %>
-          <div class="row">
-            <div class="col-md-8 col-sm-4 col-xs-4">
-              <h3 class="remove-margin menu-food-name text-strong"><%= food.name %></h3>
-              <% if food.variants.any? %>
-                <h4 class="text-price">Variants</h4>
-              <% else %>
-                <h4 class="text-price"><%= price_format(food.price) %></h4>
-              <% end %>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4 text-right">
-              <% if food.customizable? %>
-                <%= link_to food_path(food), class: "btn btn-primary" do %>
-                  <i class="glyphicon glyphicon-shopping-cart"></i> Order
-                <% end %>
-              <% else %>
-                <%= simple_form_for [food, CartItem.new] do |f| %>
-                  <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
-                  <%= button_tag(type: 'submit', class: "btn btn-primary",
-                                 data: {disable_with: "Adding To Cart..."}) do %>
-                    <i class="glyphicon glyphicon-shopping-cart"></i> Order
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <br>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <div class="grid-sizer col-md-4"></div>
+  <%= render 'restaurants/menus' %>
 </div>
 
 <script type="text/javascript" charset="utf-8">

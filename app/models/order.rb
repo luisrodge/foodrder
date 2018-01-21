@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
-  after_commit :start_jobs, on: :create
+  # after_commit :start_jobs, on: :create
 
   # money-rails currency integration
   monetize :total_cents
@@ -31,6 +31,7 @@ class Order < ApplicationRecord
           order.order_items.create(itemable: cart_item.itemable,
                                    total_cents: cart_item.total_cents,
                                    variant: cart_item.variant,
+                                   choice: cart_item.choice,
                                    quantity: cart_item.quantity,
                                    order_fragment: order_fragment,
                                    addition_ids: cart_item.addition_ids)

@@ -361,3 +361,26 @@ table {
   padding-right: 0;
   padding-left: 0;
 }
+
+/* Pagination */
+.pagination {
+  a {
+    border: 1px solid #CCC!important;
+    color: #424242!important;
+  }
+  .active > a {
+    background: #EDEDED;
+    border: 1px solid #CCC!important;
+    color: #424242!important;
+    &:hover, &:focus {
+      color: #FFF;
+      background: #EDEDED;
+    }
+  }
+}
+
+#menus-paginator {
+  ul.pagination {
+    margin: 0px!important;
+  }
+}

@@ -2,6 +2,7 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :order_fragment
   belongs_to :variant, optional: true
+  belongs_to :choice, optional: true
   belongs_to :itemable, polymorphic: true
 
   has_many :item_additions, as: :item_additionable, validate: false, dependent: :destroy
