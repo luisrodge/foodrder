@@ -37,6 +37,7 @@ gem 'recurring_select', github: 'RundownApp/recurring_select'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'redis', '~> 3.0'
 gem 'unread'
+gem 'geocoder'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'

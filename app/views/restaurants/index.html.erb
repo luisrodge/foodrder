@@ -14,34 +14,5 @@
   </div>
 </div>
 <div class="row">
-  <% @restaurants.each do |restaurant| %>
-      <div class="col-md-4 col-sm-6 col-xs-12 col-sb">
-        <%= link_to restaurant_path(restaurant) do %>
-            <div class="figure">
-              <div class="image-medium-wrapper">
-                <%= image_tag(restaurant.primary_image_url(:medium), class: "img-responsive") %>
-                <% unless restaurant.currently_open? %>
-                    <div class="close-caption">
-                      <h4 class="remove-margin">Closed Now</h4>
-                    </div>
-                <% end %>
-              </div>
-              <div class="figcaption">
-                <h3 class="text-strong"><%= restaurant.name %></h3>
-                <h4><%= restaurant.location %></h4>
-                <div class="figcaption-footer text-muted">
-                  <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6">
-                      <h4 class="mobile-sb"><%= pluralize(restaurant.menus.count, "Menu") %></h4>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                      <h4 class="truncate"><%= pluralize(restaurant.foods.count, "Total Food") %></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </div>
-  <% end %>
+  <%= render @restaurants %>
 </div>

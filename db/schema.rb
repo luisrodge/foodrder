@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121194053) do
+ActiveRecord::Schema.define(version: 20180122170355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,8 +207,6 @@ ActiveRecord::Schema.define(version: 20180121194053) do
 
   create_table "restaurants", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
     t.string "name"
-    t.string "location"
-    t.string "street"
     t.string "phone_number"
     t.text "description"
     t.boolean "setup"
@@ -218,6 +216,9 @@ ActiveRecord::Schema.define(version: 20180121194053) do
     t.boolean "delivery", default: false
     t.integer "order_medium_type", default: 0
     t.boolean "reservation", default: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "schedules", force: :cascade do |t|
