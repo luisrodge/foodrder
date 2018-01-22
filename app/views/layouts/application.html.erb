@@ -28,9 +28,7 @@
     </script>
   <% end %>
 
-  <% if supplier_signed_in? %>
-    <%= tag :meta, name: "current-supplier", data: {id: current_supplier.id} %>
-  <% end %>
+  <%= action_cable_meta_tag if supplier_signed_in? %>
 </head>
 
 <body>
