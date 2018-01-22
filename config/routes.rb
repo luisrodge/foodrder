@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
 
-  namespace :seller do
-    namespace :settings do
-      get 'profiles/edit'
-    end
-  end
-
   root to: 'foods#index'
-
+=begin
   # Custom registration routes for customer and admins
   devise_for :customer, controllers: {registrations: 'customer/registrations'}, skip: :sessions
   devise_for :sellers, controllers: {registrations: 'seller/registrations'}, skip: :sessions
@@ -20,9 +14,18 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new', as: :new_user_session
     post 'login', to: 'sessions#create', as: :user_session
   end
+=end
+
+  # Web-based authentication routes for supplier
+  devise_for :supplier, controllers: {
+      registrations: 'supplier/registrations',
+      sessions: 'supplier/sessions'
+  }
+  # Authentication routes for admin
+  devise_for :admin, controllers: {registrations: 'admin/registrations', sessions: 'admin/sessions'}
 
   # Seller only routes
-  namespace :seller do
+  namespace :supplier do
     resource :dashboard, only: :show
     resources :reservations
     resources :foods
@@ -39,11 +42,6 @@ Rails.application.routes.draw do
     namespace :settings do
       resource :profile, only: [:edit, :update]
     end
-  end
-
-  # Customer only routes
-  namespace :customer do
-    resource :dashboard, only: :show
   end
 
   # Admin only routes

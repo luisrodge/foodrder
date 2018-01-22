@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122170355) do
+ActiveRecord::Schema.define(version: 20180122185640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20180122170355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["additionable_type", "additionable_id"], name: "index_additions_on_additionable_type_and_additionable_id"
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "cart_fragments", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -252,6 +269,25 @@ ActiveRecord::Schema.define(version: 20180122170355) do
     t.index ["mobile_number"], name: "index_subscribers_on_mobile_number", unique: true
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_suppliers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_suppliers_on_reset_password_token", unique: true
+    t.index ["restaurant_id"], name: "index_suppliers_on_restaurant_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.integer "taggable_id"
@@ -276,26 +312,6 @@ ActiveRecord::Schema.define(version: 20180122170355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_time_frames_on_schedule_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["restaurant_id"], name: "index_users_on_restaurant_id"
   end
 
   create_table "variants", force: :cascade do |t|
@@ -335,6 +351,5 @@ ActiveRecord::Schema.define(version: 20180122170355) do
   add_foreign_key "specials", "restaurants"
   add_foreign_key "taggings", "tags"
   add_foreign_key "time_frames", "schedules"
-  add_foreign_key "users", "restaurants"
   add_foreign_key "variants", "restaurants"
 end

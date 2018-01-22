@@ -1,4 +1,4 @@
-class Seller::settings::ProfileDecorator < Draper::Decorator
+class Supplier::SessionDecorator < Draper::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

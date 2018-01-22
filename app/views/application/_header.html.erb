@@ -51,19 +51,15 @@
           <li><%= link_to "Why Use foodrder?", info_customers_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <% if current_customer %>
-              <li><%= link_to "Dashboard", customer_dashboard_path %></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-              <li><a href="#" class="nav-cart">Cart (0)</a></li>
-          <% elsif current_seller %>
-              <li><%= link_to "Dashboard", seller_dashboard_path %></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% if current_supplier %>
+              <li><%= link_to "Dashboard", supplier_dashboard_path %></li>
+              <li><%= link_to "Sign Out", destroy_supplier_session_path, method: :delete %></li>
           <% elsif current_admin %>
               <li><%= link_to "Dashboard", admin_dashboard_path %></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
               <li>
-              <li><%= link_to "Sign In", new_user_session_path,
+              <li><%= link_to "Sign In", new_supplier_session_path,
                               class: "nav-cart" %>
               </li>
           <% end %>

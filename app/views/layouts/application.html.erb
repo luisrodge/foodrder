@@ -28,8 +28,8 @@
     </script>
   <% end %>
 
-  <% if user_signed_in? %>
-    <%= tag :meta, name: "current-user", data: {id: current_user.id} %>
+  <% if supplier_signed_in? %>
+    <%= tag :meta, name: "current-supplier", data: {id: current_supplier.id} %>
   <% end %>
 </head>
 
