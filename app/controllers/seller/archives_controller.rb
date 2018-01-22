@@ -1,9 +1,7 @@
-class Seller::ArchivesController < ApplicationController
-  before_action :authenticate_seller!
+class Seller::ArchivesController < Seller::BaseController
   before_action :set_order_fragments
   before_action :set_order_fragment, only: :show
   before_action :should_redirect, only: :show
-  layout 'dashboard'
 
   def index
   end

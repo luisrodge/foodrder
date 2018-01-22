@@ -1,5 +1,5 @@
-class Seller::FoodsController < ApplicationController
-  before_action :authenticate_seller!, :set_menu, except: [:show, :index]
+class Seller::FoodsController < Seller::BaseController
+  before_action :set_menu, except: [:show, :index]
 
   def new
     @food = Food.new

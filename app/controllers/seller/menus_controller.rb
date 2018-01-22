@@ -1,5 +1,4 @@
-class Seller::MenusController < ApplicationController
-  before_action :authenticate_seller!
+class Seller::MenusController < Seller::BaseController
 
   def index
     @menus = @current_restaurant.menus

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :seller do
+    namespace :settings do
+      get 'profiles/edit'
+    end
+  end
+
   root to: 'foods#index'
 
   # Custom registration routes for customer and admins
@@ -19,17 +25,20 @@ Rails.application.routes.draw do
   namespace :seller do
     resource :dashboard, only: :show
     resources :reservations
+    resources :foods
+    resources :archives
     resources :menus do
       resources :foods, only: [:new, :create]
     end
-    resources :foods
     resources :order_fragments do
       member do
         put :archive
         put :order_ready
       end
     end
-    resources :archives
+    namespace :settings do
+      resource :profile, only: [:edit, :update]
+    end
   end
 
   # Customer only routes

@@ -1,7 +1,5 @@
-class Seller::DashboardsController < ApplicationController
-  before_action :authenticate_seller!
+class Seller::DashboardsController < Seller::BaseController
   before_action :set_order_fragments
-  layout 'dashboard'
 
   def show
   end

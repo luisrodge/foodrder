@@ -1,9 +1,7 @@
-class Seller::OrderFragmentsController < ApplicationController
-  before_action :authenticate_seller!
+class Seller::OrderFragmentsController < Seller::BaseController
   before_action :set_order_fragment
   before_action :should_redirect
   before_action :should_mark_as_read
-  layout 'dashboard'
 
   def show
   end

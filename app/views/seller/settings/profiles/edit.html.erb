@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h2>Edit Your Profile</h2>
+    <br><br>
+    <%= simple_form_for(@seller, url: seller_settings_profile_path, validate: true, html: {method: :put}) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, input_html: { class: "input-lg" } %>
+        <%= f.input :password,
+                    label: "New password", hint: "Your new password. Leave empty if you don't want it changed",
+                    input_html: { class: "input-lg" } %>
+        <%= f.input :current_password, hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { class: "input-lg" } %>
+      </div>
+      <br>
+      <div class="form-actions">
+        <%= f.button :submit, "Update Profile", class: "btn btn-primary btn-block btn-lg" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
