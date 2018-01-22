@@ -18,58 +18,7 @@
     <div class="row grid">
       <!-- add sizing element for columnWidth -->
       <div class="grid-sizer col-md-4"></div>
-      <% @foods.each do |food| %>
-          <div class="col-md-4 col-sm-6 col-xs-12 col-sb grid-item">
-            <div class="figure">
-              <div class="figcaption">
-                <% if food.restaurant.offers_delivery? %>
-                  <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6 pull-right text-right">
-                      <h4 class="remove-margin text-muted truncate"><%= fa_icon "motorcycle" %></h4>
-                    </div>
-                  </div>
-                <% else %>
-                  <div class="row">
-                    <div class="col-md-8">
-                      <h5 class="remove-margin text-muted"><%= food.restaurant.location %></h5>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-6 pull-right text-right">
-                      <h5 class="remove-margin text-muted truncate">Pickup</h5>
-                    </div>
-                  </div>
-                <% end %>
-                <h3 class="text-strong"><%= food.name %></h3>
-                <h5 class="remove-margin truncate">By <%= link_to food.restaurant.name, restaurant_path(food.restaurant), class:"primary-link" %></h5>
-                <div class="figcaption-footer">
-                  <div class="row">
-                    <div class="col-md-5 col-sm-5 col-xs-5">
-                      <% if food.customizable? %>
-                        <%= link_to food_path(food), class: "btn btn-primary" do %>
-                          <i class="glyphicon glyphicon-shopping-cart"></i> Order
-                        <% end %>
-                      <% else %>
-                        <%= simple_form_for [food, CartItem.new] do |f| %>
-                          <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
-                          <%= button_tag(type: 'submit', class: "btn btn-primary",
-                                         data: {disable_with: "Adding To Cart..."}) do %>
-                            <i class="glyphicon glyphicon-shopping-cart"></i> Order
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                    <div class="col-md-7 col-sm-7 col-xs-7">
-                      <% if food.variants.any? %>
-                        <h4 class="text-right text-price">Variants</h4>
-                      <% else %>
-                        <h4 class="text-right text-price"><%= price_format(food.price) %></h4>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      <% end %>
+      <%= render @foods %>
     </div>
 <% else %>
     <h1 class="text-center">No results for "<%= params[:q] %>"</h1>

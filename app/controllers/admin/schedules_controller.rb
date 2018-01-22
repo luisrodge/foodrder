@@ -10,7 +10,7 @@ class Admin::SchedulesController < Admin::BaseController
     @schedule = @restaurant.schedules.new(schedule_params)
     if @schedule.valid?
       @schedule.save
-      redirect_to root_path, notice: "Schedule saved successfully"
+      redirect_to edit_admin_restaurant_path(@restaurant), notice: "Schedule saved successfully"
     else
       render :new
     end

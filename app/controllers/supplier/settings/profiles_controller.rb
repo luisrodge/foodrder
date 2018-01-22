@@ -1,33 +1,34 @@
 class Supplier::Settings::ProfilesController < Supplier::BaseController
   def edit
-    @seller = current_seller
+    @supplier = current_supplier
   end
 
   def update
-    @seller = current_seller
-    if @seller.valid_password?(seller_params[:current_password])
-      if seller_params[:password].empty?
-        if @seller.update(seller_params.except(:current_password, :password))
-          redirect_to seller_dashboard_path, notice: "Profile successfully updated"
+    @supplier = current_supplier
+    if @supplier.valid_password?(supplier_params[:current_password])
+      if supplier_params[:password].empty?
+        if @supplier.update(supplier_params.except(:current_password, :password))
+          redirect_to supplier_dashboard_path, notice: "Your profile has been successfully updated"
         else
           render :edit
         end
-      elsif @seller.update(seller_params.except(:current_password))
-        redirect_to seller_dashboard_path, notice: "Profile successfully updated"
+      elsif @supplier.update(supplier_params.except(:current_password))
+        bypass_sign_in(@supplier)
+        redirect_to supplier_dashboard_path, notice: "Your profile has been successfully updated"
       else
         render :edit
       end
     else
       #@seller.assign_attributes(seller_params.except(:current_password))
       # Explicitly add invalid password validation error to supplier instance
-      @seller.errors.add(:current_password)
+      @supplier.errors.add(:current_password)
       render :edit
     end
   end
 
   private
 
-  def seller_params
-    params.require(:seller).permit(:name, :email, :password, :current_password)
+  def supplier_params
+    params.require(:supplier).permit(:email, :password, :current_password)
   end
 end
