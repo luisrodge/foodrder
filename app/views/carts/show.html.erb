@@ -92,16 +92,16 @@
             </div>
             <div class="col-md-3 col-sm-8 col-xs-12">
               <% unless cart_item.variant.present? %>
-                <h4 class="remove-margin">Regular Price:</h4>
-                <h4>
+                <h3 class="remove-margin">Regular Price:</h3>
+                <h3>
                   <span class="text-price"><%= price_format(cart_item.itemable.price) %></span>
-                </h4>
+                </h3>
                 <hr>
               <% end %>
-              <h4>Sub Total:</h4>
-              <h4>
+              <h3>Sub Total:</h3>
+              <h3>
                 <span class="text-price "><%= price_format(cart_item.cart_item_total) %></span>
-              </h4>
+              </h3>
 
               <br>
             </div>
@@ -163,19 +163,16 @@
         <% cart_fragment.drink_cart_items.each do |drink_item| %>
           <div class="cart-item">
             <div class="row">
-              <div class="col-md-2">
-                <div class="image-medium-wrapper">
-                  <%= image_tag(drink_item.itemable.primary_image_url(:medium), class: "img-responsive") %>
-                </div>
-              </div>
               <div class="col-md-3">
                 <h2 class="text-strong remove-margin"><%= drink_item.itemable.name %></h2>
-                <hr>
-                <h3>Sub Total: <span class="text-price"><%= price_format(drink_item.cart_item_total) %></span>
-                </h3>
                 <% if drink_item.variant.present? %>
+                  <hr>
                   <h4><%= drink_item.variant_name_price %></h4>
                 <% end %>
+              </div>
+              <div class="col-md-2">
+                <h3 class="remove-margin">Sub Total: </h3>
+                <h3><span class="text-price"><%= price_format(drink_item.cart_item_total) %></span></h3>
               </div>
               <div class="col-md-5 col-sm-12 col-xs-12">
                 <%= simple_form_for drink_item do |f| %>

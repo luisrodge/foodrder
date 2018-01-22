@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   has_many :order_fragments, dependent: :destroy
   has_many :order_items, dependent: :destroy
 
-  # after_commit :start_jobs, on: :create
+  after_commit :start_jobs, on: :create
 
   # money-rails currency integration
   monetize :total_cents
@@ -45,7 +45,7 @@ class Order < ApplicationRecord
   # orders to seller dashboard
   def start_jobs
     order_fragments.each do |order_fragment|
-      DispatchRestaurantSmsJob.perform_later(order_fragment)
+      # DispatchRestaurantSmsJob.perform_later(order_fragment)
       OrderFragmentRelayJob.perform_later(order_fragment)
     end
   end

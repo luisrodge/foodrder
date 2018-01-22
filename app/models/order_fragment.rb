@@ -17,7 +17,7 @@ class OrderFragment < ApplicationRecord
   end
 
   def read_by
-    User.have_read(self).map{|u| "#{u.email}"}.join(" ,")
+    Supplier.have_read(self).map{|u| "#{u.email}"}.join(" ,")
   end
 
   def total

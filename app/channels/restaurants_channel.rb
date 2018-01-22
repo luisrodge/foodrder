@@ -1,6 +1,6 @@
 class RestaurantsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "restaurants_channel:#{current_user.restaurant.id}"
+    stream_from "restaurants_channel:#{current_supplier.restaurant.id}"
   end
 
   def unsubscribed

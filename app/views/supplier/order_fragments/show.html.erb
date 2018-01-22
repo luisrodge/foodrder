@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4 col-md-sb">
-    <%= link_to seller_dashboard_path, class: "btn btn-primary" do %>
+    <%= link_to supplier_dashboard_path, class: "btn btn-primary" do %>
         <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
     <% end %>
   </div>
@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-md-6 col-sb">
         <% unless @order_fragment.delivery? %>
-            <%= link_to "Order Ready", order_ready_seller_order_fragment_path(@order_fragment),
+            <%= link_to "Order Ready", order_ready_supplier_order_fragment_path(@order_fragment),
                         method: :put,
                         data: {
                             confirm: 'Is the order ready?',
@@ -20,7 +20,7 @@
         <% end %>
       </div>
       <div class="col-md-6">
-        <%= link_to "Archive", archive_seller_order_fragment_path(@order_fragment),
+        <%= link_to "Archive", archive_supplier_order_fragment_path(@order_fragment),
                     method: :put,
                     data: {
                         confirm: 'Are you sure?',
