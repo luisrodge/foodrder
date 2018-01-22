@@ -10,9 +10,8 @@
     <h2><span class="text-bb">Add New Restaurant</span></h2><br><br>
     <%= simple_form_for [:admin, @restaurant] do |f| %>
         <%= f.input :name, input_html: {class: "input-lg"} %>
-        <%= f.input :origin_seller_email, input_html: {class: "input-lg"} %>
-        <%= f.input :location, input_html: {class: "input-lg"} %>
-        <%= f.input :street, input_html: {class: "input-lg"} %>
+        <%= f.input :origin_supplier_email, input_html: {class: "input-lg"} %>
+        <%= f.input :address, input_html: {class: "input-lg"} %>
         <%= f.input :phone_number, input_html: {class: "input-lg"} %>
         <%= f.input :order_medium_type,
                     collection: Restaurant.order_medium_types.keys.map { |w| [w.humanize, w] },

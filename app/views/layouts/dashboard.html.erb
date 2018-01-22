@@ -4,16 +4,12 @@
   <title>foodrder - Dashboard</title>
 
   <%= csrf_meta_tags %>
-  <%= action_cable_meta_tag if current_seller %>
+  <%= action_cable_meta_tag if current_supplier %>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dwaavflqp/image/upload/v1510985526/Logomakr_1neUk4_dkpzgi.png"/>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  <% if user_signed_in? %>
-      <%= tag :meta, name: "current-user", data: {id: current_user.id} %>
-  <% end %>
 </head>
 
 <body>
@@ -22,7 +18,11 @@
   <div id="sidebar-wrapper">
     <nav id="spy">
       <ul class="sidebar-nav nav">
-        <%= render "application/dashboard/#{current_user.type.downcase}_nav" %>
+        <% if current_admin %>
+          <%= render "application/dashboard/admin_nav" %>
+      <% else %>
+          <%= render "application/dashboard/supplier_nav" %>
+      <% end %>
       </ul>
     </nav>
   </div>
@@ -39,10 +39,10 @@
           </h2>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-10 text-right">
-          <% if current_seller %>
-              <h2 class="title truncate"><%= current_seller.restaurant.name %> Restaurant</h2>
-          <% else %>
-              <h2 class="title truncate">Welcome, <%= current_admin.email %></h2>
+          <% if current_admin %>
+            <h2 class="title truncate">Welcome, <%= current_admin.email %></h2>
+        <% else %>
+            <h2 class="title truncate"><%= current_supplier.restaurant.name %> Restaurant</h2>
           <% end %>
         </div>
       </div>

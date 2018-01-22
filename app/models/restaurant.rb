@@ -11,22 +11,18 @@ class Restaurant < ApplicationRecord
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
 
   geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  after_validation :geocode
 
   # Virtual attributes
-  attr_accessor :origin_seller_email
+  attr_accessor :origin_supplier_email
 
   # Validations
   validates_presence_of :name, :address, :phone_number,
                         :order_medium_type
-  validates_presence_of :origin_seller_email, on: :create
+  validates_presence_of :origin_supplier_email, on: :create
 
   # Carrierwave uploader
   mount_uploader :primary_image, PrimaryImageUploader
-
-  def address_changed?
-    address_changed?
-  end
 
   def pending_order_fragments
     order_fragments.where(status: 0).order("created_at DESC")

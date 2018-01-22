@@ -19,9 +19,9 @@ class Admin::RestaurantsController < Admin::BaseController
       puts "Valid"
       @restaurant.save!
       # Assign restaurant seller account
-      Seller.create!(email: restaurant_params[:origin_seller_email],
-                    password: "password1234", password_confirmation: "password1234",
-                    restaurant: @restaurant)
+      Supplier.create!(email: restaurant_params[:origin_supplier_email],
+                       password: "password", password_confirmation: "password",
+                       restaurant: @restaurant)
       redirect_to admin_restaurants_path, notice: "Restaurant added successfully"
     else
       puts "invaid"
@@ -41,8 +41,8 @@ class Admin::RestaurantsController < Admin::BaseController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :location, :street, :phone_number,
-                                       :primary_image, :origin_seller_email,
+    params.require(:restaurant).permit(:name, :address, :phone_number,
+                                       :primary_image, :origin_supplier_email,
                                        :order_medium_type, :order_notify_type,
                                        :delivery, :reservation)
   end
