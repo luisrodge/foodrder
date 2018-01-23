@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
 
   def set_foods
     @foods = if params[:mc].present?
-               Food.search(params[:mc]).page(params[:page]).per(15)
+               Food.search(params[:mc], page: params[:page], per_page: 15)
              elsif params[:sort].present? && params[:sort] == "deliverable"
                Food.deliverable.page(params[:page]).per(15)
              else
