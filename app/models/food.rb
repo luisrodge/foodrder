@@ -34,7 +34,6 @@ class Food < ApplicationRecord
   def self.deliverable
     joins(:restaurant)
         .where('restaurants.order_medium_type = ? OR restaurants.order_medium_type=?', 1, 2)
-        .order("created_at DESC")
   end
 
   def customizable?
