@@ -29,7 +29,7 @@ class Restaurant < ApplicationRecord
   end
 
   def archived_order_fragments
-    order_fragments.where(status: 1).order("created_at DESC")
+    order_fragments.where(status: 1).order(archived_on: :desc)
   end
 
   def offers_delivery?

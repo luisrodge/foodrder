@@ -12,7 +12,7 @@ class Supplier::ArchivesController < Supplier::BaseController
   private
 
   def set_order_fragments
-    @order_fragments = @current_restaurant.archived_order_fragments.order(created_at: :desc)
+    @order_fragments = @current_restaurant.archived_order_fragments
   end
 
   def set_order_fragment

@@ -1,0 +1,41 @@
+<li class="seller-order_item">
+  <div class="row">
+    <div class="col-md-5 col-md-sb">
+      <h2 class="truncate text-strong"><%= order_item.itemable.name %></h2>
+      <% unless order_item.itemable_type == "Drink" %>
+        <h4>Regular Price: <span class="text-price"><%= price_format(order_item.itemable.price) %></span></h4>
+      <% end %>
+      <% if order_item.choice.present? %>
+        <hr>
+        <h3>Flavor/Choice:</h3>
+        <h4><%= order_item.choice.name %></h4>
+      <% end %>
+      <% if order_item.variant.present? %>
+        <hr>
+        <h3>Variant:</h3>
+        <h4><%= "#{order_item.variant.name} - #{price_format(order_item.variant.price)}" %></h4>
+      <% end %>
+      <% if order_item.additions.any? %>
+        <hr>
+        <h3>Additions:</h3>
+        <% order_item.additions.each do |addition| %>
+          <h4 class="remove-margin"><%= "#{addition.name} - #{price_format(addition.price)}" %></h4>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-6 col-md-sb">
+          <h2 class="text-strong">Amount</h2>
+          <hr>
+          <h2> <%= order_item.quantity %></h2>
+        </div>
+        <div class="col-md-6">
+          <h2 class="text-strong">Sub Total</h2>
+          <hr>
+          <h2 class="text-price"><%= price_format(order_item.order_item_total) %></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

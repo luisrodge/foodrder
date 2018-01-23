@@ -1,4 +1,4 @@
-class Admin::RegistrationsController < Devise::RegistrationsController
+class Supplier::RegistrationsController < Devise::RegistrationsController
   include Accessible
 
   protected
