@@ -45,7 +45,7 @@ class Order < ApplicationRecord
   # orders to seller dashboard
   def start_jobs
     order_fragments.each do |order_fragment|
-      # DispatchRestaurantSmsJob.perform_later(order_fragment)
+      DispatchRestaurantSmsJob.perform_later(order_fragment)
       OrderFragmentRelayJob.perform_later(order_fragment)
     end
   end

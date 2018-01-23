@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122185640) do
+ActiveRecord::Schema.define(version: 20180123020159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,14 @@ ActiveRecord::Schema.define(version: 20180122185640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_menus_on_restaurant_id"
+  end
+
+  create_table "message_numbers", force: :cascade do |t|
+    t.string "number"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_message_numbers_on_restaurant_id"
   end
 
   create_table "order_fragments", id: :bigint, default: -> { "make_random_id()" }, force: :cascade do |t|
@@ -340,6 +348,7 @@ ActiveRecord::Schema.define(version: 20180122185640) do
   add_foreign_key "foods", "restaurants"
   add_foreign_key "item_additions", "additions"
   add_foreign_key "menus", "restaurants"
+  add_foreign_key "message_numbers", "restaurants"
   add_foreign_key "order_fragments", "orders"
   add_foreign_key "order_fragments", "restaurants"
   add_foreign_key "order_items", "choices"

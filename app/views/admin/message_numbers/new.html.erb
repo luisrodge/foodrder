@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-5 center-block">
+    <h3>Add New Message Number</h3>
+    <p>A message number is the mobile number that receives new order notices via text message.</p>
+    <br>
+    <%= simple_form_for [:admin, @restaurant, @message_number], validate: true do |f| %>
+      <%= f.input :number, input_html: {class: "input-lg"} %>
+      <br>
+      <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>

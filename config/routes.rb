@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       resources :menus, only: [:new, :create]
       resources :specials
       resources :drinks
+      resources :message_numbers
     end
     resources :schedules, only: [:edit, :update, :destroy]
     resources :tags, only: :index

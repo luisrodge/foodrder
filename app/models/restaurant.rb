@@ -8,6 +8,9 @@ class Restaurant < ApplicationRecord
   has_many :drinks, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
+  has_many :message_numbers, dependent: :destroy
+  accepts_nested_attributes_for :message_numbers
+
   enum order_medium_type: %w[only_pickup pickup_and_delivery only_delivery]
 
   geocoded_by :address
