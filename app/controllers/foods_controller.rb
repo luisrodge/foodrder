@@ -17,7 +17,7 @@ class FoodsController < ApplicationController
              elsif params[:sort].present? && params[:sort] == "deliverable"
                Food.deliverable.page(params[:page]).per(15)
              else
-               Food.order(created_at: :desc).page(params[:page]).per(15)
+               Food.includes(:restaurant, :menu, :variants).order(created_at: :desc).page(params[:page]).per(15)
              end
   end
 end
