@@ -39,6 +39,7 @@ gem 'redis', '~> 3.0'
 gem 'unread'
 gem 'geocoder'
 gem 'meta-tags'
+gem 'bootsnap', require: false
 
 group :development do
   gem 'bullet'
