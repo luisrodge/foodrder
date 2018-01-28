@@ -26,6 +26,6 @@ class RestaurantsController < ApplicationController
   end
 
   def set_menus
-    @menus = @restaurant.menus.includes(foods: [:variants]).order("created_at DESC").page(params[:page]).per(3)
+    @menus = @restaurant.menus.includes(foods: [:variants]).order("created_at DESC")
   end
 end
