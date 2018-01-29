@@ -36,7 +36,6 @@ gem 'client_side_validations-simple_form'
 gem 'recurring_select', github: 'RundownApp/recurring_select'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'redis', '~> 3.0'
-gem 'unread'
 gem 'geocoder'
 gem 'meta-tags'
 gem 'bootsnap', require: false

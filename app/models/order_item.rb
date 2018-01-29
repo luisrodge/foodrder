@@ -30,7 +30,6 @@ class OrderItem < ApplicationRecord
     end
   end
 
-
   def item_name
     if variant.present?
       "#{itemable.name} - #{variant.name}"
@@ -38,7 +37,6 @@ class OrderItem < ApplicationRecord
       itemable.name
     end
   end
-
 
   def variant_name_price
     "#{variant.name} - $#{variant.price}"
@@ -55,7 +53,6 @@ class OrderItem < ApplicationRecord
     end
     total
   end
-
 
   def additions_name
     additions.map {|a| a.name}.join(" ,")

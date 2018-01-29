@@ -28,7 +28,7 @@ class Restaurant < ApplicationRecord
   mount_uploader :primary_image, PrimaryImageUploader
 
   def pending_order_fragments
-    order_fragments.where(status: 0).order("created_at DESC")
+    order_fragments.includes(order_items: [:variant, :additions, :itemable]).where(status: 0).order("created_at DESC")
   end
 
   def archived_order_fragments

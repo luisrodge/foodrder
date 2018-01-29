@@ -20,7 +20,7 @@ class Supplier::OrderFragmentsController < Supplier::BaseController
   private
 
   def set_order_fragment
-    @order_fragment = OrderFragment.find(params[:id])
+    @order_fragment = OrderFragment.includes(order_items: [:variant, :additions, :itemable]).find(params[:id])
   end
 
   def should_redirect
@@ -30,5 +30,4 @@ class Supplier::OrderFragmentsController < Supplier::BaseController
       redirect_to supplier_archive_path(@order_fragment)
     end
   end
-
 end
