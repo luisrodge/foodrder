@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-5 center-block">
-    <h2>Edit Your Profile</h2>
+    <h1 class="title"><span class="text-bb">Edit Your Profile</span></h1>
     <br><br>
     <%= simple_form_for(@supplier, url: supplier_settings_profile_path, validate: true, html: {method: :put}) do |f| %>
       <%= f.error_notification %>

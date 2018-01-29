@@ -1,10 +1,13 @@
+# Cart is associated to CartItems and CartFragments.
+# CartItems are simply the items being ordered and
+# CartFragments segregates those items by their respective restaurant.
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :cart_fragments, dependent: :destroy
 
   monetize :total_cents
 
-  # Create a CartItem record upon adding a Food/Drink to Cart
+  # Create a CartItem record upon adding a Food/Drink item to Cart
   # and associate created record with a CartFragment record
   def create_cart_item(itemable, variant, choice, additions, quantity)
     quantity = quantity.nil? ? 1 : quantity
@@ -35,7 +38,6 @@ class Cart < ApplicationRecord
     end
   end
 
-  # Count how many Foods are in the cart
   def count
     cart_fragments.count
   end

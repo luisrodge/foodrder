@@ -8,6 +8,4 @@ class TimeFrame < ApplicationRecord
   def close_time
     Time.parse(read_attribute(:close).strftime("%H:%M:%S"))
   end
-
-
 end

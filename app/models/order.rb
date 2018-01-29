@@ -41,7 +41,7 @@ class Order < ApplicationRecord
   end
 
   # Invokes background job to dispatch sms messages
-  # and perform action cable broadcast new restaurant
+  # and perform action cable broadcast to render new
   # orders to seller dashboard
   def start_jobs
     order_fragments.each do |order_fragment|

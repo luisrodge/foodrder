@@ -5,6 +5,7 @@ class CartItem < ApplicationRecord
   belongs_to :choice, optional: true
   belongs_to :itemable, polymorphic: true
 
+  # Optional Menu Additions to a CartItem can associate to
   has_many :item_additions, as: :item_additionable, validate: false, dependent: :destroy
   has_many :additions, through: :item_additions
 

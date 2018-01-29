@@ -1,3 +1,4 @@
+# The CartFragment model groups OrderItem records by restaurant
 class CartFragment < ApplicationRecord
   belongs_to :restaurant
   belongs_to :cart

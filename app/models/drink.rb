@@ -7,7 +7,6 @@ class Drink < ApplicationRecord
 
   mount_uploader :primary_image, PrimaryImageUploader
 
-
   monetize :price_cents
 
   # For searchkick model searching
@@ -19,6 +18,4 @@ class Drink < ApplicationRecord
         name: name,
     )
   end
-
-
 end
