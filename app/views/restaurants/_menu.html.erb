@@ -1,0 +1,31 @@
+<div class="col-md-9 center-block">
+  <% @menus.first.foods.each do |food| %>
+    <div class="single-menu-food">
+      <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <h2 class="remove-margin text-strong"><%= food.name %></h2>
+          <% if food.variants.any? %>
+            <h3 class="text-price">Variants</h3>
+          <% else %>
+            <h3 class="text-price"><%= price_format(food.price) %></h3>
+          <% end %>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+          <% if food.customizable? %>
+            <%= link_to food_path(food), class: "btn btn-primary btn-lg" do %>
+              <i class="glyphicon glyphicon-shopping-cart"></i> Order
+            <% end %>
+          <% else %>
+            <%= simple_form_for [food, CartItem.new] do |f| %>
+              <%= f.input :itemable_id, as: :hidden, input_html: {value: food.id} %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary btn-lg",
+                             data: {disable_with: "Adding To Cart..."}) do %>
+                <i class="glyphicon glyphicon-shopping-cart"></i> Order
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

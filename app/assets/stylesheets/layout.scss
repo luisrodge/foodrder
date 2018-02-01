@@ -385,6 +385,14 @@ li.token-input-token-bootstrap p {
   font-size: 15px;
 }
 
+.single-menu-food {
+  border-bottom: 2px solid #f7f7f7;
+  padding: 22px 0;
+  &:last-of-type {
+    border: none;
+  }
+}
+
 .order-frag-wrapper {
   padding: 70px 0;
   border-bottom: 2px dashed #CCC;

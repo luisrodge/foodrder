@@ -47,16 +47,24 @@
 <hr>
 <div class="row">
   <div class="col-md-12 text-center">
-    <h2 class="remove-margin truncate text-sb"><%= @restaurant.menu_food_counter %></h2>
+    <h2 class="remove-margin truncate text-sb">
+      <i class="fa fa-cutlery" aria-hidden="true"></i>
+      <%= @restaurant.menu_food_counter %>
+    </h2>
   </div>
 </div>
 <hr>
 <br><br>
-<div class="row grid" id="restaurant-menus">
-  <!-- add sizing element for columnWidth -->
-  <div class="grid-sizer col-md-4"></div>
-  <%= render @menus %>
-</div>
+
+<!-- Restaurant Menus -->
+<% if @menus.count > 1 %>
+  <div class="row grid" id="restaurant-menus">
+    <div class="grid-sizer col-md-4"></div>
+    <%= render @menus %>
+  </div>
+<% else %>
+  <%= render 'menu' %>
+<% end %>
 
 <script type="text/javascript" charset="utf-8">
     $('.grid').isotope({
