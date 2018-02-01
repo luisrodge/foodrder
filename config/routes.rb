@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'foods#index'
+  root to: 'restaurants#index'
 =begin
   # Custom registration routes for customer and admins
   devise_for :customer, controllers: {registrations: 'customer/registrations'}, skip: :sessions
